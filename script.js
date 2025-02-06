@@ -94,7 +94,11 @@ for (let i = 0; i < cantinaTextArr.length; i++) {
 const cLetterTransTime = parseFloat(getComputedStyle(cantinaSpans[0]).transitionDuration) * 1000;
 console.log(cLetterTransTime);
 
-logoWrapper.classList.remove("hidden");
+window.addEventListener("load", e => {
+    logoWrapper.classList.remove("hidden");
+
+})
+
 logoWrapper.addEventListener("transitionend", () => {
     console.log("trans ended");
     
