@@ -112,7 +112,7 @@ for (let i = 0; i < cantinaSpans.length; i++) {
     let span = cantinaSpans[i]
     setTimeout(() => {
         span.style.fontVariationSettings = `"slnt" ${cLT[i].slnt}, "wdth" ${cLT[i].wdth}, "wght" ${cLT[i].wght}`
-    }, 1000 * Math.random() * 3 + 2);
+    }, 1000 * Math.random() * 3 + 1);
 }
 
 console.log(subheadSpansWithEachLetter);
