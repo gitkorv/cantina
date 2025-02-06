@@ -10,6 +10,12 @@
     --darkGray: #4B4453;
     --lightGray: #B0A8B9;
     --rustRed: #C34A36;
+    --darkPurple: #3D348B;
+    --lightPurple: #7678ED;
+    --yellow: #F7B801;
+    --lightOrange: #F18701;
+    --darkOrange: #F35B04;
+
 
 }
 
@@ -20,27 +26,34 @@ body {
     align-items: center;
     /* max-width: 100vw; */
     height: 100vh;
-    background-color: var(--orange);
-    background-color: #F7B801;
+    background-color: var(--yellow);
 }
 
 main {
     position: relative;
+    display: flex;
     width: 100%;
+    height: 100%;
 }
 
 .logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 50%;
     width: 100%;
     text-align: center;
     opacity: 1;
     transition: opacity 1s ease-in;
+    /* background-color: #7678ED; */
 }
 .logo-wrapper.hidden {
     opacity: 0;
 }
 
 .logo__cantina-head {
-    /* background-color: #4B4453; */
+    flex: 1;
+    align-content: end;
     margin-bottom: -15px;
 }
 
@@ -50,17 +63,38 @@ main {
     letter-spacing: -20px;
     font-size: 5rem;
 
-    color: #3D348B;
+    color: var(--darkPurple);
     transition: font-variation-settings .5s linear;
 }
 
 .logo__cantina-sub {
     position: relative;
-    left: -100%;
+    align-self: center;
+    text-align: left;
+    /* left: -100%; */
     font-family: "ltr-ncnd-variable", sans-serif;
-    font-variation-settings: "wght" 250;
+    font-variation-settings: "wght" 900;
     font-size: 1.4rem;
-    color: #F35B04;
+    color: var(--darkOrange);
+    /* background-color: #4B4453; */
     /* color: blue; */
     transition: left 1s ease-out;
+}
+
+.logo__cantina-sub .club.wonky {
+    /* position: relative; */
+    top: 2px;
+    left: 140px;
+    padding: 0 2px;
+    /* height: 50px;
+    top: 15px;
+    left: 70%; */
+    /* font-size: 2rem; */
+    color: var(--yellow);
+    /* background-color: pink; */
+    transform: rotate(-8deg);
+}
+
+.hidden {
+    opacity: 0;
 }

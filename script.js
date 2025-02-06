@@ -3,6 +3,27 @@ const logoWrapper = document.querySelector(".logo-wrapper")
 const cantinaTextElm = document.querySelector(".logo__cantina-head")
 const cantinaTextArr = [...cantinaTextElm.textContent]
 const cantinaSubheadElm = document.querySelector(".logo__cantina-sub")
+// Get width of subhead and set it
+const cantinaSubheadElmWidth = getComputedStyle(cantinaSubheadElm).width
+const cantinaSubheadElmHeight = getComputedStyle(cantinaSubheadElm).height
+cantinaSubheadElm.style.width = cantinaSubheadElmWidth;
+cantinaSubheadElm.style.height = cantinaSubheadElmHeight;
+console.log(cantinaSubheadElmWidth);
+const cantinaSubSpans = Array.from(cantinaSubheadElm.getElementsByTagName("span"))
+
+cantinaSubSpans.at(-1).style.backgroundColor = "black";
+cantinaSubSpans.at(-1).style.position = "absolute";
+
+cantinaSubSpans.at(-1).classList.add("wonky");
+
+
+const subheadSpansWithEachLetter = []
+
+cantinaSubSpans.forEach(span => {
+    let spanTextArr = [...span.textContent];
+    subheadSpansWithEachLetter.push(spanTextArr)
+})
+
 
 cantinaTextElm.innerHTML = "";
 
@@ -60,7 +81,6 @@ const cLT = [
     },
 ]
 
-
 for (let i = 0; i < cantinaTextArr.length; i++) {
     const span = document.createElement("span");
     span.style.letterSpacing = cLT[i].ltrSpc;
@@ -88,11 +108,32 @@ for (let i = 0; i < cantinaSpans.length; i++) {
     let span = cantinaSpans[i]
     setTimeout(() => {
         span.style.fontVariationSettings = `"slnt" ${cLT[i].slnt}, "wdth" ${cLT[i].wdth}, "wght" ${cLT[i].wght}`
-
-    }, cLetterTransTime * Math.random() * 5 + 1);
-    
+    }, 1000 * Math.random() * 3 + 2);
 }
 
+console.log(subheadSpansWithEachLetter);
+
+let subHeadLetterLength = 0;
+
+let counter = 1
+let sfcTimeDelay = 200;
+
 setTimeout(() => {
-    cantinaSubheadElm.style.left = 0;
-}, 1500);
+    cantinaSubSpans.forEach((spanWord, i) => {
+        console.log(spanWord);
+        spanWord.textContent = "";
+        spanWord.classList.remove("hidden")
+        subheadSpansWithEachLetter[i].forEach((letter, i) => {
+            const span = document.createElement("span")
+            const randomNumber = Math.floor(Math.random() * (900 - 250 + 1)) + 250;
+            span.style.fontVariationSettings = `"wght" ${randomNumber}`;
+    
+            span.textContent = letter
+            setTimeout(() => {
+                spanWord.appendChild(span)
+            }, sfcTimeDelay * counter);
+            counter++
+        })
+    })
+}, 1000);
+
