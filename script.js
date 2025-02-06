@@ -94,24 +94,13 @@ for (let i = 0; i < cantinaTextArr.length; i++) {
 const cLetterTransTime = parseFloat(getComputedStyle(cantinaSpans[0]).transitionDuration) * 1000;
 console.log(cLetterTransTime);
 
-window.addEventListener("load", e => {
-    logoWrapper.classList.remove("hidden");
-
-})
-
-logoWrapper.addEventListener("transitionend", () => {
-    console.log("trans ended");
-    
-
-}, { once: true })
-
-
 
 
 for (let i = 0; i < cantinaSpans.length; i++) {
     let span = cantinaSpans[i]
     setTimeout(() => {
         span.style.fontVariationSettings = `"slnt" ${cLT[i].slnt}, "wdth" ${cLT[i].wdth}, "wght" ${cLT[i].wght}`
+        // span.style.opacity = "1";
     }, 1000 * Math.random() * 3 + 1);
 }
 
@@ -141,3 +130,7 @@ setTimeout(() => {
     })
 }, 1000);
 
+window.addEventListener("load", e => {
+    logoWrapper.classList.remove("hidden");
+
+})
