@@ -46,21 +46,16 @@ main {
 .cantina-letter {
     font-family: "acumin-variable", sans-serif;
     font-variation-settings: "slnt" 0, "wdth" 80, "wght" 300;
-    /* letter-spacing: -20px; */
+    letter-spacing: -20px;
     font-size: 5rem;
 
     color: #3D348B;
     transition: font-variation-settings .5s linear;
 }
 
-.normal-text {
-    /* color: #FF8066; */
-
-}
-
 .logo__cantina-sub {
     position: relative;
-    left: -100%;
+    /* left: -100%; */
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 250;
     font-size: 1.4rem;

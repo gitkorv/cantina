@@ -75,23 +75,23 @@ const cLetterTransTime = parseFloat(getComputedStyle(cantinaSpans[0]).transition
 console.log(cLetterTransTime);
 
 logoWrapper.classList.remove("hidden");
-logoWrapper.addEventListener("transitionend", () => {
-    console.log("trans ended");
+// logoWrapper.addEventListener("transitionend", () => {
+//     console.log("trans ended");
     
-    for (let i = 0; i < cantinaSpans.length; i++) {
-        let span = cantinaSpans[i]
-        setTimeout(() => {
-            span.style.fontVariationSettings = `"slnt" ${cLT[i].slnt}, "wdth" ${cLT[i].wdth}, "wght" ${cLT[i].wght}`
+//     for (let i = 0; i < cantinaSpans.length; i++) {
+//         let span = cantinaSpans[i]
+//         setTimeout(() => {
+//             span.style.fontVariationSettings = `"slnt" ${cLT[i].slnt}, "wdth" ${cLT[i].wdth}, "wght" ${cLT[i].wght}`
     
-        }, cLetterTransTime * Math.random() * 5 + 1);
+//         }, cLetterTransTime * Math.random() * 5 + 1);
         
-    }
+//     }
     
-    setTimeout(() => {
-        cantinaSubheadElm.style.left = 0;
-    }, 1500);
+//     setTimeout(() => {
+//         cantinaSubheadElm.style.left = 0;
+//     }, 1500);
 
-}, { once: true })
+// }, { once: true })
 
 
 
