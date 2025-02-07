@@ -1,6 +1,7 @@
 // Sections
 const menuSection = document.querySelector("section.menu")
 const menuWrapper = document.querySelector(".menu-wrapper")
+menuWrapper.style.transition = "none";
 let menuHeight = menuSection.getBoundingClientRect().height;
 // menuSection.style.height = menuHeight + "px";
 
@@ -199,6 +200,7 @@ menuOpBtn.addEventListener("click", e => {
 
 
 window.addEventListener("load", e => {
+    menuWrapper.style.transition = "";
     // logoWrapper.classList.remove("hidden");
 
 
