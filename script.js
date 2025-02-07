@@ -1,33 +1,32 @@
-// logo
+// logo Cantina
 const logoWrapper = document.querySelector(".logo-wrapper")
-const cantinaTextElm = document.querySelector(".logo__cantina-head")
-const cantinaTextArr = [...cantinaTextElm.textContent]
-const cantinaSubheadElm = document.querySelector(".logo__cantina-sub")
+const logoHeadWrap = document.querySelector(".logo__head")
+// logoHeadWrap.style.transition = "none";
+const logoHeadWrapTextArr = [...logoHeadWrap.textContent]
+logoHeadWrap.textContent = "";
+
+
+// Logo subhead
+const logoSubheadWrap = document.querySelector(".logo__sub")
+const streetFoodClubWrap = document.querySelector(".logo__sub__streetfood-wrap")
+const clubTextWrap = document.querySelector(".club")
 // Get width of subhead and set it
-const cantinaSubheadElmWidth = getComputedStyle(cantinaSubheadElm).width
-const cantinaSubheadElmHeight = getComputedStyle(cantinaSubheadElm).height
-cantinaSubheadElm.style.width = cantinaSubheadElmWidth;
-cantinaSubheadElm.style.height = cantinaSubheadElmHeight;
-console.log(cantinaSubheadElmWidth);
-const cantinaSubSpans = Array.from(cantinaSubheadElm.getElementsByTagName("span"))
+const streetFoodClubWrapWidth = getComputedStyle(logoSubheadWrap).width
+const streetFoodClubWrapHeight = getComputedStyle(logoSubheadWrap).height
+streetFoodClubWrap.style.width = streetFoodClubWrapWidth;
+streetFoodClubWrap.style.height = streetFoodClubWrapHeight;
 
-cantinaSubSpans.at(-1).style.backgroundColor = "black";
-cantinaSubSpans.at(-1).style.position = "absolute";
+const ticker = document.querySelector(".logo__ticker-wrapper");
+const belowTheFold = document.querySelector(".below-the-fold")
 
-cantinaSubSpans.at(-1).classList.add("wonky");
+const fullDisplayArr = [ticker, belowTheFold]
 
+// console.log(logoSubheadWrapWidth);
 
-const subheadSpansWithEachLetter = []
-
-cantinaSubSpans.forEach(span => {
-    let spanTextArr = [...span.textContent];
-    subheadSpansWithEachLetter.push(spanTextArr)
-})
-
-
-cantinaTextElm.innerHTML = "";
-
-const cantinaSpans = []
+const streetFoodWrap = document.querySelector(".logo__sub__streetfood-wrap")
+console.log(streetFoodWrap);
+const streetFoodSpans = Array.from(streetFoodWrap.querySelectorAll(".street-food"))
+console.log(streetFoodSpans);
 
 const cLT = [
     {
@@ -81,56 +80,84 @@ const cLT = [
     },
 ]
 
-for (let i = 0; i < cantinaTextArr.length; i++) {
-    const span = document.createElement("span");
-    span.style.letterSpacing = cLT[i].ltrSpc;
-
-    span.classList.add("cantina-letter")
-    span.textContent = cantinaTextArr[i];
-    cantinaSpans.push(span)
-    cantinaTextElm.append(span)
-}
-
-const cLetterTransTime = parseFloat(getComputedStyle(cantinaSpans[0]).transitionDuration) * 1000;
-console.log(cLetterTransTime);
-
-
-
-for (let i = 0; i < cantinaSpans.length; i++) {
-    let span = cantinaSpans[i]
-    setTimeout(() => {
+function showLogo() {
+    // Cantina
+    let logoTransTime = parseFloat(getComputedStyle(logoHeadWrap).transitionDuration) * 1000
+    console.log(logoTransTime);
+    setInterval(() => {
+        logoHeadWrap.classList.remove("zero-opacity")
+        
+    }, logoTransTime );
+    for (let i = 0; i < logoHeadWrapTextArr.length; i++) {
+        const span = document.createElement("span");
+        span.style.letterSpacing = cLT[i].ltrSpc;
+        span.classList.add("cantina-letter")
+        span.textContent = logoHeadWrapTextArr[i];
+        logoHeadWrap.append(span)
+        let revealTime = Math.floor(Math.random() * (logoHeadWrapTextArr.length - 2) + 2);
+        let logoHeadTransTime = parseFloat(getComputedStyle(span).transitionDuration);
+        console.log(logoHeadTransTime);
+        // span.style.opacity = 1;
+        
+        span.style.transitionDelay = logoHeadTransTime * revealTime + "s";
         span.style.fontVariationSettings = `"slnt" ${cLT[i].slnt}, "wdth" ${cLT[i].wdth}, "wght" ${cLT[i].wght}`
-        // span.style.opacity = "1";
-    }, 1000 * Math.random() * 3 + 1);
+    }
+
+    // Subhead
+    let streetFoodCounter = 0;
+    let typeWriterTime = 150;
+
+    streetFoodSpans.forEach((span, i) => {
+        let spanArr = [...span.textContent];
+        span.textContent = ""
+
+        spanArr.forEach(letter => {
+            streetFoodCounter++
+
+            const letterSpan = document.createElement("span")
+            letterSpan.classList.add("zero-opacity")
+            const randomNumber = Math.floor(Math.random() * (900 - 250 + 1)) + 250;
+            letterSpan.style.fontVariationSettings = `"wght" ${randomNumber}`;
+            letterSpan.textContent = letter;
+            span.appendChild(letterSpan)
+
+            setTimeout(() => {
+                letterSpan.classList.remove("zero-opacity");
+
+            }, typeWriterTime * streetFoodCounter + 2000);
+            console.log(streetFoodCounter);
+        })
+    });
+
+
+    let clubStampEnterTime = streetFoodCounter * typeWriterTime + 2000
+    console.log(clubStampEnterTime);
+
+    setTimeout(() => {
+        clubTextWrap.style.position = "absolute"
+        clubTextWrap.classList.remove("hidden")
+        clubTextWrap.classList.add("stamp")
+        
+    }, clubStampEnterTime);
+
+    setTimeout(() => {
+        fullDisplayArr.forEach(element => {
+            element.style.transition = `opacity 1.5s ease-in`;
+            element.classList.remove("zero-opacity")
+            element.style.opacity = "1";
+
+        })
+    }, clubStampEnterTime + 2000);
+
+    
+
+
 }
 
-console.log(subheadSpansWithEachLetter);
+showLogo()
 
-let subHeadLetterLength = 0;
-
-let counter = 1
-let sfcTimeDelay = 200;
-
-setTimeout(() => {
-    cantinaSubSpans.forEach((spanWord, i) => {
-        console.log(spanWord);
-        spanWord.textContent = "";
-        spanWord.classList.remove("hidden")
-        subheadSpansWithEachLetter[i].forEach((letter, i) => {
-            const span = document.createElement("span")
-            const randomNumber = Math.floor(Math.random() * (900 - 250 + 1)) + 250;
-            span.style.fontVariationSettings = `"wght" ${randomNumber}`;
-    
-            span.textContent = letter
-            setTimeout(() => {
-                spanWord.appendChild(span)
-            }, sfcTimeDelay * counter);
-            counter++
-        })
-    })
-}, 1000);
 
 window.addEventListener("load", e => {
-    logoWrapper.classList.remove("hidden");
+    // logoWrapper.classList.remove("hidden");
 
 })
