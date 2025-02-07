@@ -145,7 +145,7 @@ function showElements() {
         clubTextWrap.style.transition = ""
 
         clubTextWrap.classList.remove("rolled-up");
-        clubTextWrap.style.width = clubTextWrapWidth + "px";
+        // clubTextWrap.style.width = "fit-content";
         clubTextWrap.classList.add("stamp")
         
     }, clubStampEnterTime + 1000);

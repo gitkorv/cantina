@@ -60,7 +60,7 @@ main {
 .logo__ticker-wrapper {
     /* visibility: hidden; */
     display: flex;
-    font-variation-settings: "slnt" -8, "wdth" 70, "wght" 300;
+    font-variation-settings: "slnt" 0, "wdth" 70, "wght" 300;
 
     gap: 24px;
     margin-right: 35%;
@@ -77,7 +77,7 @@ main {
     color: var(--darkPurple);
     background-color: var(--darkOrange);
     width: fit-content;
-    padding: 0 2px;
+    padding: 0 4px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
     animation: blink 2s ease-in-out infinite alternate;
@@ -197,15 +197,19 @@ main {
     /* flex: 1; */
     gap: 16px;
     display: flex;
-    justify-content: space-around;
+    justify-content: stretch;
+    justify-items: stretch;
     align-items: end;
     /* background-color: #C34A36; */
 }
 
 .menu-wrapper button {
-    flex: 1;
-    height: 30px;
+    all: unset;
+    /* text-align: ; */
+    flex: 1 0 auto;
+    /* height: 30px; */
     background: none;
+    padding: 4px 8px;
     /* border: 1px solid var(--darkPurple); */
     border-style: none;
     font-size: 1.4rem;
