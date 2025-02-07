@@ -19,30 +19,28 @@ const logoSubheadWrap = document.querySelector(".logo__sub")
 const streetFoodClubWrap = document.querySelector(".logo__sub__streetfood-wrap")
 const clubTextWrap = document.querySelector(".club")
 const clubTextWrapWidth = clubTextWrap.getBoundingClientRect().width;
-console.log(clubTextWrapWidth);
 clubTextWrap.style.transition = "none"
 clubTextWrap.classList.add("rolled-up")
 streetFoodClubWrap.style.marginRight = clubTextWrapWidth + "px";
 
 const streetFoodWrap = document.querySelector(".logo__sub__streetfood-wrap")
-console.log(streetFoodWrap);
 const streetFoodSpans = Array.from(streetFoodWrap.querySelectorAll(".street-food"))
-console.log(streetFoodSpans);
 
 // Ticker
 const ticker = document.querySelector(".logo__ticker-wrapper");
 const belowTheFold = document.querySelector(".below-the-fold")
 
+// Menu
+const menuCategoryHeads = [...document.querySelectorAll(".menu__cat-head")];
+console.log(menuCategoryHeads);
+
 // Menu buttons
 const btnWrapper = document.querySelector(".menu__btn-wrapper")
 const menuSectionBtns = document.querySelectorAll(".btn-menu-section")
-console.log(menuSectionBtns);
 
 const allMenuBtns = [...document.querySelectorAll(".menu__btn")]
-console.log(allMenuBtns);
 
 const menuOpBtn = document.querySelector(".btn-op")
-console.log(menuOpBtn);
 
 // Hide on start
 const fullDisplayArr = [ticker, belowTheFold, allMenuBtns]
@@ -146,7 +144,6 @@ function showHomeElements() {
                 letterSpan.classList.remove("zero-opacity");
 
             }, typeWriterTime * streetFoodCounter + 2000);
-            console.log(streetFoodCounter);
         })
     });
 
@@ -168,7 +165,6 @@ function showHomeElements() {
             if (Array.isArray(element)) {
                 console.log("array");
                 element.forEach(el => {
-                    console.log(el);
                     el.style.transition = `opacity 1.5s ease-in`;
                     el.classList.remove("zero-opacity")
                     el.style.opacity = "1";
@@ -202,7 +198,7 @@ menuSectionBtns.forEach(btn => {
         // menuSection.style.height = "100%";
         menuWrapper.classList.add("show")
         menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
-        console.log(menuTransTime);
+        console.log(btn);
 
         setTimeout(() => {
             if (btn.textContent === "Bar") {
@@ -215,6 +211,12 @@ menuSectionBtns.forEach(btn => {
                 bitesSectionHeader.scrollIntoView({ behavior: "smooth" });
             }
         }, menuTransTime * 0.75);
+
+        setTimeout(() => {
+            menuCategoryHeads.forEach(catHead=> {
+                makeFunkyMenuCategoryHeads(catHead)
+            })
+        }, menuTransTime);
 
         // menuContent.classList.add("show")
     })
@@ -256,3 +258,33 @@ allMenuBtns.forEach(btn => {
 window.addEventListener("load", e => {
     menuWrapper.style.transition = "";
 })
+
+
+function makeFunkyMenuCategoryHeads(headlineArr) {
+    console.log(headlineArr);
+    let catHeadLetters = [...headlineArr.textContent]
+    headlineArr.textContent = "";
+    catHeadLetters.forEach((letter, i) => {
+        const catHeadSpan = document.createElement("span");
+        // catHeadSpan.classList.add("blob")
+        catHeadSpan.textContent = letter;
+        catHeadSpan.style.transition = `font-variation-settings 1s ease-in-out`;
+        // catHeadSpan.style.transitionDelay = 100 * i + "s";
+
+        let weight = Math.floor(Math.random() * (901 - 100) + 100)
+        console.log(weight);
+        let width = Math.floor(Math.random() * (116 - 50) + 50)
+        let slant = Math.floor(Math.random() * (13) - 12)
+
+        setTimeout(() => {
+            catHeadSpan.style.fontVariationSettings = `"slnt" ${slant}, "wdth" ${width}, "wght" ${weight}`
+
+        }, 200);
+
+        
+        headlineArr.appendChild(catHeadSpan)
+    })
+    console.log(catHeadLetters);
+}
+
+makeFunkyMenuCategoryHeads(menuCategoryHeads[0])

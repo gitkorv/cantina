@@ -264,15 +264,29 @@ section.menu {
     flex-direction: column;
     gap: 8px;
     /* width: 100%; */
-    margin-right: 75px;
 
 }
+
+.menu__cat-head {
+    font-variation-settings: "slnt" 0, "wdth" 10, "wght" 900;
+    transition: font-variation-settings 1s ease-in-out;
+    color: var(--darkOrange);
+
+}
+
+.menu__cat-head .blob {
+    color: var(--darkPurple);
+}
+
+
 
 .menu-item {
     position: relative;
     background-color: var(--orange);
     padding: 8px;
     border-bottom: 1ps solid var(--darkGray);
+    margin-right: 75px;
+
     overflow: visible;
 }
 
@@ -305,7 +319,6 @@ li p {
 
 h2 {
     font-size: 5rem;
-    font-variation-settings: "slnt" 0, "wdth" 10, "wght" 900;
 }
 
 h3 {
