@@ -33,14 +33,19 @@ console.log(streetFoodSpans);
 const ticker = document.querySelector(".logo__ticker-wrapper");
 const belowTheFold = document.querySelector(".below-the-fold")
 
-const fullDisplayArr = [ticker, belowTheFold]
-
 // Menu buttons
-const menuBtns = document.querySelectorAll(".btn-menu-section")
-console.log(menuBtns);
+const btnWrapper = document.querySelector(".menu__btn-wrapper")
+const menuSectionBtns = document.querySelectorAll(".btn-menu-section")
+console.log(menuSectionBtns);
+
+const allMenuBtns = [...document.querySelectorAll(".menu__btn")]
+console.log(allMenuBtns);
 
 const menuOpBtn = document.querySelector(".btn-op")
 console.log(menuOpBtn);
+
+// Hide on start
+const fullDisplayArr = [ticker, belowTheFold, allMenuBtns]
 
 
 
@@ -96,7 +101,7 @@ const cLT = [
     },
 ]
 
-function showElements() {
+function showHomeElements() {
     // Cantina
     let logoTransTime = parseFloat(getComputedStyle(logoHeadWrap).transitionDuration) * 1000
     console.log(logoTransTime);
@@ -160,48 +165,94 @@ function showElements() {
 
     setTimeout(() => {
         fullDisplayArr.forEach(element => {
-            element.style.transition = `opacity 1.5s ease-in`;
-            element.classList.remove("zero-opacity")
-            element.style.opacity = "1";
+            if (Array.isArray(element)) {
+                console.log("array");
+                element.forEach(el => {
+                    console.log(el);
+                    el.style.transition = `opacity 1.5s ease-in`;
+                    el.classList.remove("zero-opacity")
+                    el.style.opacity = "1";
+                })
+            } else {
+                element.style.transition = `opacity 1.5s ease-in`;
+                element.classList.remove("zero-opacity")
+                element.style.opacity = "1";
+            }
+
 
         })
     }, clubStampEnterTime + 1500);
-
-    
-
-
 }
 
-showElements()
+showHomeElements()
 
+// Btn and menus
 
-menuBtns.forEach(btn => {
+let btnPressTransTime = parseFloat(getComputedStyle(menuOpBtn).transitionDuration) * 1000;
+console.log(btnPressTransTime);
+
+let bitesSectionHeader = document.querySelector(".bites")
+let barSectionHeader = document.querySelector(".bar")
+let restSectionHeader = document.querySelector(".rest")
+let menuTransTime;
+
+menuSectionBtns.forEach(btn => {
     btn.addEventListener("click", e => {
-
-        console.log(e.target);
+        let btn = e.target;
         // menuSection.style.height = "100%";
         menuWrapper.classList.add("show")
-        menuContent.classList.add("show")
+        menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
+        console.log(menuTransTime);
+
+        setTimeout(() => {
+            if (btn.textContent === "Bar") {
+                console.log("bar");
+                barSectionHeader.scrollIntoView({ behavior: "smooth" });
+            } else if (btn.textContent === "The Rest") {
+                console.log("rest");
+                restSectionHeader.scrollIntoView({ behavior: "smooth" });
+            } else {
+                bitesSectionHeader.scrollIntoView({ behavior: "smooth" });
+            }
+        }, menuTransTime);
+
+        // menuContent.classList.add("show")
     })
 })
 
 
+
+
 menuOpBtn.addEventListener("click", e => {
-
-    console.log(e.target);
-    // menuSection.style.height = menuHeight + "px";
+    let btn = e.target;
     menuWrapper.classList.remove("show")
-
-    menuContent.classList.remove("show")
+    setTimeout(() => {
+        btn.classList.remove("pressed")
+        btn.classList.remove("active")
+    }, btnPressTransTime);
 
 })
 
-
+allMenuBtns.forEach(btn => {
+    btn.addEventListener("click", e => {
+        allMenuBtns.forEach(btn => {
+            btn.classList.remove("active", "pressed");
+        })
+        btn.classList.add("pressed")
+    setTimeout(() => {
+        btn.classList.remove("pressed")
+        btn.classList.add("active")
+    }, btnPressTransTime);
+    if (btn.classList.contains("btn-op")) {
+        setTimeout(() => {
+            btn.classList.remove("active")
+        }, btnPressTransTime * 4);
+    }
+    })
+    
+})
 
 
 window.addEventListener("load", e => {
     menuWrapper.style.transition = "";
-    // logoWrapper.classList.remove("hidden");
-
-
 })
