@@ -214,7 +214,7 @@ menuSectionBtns.forEach(btn => {
             } else {
                 bitesSectionHeader.scrollIntoView({ behavior: "smooth" });
             }
-        }, menuTransTime);
+        }, menuTransTime * 0.75);
 
         // menuContent.classList.add("show")
     })
