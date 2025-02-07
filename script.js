@@ -1,10 +1,17 @@
+// Sections
+const menuSection = document.querySelector("section.menu")
+const menuWrapper = document.querySelector(".menu-wrapper")
+let menuHeight = menuSection.getBoundingClientRect().height;
+// menuSection.style.height = menuHeight + "px";
+
+const menuContent = document.querySelector(".menu__content")
+
 // logo Cantina
 const logoWrapper = document.querySelector(".logo-wrapper")
 const logoHeadWrap = document.querySelector(".logo__head")
 // logoHeadWrap.style.transition = "none";
 const logoHeadWrapTextArr = [...logoHeadWrap.textContent]
 logoHeadWrap.textContent = "";
-
 
 // Logo subhead
 const logoSubheadWrap = document.querySelector(".logo__sub")
@@ -13,28 +20,28 @@ const clubTextWrap = document.querySelector(".club")
 const clubTextWrapWidth = clubTextWrap.getBoundingClientRect().width;
 console.log(clubTextWrapWidth);
 clubTextWrap.style.transition = "none"
-// clubTextWrap.style.transform = `rotateY(45deg);`
 clubTextWrap.classList.add("rolled-up")
-
-// Get width of subhead and set it
-// const streetFoodClubWrapWidth = getComputedStyle(logoSubheadWrap).width
-// const streetFoodClubWrapHeight = getComputedStyle(logoSubheadWrap).height
-// streetFoodClubWrap.style.width = streetFoodClubWrapWidth;
-// streetFoodClubWrap.style.height = streetFoodClubWrapHeight;
-
 streetFoodClubWrap.style.marginRight = clubTextWrapWidth + "px";
-
-const ticker = document.querySelector(".logo__ticker-wrapper");
-const belowTheFold = document.querySelector(".below-the-fold")
-
-const fullDisplayArr = [ticker, belowTheFold]
-
-// console.log(logoSubheadWrapWidth);
 
 const streetFoodWrap = document.querySelector(".logo__sub__streetfood-wrap")
 console.log(streetFoodWrap);
 const streetFoodSpans = Array.from(streetFoodWrap.querySelectorAll(".street-food"))
 console.log(streetFoodSpans);
+
+// Ticker
+const ticker = document.querySelector(".logo__ticker-wrapper");
+const belowTheFold = document.querySelector(".below-the-fold")
+
+const fullDisplayArr = [ticker, belowTheFold]
+
+// Menu buttons
+const menuBtns = document.querySelectorAll(".btn-menu-section")
+console.log(menuBtns);
+
+const menuOpBtn = document.querySelector(".btn-op")
+console.log(menuOpBtn);
+
+
 
 const cLT = [
     {
@@ -165,6 +172,30 @@ function showElements() {
 }
 
 showElements()
+
+
+menuBtns.forEach(btn => {
+    btn.addEventListener("click", e => {
+
+        console.log(e.target);
+        // menuSection.style.height = "100%";
+        menuWrapper.classList.add("show")
+        menuContent.classList.add("show")
+    })
+})
+
+
+menuOpBtn.addEventListener("click", e => {
+
+    console.log(e.target);
+    // menuSection.style.height = menuHeight + "px";
+    menuWrapper.classList.remove("show")
+
+    menuContent.classList.remove("show")
+
+})
+
+
 
 
 window.addEventListener("load", e => {
