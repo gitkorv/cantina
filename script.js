@@ -130,7 +130,7 @@ function showLogo() {
     });
 
 
-    let clubStampEnterTime = streetFoodCounter * typeWriterTime + 2000
+    let clubStampEnterTime = streetFoodCounter * typeWriterTime + 1500
     console.log(clubStampEnterTime);
 
     setTimeout(() => {
@@ -147,7 +147,7 @@ function showLogo() {
             element.style.opacity = "1";
 
         })
-    }, clubStampEnterTime + 2000);
+    }, clubStampEnterTime + 1500);
 
     
 
