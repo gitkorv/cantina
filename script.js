@@ -10,11 +10,19 @@ logoHeadWrap.textContent = "";
 const logoSubheadWrap = document.querySelector(".logo__sub")
 const streetFoodClubWrap = document.querySelector(".logo__sub__streetfood-wrap")
 const clubTextWrap = document.querySelector(".club")
+const clubTextWrapWidth = clubTextWrap.getBoundingClientRect().width;
+console.log(clubTextWrapWidth);
+clubTextWrap.style.transition = "none"
+// clubTextWrap.style.transform = `rotateY(45deg);`
+clubTextWrap.classList.add("rolled-up")
+
 // Get width of subhead and set it
-const streetFoodClubWrapWidth = getComputedStyle(logoSubheadWrap).width
-const streetFoodClubWrapHeight = getComputedStyle(logoSubheadWrap).height
-streetFoodClubWrap.style.width = streetFoodClubWrapWidth;
-streetFoodClubWrap.style.height = streetFoodClubWrapHeight;
+// const streetFoodClubWrapWidth = getComputedStyle(logoSubheadWrap).width
+// const streetFoodClubWrapHeight = getComputedStyle(logoSubheadWrap).height
+// streetFoodClubWrap.style.width = streetFoodClubWrapWidth;
+// streetFoodClubWrap.style.height = streetFoodClubWrapHeight;
+
+streetFoodClubWrap.style.marginRight = clubTextWrapWidth + "px";
 
 const ticker = document.querySelector(".logo__ticker-wrapper");
 const belowTheFold = document.querySelector(".below-the-fold")
@@ -80,7 +88,7 @@ const cLT = [
     },
 ]
 
-function showLogo() {
+function showElements() {
     // Cantina
     let logoTransTime = parseFloat(getComputedStyle(logoHeadWrap).transitionDuration) * 1000
     console.log(logoTransTime);
@@ -134,11 +142,13 @@ function showLogo() {
     console.log(clubStampEnterTime);
 
     setTimeout(() => {
-        clubTextWrap.style.position = "absolute"
-        clubTextWrap.classList.remove("hidden")
+        clubTextWrap.style.transition = ""
+
+        clubTextWrap.classList.remove("rolled-up");
+        clubTextWrap.style.width = clubTextWrapWidth + "px";
         clubTextWrap.classList.add("stamp")
         
-    }, clubStampEnterTime);
+    }, clubStampEnterTime + 1000);
 
     setTimeout(() => {
         fullDisplayArr.forEach(element => {
@@ -154,10 +164,11 @@ function showLogo() {
 
 }
 
-showLogo()
+showElements()
 
 
 window.addEventListener("load", e => {
     // logoWrapper.classList.remove("hidden");
+
 
 })

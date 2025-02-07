@@ -117,94 +117,57 @@ main {
                 opacity .25s ease-in;
 }
 .logo__sub {
-    /* display: flex; */
     position: relative;
-    /* text-align: start; */
-
-    /* align-self: center; */
-    /* width: 100%; */
-    /* background-color: red; */
-
 }
 .logo__sub__streetfood-wrap {
-    /* background-color: pink; */
-    /* flex: 1; */
+    transform-style: preserve-3d;
+    perspective: 1000px;
 
-    /* width: 100%; */
 }
 
-.logo__sub span {
+.street-food, .club {
     position: relative;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 900;
     font-size: 1.4rem;
-    color: var(--orange);
+    color: var(--rustRed);
 }
-
-.logo__sub span.club.hidden {
-    visibility: hidden;
-}
-
-.logo__sub span.club {
-    position: relative;
-    /* right: -2000px;
-    top: -200px; */
-    background-color: var(--darkGray);
-    visibility: none;
-    /* transition: all 1s ease-in; */
-}
-
-.logo__sub span.club.stamp {
-    visibility: visible;
-    text-align: end;
-    width: fit-content;
-    right: 0px;
-    top: 0px;
-    padding: 0 2px;
-    color: var(--yellow);
-
-    /* transform: rotate(12deg); */
-    animation: stamp 1s ease-in forwards;
-}
-
-@keyframes stamp {
-    0% {
-        right: -2000px;
-        top: -2000px;
-        scale: 600%;
-        rotate: 200deg;
-    }
-    50% {
-        right: -500px;
-        top: -500px;
-        scale: 300%;
-    }
-    100% {
-        right: -4px;
-        top: 5px;
-        scale: 100%;
-        rotate: -8deg;
-
-    }
-}
-
-/* .logo__sub::after {
-    content: "";
-    z-index: -20;
-    position: absolute;
-    right: -4px;
-    top: 2px;
-    rotate: -8deg;
-    height: 22px;
-    width: 50px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    stroke-dasharray: 20px;
-} */
 
 .street-food {
     opacity: 1;
     transition: all 1s ease-out;
+}
+
+/* .club.hidden {
+    visibility: hidden;
+} */
+
+.club {
+    position: absolute;
+    top: 2px;
+    /* right: 0; */
+
+    padding: 0 2px;
+    margin-left: 3px;
+    width: fit-content;
+    background-color: var(--darkGray);
+    color: var(--yellow);
+
+    transform-origin: right;
+    transform: rotateY(0deg);
+
+    rotate: -5deg;
+
+    visibility: visible;
+    transition: all .25s ease-in-out;
+}
+
+.club.rolled-up {
+    visibility: hidden;
+    /* width: 0px; */
+    transform: rotateY(80deg);
+
+    padding: 0;
 }
 
 .below-the-fold {
@@ -217,7 +180,7 @@ main {
 
 
 
-.adress {
+.address {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
