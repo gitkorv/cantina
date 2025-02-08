@@ -6,8 +6,14 @@ const menuWrapper = document.querySelector(".menu-wrapper")
 menuWrapper.style.transition = "none";
 // menuWrapper.classList.
 let menuHeight = menuSection.getBoundingClientRect().height;
-// menuSection.style.height = menuHeight + "px";
 
+// Club
+const clubBtn = document.querySelector(".club-btn")
+console.log(clubBtn);
+const clubFormContent = document.querySelector(".club-form__content")
+console.log(clubFormContent);
+const clubForm = document.querySelector(".club-form")
+console.log(clubForm);
 // logo Cantina
 const logoWrapper = document.querySelector(".logo-wrapper")
 const logoHeadWrap = document.querySelector(".logo__head")
@@ -214,47 +220,51 @@ function showHomeElements() {
         })
     });
 
-
-    let clubStampEnterTime = streetFoodCounter * typeWriterTime + 1500
+    let clubStampEnterTime = streetFoodCounter * typeWriterTime + 2500
 
     setTimeout(() => {
         clubTextWrap.style.transition = ""
-
         clubTextWrap.classList.remove("rolled-up");
-        // clubTextWrap.style.width = "fit-content";
-        clubTextWrap.classList.add("stamp")
-
-    }, clubStampEnterTime + 1000);
+    }, clubStampEnterTime);
 
     setTimeout(() => {
         fullDisplayArr.forEach(element => {
             if (Array.isArray(element)) {
                 element.forEach(el => {
-                    el.style.transition = `opacity 1.5s ease-in`;
-                    el.classList.remove("zero-opacity")
-                    el.style.opacity = "1";
+                    fadeInFromOpacityZero(el)
                 })
             } else {
-                element.style.transition = `opacity 1.5s ease-in`;
-                element.classList.remove("zero-opacity")
-                element.style.opacity = "1";
+                fadeInFromOpacityZero(element)
             }
         })
-    }, clubStampEnterTime + 1500);
+    }, clubStampEnterTime + 500);
 
     setTimeout(() => {
         // Start the ticker
         ticker.style.display = ""
 
         runNewsTicker();
-    }, clubStampEnterTime + 3000);
+    }, clubStampEnterTime + 1000);
 }
 
 showHomeElements()
 
+function fadeInFromOpacityZero(element) {
+    element.style.transition = `opacity 1.5s ease-in`;
+    element.classList.remove("zero-opacity")
+    element.style.opacity = "1";
+
+    setTimeout(() => {
+        element.style.transition = ""
+        element.style.opacity = ""
+    }, 1500);
+
+}
+
 // Btn and menus
 
-let btnPressTransTime = parseFloat(getComputedStyle(menuOpBtn).transitionDuration) * 1000;
+let btnPressTransTime = parseFloat(getComputedStyle(menuOpBtn).transitionDuration) * 100;
+console.log(btnPressTransTime);
 
 let bitesSectionHeader = document.querySelector(".bites")
 let barSectionHeader = document.querySelector(".bar")
@@ -312,7 +322,7 @@ allMenuBtns.forEach(btn => {
         if (btn.classList.contains("btn-op")) {
             setTimeout(() => {
                 btn.classList.remove("active")
-            }, btnPressTransTime * 4);
+            }, btnPressTransTime * 2);
         }
     })
 })
@@ -322,9 +332,12 @@ function closeMenu() {
     allMenuBtns.forEach(btn => {
         btn.classList.remove("active", "pressed");
     })
+    menuSection.classList.add("no-point")
 }
 function openMenu() {
     menuWrapper.classList.remove("close");
+    menuSection.classList.remove("no-point")
+
 }
 
 function makeFunkyMenuCategoryHeads(headlineArr) {
@@ -407,3 +420,17 @@ window.addEventListener("load", e => {
     menuWrapper.style.transition = "";
 
 })
+
+clubBtn.addEventListener("click", (e) => {
+    const btn = e.target; // Reference to the clicked button
+    console.log(btn);
+
+    clubBtn.classList.toggle("pressed");
+
+    // Toggle button text between "X" and original
+    clubBtn.textContent = clubBtn.classList.contains("pressed") ? "X" : "Join Club!";
+
+    // Toggle the open classes for content and form
+    clubFormContent.classList.toggle("open");
+    clubForm.classList.toggle("open");
+});
