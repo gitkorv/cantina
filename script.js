@@ -1,7 +1,10 @@
+// General
+const windowHeight = window.innerHeight;
 // Sections
 const menuSection = document.querySelector("section.menu")
 const menuWrapper = document.querySelector(".menu-wrapper")
 menuWrapper.style.transition = "none";
+// menuWrapper.classList.
 let menuHeight = menuSection.getBoundingClientRect().height;
 // menuSection.style.height = menuHeight + "px";
 
@@ -25,14 +28,13 @@ const streetFoodWrap = document.querySelector(".logo__sub__streetfood-wrap")
 const streetFoodSpans = Array.from(streetFoodWrap.querySelectorAll(".street-food"))
 
 // Ticker
-const ticker = document.querySelector(".logo__ticker-wrapper");
+const ticker = document.querySelector(".ticker-wrapper");
 const belowTheFold = document.querySelector(".below-the-fold")
 
 // Menu
 const menuContent = document.querySelector(".menu__content")
 
 const menuCategoryHeads = [...document.querySelectorAll(".menu__cat-head")];
-console.log(menuCategoryHeads);
 
 // Menu buttons
 const btnWrapper = document.querySelector(".menu__btn-wrapper")
@@ -45,6 +47,8 @@ const menuOpBtn = document.querySelector(".btn-op")
 // Hide on start
 const fullDisplayArr = [ticker, belowTheFold, allMenuBtns]
 
+// Close Menu at start
+closeMenu()
 
 
 const cLT = [
@@ -99,14 +103,79 @@ const cLT = [
     },
 ]
 
+const tickerItems = [
+    {
+        head: "NEWS!",
+        text: "Från och med Juni månad öppnar vår sprillans nya uteservering, varmt välkomna då..."
+    },
+    {
+        head: "Join the club!",
+        text: `Klicka här till höger och gå med i vår "club" för att ta del av både rabbater och nyheter`
+    },
+    {
+        head: "Live Music",
+        text: "3e torsdagen i månaden kommer köra live music från lokala talanger, håll utkik här för mer info."
+    }
+];
+
+let currentTickerItemIndex = 0; // Index of the current ticker item
+let typeTickerIndex = 0; // Index for typing individual characters
+const typeTickerHeadContainer = document.querySelector(".ticker-head");
+ticker.style.display = "none"
+const typeTickerTextContainer = document.querySelector(".ticker-text");
+
+function runNewsTicker() {
+    const tickerItem = tickerItems[currentTickerItemIndex];
+    const head = tickerItem.head;
+    const text = tickerItem.text;
+
+    // Step 1: Transition effect for head
+    function updateHead() {
+        // Add a "fade-out" class
+        typeTickerHeadContainer.classList.add("fade-out");
+
+        // Wait for the fade-out animation, then change the text
+        setTimeout(() => {
+            typeTickerHeadContainer.textContent = head; // Update the head
+            typeTickerHeadContainer.classList.remove("fade-out"); // Remove fade-out
+            typeTickerHeadContainer.classList.add("fade-in"); // Add fade-in
+
+            // Remove the fade-in class after animation completes
+            setTimeout(() => {
+                typeTickerHeadContainer.classList.remove("fade-in");
+            }, 500); // Match the CSS transition duration
+        }, 500); // Match the CSS transition duration
+    }
+
+    updateHead(); // Update the head with a transition
+
+    // Step 2: Type out the text
+    function typeText() {
+        if (typeTickerIndex < text.length) {
+            typeTickerTextContainer.textContent += text[typeTickerIndex];
+            typeTickerIndex++;
+            setTimeout(typeText, 100); // Type next character
+        } else {
+            // Step 3: After typing, move to the next item after a delay
+            setTimeout(() => {
+                typeTickerTextContainer.textContent = ""; // Clear text
+                typeTickerIndex = 0; // Reset typing index
+                currentTickerItemIndex = (currentTickerItemIndex + 1) % tickerItems.length; // Loop to next ticker item
+                runNewsTicker(); // Restart the process for the next item
+            }, 2000); // 2-second pause before switching
+        }
+    }
+    typeText(); // Start typing the text
+}
+
 function showHomeElements() {
+
     // Cantina
     let logoTransTime = parseFloat(getComputedStyle(logoHeadWrap).transitionDuration) * 1000
-    console.log(logoTransTime);
     setInterval(() => {
         logoHeadWrap.classList.remove("zero-opacity")
-
     }, logoTransTime);
+
     for (let i = 0; i < logoHeadWrapTextArr.length; i++) {
         const span = document.createElement("span");
         span.style.letterSpacing = cLT[i].ltrSpc;
@@ -115,8 +184,6 @@ function showHomeElements() {
         logoHeadWrap.append(span)
         let revealTime = Math.floor(Math.random() * (logoHeadWrapTextArr.length - 2) + 2);
         let logoHeadTransTime = parseFloat(getComputedStyle(span).transitionDuration);
-        console.log(logoHeadTransTime);
-        // span.style.opacity = 1;
 
         span.style.transitionDelay = logoHeadTransTime * revealTime + "s";
         span.style.fontVariationSettings = `"slnt" ${cLT[i].slnt}, "wdth" ${cLT[i].wdth}, "wght" ${cLT[i].wght}`
@@ -149,7 +216,6 @@ function showHomeElements() {
 
 
     let clubStampEnterTime = streetFoodCounter * typeWriterTime + 1500
-    console.log(clubStampEnterTime);
 
     setTimeout(() => {
         clubTextWrap.style.transition = ""
@@ -163,7 +229,6 @@ function showHomeElements() {
     setTimeout(() => {
         fullDisplayArr.forEach(element => {
             if (Array.isArray(element)) {
-                console.log("array");
                 element.forEach(el => {
                     el.style.transition = `opacity 1.5s ease-in`;
                     el.classList.remove("zero-opacity")
@@ -174,10 +239,15 @@ function showHomeElements() {
                 element.classList.remove("zero-opacity")
                 element.style.opacity = "1";
             }
-
-
         })
     }, clubStampEnterTime + 1500);
+
+    setTimeout(() => {
+        // Start the ticker
+        ticker.style.display = ""
+
+        runNewsTicker();
+    }, clubStampEnterTime + 3000);
 }
 
 showHomeElements()
@@ -185,7 +255,6 @@ showHomeElements()
 // Btn and menus
 
 let btnPressTransTime = parseFloat(getComputedStyle(menuOpBtn).transitionDuration) * 1000;
-console.log(btnPressTransTime);
 
 let bitesSectionHeader = document.querySelector(".bites")
 let barSectionHeader = document.querySelector(".bar")
@@ -196,7 +265,7 @@ menuSectionBtns.forEach(btn => {
     btn.addEventListener("click", e => {
         let btn = e.target;
         // menuSection.style.height = "100%";
-        menuWrapper.classList.add("show")
+        openMenu()
         menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
         console.log(btn);
 
@@ -222,7 +291,7 @@ menuSectionBtns.forEach(btn => {
 // Menu Btns
 menuOpBtn.addEventListener("click", e => {
     let btn = e.target;
-    menuWrapper.classList.remove("show")
+    closeMenu()
     setTimeout(() => {
         btn.classList.remove("pressed")
         btn.classList.remove("active")
@@ -249,21 +318,16 @@ allMenuBtns.forEach(btn => {
 })
 
 function closeMenu() {
-    menuWrapper.classList.remove("show");
+    menuWrapper.classList.add("close");
     allMenuBtns.forEach(btn => {
         btn.classList.remove("active", "pressed");
     })
-    // menuWrapper.style.transform = "translateY(100%)";
+}
+function openMenu() {
+    menuWrapper.classList.remove("close");
 }
 
-
-window.addEventListener("load", e => {
-    menuWrapper.style.transition = "";
-})
-
-
 function makeFunkyMenuCategoryHeads(headlineArr) {
-    console.log(headlineArr);
     let catHeadLetters = [...headlineArr.textContent]
     headlineArr.textContent = "";
     catHeadLetters.forEach((letter, i) => {
@@ -274,19 +338,15 @@ function makeFunkyMenuCategoryHeads(headlineArr) {
         // catHeadSpan.style.transitionDelay = 100 * i + "s";
 
         let weight = Math.floor(Math.random() * (901 - 100) + 100)
-        console.log(weight);
         let width = Math.floor(Math.random() * (116 - 50) + 50)
         let slant = Math.floor(Math.random() * (13) - 12)
 
         setTimeout(() => {
             catHeadSpan.style.fontVariationSettings = `"slnt" ${slant}, "wdth" ${width}, "wght" ${weight}`
-
         }, 200);
-
 
         headlineArr.appendChild(catHeadSpan)
     })
-    console.log(catHeadLetters);
 }
 
 makeFunkyMenuCategoryHeads(menuCategoryHeads[0])
@@ -308,11 +368,9 @@ menuContent.addEventListener("scroll", (e) => {
         const timeDelta = timestamp - lastTimestamp;
         velocity = (lastScrollTop - scrollTop) / timeDelta; // Negative = upward
     }
-    // console.log(velocity);
-
     // If at the top of the scrollable area and a hard upward scroll happens
-    if (scrollTop === 0 && velocity > 2) {
-        // closeMenu()
+    if (scrollTop === 0 && velocity > 6) {
+        closeMenu()
         console.log("Closing element due to hard upward scroll");
     }
 
@@ -320,12 +378,7 @@ menuContent.addEventListener("scroll", (e) => {
     lastTimestamp = timestamp;
 });
 
-
-const windowHeight = window.innerHeight;
-console.log(windowHeight);
-
 const menuContentHeight = menuContent.offsetHeight;
-console.log(menuContentHeight);
 
 let scrollAtTopTouch; // Global variable to track touch start position
 
@@ -346,7 +399,11 @@ menuContent.addEventListener("touchmove", (e) => {
         if (pullDownAmount * 2.5 > menuContentHeight) {
             console.log("we should close menu"); // Calculate the difference
             closeMenu()
-
         }
     }
 });
+
+window.addEventListener("load", e => {
+    menuWrapper.style.transition = "";
+
+})
