@@ -5,8 +5,6 @@ menuWrapper.style.transition = "none";
 let menuHeight = menuSection.getBoundingClientRect().height;
 // menuSection.style.height = menuHeight + "px";
 
-const menuContent = document.querySelector(".menu__content")
-
 // logo Cantina
 const logoWrapper = document.querySelector(".logo-wrapper")
 const logoHeadWrap = document.querySelector(".logo__head")
@@ -31,6 +29,8 @@ const ticker = document.querySelector(".logo__ticker-wrapper");
 const belowTheFold = document.querySelector(".below-the-fold")
 
 // Menu
+const menuContent = document.querySelector(".menu__content")
+
 const menuCategoryHeads = [...document.querySelectorAll(".menu__cat-head")];
 console.log(menuCategoryHeads);
 
@@ -105,8 +105,8 @@ function showHomeElements() {
     console.log(logoTransTime);
     setInterval(() => {
         logoHeadWrap.classList.remove("zero-opacity")
-        
-    }, logoTransTime );
+
+    }, logoTransTime);
     for (let i = 0; i < logoHeadWrapTextArr.length; i++) {
         const span = document.createElement("span");
         span.style.letterSpacing = cLT[i].ltrSpc;
@@ -117,7 +117,7 @@ function showHomeElements() {
         let logoHeadTransTime = parseFloat(getComputedStyle(span).transitionDuration);
         console.log(logoHeadTransTime);
         // span.style.opacity = 1;
-        
+
         span.style.transitionDelay = logoHeadTransTime * revealTime + "s";
         span.style.fontVariationSettings = `"slnt" ${cLT[i].slnt}, "wdth" ${cLT[i].wdth}, "wght" ${cLT[i].wght}`
     }
@@ -157,7 +157,7 @@ function showHomeElements() {
         clubTextWrap.classList.remove("rolled-up");
         // clubTextWrap.style.width = "fit-content";
         clubTextWrap.classList.add("stamp")
-        
+
     }, clubStampEnterTime + 1000);
 
     setTimeout(() => {
@@ -191,7 +191,7 @@ let bitesSectionHeader = document.querySelector(".bites")
 let barSectionHeader = document.querySelector(".bar")
 let restSectionHeader = document.querySelector(".rest")
 let menuTransTime;
-
+// Menu Sec Btns
 menuSectionBtns.forEach(btn => {
     btn.addEventListener("click", e => {
         let btn = e.target;
@@ -213,7 +213,7 @@ menuSectionBtns.forEach(btn => {
         }, menuTransTime * 0.75);
 
         setTimeout(() => {
-            menuCategoryHeads.forEach(catHead=> {
+            menuCategoryHeads.forEach(catHead => {
                 makeFunkyMenuCategoryHeads(catHead)
             })
         }, menuTransTime);
@@ -221,10 +221,7 @@ menuSectionBtns.forEach(btn => {
         // menuContent.classList.add("show")
     })
 })
-
-
-
-
+// Menu Btna
 menuOpBtn.addEventListener("click", e => {
     let btn = e.target;
     menuWrapper.classList.remove("show")
@@ -234,25 +231,31 @@ menuOpBtn.addEventListener("click", e => {
     }, btnPressTransTime);
 
 })
-
+// All btns
 allMenuBtns.forEach(btn => {
     btn.addEventListener("click", e => {
         allMenuBtns.forEach(btn => {
             btn.classList.remove("active", "pressed");
         })
         btn.classList.add("pressed")
-    setTimeout(() => {
-        btn.classList.remove("pressed")
-        btn.classList.add("active")
-    }, btnPressTransTime);
-    if (btn.classList.contains("btn-op")) {
         setTimeout(() => {
-            btn.classList.remove("active")
-        }, btnPressTransTime * 4);
-    }
+            btn.classList.remove("pressed")
+            btn.classList.add("active")
+        }, btnPressTransTime);
+        if (btn.classList.contains("btn-op")) {
+            setTimeout(() => {
+                btn.classList.remove("active")
+            }, btnPressTransTime * 4);
+        }
     })
-    
 })
+
+function closeMenu() {
+    menuWrapper.classList.remove("show");
+    allMenuBtns.forEach(btn => {
+        btn.classList.remove("active", "pressed");
+    })
+}
 
 
 window.addEventListener("load", e => {
@@ -281,10 +284,40 @@ function makeFunkyMenuCategoryHeads(headlineArr) {
 
         }, 200);
 
-        
+
         headlineArr.appendChild(catHeadSpan)
     })
     console.log(catHeadLetters);
 }
 
 makeFunkyMenuCategoryHeads(menuCategoryHeads[0])
+
+// Scroll close menu
+
+const scrollableElement = document.getElementById("scrollableElement");
+
+let lastScrollTop = 0; // To track the previous scroll position
+let velocity = 0; // To track the scrolling speed
+let lastTimestamp = null; // To calculate time difference
+
+menuContent.addEventListener("scroll", (e) => {
+    const scrollTop = menuContent.scrollTop;
+    const timestamp = performance.now();
+
+    // Calculate velocity (change in scroll position over time)
+    if (lastTimestamp !== null) {
+        const timeDelta = timestamp - lastTimestamp;
+        velocity = (lastScrollTop - scrollTop) / timeDelta; // Negative = upward
+    }
+
+    // If at the top of the scrollable area and a hard upward scroll happens
+    if (scrollTop === 0 && velocity > 0.5) {
+        closeMenu()
+        // Replace with your close logic (e.g., hide the element)
+        console.log("Closing element due to hard upward scroll");
+        // scrollableElement.style.display = "none"; // Example close action
+    }
+
+    lastScrollTop = scrollTop;
+    lastTimestamp = timestamp;
+});
