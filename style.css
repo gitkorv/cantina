@@ -241,9 +241,7 @@ section.menu {
 }
 
 .menu-wrapper.show {
-
-    transform: translateY(0%);
-    /* overflow-y: scroll; */
+    transform: translateY(0);
 }
 
 .menu__content {

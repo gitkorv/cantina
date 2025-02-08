@@ -217,11 +217,9 @@ menuSectionBtns.forEach(btn => {
                 makeFunkyMenuCategoryHeads(catHead)
             })
         }, menuTransTime);
-
-        // menuContent.classList.add("show")
     })
 })
-// Menu Btna
+// Menu Btns
 menuOpBtn.addEventListener("click", e => {
     let btn = e.target;
     menuWrapper.classList.remove("show")
@@ -255,6 +253,7 @@ function closeMenu() {
     allMenuBtns.forEach(btn => {
         btn.classList.remove("active", "pressed");
     })
+    // menuWrapper.style.transform = "translateY(100%)";
 }
 
 
@@ -309,15 +308,45 @@ menuContent.addEventListener("scroll", (e) => {
         const timeDelta = timestamp - lastTimestamp;
         velocity = (lastScrollTop - scrollTop) / timeDelta; // Negative = upward
     }
+    // console.log(velocity);
 
     // If at the top of the scrollable area and a hard upward scroll happens
-    if (scrollTop === 0 && velocity > 0.5) {
-        closeMenu()
-        // Replace with your close logic (e.g., hide the element)
+    if (scrollTop === 0 && velocity > 2) {
+        // closeMenu()
         console.log("Closing element due to hard upward scroll");
-        // scrollableElement.style.display = "none"; // Example close action
     }
 
     lastScrollTop = scrollTop;
     lastTimestamp = timestamp;
+});
+
+
+const windowHeight = window.innerHeight;
+console.log(windowHeight);
+
+const menuContentHeight = menuContent.offsetHeight;
+console.log(menuContentHeight);
+
+let scrollAtTopTouch; // Global variable to track touch start position
+
+menuContent.addEventListener("touchstart", (e) => {
+    // Check if the menuContent is scrolled to the top
+    if (menuContent.scrollTop === 0) {
+        scrollAtTopTouch = e.targetTouches[0].clientY; // Store the initial touch Y position
+        console.log("scrollStart was", scrollAtTopTouch);
+    }
+});
+
+menuContent.addEventListener("touchmove", (e) => {
+    const touch = e.touches[0];
+    const touchY = touch.clientY;
+
+    if (menuContent.scrollTop === 0) {
+        let pullDownAmount = touchY - scrollAtTopTouch;
+        if (pullDownAmount * 2.5 > menuContentHeight) {
+            console.log("we should close menu"); // Calculate the difference
+            closeMenu()
+
+        }
+    }
 });
