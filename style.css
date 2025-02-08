@@ -76,6 +76,10 @@ section.menu.no-point {
 
 .club-btn {
     display: flex;
+    font-variation-settings: "slnt"0, "wdth"10, "wght"600;
+    font-size: 1.3rem;
+    line-height: 1.2rem;
+    padding: 0 0 4px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -95,10 +99,8 @@ section.menu.no-point {
 .club-btn.pressed {
     font-size: 2rem;
     scale: 75%;
-    background-color: var(--lightPurple);
+    background-color: var(--darkGray);
     box-shadow: var(--darkOrange) 2px 2px 0px;
-
-
 }
 
 .club-btn.active {
@@ -163,28 +165,32 @@ section.menu.no-point {
     /* background-color: #45a049; */
 }
 
+input {
+    all: none;
+}
+
 input[type=text], select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 4px; */
 }
 
 input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: var(--darkPurple);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-    border-radius: 4px;
+    /* border-radius: 4px; */
     cursor: pointer;
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: var(--yellow);
 }
 
 
@@ -214,7 +220,7 @@ input[type=submit]:hover {
     width: fit-content;
     height: 20px;
     /* display: inline-block; */
-    color: var(--darkPurple);
+    color: var(--yellow);
     background-color: var(--darkOrange);
     padding: 0 4px;
     font-family: "ltr-ncnd-variable", sans-serif;
@@ -371,6 +377,7 @@ h3 {
     /* justify-content: center; */
     flex: 1;
     font-size: 1rem;
+    color: var(--darkGray);
     /* background-color: gray; */
     text-align: center;
     font-family: "acumin-variable", sans-serif;
@@ -507,7 +514,7 @@ h3 {
 }
 
 .menu__btn {
-    all: unset;
+    all: none;
     /* text-align: ; */
     flex: 1 0 auto;
     /* height: 30px; */
@@ -519,6 +526,8 @@ h3 {
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght"600;
     background-color: var(--lightPurple);
+    box-shadow: var(--darkOrange) 3px 3px 0px;
+
     opacity: 1;
     transition: all .15s ease-in-out;
 }
@@ -530,10 +539,12 @@ h3 {
 .menu__btn.pressed {
     scale: 90%;
     background-color: var(--darkPurple);
+    box-shadow: var(--darkOrange) 1px 1px 0px;
 }
 
 .menu__btn.active {
-    background-color: var(--orange);
+    background-color: var(--darkGray);
+    color: var(--yellow);
 }
 
 
@@ -541,3 +552,16 @@ h3 {
     transition: opacity 1.5s ease-in;
     opacity: 0;
 }
+
+/* .club-btn.pressed {
+    font-size: 2rem;
+    scale: 75%;
+    background-color: var(--lightPurple);
+    box-shadow: var(--darkOrange) 2px 2px 0px;
+
+
+}
+
+.club-btn.active {
+    background-color: var(--orange);
+} */

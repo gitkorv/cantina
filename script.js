@@ -9,7 +9,8 @@ let menuHeight = menuSection.getBoundingClientRect().height;
 
 // Club
 const clubBtn = document.querySelector(".club-btn")
-console.log(clubBtn);
+const clubBtnInnerHTML = clubBtn.innerHTML;
+console.log(clubBtnInnerHTML);
 const clubFormContent = document.querySelector(".club-form__content")
 console.log(clubFormContent);
 const clubForm = document.querySelector(".club-form")
@@ -428,7 +429,7 @@ clubBtn.addEventListener("click", (e) => {
     clubBtn.classList.toggle("pressed");
 
     // Toggle button text between "X" and original
-    clubBtn.textContent = clubBtn.classList.contains("pressed") ? "X" : "Join Club!";
+    clubBtn.innerHTML = clubBtn.classList.contains("pressed") ? "X" : clubBtnInnerHTML;
 
     // Toggle the open classes for content and form
     clubFormContent.classList.toggle("open");
