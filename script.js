@@ -10,11 +10,8 @@ let menuHeight = menuSection.getBoundingClientRect().height;
 // Club
 const clubBtn = document.querySelector(".club-btn")
 const clubBtnInnerHTML = clubBtn.innerHTML;
-console.log(clubBtnInnerHTML);
 const clubFormContent = document.querySelector(".club-form__content")
-console.log(clubFormContent);
 const clubForm = document.querySelector(".club-form")
-console.log(clubForm);
 // logo Cantina
 const logoWrapper = document.querySelector(".logo-wrapper")
 const logoHeadWrap = document.querySelector(".logo__head")
@@ -52,7 +49,7 @@ const allMenuBtns = [...document.querySelectorAll(".menu__btn")]
 const menuOpBtn = document.querySelector(".btn-op")
 
 // Hide on start
-const fullDisplayArr = [ticker, belowTheFold, allMenuBtns]
+const fullDisplayArr = [ticker, belowTheFold, allMenuBtns, clubBtn]
 
 // Close Menu at start
 closeMenu()
@@ -112,12 +109,12 @@ const cLT = [
 
 const tickerItems = [
     {
-        head: "NEWS!",
+        head: "Sommar mys!",
         text: "Från och med Juni månad öppnar vår sprillans nya uteservering, varmt välkomna då..."
     },
     {
         head: "Join the club!",
-        text: `Klicka här till höger och gå med i vår "club" för att ta del av både rabbater och nyheter`
+        text: `Klicka här uppe till höger och gå med i vår "club" för att ta del av både rabbater och nyheter`
     },
     {
         head: "Live Music",
@@ -243,9 +240,10 @@ function showHomeElements() {
     setTimeout(() => {
         // Start the ticker
         ticker.style.display = ""
+        clubBtn.style.display = ""
 
         runNewsTicker();
-    }, clubStampEnterTime + 1000);
+    }, clubStampEnterTime + 1500);
 }
 
 showHomeElements()
@@ -353,7 +351,7 @@ function makeFunkyMenuCategoryHeads(headlineArr) {
 
         let weight = Math.floor(Math.random() * (901 - 100) + 100)
         let width = Math.floor(Math.random() * (116 - 50) + 50)
-        let slant = Math.floor(Math.random() * (13) - 12)
+        let slant = Math.random() > 0.5 ? Math.floor(Math.random() * (13) - 12) : 0;
 
         setTimeout(() => {
             catHeadSpan.style.fontVariationSettings = `"slnt" ${slant}, "wdth" ${width}, "wght" ${weight}`
@@ -363,7 +361,7 @@ function makeFunkyMenuCategoryHeads(headlineArr) {
     })
 }
 
-makeFunkyMenuCategoryHeads(menuCategoryHeads[0])
+// makeFunkyMenuCategoryHeads(menuCategoryHeads[0])
 
 // Scroll close menu
 

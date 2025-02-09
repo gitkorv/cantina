@@ -93,6 +93,7 @@ section.menu.no-point {
     background-color: var(--darkPurple);
     box-shadow: var(--darkOrange) 5px 5px 0px;
     transition: all .25s ease-in-out;
+    opacity: 1;
     /* animation: shadow 2s ease-in-out infinite alternate; */
 }
 
@@ -239,27 +240,15 @@ input[type=submit]:hover {
 }
 
 @keyframes blink {
-    to {
-        background-color: var(--lightPurple);
-        color: var(--yellow);
+    15% {
+        background-color: var(--darkOrange);
     }
-}
-
-li {
-    all: none;
-    list-style: none;
-}
-
-li p {
-    font-size: 2rem;
-}
-
-h2 {
-    font-size: 5rem;
-}
-
-h3 {
-    font-size: 3rem;
+    50% {
+        background-color: var(--yellow);
+    }
+    15% {
+        background-color: var(--darkOrange);
+    }
 }
 
 .ticker-text {
@@ -275,7 +264,7 @@ h3 {
     flex-direction: column;
     justify-content: end;
     align-items: center;
-    height: 50%;
+    height: 45%;
     width: 100%;
     opacity: 1;
     overflow: hidden;
@@ -426,74 +415,128 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    /* background-color: #7678ED; */
     /* width: 100%; */
 
 }
 
 .menu__cat-head {
-    font-variation-settings: "slnt"0, "wdth"10, "wght"900;
+    font-variation-settings: "slnt"0, "wdth"50, "wght"900;
     transition: font-variation-settings 1s ease-in-out;
-    color: var(--darkOrange);
-
+    color: var(--lightPurple);
 }
 
 .menu__cat-head .blob {
     color: var(--darkPurple);
 }
 
-
-
 .menu-item {
-    position: relative;
-    background-color: var(--orange);
-    padding: 8px;
-    border-bottom: 1ps solid var(--darkGray);
-    margin-right: 75px;
-
-    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.menu-item.bar {
+.menu__item__list-container {
+    padding: 8px;
+    overflow: visible;
+    margin-right: 75px;
+}
+
+.bites .menu__item__list-container {
+    background-color: var(--orange);
+    
+}
+.bar .menu__item__list-container {
     background-color: var(--darkPurple);
     color: var(--yellow);
-    padding: 8px;
-    border-bottom: 1ps solid var(--darkGray);
-}
-
-.menu-item.rest {
-    background-color: var(--rustRed);
-    color: var(--yellow);
-    padding: 8px;
-    border-bottom: 1ps solid var(--darkGray);
-}
-
-.menu-dish {
-    position: relative;
-}
-
-.price {
-    position: absolute;
-    display: flex;
-    align-items: start;
-    justify-content: start;
-    font-family: "ltr-ncnd-variable", sans-serif;
-    font-variation-settings: "wght"900;
-    color: var(--darkPurple);
-    top: 8px;
-    right: 0px;
-    width: 60px;
-    height: 64px;
-    /* background-color: wheat; */
 }
 
 .bar .price {
     color: var(--darkOrange);
+}
 
+.rest .menu__item__list-container {
+    background-color: var(--darkOrange);
+    color: var(--yellow);
 }
 
 .rest .price {
     color: var(--darkPurple);
+}
 
+.menu__item__list-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    /* background-color: yellow; */
+}
+
+li {
+    all: none;
+    list-style: none;
+}
+
+h2 {
+    font-size: 5rem;
+}
+
+.menu__item.head {
+    position: relative;
+    font-size: 3rem;
+}
+.menu__item.sub {
+    position: relative;
+    font-size: 2rem;
+    line-height: 2rem;
+    font-variation-settings: "slnt" 0, "wdth"50, "wght"400;
+}
+.bites .menu__item.sub {
+    padding-right: 30px;
+}
+
+.menu__item.sub.one-liner {
+    padding-top: 8px;
+    border-top: var(--yellow) 1px solid;
+}
+
+.menu__item.text {
+    position: relative;
+    padding: 8px 24px 8px 0;
+    font-family: "ltr-ncnd-variable", sans-serif;
+    font-variation-settings: "wght"600;
+}
+
+.menu__item.text.no-sub {
+    position: relative;
+    padding: 0px 24px 8px 0;
+}
+
+.price {
+    position: absolute;
+    font-size: 1.5rem;
+    text-align: end;
+
+    font-family: "ltr-ncnd-variable", sans-serif;
+    font-variation-settings: "wght"900;
+    color: var(--darkPurple);
+    top: 0px;
+    right: -16px;
+    width: 120px;
+    /* height: 64px; */
+    /* background-color: wheat; */
+}
+
+.price.big {
+    font-size: 2rem;
+}
+
+.allergy {
+    margin-top: 48px;
+    width: 200px;
+    font-family: "ltr-ncnd-variable", sans-serif;
+    font-variation-settings: "wght"900;
+    color: var(--darkGray);
 }
 
 .menu__btn-wrapper {
