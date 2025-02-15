@@ -615,6 +615,11 @@ h2 {
     align-items: center;
 }
 
+.hidden-club-field {
+    position: absolute;
+    visibility: hidden;
+}
+
 .club-joined {
     display: flex;
     flex-direction: column;

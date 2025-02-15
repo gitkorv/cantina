@@ -21,19 +21,30 @@
             <button class="club-btn zero-opacity"><span class="club-btn__text">Join<br>Club!</span></button>
             <div class="club-form-wrapper">
                 <div class="club-form__content">
-                    
-                        <form name="cantina-club" method="POST" action="/form-success.html" netlify>
+
+                    <form 
+                        name="cantina-club" 
+                        method="POST" 
+                        netlify-honeypot="bot-field"
+                        action="/form-success.html" 
+                        netlify>
+
+                            <p class="hidden-club-field">
+                                <label>
+                                    Robot name: <input name="bot-field" />
+                                </label>
+                            </p>
                             <label for="fname">First Name</label>
                             <input name="first-name" type="text" id="fname" name="firstname" placeholder="Your name..">
 
                             <label for="lname">Last Name</label>
                             <input name="last-name" type="text" id="lname" name="lastname" placeholder="Your last name..">
-                            
+
                             <label for="lname">Email</label>
                             <input name="email" type="text" id="email" name="email" placeholder="Your email">
 
                             <input type="submit" value="Submit">
-                        </form>
+                    </form>
                 </div>
             </div>
             <div class="logo-wrapper">
@@ -66,35 +77,40 @@
                         <div class="menu-item bites">
 
                             <ul class="menu__item__list-container">
-                                <li class="menu__item head"><h3>tacos</h3>
+                                <li class="menu__item head">
+                                    <h3>tacos</h3>
                                     <div class="menu__item price big">115:-</div>
                                 </li>
                                 <li class="menu__item sub">3 Tacos with chicken, pork or shrimp</li>
                                 <li class="menu__item text">choice of mild, medium or spicy</li>
                             </ul>
                             <ul class="menu__item__list-container">
-                                <li class="menu__item head"><h3>bao buns</h3>
+                                <li class="menu__item head">
+                                    <h3>bao buns</h3>
                                     <div class="menu__item price big">120:-</div>
                                 </li>
                                 <li class="menu__item sub">Steamed buns with beef or chicken</li>
                                 <li class="menu__item text">hoisin sauce sauce and chili flakes</li>
                             </ul>
                             <ul class="menu__item__list-container">
-                                <li class="menu__item head"><h3>hot dogs</h3>
+                                <li class="menu__item head">
+                                    <h3>hot dogs</h3>
                                     <div class="menu__item price big">89:-</div>
                                 </li>
                                 <li class="menu__item sub">real beef dogs x 2</li>
                                 <li class="menu__item text">buns, relish, mustard and pickles</li>
                             </ul>
                             <ul class="menu__item__list-container">
-                                <li class="menu__item head"><h3>wings</h3>
+                                <li class="menu__item head">
+                                    <h3>wings</h3>
                                     <div class="menu__item price big">79:-</div>
                                 </li>
                                 <li class="menu__item sub">chicken or cauliflower</li>
-                                <li class="menu__item text">choice of mild, medium or spicy<</li>
+                                <li class="menu__item text">choice of mild, medium or spicy<< /li>
                             </ul>
                             <ul class="menu__item__list-container">
-                                <li class="menu__item head"><h3>ramen</h3>
+                                <li class="menu__item head">
+                                    <h3>ramen</h3>
                                     <div class="menu__item price big">149:-</div>
                                 </li>
                                 <li class="menu__item sub">noddle soup with fresh herbs and sprouts</li>
@@ -103,14 +119,16 @@
 
                         </div>
                     </div>
-                    
+
                     <div class="menu__cat">
                         <h2 class="menu__cat-head bar">bar</h2>
 
                         <div class="menu-item bar">
                             <ul class="menu__item__list-container">
-                                <li class="menu__item head"><h3>draft beer</h3></li>
-                                
+                                <li class="menu__item head">
+                                    <h3>draft beer</h3>
+                                </li>
+
                                 <li class="menu__item sub one-liner">guiness
                                     <div class="menu__item price">99:-</div>
                                 </li>
@@ -121,10 +139,12 @@
                                 </li>
                                 <li class="menu__item text">golden lager, 5.2%, sweden</li>
                             </ul>
-                            
+
                             <ul class="menu__item__list-container">
-                                <li class="menu__item head"><h3>bottle beer</h3></li>
-                                
+                                <li class="menu__item head">
+                                    <h3>bottle beer</h3>
+                                </li>
+
                                 <li class="menu__item sub one-liner">heineken
                                     <div class="menu__item price">89:-</div>
                                 </li>
@@ -135,10 +155,12 @@
                                 </li>
                                 <li class="menu__item text">golden lager, 5.2%, jamaica</li>
                             </ul>
-                            
+
                             <ul class="menu__item__list-container">
-                                <li class="menu__item head"><h3>wine</h3></li>
-                                
+                                <li class="menu__item head">
+                                    <h3>wine</h3>
+                                </li>
+
                                 <li class="menu__item sub one-liner">house red
                                     <div class="menu__item price">119:-</div>
                                 </li>
@@ -149,10 +171,12 @@
                                 </li>
                                 <li class="menu__item text">chardonnay, california, 12%</li>
                             </ul>
-                            
+
                             <ul class="menu__item__list-container">
-                                <li class="menu__item head"><h3>cocktails</h3></li>
-                                
+                                <li class="menu__item head">
+                                    <h3>cocktails</h3>
+                                </li>
+
                                 <li class="menu__item sub one-liner">olf fashion
                                     <div class="menu__item price">149:-</div>
                                 </li>
@@ -170,19 +194,22 @@
 
                         <div class="menu-item rest">
                             <ul class="menu__item__list-container">
-                                <li class="menu__item head"><h3>coffee</h3>
+                                <li class="menu__item head">
+                                    <h3>coffee</h3>
                                     <div class="menu__item price big">55:-</div>
                                 </li>
                                 <li class="menu__item text no-sub">filter, latte, espresso</li>
                             </ul>
                             <ul class="menu__item__list-container">
-                                <li class="menu__item head"><h3>ice cream</h3>
+                                <li class="menu__item head">
+                                    <h3>ice cream</h3>
                                     <div class="menu__item price big">69:-</div>
                                 </li>
                                 <li class="menu__item text no-sub">vanilla, chocolate, mix</li>
                             </ul>
                             <ul class="menu__item__list-container">
-                                <li class="menu__item head"><h3>lollipop</h3>
+                                <li class="menu__item head">
+                                    <h3>lollipop</h3>
                                     <div class="menu__item price big">12:-</div>
                                 </li>
                                 <li class="menu__item text no-sub">orange, strawberry, lemon</li>
@@ -190,10 +217,11 @@
                         </div>
                     </div>
 
-                    <p class="allergy">All food may contain nuts or dairy, please speak to waiter if you have any allergy concerns</p>
-                    
+                    <p class="allergy">All food may contain nuts or dairy, please speak to waiter if you have any
+                        allergy concerns</p>
 
-                    
+
+
                 </div>
 
 
