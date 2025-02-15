@@ -17,6 +17,10 @@
     --darkOrange: #F35B04;
 }
 
+@view-transition {
+    navigation: auto;
+}
+
 button {
     all: unset;
 }
