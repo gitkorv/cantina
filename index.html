@@ -22,31 +22,28 @@
             <div class="club-form-wrapper">
                 <div class="club-form__content">
 
-                    <form 
-                        name="cantina-club" 
-                        method="POST" 
-                        netlify-honeypot="bot-field"
-                        action="/form-success.html" 
+                    <form name="cantina-club" method="POST" netlify-honeypot="bot-field" action="/form-success.html"
                         netlify>
 
-                        <input type="hidden" name="subject" value="New Club Member: %{first} %{last}"/>
+                        <!-- Hidden input for custom email subject -->
+                        <input type="hidden" name="subject" value="New Club Member: %{first-name} %{last-name}" />
 
-                            <p class="hidden-club-field">
-                                <label>
-                                    Robot name: <input name="bot-field" />
-                                </label>
-                            </p>
-                            <label for="fname">First Name</label>
-                            <input name="first" type="text" id="fname" placeholder="Your name..">
+                        <p class="hidden-club-field">
+                            <label> Robot name: <input name="bot-field" /> </label>
+                        </p>
 
-                            <label for="lname">Last Name</label>
-                            <input name="last" type="text" id="lname" placeholder="Your last name..">
+                        <label for="fname">First Name</label>
+                        <input name="first-name" type="text" id="fname" placeholder="Your name.." required>
 
-                            <label for="lname">Email</label>
-                            <input name="email" type="text" id="email" placeholder="Your email">
+                        <label for="lname">Last Name</label>
+                        <input name="last-name" type="text" id="lname" placeholder="Your last name.." required>
 
-                            <input type="submit" value="Submit">
+                        <label for="email">Email</label>
+                        <input name="email" type="text" id="email" placeholder="Your email" required>
+
+                        <input type="submit" value="Submit">
                     </form>
+
                 </div>
             </div>
             <div class="logo-wrapper">
