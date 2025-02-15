@@ -27,7 +27,10 @@
                         method="POST" 
                         netlify-honeypot="bot-field"
                         action="/form-success.html" 
-                        netlify>
+                        data-netlify="true">
+
+                        <input type="hidden" name="subject" 
+                        value="New club member: %{formName} (%{submissionId})" />
 
                             <p class="hidden-club-field">
                                 <label>
