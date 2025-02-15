@@ -608,3 +608,20 @@ h2 {
 .club-btn.active {
     background-color: var(--orange);
 } */
+
+.form-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.club-joined {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    width: 100%;
+    text-align: center;
+    font-family: "ltr-ncnd-variable", sans-serif;
+    font-variation-settings: "wght"600;
+}
