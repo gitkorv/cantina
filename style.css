@@ -377,6 +377,10 @@ input[type=submit]:hover {
     font-variation-settings: "slnt"0, "wdth"100, "wght"500;
 }
 
+.address.nodisp {
+    display: none;
+}
+
 .menu-wrapper {
     z-index: 200;
     position: absolute;
