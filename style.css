@@ -558,6 +558,8 @@ h2 {
     gap: 16px;
     background-color: var(--yellow);
     z-index: 1000;
+    display: none;
+
 }
 
 .menu__btn {
