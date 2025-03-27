@@ -109,16 +109,24 @@ const cLT = [
 
 const tickerItems = [
     {
-        head: "Sommar mys!",
-        text: "Från och med Juni månad öppnar vår sprillans nya uteservering, varmt välkomna då..."
+        head: "Smaker, Beats & Bra Vibes!",
+        text: "Grym mat, skön musik och en stämning som är både avslappnad och elektrisk"
     },
     {
-        head: "Join the club!",
-        text: `Klicka här uppe till höger och gå med i vår "club" för att ta del av både rabbater och nyheter`
+        head: "Join the Club!",
+        text: `Vill du ha våra kokheta nyheter först av alla? Klicka upp till höger och gå med i vår "club" – det lönar sig!`
     },
     {
-        head: "Live Music",
-        text: "3e torsdagen i månaden kommer köra live music från lokala talanger, håll utkik här för mer info."
+        head: "Äkta street food vibes!",
+        text: `Vi snackar saftiga tacos, kryddiga bao buns, het ramen och färgglada cocktails. Grymma smaker, alltid med en twist!`
+    },
+    {
+        head: "Signaturdrinkar & DJ:s!",
+        text: "Helgerna? DJ:s höjer pulsen, och baren skakar fram kreativa signaturdrinkar"
+    },
+    {
+        head: "Smaker från hela världen!",
+        text: "Latinamerika, Asien, USA – vi har plockat det bästa från street food-scenen och mixat det med kärlek och kvalité. Meny kommer snart!"
     }
 ];
 
