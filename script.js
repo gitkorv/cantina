@@ -109,24 +109,28 @@ const cLT = [
 
 const tickerItems = [
     {
-        head: "Smaker, Beats & Bra Vibes!",
-        text: "Grym mat, skön musik och en stämning som är både avslappnad och elektrisk"
+        head: "Äkta street food",
+        text: "Saftiga tacos, kryddiga bao buns, het ramen och färgglada cocktails – alltid med en twist!"
     },
     {
         head: "Join the Club!",
-        text: `Vill du ha våra kokheta nyheter först av alla? Klicka upp till höger och gå med i vår "club" – det lönar sig!`
+        text: "Vill du ha våra hetaste nyheter först? Klicka uppe till höger och bli en del av klubben – det lönar sig!"
     },
     {
-        head: "Äkta street food vibes!",
-        text: `Vi snackar saftiga tacos, kryddiga bao buns, het ramen och färgglada cocktails. Grymma smaker, alltid med en twist!`
+        head: "Kvalitetshäng",
+        text: "Grym mat, skön musik och en stämning som är både avslappnad och elektrisk."
     },
     {
-        head: "Signaturdrinkar & DJ:s!",
-        text: "Helgerna? DJ:s höjer pulsen, och baren skakar fram kreativa signaturdrinkar"
+        head: "DJ:s!",
+        text: "Sköna beats, bra vibbar och en stämning som lyfter kvällen."
     },
     {
-        head: "Smaker från hela världen!",
-        text: "Latinamerika, Asien, USA – vi har plockat det bästa från street food-scenen och mixat det med kärlek och kvalité. Meny kommer snart!"
+        head: "Cocktails!",
+        text: "På dansgolvet skakas rumpor och i baren skakar vi oförglömliga drinkar."
+    },
+    {
+        head: "Värdslig mat",
+        text: "Latinamerika, Asien, USA – vi har samlat det bästa från street food-scenen och mixat det med kärlek och kvalitet. Meny kommer snart!"
     }
 ];
 
