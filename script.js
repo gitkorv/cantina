@@ -69,6 +69,9 @@ console.log(splashWords);
 // Social logos
 const socialLogos = document.querySelectorAll(".social-logo-wrapper")
 
+// Turn off transition on elements over start
+clubBtn.style.transition = "none";
+belowTheFold.style.transition = "none";
 
 const cLT = [
     {
@@ -495,6 +498,9 @@ menuContent.addEventListener("touchmove", (e) => {
 
 window.addEventListener("load", e => {
     menuWrapper.style.transition = "";
+    clubBtn.style.transition = "";
+    belowTheFold.style.transition = "";
+
 
 })
 
