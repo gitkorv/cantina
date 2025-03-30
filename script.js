@@ -205,7 +205,7 @@ function showHomeElements() {
     let logoTransTime = parseFloat(getComputedStyle(logoHeadWrap).transitionDuration) * 1000
     setInterval(() => {
         logoHeadWrap.classList.remove("zero-opacity")
-    }, logoTransTime);
+    }, logoTransTime / 4);
 
     for (let i = 0; i < logoHeadWrapTextArr.length; i++) {
         const span = document.createElement("span");

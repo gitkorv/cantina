@@ -277,7 +277,7 @@ input[type=submit]:hover {
 }
 
 .logo__head {
-    flex: 1;
+    /* flex: 1; */
     text-align: center;
 
     align-content: end;
