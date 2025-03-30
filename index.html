@@ -22,31 +22,26 @@
             <div class="club-form-wrapper">
                 <div class="club-form__content">
 
-                    <form 
-                        name="cantina-club" 
-                        method="POST" 
-                        netlify-honeypot="bot-field"
-                        action="/form-success.html" 
+                    <form name="cantina-club" method="POST" netlify-honeypot="bot-field" action="/form-success.html"
                         data-netlify="true">
 
-                        <input type="hidden" name="subject" 
-                        value="New Cantina Club Member: (%{submissionId})" />
+                        <input type="hidden" name="subject" value="New Cantina Club Member: (%{submissionId})" />
 
-                            <p class="hidden-club-field">
-                                <label>
-                                    Robot name: <input name="bot-field" />
-                                </label>
-                            </p>
-                            <label for="fname">First Name</label>
-                            <input name="first" type="text" id="fname" placeholder="Your name..">
+                        <p class="hidden-club-field">
+                            <label>
+                                Robot name: <input name="bot-field" />
+                            </label>
+                        </p>
+                        <label for="fname">First Name</label>
+                        <input name="first" type="text" id="fname" placeholder="Your name..">
 
-                            <label for="lname">Last Name</label>
-                            <input name="last" type="text" id="lname" placeholder="Your last name..">
+                        <label for="lname">Last Name</label>
+                        <input name="last" type="text" id="lname" placeholder="Your last name..">
 
-                            <label for="lname">Email</label>
-                            <input name="email" type="text" id="email" placeholder="Your email">
+                        <label for="lname">Email</label>
+                        <input name="email" type="text" id="email" placeholder="Your email">
 
-                            <input type="submit" value="Submit">
+                        <input type="submit" value="Submit">
                     </form>
                 </div>
             </div>
@@ -61,11 +56,48 @@
                 </div>
             </div>
             <div class="below-the-fold zero-opacity">
+            <!-- <div class="below-the-fold"> -->
                 <div class="address below-the-fold--splash-text">
                     <p class="splash-head">Your local cocktail and street food dealer</p>
                     <div class="splash-food">
-                        <span class="splash-word">Tacos</span><img class="spray-splash" src="/img/spray-splash.svg" alt="splash"><span class="splash-word">Ramen</span><img class="spray-splash" src="/img/spray-splash2.svg" alt="splash"><br>
-                        <span class="splash-word">Bao buns</span><img class="spray-splash" src="/img/spray-splash6.svg" alt="splash"><span class="splash-word">Sandwiches</span><img class="spray-splash" src="/img/spray-splash3.svg" alt="splash"><span class="splash-word">Cocktails</span><img class="spray-splash" src="/img/spray-splash5.svg" alt="splash"><span class="splash-word">Beers</span></div>
+                        <span class="splash-word">Tacos</span>
+                        <div class="spray-splash-container"><img class="spray-splash zero-opacity"
+                                src="/img/spray-splash.svg" alt="splash"></div>
+                        <span class="splash-word">Ramen</span>
+                        <div class="spray-splash-container"><img class="spray-splash zero-opacity"
+                                src="/img/spray-splash2.svg" alt="splash"></div><br>
+                        <span class="splash-word">Bao buns</span>
+                        <div class="spray-splash-container"><img class="spray-splash zero-opacity"
+                                src="/img/spray-splash6.svg" alt="splash"></div>
+                        <span class="splash-word">Sandwiches</span>
+                        <div class="spray-splash-container"><img class="spray-splash zero-opacity"
+                                src="/img/spray-splash3.svg" alt="splash"></div>
+                        <span class="splash-word">Cocktails</span>
+                        <div class="spray-splash-container"><img class="spray-splash zero-opacity"
+                                src="/img/spray-splash5.svg" alt="splash"></div>
+                        <span class="splash-word">Beers</span>
+                    </div>
+
+                </div>
+                <div class="social-section-container">
+                    <div class="social-logo-wrapper social-insta zero-opacity">
+                        <a href="https://www.instagram.com/cantinastreet" target="_blank" rel="noopener noreferrer">
+                            <div class="social-logo">
+                                <img src="/img/Cantina_insta.svg" alt="Instagram">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="social-logo-wrapper social-fb zero-opacity">
+                        <a href="https://www.facebook.com/people/Cantina-Street-Food-Club/61572527976326/?mibextid=wwXIfr&rdid=Zg4z5mocY443Vx2b&share_url=https%253A%252F%252Fwww.facebook.com%252Fshare%252F19kAzDwKoy%252F%253Fmibextid%253DwwXIfr"
+                            target="_blank" rel="noopener noreferrer">
+                            <div class="social-logo">
+                                <img src="/img/Cantina_fb.svg" alt="Facebook">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="splash-address">
+                    <p class="splash-head">Stortorget 10 <br> 831 31 Östersund</p>
                 </div>
                 <div class="address nodisp">
                     <p>tors-lör: 13-02, tis-ons: 13-10</p>

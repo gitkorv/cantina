@@ -54,6 +54,21 @@ const fullDisplayArr = [ticker, belowTheFold, allMenuBtns, clubBtn]
 // Close Menu at start
 closeMenu()
 
+// Opening Splash Page
+const sprayDots = document.querySelectorAll(".spray-splash")
+console.log(sprayDots);
+const spraySplashContainers = document.querySelectorAll(".spray-splash-container")
+console.log(spraySplashContainers);
+const splashWords = document.querySelectorAll(".splash-word")
+console.log(splashWords);
+
+// sprayDots.forEach(dot => {
+//     dot.style.opacity = 0;
+// })
+
+// Social logos
+const socialLogos = document.querySelectorAll(".social-logo-wrapper")
+
 
 const cLT = [
     {
@@ -253,6 +268,64 @@ function showHomeElements() {
         // Start the ticker
         ticker.style.display = ""
         clubBtn.style.display = ""
+
+        let sprayDotTime = 0.5;
+
+        // for (let i = 0; i < splashWords.length; i++) {
+        //     setTimeout(() => {
+        //         splashWords[i].classList.remove("zero-opacity")
+        //     }, 0);
+            
+        // }
+
+        for (let i = 0; i < sprayDots.length; i++) {
+            sprayDots[i].style.transitionDelay = sprayDotTime * i + "s";
+            sprayDots[i].classList.remove("zero-opacity")
+
+            // Add drip
+            let numberOfDripsForEachDot = Math.floor(Math.random() * 4 + 1)
+            console.log(numberOfDripsForEachDot);
+
+            for (let d = 0; d < numberOfDripsForEachDot; d++) {
+                let makeDripAtAll = Math.floor(Math.random() * 10 + 1);
+                if (makeDripAtAll > 6) {
+                    let longDrip = Math.floor(Math.random() * 10 + 1);
+                    let dripHeight
+                    if (longDrip > 7) {
+                        dripHeight = Math.floor(Math.random() * 80 + 10);
+                    } else {
+                        dripHeight = Math.floor(Math.random() * 50 + 10);
+                    }
+                    let dripStartLeft = Math.floor(Math.random() * 40 + 30);
+                    let dripDuration = Math.floor(Math.random() * 30 + 2);
+                    let dripWidth = Math.floor(Math.random() * 5 + 1);
+
+                    let sprayDripDiv = document.createElement("div")
+                    sprayDripDiv.className = "spray-splash-drip";
+                    sprayDripDiv.style.left = dripStartLeft + "%";
+                    sprayDripDiv.style.transitionDuration = dripDuration + "s"
+                    sprayDripDiv.style.width = dripWidth > 1 ? "1px" : "2px";
+                    spraySplashContainers[i].appendChild(sprayDripDiv)
+                    setTimeout(() => {
+                        sprayDripDiv.style.height = dripHeight + "px";
+                    }, i * (sprayDotTime * 1000) + 100);
+                }
+
+            }
+
+
+
+
+
+
+
+
+        }
+
+        socialLogos.forEach(logo => {
+            logo.style.transitionDuration = "5s";
+            logo.classList.remove("zero-opacity")
+        })
 
         runNewsTicker();
     }, clubStampEnterTime + 1500);
