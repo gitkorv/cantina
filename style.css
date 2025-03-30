@@ -464,7 +464,7 @@ input[type=submit]:hover {
 
 .social-section-container {
     padding-top: 16px;
-    /* background-color: #4B4453; */
+    /* background-color: #9e93aa; */
     /* flex: 1; */
     display: flex;
     /* flex-direction: column; */
@@ -475,13 +475,14 @@ input[type=submit]:hover {
 .social-logo-wrapper {
     position: relative;
     display: block;
+    
     /* background-color: #3D348B; */
 }
 
 .social-logo {
     display: flex;
     height: 50px;
-    /* width: 100px; */
+    width: 50px;
 }
 
 .social-logo img {

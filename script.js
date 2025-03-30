@@ -310,25 +310,18 @@ function showHomeElements() {
                         sprayDripDiv.style.height = dripHeight + "px";
                     }, i * (sprayDotTime * 1000) + 100);
                 }
-
             }
-
-
-
-
-
-
-
-
         }
-
-        socialLogos.forEach(logo => {
-            logo.style.transitionDuration = "5s";
-            logo.classList.remove("zero-opacity")
-        })
 
         runNewsTicker();
     }, clubStampEnterTime + 1500);
+
+    setTimeout(() => {
+        socialLogos.forEach(logo => {
+            logo.style.transitionDuration = "5s";
+            logo.classList.remove("zero-opacity")
+        }) 
+    }, clubStampEnterTime + 3500);
 }
 
 showHomeElements()
