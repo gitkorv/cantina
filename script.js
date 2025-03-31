@@ -497,11 +497,9 @@ menuContent.addEventListener("touchmove", (e) => {
 });
 
 window.addEventListener("load", e => {
-    menuWrapper.style.transition = "";
-    clubBtn.style.transition = "";
-    belowTheFold.style.transition = "";
-
-
+    menuWrapper.style.transition = "none";
+    clubBtn.style.transition = "none";
+    belowTheFold.style.transition = "none";
 })
 
 clubBtn.addEventListener("click", (e) => {
