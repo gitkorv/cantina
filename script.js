@@ -11,7 +11,8 @@ let menuHeight = menuSection.getBoundingClientRect().height;
 const clubBtn = document.querySelector(".club-btn")
 const clubBtnInnerHTML = clubBtn.innerHTML;
 const clubFormContent = document.querySelector(".club-form__content")
-const clubForm = document.querySelector(".club-form")
+// const clubForm = document.querySelector(".club-form")
+// console.log(clubForm);
 // logo Cantina
 const logoWrapper = document.querySelector(".logo-wrapper")
 const logoHeadWrap = document.querySelector(".logo__head")
@@ -481,7 +482,7 @@ menuContent.addEventListener("touchstart", (e) => {
         scrollAtTopTouch = e.targetTouches[0].clientY; // Store the initial touch Y position
         console.log("scrollStart was", scrollAtTopTouch);
     }
-});
+}, { passive: true });
 
 menuContent.addEventListener("touchmove", (e) => {
     const touch = e.touches[0];
@@ -494,7 +495,7 @@ menuContent.addEventListener("touchmove", (e) => {
             closeMenu()
         }
     }
-});
+}, { passive: true });
 
 window.addEventListener("load", e => {
     menuWrapper.style.transition = "none";
@@ -513,5 +514,5 @@ clubBtn.addEventListener("click", (e) => {
 
     // Toggle the open classes for content and form
     clubFormContent.classList.toggle("open");
-    clubForm.classList.toggle("open");
+    // clubForm.classList.toggle("open");
 });
