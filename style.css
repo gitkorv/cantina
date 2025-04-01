@@ -365,6 +365,7 @@ input[type=submit]:hover {
 }
 
 .address {
+    /* position: relative; */
     display: flex;
     flex-direction: column;
     margin-top: 20px;
@@ -392,6 +393,11 @@ input[type=submit]:hover {
 }
 
 .splash-food {
+    display: flex;
+    flex-wrap: wrap;
+    /* align-items: center; */
+    justify-content: center;
+    width: 100%;
     margin-top: 10px;
     /* background-color: #3D348B; */
     /* white-space: pre; */
@@ -425,6 +431,7 @@ input[type=submit]:hover {
     justify-content: center;
     align-items: end;
     /* background-color: #7678ED; */
+    height: 1.5rem;
 }
 
 .spray-splash {
