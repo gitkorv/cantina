@@ -490,6 +490,28 @@ input[type=submit]:hover {
     display: flex;
     height: 50px;
     width: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    /* background-color: #7678ED; */
+    /* background-image: url(/img/Cantina_insta.svg) */
+}
+
+.social-logo:hover {
+    transform: scale(105%);
+}
+
+.social-logo--insta {
+    background-image: url(/img/Cantina_insta.svg);
+}
+.social-logo--insta:hover {
+    background-image: url(/img/Cantina_insta--hover.svg);
+}
+.social-logo--fb {
+    background-image: url(/img/Cantina_fb.svg);
+}
+.social-logo--fb:hover {
+    background-image: url(/img/Cantina_fb--hover.svg);
 }
 
 .social-logo img {
