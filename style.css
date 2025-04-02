@@ -98,7 +98,13 @@ section.menu.no-point {
     box-shadow: var(--darkOrange) 5px 5px 0px;
     transition: all .25s ease-in-out;
     opacity: 1;
+    cursor: pointer;
     /* animation: shadow 2s ease-in-out infinite alternate; */
+}
+
+.club-btn:hover {
+    background-color: var(--darkGray);
+    color: white;
 }
 
 .club-btn.pressed {
