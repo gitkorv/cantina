@@ -496,8 +496,8 @@ input[type=submit]:hover {
 
 .social-logo {
     display: flex;
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 70px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -505,26 +505,23 @@ input[type=submit]:hover {
     /* background-image: url(/img/Cantina_insta.svg) */
 }
 
+.svg-insta, .svg-fb {
+    fill: var(--darkGray);
+}
+
 .social-logo:hover {
     transform: scale(105%);
 }
 
-.social-logo--insta {
-    background-image: url(/img/Cantina_insta.svg);
-}
-.social-logo--insta:hover {
-    background-image: url(/img/Cantina_insta--hover.svg);
-}
-.social-logo--fb {
-    background-image: url(/img/Cantina_fb.svg);
-}
-.social-logo--fb:hover {
-    background-image: url(/img/Cantina_fb--hover.svg);
+
+.social-logo:hover .svg-insta, .social-logo:hover .svg-fb {
+    fill: var(--darkPurple);
+    /* background-image: url(/img/Cantina_insta--hover.svg); */
 }
 
 .social-logo img {
     /* position: relative; */
-    object-fit: contain;
+    /* object-fit: contain; */
     /* background-color: #FFF; */
     z-index: 100;
 
