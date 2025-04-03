@@ -447,6 +447,16 @@ input[type=submit]:hover {
     height: 1.2rem;
     width: 1rem;
     /* background-color: #7678ED; */
+    opacity: 1;
+    scale: 1;
+    transform: scale(100%);
+    transition: opacity .5s ease-out,
+                transform .25s ease-in;
+}
+
+.spray-splash.start {
+    transform: scale(50%);
+    opacity: 0;
 }
 
 
@@ -455,14 +465,6 @@ input[type=submit]:hover {
     
 }
 
-.spray-splash {
-    opacity: 1;
-    transition: opacity .5s ease-out;
-}
-
-/* .spray-splash .zero-opacity {
-    opacity: 0;
-} */
 
 .spray-splash-drip {
     position: absolute;

@@ -284,7 +284,7 @@ function showHomeElements() {
 
         for (let i = 0; i < sprayDots.length; i++) {
             sprayDots[i].style.transitionDelay = sprayDotTime * i + "s";
-            sprayDots[i].classList.remove("zero-opacity")
+            sprayDots[i].classList.remove("start")
 
             // Add drip
             let numberOfDripsForEachDot = Math.floor(Math.random() * 4 + 1)
