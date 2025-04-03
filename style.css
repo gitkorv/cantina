@@ -503,10 +503,12 @@ input[type=submit]:hover {
     background-size: contain;
     /* background-color: #7678ED; */
     /* background-image: url(/img/Cantina_insta.svg) */
+    transition: transform .1s ease-out;
 }
 
 .svg-insta, .svg-fb {
     fill: var(--darkGray);
+    transition: fill .1s ease-out;
 }
 
 .social-logo:hover {
@@ -517,14 +519,6 @@ input[type=submit]:hover {
 .social-logo:hover .svg-insta, .social-logo:hover .svg-fb {
     fill: var(--darkPurple);
     /* background-image: url(/img/Cantina_insta--hover.svg); */
-}
-
-.social-logo img {
-    /* position: relative; */
-    /* object-fit: contain; */
-    /* background-color: #FFF; */
-    z-index: 100;
-
 }
 
 .social-splash {
