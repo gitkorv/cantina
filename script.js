@@ -36,6 +36,9 @@ const streetFoodSpans = Array.from(streetFoodWrap.querySelectorAll(".street-food
 const ticker = document.querySelector(".ticker-wrapper");
 const belowTheFold = document.querySelector(".below-the-fold")
 
+// Club
+const clubPush = document.querySelector(".club-push")
+
 // Menu
 const menuContent = document.querySelector(".menu__content")
 
@@ -50,7 +53,7 @@ const allMenuBtns = [...document.querySelectorAll(".menu__btn")]
 const menuOpBtn = document.querySelector(".btn-op")
 
 // Hide on start
-const fullDisplayArr = [ticker, belowTheFold, allMenuBtns, clubBtn]
+const fullDisplayArr = [ticker, belowTheFold, allMenuBtns, clubBtn, clubPush]
 
 // Close Menu at start
 closeMenu()
