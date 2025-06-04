@@ -83,6 +83,87 @@ section.menu.no-point {
     pointer-events: none;
 }
 
+.club-push {
+    position: absolute;
+    /* display: flex;
+    flex-direction: column; */
+    /* align-self: flex-end; */
+    top: 84px;
+    right: 0px;
+    /* background-color: var(--darkGray); */
+    height: 300px;
+    width: 250px;
+    max-width: 100%;
+    padding: 48px 24px 24px 24px;
+    z-index: 100;
+    font-size: 1rem;
+    color: var(--cantinaCream);
+    /* scroll-behavior: none; */
+    /* background-color: var(--cantinaCream); */
+}
+
+.club-push_pil {
+    position: relative;
+    display: block;
+    /* align-items: end; */
+    width: 100%;
+    height: 65px;
+    color: var(--cantinaLila);
+    /* background-color: #33a58e; */
+}
+
+.club-push_pil-wrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 50%;
+    bottom: 0;
+    height: 16px;
+    width: 50px;
+    /* rotate: -35deg; */
+    transform: rotate(-60deg);
+    transform-origin: left bottom;
+    /* background-color: #C34A36; */
+    animation: pil-grow 1s linear infinite alternate;
+
+}
+
+@keyframes pil-grow {
+    100% {
+        width: 50%;
+    }
+}
+
+.pil-bottom {
+    width: 100%;
+    height: 1px;
+    background-color: var(--cantinaRosa);
+}
+
+.pil-top {
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 16px solid var(--cantinaRosa);
+}
+
+.club-push_text {
+    /* background-color: #4B4453; */
+    padding: 0 12px 0 48px;
+    animation: club-push 2s linear infinite;
+
+}
+
+@keyframes club-push {
+    90% {
+        color: var(--cantinaCream);
+    }
+    95% {
+        color: var(--cantinaLila);
+    }
+}
+
 .club-btn {
     display: flex;
     font-variation-settings: "slnt"0, "wdth"10, "wght"600;
@@ -155,16 +236,20 @@ section.menu.no-point {
     height: 0;
     background-color: var(--cantinaGreen);
     box-shadow: var(--cantinaCream) 5px 5px 0;
-    opacity: 0; /* Initially hidden */
-    overflow: hidden; /* Prevent content spill during height transition */
+    opacity: 0;
+    /* Initially hidden */
+    overflow: hidden;
+    /* Prevent content spill during height transition */
     transition: height 0.5s ease, opacity 0.5s ease;
     /* pointer-events: none; */
 }
 
 .club-form__content.open {
     padding: 24px;
-    height: 350px; /* Expanded height */
-    opacity: 1; /* Fully visible */
+    height: 350px;
+    /* Expanded height */
+    opacity: 1;
+    /* Fully visible */
     /* pointer-events: all; */
 }
 
@@ -258,9 +343,11 @@ input[type=submit]:hover {
     15% {
         background-color: var(--darkOrange);
     }
+
     50% {
         background-color: var(--yellow);
     }
+
     15% {
         background-color: var(--darkOrange);
     }
@@ -399,7 +486,7 @@ input[type=submit]:hover {
 .splash-head {
     max-width: 200px;
     font-family: "ltr-ncnd-variable", sans-serif;
-    font-variation-settings: "wght" 350;
+    font-variation-settings: "wght"350;
     /* background-color: orange; */
 }
 
@@ -425,6 +512,7 @@ input[type=submit]:hover {
     font-variation-settings: "slnt"-12, "wdth"50, "wght"900;
 
 }
+
 .splash-food span:nth-of-type(3n+2) {
     font-variation-settings: "slnt"0, "wdth"75, "wght"600;
     /* color: var(--rustRed); */
@@ -456,7 +544,7 @@ input[type=submit]:hover {
     scale: 1;
     transform: scale(100%);
     transition: opacity .5s ease-out,
-                transform .25s ease-in;
+        transform .25s ease-in;
 }
 
 .spray-splash.start {
@@ -467,7 +555,7 @@ input[type=submit]:hover {
 
 .spray-splash img {
     object-fit: contain;
-    
+
 }
 
 
@@ -495,7 +583,7 @@ input[type=submit]:hover {
 .social-logo-wrapper {
     position: relative;
     display: block;
-    
+
     /* background-color: #3D348B; */
 }
 
@@ -618,8 +706,9 @@ input[type=submit]:hover {
 
 .bites .menu__item__list-container {
     background-color: var(--orange);
-    
+
 }
+
 .bar .menu__item__list-container {
     background-color: var(--darkPurple);
     color: var(--yellow);
@@ -659,12 +748,14 @@ h2 {
     position: relative;
     font-size: 3rem;
 }
+
 .menu__item.sub {
     position: relative;
     font-size: 2rem;
     line-height: 2rem;
-    font-variation-settings: "slnt" 0, "wdth"50, "wght"400;
+    font-variation-settings: "slnt"0, "wdth"50, "wght"400;
 }
+
 .bites .menu__item.sub {
     padding-right: 30px;
 }
