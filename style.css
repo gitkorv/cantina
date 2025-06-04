@@ -15,6 +15,11 @@
     --yellow: #F7B801;
     --lightOrange: #F18701;
     --darkOrange: #F35B04;
+    --cantinaLila: #381460;
+    --cantinaGreen: #33a58e;
+    --cantinaRosa: #e99f96;
+    --cantinaGrey: #72808a;
+    --cantinaCream: #fffef2;
 }
 
 @view-transition {
@@ -30,7 +35,7 @@ body {
     display: block;
     max-width: 100vw;
     height: 100dvh;
-    background-color: var(--yellow);
+    background-color: var(--cantinaLila);
     font-family: "acumin-variable", sans-serif;
     font-variation-settings: "slnt"0, "wdth"10, "wght"300;
 }
@@ -87,15 +92,15 @@ section.menu.no-point {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: var(--yellow);
+    color: var(--cantinaLila);
     height: 60px;
     width: 60px;
     border-radius: 50%;
     align-self: flex-end;
     text-align: center;
     /* max-width: fit-content; */
-    background-color: var(--darkPurple);
-    box-shadow: var(--darkOrange) 5px 5px 0px;
+    background-color: var(--cantinaGreen);
+    box-shadow: var(--cantinaCream) 5px 5px 0px;
     transition: all .25s ease-in-out;
     opacity: 1;
     cursor: pointer;
@@ -103,19 +108,19 @@ section.menu.no-point {
 }
 
 .club-btn:hover {
-    background-color: var(--darkGray);
+    background-color: var(--cantinaGrey);
     color: white;
 }
 
 .club-btn.pressed {
     font-size: 2rem;
     scale: 75%;
-    background-color: var(--darkGray);
-    box-shadow: var(--darkOrange) 2px 2px 0px;
+    background-color: var(--cantinaGrey);
+    box-shadow: var(--cantinaCream) 2px 2px 0px;
 }
 
 .club-btn.active {
-    background-color: var(--orange);
+    background-color: var(--cantinaCream);
 }
 
 /* @keyframes shadow {
@@ -148,8 +153,8 @@ section.menu.no-point {
     position: relative;
     width: 100%;
     height: 0;
-    background-color: var(--darkOrange);
-    box-shadow: var(--lightPurple) 5px 5px 0;
+    background-color: var(--cantinaGreen);
+    box-shadow: var(--cantinaCream) 5px 5px 0;
     opacity: 0; /* Initially hidden */
     overflow: hidden; /* Prevent content spill during height transition */
     transition: height 0.5s ease, opacity 0.5s ease;
@@ -191,7 +196,7 @@ input[type=text], select {
 
 input[type=submit] {
     width: 100%;
-    background-color: var(--darkPurple);
+    background-color: var(--cantinaLila);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -201,7 +206,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: var(--yellow);
+    background-color: var(--cantinaRosa);
 }
 
 
@@ -231,8 +236,8 @@ input[type=submit]:hover {
     width: fit-content;
     height: 20px;
     /* display: inline-block; */
-    color: var(--yellow);
-    background-color: var(--darkOrange);
+    color: var(--cantinaLila);
+    background-color: var(--cantinaGreen);
     padding: 0 4px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght"600;
@@ -264,7 +269,7 @@ input[type=submit]:hover {
 .ticker-text {
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght"600;
-    color: var(--darkGray);
+    color: var(--cantinaCream);
 }
 
 .logo-wrapper {
@@ -303,7 +308,7 @@ input[type=submit]:hover {
     letter-spacing: -20px;
     font-size: 5rem;
     opacity: 1;
-    color: var(--darkPurple);
+    color: var(--cantinaRosa);
     transition: font-variation-settings .5s ease-in 2s,
         opacity .25s ease-in;
 }
@@ -323,7 +328,7 @@ input[type=submit]:hover {
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght"900;
     font-size: 1.4rem;
-    color: var(--darkOrange);
+    color: var(--cantinaCream);
 }
 
 .street-food {
@@ -339,8 +344,8 @@ input[type=submit]:hover {
     padding: 0 2px;
     margin-left: 3px;
     width: fit-content;
-    background-color: var(--darkGray);
-    color: var(--yellow);
+    background-color: var(--cantinaGreen);
+    color: var(--cantinaLila);
 
     transform-origin: right;
     transform: rotateY(0deg);
@@ -365,7 +370,7 @@ input[type=submit]:hover {
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
-    color: var(--darkGray);
+    color: var(--cantinaGreen);
 
     /* background-color: #7678ED; */
 }
@@ -411,7 +416,7 @@ input[type=submit]:hover {
 
 .splash-food span {
     font-size: 1.5rem;
-    color: var(--darkOrange);
+    color: var(--cantinaRosa);
     letter-spacing: 1px;
 }
 
@@ -473,7 +478,7 @@ input[type=submit]:hover {
     height: 0px;
     width: 1px;
     transform-origin: top;
-    background-color: var(--darkPurple);
+    background-color: var(--cantinaGreen);
     transition: height;
 }
 
@@ -507,7 +512,7 @@ input[type=submit]:hover {
 }
 
 .svg-insta, .svg-fb {
-    fill: var(--darkGray);
+    fill: var(--cantinaCream);
     transition: fill .1s ease-out;
 }
 
@@ -517,7 +522,7 @@ input[type=submit]:hover {
 
 
 .social-logo:hover .svg-insta, .social-logo:hover .svg-fb {
-    fill: var(--darkPurple);
+    fill: var(--cantinaGreen);
     /* background-image: url(/img/Cantina_insta--hover.svg); */
 }
 
@@ -784,6 +789,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--cantinaGreen);
 }
 
 .hidden-club-field {
@@ -800,4 +806,5 @@ h2 {
     text-align: center;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght"600;
+    color: var(--cantinaCream);
 }
