@@ -928,5 +928,9 @@ h2 {
 
     }
 
+    .logo-wrapper {
+        padding-bottom: 0;
+    }
+
 
 }
