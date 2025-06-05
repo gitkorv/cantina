@@ -929,7 +929,11 @@ h2 {
     }
 
     .logo-wrapper {
-        padding-bottom: 0;
+        padding-bottom: 12px;
+    }
+
+    .address {
+        margin-top: 8px;
     }
 
 
