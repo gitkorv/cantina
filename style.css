@@ -85,21 +85,15 @@ section.menu.no-point {
 
 .club-push {
     position: absolute;
-    /* display: flex;
-    flex-direction: column; */
-    /* align-self: flex-end; */
-    top: 84px;
+    top: 140px;
     right: 0px;
     /* background-color: var(--darkGray); */
-    height: 300px;
-    width: 250px;
+    height: fit-content;
+    width: 200px;
     max-width: 100%;
-    padding: 48px 24px 24px 24px;
-    z-index: 100;
-    font-size: 1rem;
+    padding: 24px;
     color: var(--cantinaCream);
-    /* scroll-behavior: none; */
-    /* background-color: var(--cantinaCream); */
+    /* background-color: var(--cantinaGreen); */
 }
 
 .club-push_pil {
@@ -107,7 +101,7 @@ section.menu.no-point {
     display: block;
     /* align-items: end; */
     width: 100%;
-    height: 65px;
+    /* height: 65px; */
     color: var(--cantinaLila);
     /* background-color: #33a58e; */
 }
@@ -118,7 +112,7 @@ section.menu.no-point {
     align-items: center;
     left: 50%;
     bottom: 0;
-    height: 16px;
+    height: 1rem;
     width: 50px;
     /* rotate: -35deg; */
     transform: rotate(-60deg);
@@ -141,16 +135,18 @@ section.menu.no-point {
 }
 
 .pil-top {
-    width: 0;
-    height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 16px solid var(--cantinaRosa);
+    width: 0px;
+    height: 0px;
+    border-top: .5rem solid transparent;
+    border-bottom: .5rem solid transparent;
+    border-left: 1rem solid var(--cantinaRosa);
+    /* border-right: 8px solid var(--cantinaRosa); */
 }
 
 .club-push_text {
+    font-size: 1rem;
     /* background-color: #4B4453; */
-    padding: 0 12px 0 48px;
+    padding-right: 24px;
     animation: club-push 2s linear infinite;
 
 }
@@ -159,6 +155,7 @@ section.menu.no-point {
     90% {
         color: var(--cantinaCream);
     }
+
     95% {
         color: var(--cantinaLila);
     }
@@ -314,8 +311,8 @@ input[type=submit]:hover {
     top: 75px;
     width: 100%;
     /* background-color: #a196ad; */
-
 }
+
 
 .ticker-head {
     width: fit-content;
@@ -898,4 +895,46 @@ h2 {
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght"600;
     color: var(--cantinaCream);
+}
+
+@media (max-height: 700px) {
+
+    .ticker-item {
+        top: 50px;
+    }
+
+    .ticker-head {
+        font-size: .75rem;
+        height: 16px;
+    }
+
+    .ticker-text {
+        font-size: .75rem;
+    }
+
+    .club-push {
+        top: 130px;
+        padding: 12px;
+        width: 240px;
+    }
+
+    .club-push_pil {
+        width: 70%;
+    }
+
+    .club-push_pil-wrapper {
+        left: 65%;
+        transform: rotate(-45deg);
+
+    }
+
+    .logo-wrapper {
+        padding-bottom: 12px;
+    }
+
+    .address {
+        margin-top: 8px;
+    }
+
+
 }
