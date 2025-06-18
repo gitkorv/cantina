@@ -103,6 +103,13 @@ section.menu.no-point {
   border: none;
 }
 
+.food-popup-menu {
+     max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 48px;
+}
+
 .club-push {
     position: absolute;
     top: 0px;
