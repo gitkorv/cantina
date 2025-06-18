@@ -104,7 +104,7 @@ section.menu.no-point {
 }
 
 .food-popup-menu {
-     max-width: 100%;
+    max-width: 100%;
   height: auto;
   display: block;
   margin-bottom: 48px;
@@ -1000,7 +1000,19 @@ h2 {
     color: var(--cantinaCream);
 }
 
+@media (max-width: 500px) {
+        .temp-menu-body {
+        padding: 24px;
+    }
+
+    .food-popup-menu {
+        margin-bottom: 24px;
+    }
+}
+
 @media (max-height: 700px) {
+
+
 
     .ticker-item {
         top: 50px;
