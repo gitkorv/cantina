@@ -1015,6 +1015,18 @@ h2 {
     }
 }
 
+@media (min-width: 700px) {
+     .kolla-meny {
+        right: 200px;
+
+    }
+    .kolla-meny {
+    font-size: 2rem;
+    right: 200px;
+    top: 175px;
+    }
+}
+
 @media (max-height: 700px) {
 
 
