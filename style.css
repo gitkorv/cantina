@@ -83,15 +83,49 @@ section.menu.no-point {
     pointer-events: none;
 }
 
+.temp-menu-body {
+    padding: 48px;
+}
+
+.pdf-container {
+  position: relative;
+  padding-bottom: 80%; /* Aspect ratio — adjust based on your PDF */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.pdf-container iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.food-popup-menu {
+    max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 48px;
+}
+
 .club-push {
     position: absolute;
-    top: 140px;
+    top: 0px;
     right: 0px;
-    /* background-color: var(--darkGray); */
+    display: flex;
+    align-items: center;
+    /* align-self: center; */
+    /* justify-self: center; */
+    /* top: 140px;
+    right: 0px; */
+    background-color: var(--darkGray);
     height: fit-content;
+    height: 40%;
     width: 200px;
     max-width: 100%;
-    padding: 24px;
+    /* padding: 24px; */
     color: var(--cantinaCream);
     /* background-color: var(--cantinaGreen); */
 }
@@ -161,6 +195,33 @@ section.menu.no-point {
     }
 }
 
+
+.opening-hours-wrapper {
+    align-self: flex-end;
+    text-align: right;
+    /* text-align: center; */
+    color: var(--cantinaCream);
+    font-variation-settings: "slnt"0, "wdth"100, "wght"800;
+    padding-bottom: 8px;
+}
+
+.hours-head {
+    color: var(--cantinaGreen);
+    font-size: .75rem;
+}
+
+.opening-hours_list-item {
+        font-size: .75rem;
+        font-variation-settings: "slnt"0, "wdth"70, "wght"400;
+}
+
+.hours-bold {
+        font-variation-settings: "slnt"0, "wdth"115, "wght"800;
+}
+.hours-narrow {
+        font-variation-settings: "slnt"0, "wdth"70, "wght"200;
+}
+
 .club-btn {
     display: flex;
     font-variation-settings: "slnt"0, "wdth"10, "wght"600;
@@ -223,7 +284,7 @@ section.menu.no-point {
     width: 400px;
     max-width: 100%;
     padding: 0 24px;
-    z-index: 100;
+    z-index: 140;
     /* scroll-behavior: none; */
 }
 
@@ -238,7 +299,7 @@ section.menu.no-point {
     overflow: hidden;
     /* Prevent content spill during height transition */
     transition: height 0.5s ease, opacity 0.5s ease;
-    /* pointer-events: none; */
+    pointer-events: none;
 }
 
 .club-form__content.open {
@@ -247,7 +308,7 @@ section.menu.no-point {
     /* Expanded height */
     opacity: 1;
     /* Fully visible */
-    /* pointer-events: all; */
+    pointer-events: all;
 }
 
 .club-form {
@@ -319,7 +380,7 @@ input[type=submit]:hover {
     height: 20px;
     /* display: inline-block; */
     color: var(--cantinaLila);
-    background-color: var(--cantinaGreen);
+    background-color: var(--cantinaRosa);
     padding: 0 4px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght"600;
@@ -336,24 +397,65 @@ input[type=submit]:hover {
     opacity: 1;
 }
 
-@keyframes blink {
-    15% {
-        background-color: var(--darkOrange);
-    }
-
-    50% {
-        background-color: var(--yellow);
-    }
-
-    15% {
-        background-color: var(--darkOrange);
-    }
-}
 
 .ticker-text {
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght"600;
     color: var(--cantinaCream);
+}
+
+.kolla-meny {
+    color: inherit;
+    text-decoration: none;
+    font-size: 1.25rem;
+    position: absolute;
+    padding: 4px;
+    left: 40px;
+    top: 175px;
+    transform: rotate(-20deg);
+    width: fit-content;
+    background-color: var(--cantinaCream);
+    animation: meny-spin 2s linear infinite alternate;
+    animation-fill-mode: forwards;
+    z-index: 150;
+}
+
+.kolla-meny.form-open {
+    z-index: 100;
+}
+
+@keyframes meny-spin {
+    20% {
+        background-color: var(--cantinaCream);
+    }
+    25% {
+        background-color: var(--cantinaLila);
+    }
+    30% {
+        background-color: var(--cantinaCream);
+    }
+    50% {
+        background-color: var(--cantinaCream);
+        transform: scale(110%) rotate(-10deg);
+    }
+    70% {
+        background-color: var(--cantinaCream);
+    }
+    75% {
+        background-color: var(--cantinaLila);
+    }
+    80% {
+        background-color: var(--cantinaCream);
+    }
+    
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.kolla-meny:hover {
+    background-color: var(--cantinaGreen);
+    animation-play-state: paused;
 }
 
 .logo-wrapper {
@@ -399,16 +501,23 @@ input[type=submit]:hover {
 
 .logo__sub {
     position: relative;
+    /* bottom: 12px; */
+    display: flex;
+    /* background-color: #4B4453; */
+    /* height: 48px; */
 }
 
 .logo__sub__streetfood-wrap {
     transform-style: preserve-3d;
     perspective: 1000px;
+    /* height: 8px; */
+    /* background-color: #C34A36; */
 
 }
 
 .street-food, .club {
     position: relative;
+    bottom: 8px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght"900;
     font-size: 1.4rem;
@@ -426,7 +535,7 @@ input[type=submit]:hover {
     /* right: 0; */
 
     padding: 0 2px;
-    margin-left: 3px;
+    margin-left: 5px;
     width: fit-content;
     background-color: var(--cantinaGreen);
     color: var(--cantinaLila);
@@ -897,7 +1006,31 @@ h2 {
     color: var(--cantinaCream);
 }
 
+@media (max-width: 500px) {
+        .temp-menu-body {
+        padding: 24px;
+    }
+
+    .food-popup-menu {
+        margin-bottom: 24px;
+    }
+}
+
+@media (min-width: 700px) {
+     .kolla-meny {
+        right: 200px;
+
+    }
+    .kolla-meny {
+    font-size: 2rem;
+    left: 100px;
+    top: 175px;
+    }
+}
+
 @media (max-height: 700px) {
+
+
 
     .ticker-item {
         top: 50px;
@@ -912,21 +1045,11 @@ h2 {
         font-size: .75rem;
     }
 
-    .club-push {
+    /* .club-push {
         top: 130px;
         padding: 12px;
         width: 240px;
-    }
-
-    .club-push_pil {
-        width: 70%;
-    }
-
-    .club-push_pil-wrapper {
-        left: 65%;
-        transform: rotate(-45deg);
-
-    }
+    } */
 
     .logo-wrapper {
         padding-bottom: 12px;

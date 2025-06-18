@@ -131,6 +131,10 @@ const cLT = [
 
 const tickerItems = [
     {
+        head: "Dörren är öppen!",
+        text: "Vi är äntligen igång så kom in och säg hej! Öppettider nedan:"
+    },
+    {
         head: "Äkta street food",
         text: "Saftiga tacos, kryddiga bao buns, het ramen och färgglada cocktails – alltid med en twist!"
     },
@@ -152,7 +156,7 @@ const tickerItems = [
     },
     {
         head: "Värdslig mat",
-        text: "Latinamerika, Asien, USA – vi har samlat det bästa från street food-scenen och mixat det med kärlek och kvalitet. Meny kommer snart!"
+        text: "Latinamerika, Asien, USA – vi har samlat det bästa från street food-scenen"
     }
 ];
 
@@ -334,7 +338,7 @@ function showHomeElements() {
 showHomeElements()
 
 function fadeInFromOpacityZero(element) {
-    element.style.transition = `opacity 1.5s ease-in`;
+    element.style.transition = "opacity 1.5s ease-in";
     element.classList.remove("zero-opacity")
     element.style.opacity = "1";
 
@@ -506,11 +510,15 @@ window.addEventListener("load", e => {
     belowTheFold.style.transition = "none";
 })
 
+const kollaMenuBtn = document.querySelector(".kolla-meny");
+console.log(kollaMenuBtn)
+
 clubBtn.addEventListener("click", (e) => {
     const btn = e.target; // Reference to the clicked button
     console.log(btn);
 
     clubBtn.classList.toggle("pressed");
+    kollaMenuBtn.classList.toggle("form-open");
 
     // Toggle button text between "X" and original
     clubBtn.innerHTML = clubBtn.classList.contains("pressed") ? "X" : clubBtnInnerHTML;
