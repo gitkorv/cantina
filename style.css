@@ -283,7 +283,7 @@ section.menu.no-point {
     width: 400px;
     max-width: 100%;
     padding: 0 24px;
-    z-index: 100;
+    z-index: 140;
     /* scroll-behavior: none; */
 }
 
@@ -298,7 +298,7 @@ section.menu.no-point {
     overflow: hidden;
     /* Prevent content spill during height transition */
     transition: height 0.5s ease, opacity 0.5s ease;
-    /* pointer-events: none; */
+    pointer-events: none;
 }
 
 .club-form__content.open {
@@ -307,7 +307,7 @@ section.menu.no-point {
     /* Expanded height */
     opacity: 1;
     /* Fully visible */
-    /* pointer-events: all; */
+    pointer-events: all;
 }
 
 .club-form {
@@ -415,7 +415,12 @@ input[type=submit]:hover {
     width: fit-content;
     background-color: var(--cantinaCream);
     animation: meny-spin 2s linear infinite alternate;
-    z-index: 1000;
+    animation-fill-mode: forwards;
+    z-index: 150;
+}
+
+.kolla-meny.form-open {
+    z-index: 100;
 }
 
 @keyframes meny-spin {

@@ -510,11 +510,15 @@ window.addEventListener("load", e => {
     belowTheFold.style.transition = "none";
 })
 
+const kollaMenuBtn = document.querySelector(".kolla-meny");
+console.log(kollaMenuBtn)
+
 clubBtn.addEventListener("click", (e) => {
     const btn = e.target; // Reference to the clicked button
     console.log(btn);
 
     clubBtn.classList.toggle("pressed");
+    kollaMenuBtn.classList.toggle("form-open");
 
     // Toggle button text between "X" and original
     clubBtn.innerHTML = clubBtn.classList.contains("pressed") ? "X" : clubBtnInnerHTML;
