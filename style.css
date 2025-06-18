@@ -85,13 +85,20 @@ section.menu.no-point {
 
 .club-push {
     position: absolute;
-    top: 140px;
+    top: 0px;
     right: 0px;
-    /* background-color: var(--darkGray); */
+    display: flex;
+    align-items: center;
+    /* align-self: center; */
+    /* justify-self: center; */
+    /* top: 140px;
+    right: 0px; */
+    background-color: var(--darkGray);
     height: fit-content;
+    height: 40%;
     width: 200px;
     max-width: 100%;
-    padding: 24px;
+    /* padding: 24px; */
     color: var(--cantinaCream);
     /* background-color: var(--cantinaGreen); */
 }
@@ -159,6 +166,32 @@ section.menu.no-point {
     95% {
         color: var(--cantinaLila);
     }
+}
+
+
+.opening-hours-wrapper {
+    align-self: flex-start;
+    /* text-align: center; */
+    color: var(--cantinaCream);
+    font-variation-settings: "slnt"0, "wdth"100, "wght"800;
+    padding-bottom: 8px;
+}
+
+.hours-head {
+    color: var(--cantinaGreen);
+    font-size: .75rem;
+}
+
+.opening-hours_list-item {
+        font-size: .75rem;
+        font-variation-settings: "slnt"0, "wdth"70, "wght"400;
+}
+
+.hours-bold {
+        font-variation-settings: "slnt"0, "wdth"115, "wght"800;
+}
+.hours-narrow {
+        font-variation-settings: "slnt"0, "wdth"70, "wght"200;
 }
 
 .club-btn {
@@ -319,7 +352,7 @@ input[type=submit]:hover {
     height: 20px;
     /* display: inline-block; */
     color: var(--cantinaLila);
-    background-color: var(--cantinaGreen);
+    background-color: var(--cantinaRosa);
     padding: 0 4px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght"600;
@@ -336,19 +369,6 @@ input[type=submit]:hover {
     opacity: 1;
 }
 
-@keyframes blink {
-    15% {
-        background-color: var(--darkOrange);
-    }
-
-    50% {
-        background-color: var(--yellow);
-    }
-
-    15% {
-        background-color: var(--darkOrange);
-    }
-}
 
 .ticker-text {
     font-family: "ltr-ncnd-variable", sans-serif;
@@ -399,16 +419,23 @@ input[type=submit]:hover {
 
 .logo__sub {
     position: relative;
+    /* bottom: 12px; */
+    display: flex;
+    /* background-color: #4B4453; */
+    /* height: 48px; */
 }
 
 .logo__sub__streetfood-wrap {
     transform-style: preserve-3d;
     perspective: 1000px;
+    /* height: 8px; */
+    /* background-color: #C34A36; */
 
 }
 
 .street-food, .club {
     position: relative;
+    bottom: 8px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght"900;
     font-size: 1.4rem;
@@ -426,7 +453,7 @@ input[type=submit]:hover {
     /* right: 0; */
 
     padding: 0 2px;
-    margin-left: 3px;
+    margin-left: 5px;
     width: fit-content;
     background-color: var(--cantinaGreen);
     color: var(--cantinaLila);
@@ -912,21 +939,11 @@ h2 {
         font-size: .75rem;
     }
 
-    .club-push {
+    /* .club-push {
         top: 130px;
         padding: 12px;
         width: 240px;
-    }
-
-    .club-push_pil {
-        width: 70%;
-    }
-
-    .club-push_pil-wrapper {
-        left: 65%;
-        transform: rotate(-45deg);
-
-    }
+    } */
 
     .logo-wrapper {
         padding-bottom: 12px;
