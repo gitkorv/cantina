@@ -83,6 +83,17 @@ section.menu.no-point {
     pointer-events: none;
 }
 
+.temp-menu-body {
+    padding: 48px;
+}
+
+.menu-pdf-iframes {
+    /* background-color: #33a58e; */
+    /* height: 50%; */
+    width: 100%;
+    aspect-ratio: 5/4;
+}
+
 .club-push {
     position: absolute;
     top: 0px;
@@ -374,6 +385,55 @@ input[type=submit]:hover {
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght"600;
     color: var(--cantinaCream);
+}
+
+.kolla-meny {
+    color: inherit;
+    text-decoration: none;
+    font-size: 1.25rem;
+    position: absolute;
+    padding: 4px;
+    right: 48px;
+    top: 200px;
+    transform: rotate(20deg);
+    width: fit-content;
+    background-color: var(--cantinaCream);
+    animation: meny-spin 2s linear infinite alternate;
+    z-index: 1000;
+}
+
+@keyframes meny-spin {
+    20% {
+        background-color: var(--cantinaCream);
+    }
+    25% {
+        background-color: var(--cantinaLila);
+    }
+    30% {
+        background-color: var(--cantinaCream);
+    }
+    50% {
+        background-color: var(--cantinaCream);
+        transform: scale(110%) rotate(10deg);
+    }
+    70% {
+        background-color: var(--cantinaCream);
+    }
+    75% {
+        background-color: var(--cantinaLila);
+    }
+    80% {
+        background-color: var(--cantinaCream);
+    }
+    
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.kolla-meny:hover {
+    background-color: var(--cantinaGreen);
+    animation-play-state: paused;
 }
 
 .logo-wrapper {
