@@ -197,7 +197,8 @@ section.menu.no-point {
 
 
 .opening-hours-wrapper {
-    align-self: flex-start;
+    align-self: flex-end;
+    text-align: right;
     /* text-align: center; */
     color: var(--cantinaCream);
     font-variation-settings: "slnt"0, "wdth"100, "wght"800;
@@ -409,9 +410,9 @@ input[type=submit]:hover {
     font-size: 1.25rem;
     position: absolute;
     padding: 4px;
-    right: 48px;
-    top: 200px;
-    transform: rotate(20deg);
+    left: 40px;
+    top: 175px;
+    transform: rotate(-20deg);
     width: fit-content;
     background-color: var(--cantinaCream);
     animation: meny-spin 2s linear infinite alternate;
@@ -435,7 +436,7 @@ input[type=submit]:hover {
     }
     50% {
         background-color: var(--cantinaCream);
-        transform: scale(110%) rotate(10deg);
+        transform: scale(110%) rotate(-10deg);
     }
     70% {
         background-color: var(--cantinaCream);
@@ -1022,7 +1023,7 @@ h2 {
     }
     .kolla-meny {
     font-size: 2rem;
-    right: 200px;
+    left: 100px;
     top: 175px;
     }
 }
