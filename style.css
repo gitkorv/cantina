@@ -198,15 +198,16 @@ section.menu.no-point {
 
 .opening-hours-wrapper {
     align-self: flex-end;
-    text-align: right;
+    /* text-align: right; */
     /* text-align: center; */
     color: var(--cantinaCream);
     font-variation-settings: "slnt"0, "wdth"100, "wght"800;
     padding-bottom: 8px;
+    margin-right: 24px;
 }
 
 .hours-head {
-    color: var(--cantinaGreen);
+    color: var(--cantinaCream);
     font-size: .75rem;
 }
 
@@ -216,8 +217,14 @@ section.menu.no-point {
 }
 
 .hours-bold {
+    color: var(--cantinaGreen);
         font-variation-settings: "slnt"0, "wdth"115, "wght"800;
 }
+
+.hours-closed {
+    color: var(--cantinaRosa);
+}
+
 .hours-narrow {
         font-variation-settings: "slnt"0, "wdth"70, "wght"200;
 }
@@ -410,8 +417,8 @@ input[type=submit]:hover {
     font-size: 1.25rem;
     position: absolute;
     padding: 4px;
-    left: 40px;
-    top: 175px;
+    left: 50px;
+    top: 200px;
     transform: rotate(-20deg);
     width: fit-content;
     background-color: var(--cantinaCream);
@@ -465,7 +472,7 @@ input[type=submit]:hover {
     flex-direction: column;
     justify-content: end;
     align-items: center;
-    height: 45%;
+    height: 50%;
     width: 100%;
     opacity: 1;
     overflow: hidden;
@@ -562,7 +569,8 @@ input[type=submit]:hover {
     align-self: center;
     flex-direction: column;
     justify-content: space-between;
-    flex: 1;
+    align-items: center;
+    /* flex: 1; */
     color: var(--cantinaGreen);
 
     /* background-color: #7678ED; */
@@ -590,7 +598,7 @@ input[type=submit]:hover {
 }
 
 .splash-head {
-    max-width: 200px;
+    max-width: 300px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght"350;
     /* background-color: orange; */
@@ -695,8 +703,8 @@ input[type=submit]:hover {
 
 .social-logo {
     display: flex;
-    height: 100px;
-    width: 70px;
+    height: 50px;
+    width: 50px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -731,7 +739,7 @@ input[type=submit]:hover {
     justify-content: center;
     align-items: end;
 
-    flex: 1;
+    /* flex: .5; */
 }
 
 .splash-address p {
@@ -1030,20 +1038,22 @@ h2 {
 
 @media (max-height: 700px) {
 
-
+    .kolla-meny {
+        top: 200px;
+    }
 
     .ticker-item {
         top: 50px;
     }
 
-    .ticker-head {
+    /* .ticker-head {
         font-size: .75rem;
         height: 16px;
     }
 
     .ticker-text {
         font-size: .75rem;
-    }
+    } */
 
     /* .club-push {
         top: 130px;
