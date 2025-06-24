@@ -3,7 +3,7 @@ const windowHeight = window.innerHeight;
 // Sections
 const menuSection = document.querySelector("section.menu")
 const menuWrapper = document.querySelector(".menu-wrapper")
-menuWrapper.style.transition = "none";
+// menuWrapper.style.transition = "none";
 // menuWrapper.classList.
 let menuHeight = menuSection.getBoundingClientRect().height;
 
@@ -11,8 +11,11 @@ let menuHeight = menuSection.getBoundingClientRect().height;
 const clubBtn = document.querySelector(".club-btn")
 const clubBtnInnerHTML = clubBtn.innerHTML;
 const clubFormContent = document.querySelector(".club-form__content")
-// const clubForm = document.querySelector(".club-form")
-// console.log(clubForm);
+const clubFormWrapper = document.querySelector(".club-form-wrapper")
+let isFormOpen = false;
+const clubFormDripContainer = document.querySelector(".club-form__bottom-drip-container")
+console.log(clubFormDripContainer);
+// console.log(clubFormWrapper);
 // logo Cantina
 const logoWrapper = document.querySelector(".logo-wrapper")
 const logoHeadWrap = document.querySelector(".logo__head")
@@ -34,7 +37,7 @@ const streetFoodSpans = Array.from(streetFoodWrap.querySelectorAll(".street-food
 
 // Ticker
 const ticker = document.querySelector(".ticker-wrapper");
-const belowTheFold = document.querySelector(".below-the-fold")
+const belowLogoWrapper = document.querySelector(".below-logo-wrapper")
 
 // Club
 const clubPush = document.querySelector(".club-push")
@@ -53,18 +56,18 @@ const allMenuBtns = [...document.querySelectorAll(".menu__btn")]
 const menuOpBtn = document.querySelector(".btn-op")
 
 // Hide on start
-const fullDisplayArr = [ticker, belowTheFold, allMenuBtns, clubBtn, clubPush]
+const fullDisplayArr = [ticker, belowLogoWrapper, clubBtn]
 
 // Close Menu at start
 closeMenu()
 
 // Opening Splash Page
 const sprayDots = document.querySelectorAll(".spray-splash")
-console.log(sprayDots);
+// console.log(sprayDots);
 const spraySplashContainers = document.querySelectorAll(".spray-splash-container")
-console.log(spraySplashContainers);
+// console.log(spraySplashContainers);
 const splashWords = document.querySelectorAll(".splash-word")
-console.log(splashWords);
+// console.log(splashWords);
 
 // sprayDots.forEach(dot => {
 //     dot.style.opacity = 0;
@@ -75,7 +78,7 @@ const socialLogos = document.querySelectorAll(".social-logo-wrapper")
 
 // Turn off transition on elements over start
 clubBtn.style.transition = "none";
-belowTheFold.style.transition = "none";
+belowLogoWrapper.style.transition = "none";
 
 const cLT = [
     {
@@ -286,7 +289,7 @@ function showHomeElements() {
         //     setTimeout(() => {
         //         splashWords[i].classList.remove("zero-opacity")
         //     }, 0);
-            
+
         // }
 
         for (let i = 0; i < sprayDots.length; i++) {
@@ -295,7 +298,7 @@ function showHomeElements() {
 
             // Add drip
             let numberOfDripsForEachDot = Math.floor(Math.random() * 4 + 1)
-            console.log(numberOfDripsForEachDot);
+            // console.log(numberOfDripsForEachDot);
 
             for (let d = 0; d < numberOfDripsForEachDot; d++) {
                 let makeDripAtAll = Math.floor(Math.random() * 10 + 1);
@@ -331,7 +334,7 @@ function showHomeElements() {
         socialLogos.forEach(logo => {
             logo.style.transitionDuration = "5s";
             logo.classList.remove("zero-opacity")
-        }) 
+        })
     }, clubStampEnterTime + 3500);
 }
 
@@ -352,7 +355,7 @@ function fadeInFromOpacityZero(element) {
 // Btn and menus
 
 let btnPressTransTime = parseFloat(getComputedStyle(menuOpBtn).transitionDuration) * 100;
-console.log(btnPressTransTime);
+// console.log(btnPressTransTime);
 
 let bitesSectionHeader = document.querySelector(".bites")
 let barSectionHeader = document.querySelector(".bar")
@@ -505,25 +508,93 @@ menuContent.addEventListener("touchmove", (e) => {
 }, { passive: true });
 
 window.addEventListener("load", e => {
-    menuWrapper.style.transition = "none";
+    // menuWrapper.style.transition = "none";
     clubBtn.style.transition = "none";
-    belowTheFold.style.transition = "none";
+    belowLogoWrapper.style.transition = "none";
 })
 
-const kollaMenuBtn = document.querySelector(".kolla-meny");
-console.log(kollaMenuBtn)
+// const kollaMenuBtn = document.querySelector(".kolla-meny");
+// console.log(kollaMenuBtn)
+
+console.log(clubFormContent);
 
 clubBtn.addEventListener("click", (e) => {
+    e.stopPropagation();  // Prevent event from bubbling to document
     const btn = e.target; // Reference to the clicked button
-    console.log(btn);
+
+    clubFormDripContainer.innerHTML = "";
+
+
+    isFormOpen = !isFormOpen;
 
     clubBtn.classList.toggle("pressed");
-    kollaMenuBtn.classList.toggle("form-open");
+    // Move form wrapper up in index
+    clubFormWrapper.classList.toggle("form-above");
 
     // Toggle button text between "X" and original
     clubBtn.innerHTML = clubBtn.classList.contains("pressed") ? "X" : clubBtnInnerHTML;
 
     // Toggle the open classes for content and form
     clubFormContent.classList.toggle("open");
-    // clubForm.classList.toggle("open");
+    // clubFormDripContainer.classList.toggle("open");
+
+    setTimeout(() => {
+            formDrips()
+
+    }, 500);
+
+    // clubFormContent.addEventListener('transitionend', (e) => {
+    //     if (isFormOpen) {
+    //         console.log('Transition finished for:', e.propertyName);
+    //         formDrips()
+    //     }
+
+    // })
 });
+
+document.addEventListener("click", (e) => {
+    const clickedEl = e.target;
+
+    if (
+        isFormOpen &&
+        !clubFormWrapper.contains(clickedEl) &&
+        !clubBtn.contains(clickedEl)
+    ) {
+        isFormOpen = false;
+
+        clubBtn.classList.remove("pressed");
+        clubFormWrapper.classList.remove("form-above");
+        clubBtn.innerHTML = clubBtnInnerHTML;
+        clubFormContent.classList.remove("open");
+        clubFormDripContainer.classList.remove("open");
+        clubFormDripContainer.innerHTML = "";
+    }
+});
+
+function formDrips() {
+    const width = clubFormDripContainer.getBoundingClientRect().width;
+    const dripNumber = Math.floor(Math.random() * (9 - 5 + 1)) + 5;
+
+    for (let i = 0; i < dripNumber; i++) {
+        const dot = document.createElement("div");
+
+        const dotWidth = Math.floor(Math.random() * (5 - 1 + 1) + 1) * 4;
+        dot.style.width = dotWidth + "px";
+
+        const maxLeft = width - dotWidth;
+        const leftPos = Math.random() * maxLeft;
+        dot.style.left = `${leftPos}px`;
+
+        dot.style.transitionDuration = Math.floor(Math.random() * (10 - 2 + 1) + 2) + "s";
+        dot.style.transitionDelay = Math.floor(Math.random() * 2) + "s";
+        dot.classList.add("form-drip");
+
+        clubFormDripContainer.appendChild(dot);
+
+        setTimeout(() => {
+            dot.style.height = Math.floor(Math.random() * (200 - 10 + 1) + 10) + "px";
+        }, 10);
+    }
+
+    console.log(width, dripNumber);
+}
