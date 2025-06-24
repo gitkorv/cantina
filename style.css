@@ -286,6 +286,7 @@ input {
     /* ensures width includes padding/border */
     background: var(--cantinaCream);
     border-radius: 16px;
+    box-sizing: border-box;
 }
 
 
@@ -321,6 +322,7 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: var(--cantinaRosa);
+    outline: 2px solid black;
 }
 
 .club-form__bottom-drip-container {
