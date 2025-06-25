@@ -44,7 +44,6 @@ body {
     height: 100dvh;
     font-family: "acumin-variable", sans-serif;
     font-variation-settings: "slnt" 0, "wdth" 10, "wght" 300;
-    background-color: var(--cantinaLila);
 
 }
 
@@ -65,7 +64,7 @@ main {
 }
 
 section {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     /* flex: 0 1; */
@@ -79,12 +78,13 @@ section {
 section.home {
     display: flex;
     flex-direction: column;
+    background-color: var(--cantinaLila);
+    min-height: 100%;
     /* background-color: #C34A36; */
     /* z-index: 6000; */
 }
 
 section.menu {
-    position: absolute;
     display: block;
     height: 100%;
     border-top: 1px solid var(--darkGray);
@@ -92,7 +92,7 @@ section.menu {
 }
 
 section.menu.no-point {
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
 .ticker-wrapper {
@@ -105,6 +105,7 @@ section.menu.no-point {
     /* width: 100%; */
     margin-right: 40%;
     height: 50%;
+    z-index: 100;
     /* display: none; */
 
 }
@@ -619,6 +620,7 @@ input[type=submit]:hover {
     display: flex;
     /* flex-direction: column; */
     justify-content: center;
+    z-index: 100;
     /* align-items: center; */
 }
 
@@ -665,36 +667,29 @@ input[type=submit]:hover {
     position: absolute;
 }
 
-.splash-address {
-    display: flex;
-    justify-content: center;
-    align-items: end;
-
-    /* flex: .5; */
+.address__para {
+    color: var(--cantinaGreen);
 }
 
-.splash-address p {
-    /* width: 100%; */
-    text-align: center;
-    /* background-color: #3D348B; */
-}
+
 
 
 .menu-wrapper {
     z-index: 200;
     position: absolute;
-    display: block;
+    display: flex;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    padding: 24px;
-    margin-top: 24px 24px;
+    padding: 24px 0px 0px 24px;
+    /* margin-top: 24px 24px; */
     /* flex: 1; */
     transform: translateY(0);
-    background-color: #C34A36;
-    background-color: var(--yellow);
+    /* background-color: #C34A36;
+    background-color: var(--yellow); */
     transition: transform 1s ease-in-out;
+    pointer-events: none;
 }
 
 .menu-wrapper.close {
@@ -704,14 +699,20 @@ input[type=submit]:hover {
 .menu__content {
     height: 100%;
     display: block;
+    padding-left: 8px;
     padding-bottom: 200px;
     overflow-y: scroll;
     overscroll-behavior: none;
-
-
+    background-color: #33a58e;
     /* background-color: red; */
-    border-top: 4px solid var(--darkGray);
+    border-top: 4px solid var(--cantinaCream);
+    transition: transform 1s ease-in-out;
+    pointer-events: all;
+    /* overflow-x: visible; */
+}
 
+.menu__content.close {
+    transform: translateY(100%);
 }
 
 .menu__content.show {
@@ -719,120 +720,253 @@ input[type=submit]:hover {
 }
 
 .menu__cat {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    /* background-color: #7678ED; */
-    /* width: 100%; */
-
+    gap: 1.5rem;
+    overflow-x: hidden;
 }
 
 .menu__cat-head {
+    position: relative;
+    padding-top: 1rem;
+    font-size: 2rem;
+    line-height: 2rem;
+    padding: 24px 8px 0px 4px;
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 900;
     transition: font-variation-settings 1s ease-in-out;
-    color: var(--lightPurple);
+    color: var(--cantinaLila);
 }
 
 .menu__cat-head .blob {
     color: var(--darkPurple);
 }
 
-.menu-item {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.menu__item__list-container {
-    padding: 8px;
-    overflow: visible;
-    margin-right: 75px;
-}
-
-.bites .menu__item__list-container {
-    background-color: var(--orange);
-
-}
-
-.bar .menu__item__list-container {
-    background-color: var(--darkPurple);
-    color: var(--yellow);
-}
-
-.bar .price {
-    color: var(--darkOrange);
-}
-
-.rest .menu__item__list-container {
-    background-color: var(--darkOrange);
-    color: var(--yellow);
-}
-
-.rest .price {
-    color: var(--darkPurple);
-}
-
-.menu__item__list-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    /* background-color: yellow; */
-}
-
-li {
-    all: none;
-    list-style: none;
-}
-
 h2 {
     font-size: 5rem;
 }
 
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+li {
+    list-style: none;
+}
+
+.menu__item-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 90%;
+    padding: 8px;
+    margin-right: 25px;
+}
+
 .menu__item.head {
     position: relative;
-    font-size: 3rem;
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 300;
+    overflow: visible;
 }
 
-.menu__item.sub {
+.tacos .menu__item-wrapper {
+    color: var(--cantinaCream);
+}
+
+
+/* background color */
+
+.snacks-n-nibbles .menu__item-wrapper {
+    background-color: var(--cantinaRosa);
+}
+
+.broth-n-buns .menu__item-wrapper {
+    background-color: var(--cantinaCream);
+}
+
+.tacos .menu__item-wrapper {
+    background-color: black;
+}
+
+.sandwiches .menu__item-wrapper {
+    background-color: var(--cantinaLila);
+}
+
+.kids .menu__item-wrapper {
+    background-color: var(--cantinaRosa);
+}
+
+.sides .menu__item-wrapper {
+    background-color: var(--cantinaGrey);
+}
+
+.dips .menu__item-wrapper {
+    background-color: var(--cantinaCream);
+}
+
+.sweets .menu__item-wrapper {
+    background-color: var(--cantinaRosa);
+}
+
+/* Item headlines */
+
+.snacks.head {
+    color: var(--cantinaCream);
+}
+
+.ramen.head {
+    color: var(--cantinaRosa);
+}
+
+/* ramen dishes heads */
+.menu__item.sans.ramen {
+    /* font-variation-settings: "slnt" 0, "wdth" 90, "wght" 900; */
+    color: var(--cantinaLila);
+}
+
+.bao.head {
+    color: black;
+}
+
+.tacos.head {
+    /* font-variation-settings: "slnt" 0, "wdth" 50, "wght" 600; */
+
+    color: var(--cantinaCream);
+}
+
+.sandwiches.head {
+    color: var(--cantinaRosa);
+}
+
+.sides.head {
+    color: var(--cantinaLila);
+}
+
+.sweets.head {
+    color: var(--cantinaCream);
+}
+
+
+
+
+/* item list text */
+
+.menu__item.sans {
+    width: 100%;
+    padding-top: 4px;
+    padding-right: 50px;
     position: relative;
-    font-size: 2rem;
-    line-height: 2rem;
-    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 400;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 700;
 }
 
-.bites .menu__item.sub {
-    padding-right: 30px;
-}
-
-.menu__item.sub.one-liner {
-    padding-top: 8px;
-    border-top: var(--yellow) 1px solid;
-}
-
-.menu__item.text {
+.menu__item.typewriter {
     position: relative;
-    padding: 8px 24px 8px 0;
+    padding-top: 4px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
+    color: var(--cantinaLila);
 }
 
-.menu__item.text.no-sub {
-    position: relative;
-    padding: 0px 24px 8px 0;
+.menu__item.typewriter.bold {
+    font-variation-settings: "wght" 900;
 }
+
+.menu__item.intro {
+    padding-top: .5rem;
+    border-top: var(--cantinaLila) 4px solid;
+}
+
+/* Baos */
+
+.bao .menu__item.sans.top-border {
+    color: var(--cantinaGreen);
+}
+
+/* tacos */
+
+.tacos.typewriter {
+    color: var(--cantinaRosa);
+}
+
+.sandwiches.sans {
+    color: var(--cantinaCream);
+}
+
+.sides div ul {
+    color: var(--cantinaCream);
+}
+
+.dips div ul li {
+    color: var(--cantinaRosa);
+}
+
+/* sides */
+
+.menu-item.sides > .menu__item-wrapper:nth-last-child(-n + 2) .typewriter {
+    color: var(--cantinaCream);
+}
+
+/* dips */
+
+.menu-item.dips > .menu__item-wrapper > ul li:first-child {
+    border-top: none;
+}
+
+.menu-item.dips > .menu__item-wrapper > ul li:nth-child(3n + 2) {
+    color: var(--cantinaGreen);
+}
+.menu-item.dips > .menu__item-wrapper > ul li:nth-child(3n + 3) {
+    color: var(--cantinaLila);
+}
+
+/* top border */
+.menu__item.sans.top-border {
+    padding-top: .5rem;
+    border-top: var(--cantinaLila) 1px solid;
+}
+
+.menu__item.sans.indent {
+    padding: .25em .5em;
+}
+
+.sweets div ul li {
+    color: var(--cantinaLila);
+}
+
+/* dotted list item */
+
+.list-dot::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0.25em;
+    color: var(--cantinaLila);
+    width: 1rem;
+}
+
+/* prices */
 
 .price {
     position: absolute;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    line-height: 2rem;
+
     text-align: end;
 
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 900;
-    color: var(--darkPurple);
-    top: 0px;
+    color: var(--cantinaLila);
+    top: 40%;
     right: -16px;
     width: 120px;
+    z-index: 100;
     /* height: 64px; */
     /* background-color: wheat; */
 }
@@ -840,6 +974,56 @@ h2 {
 .price.big {
     font-size: 2rem;
 }
+
+.price-top {
+    top: 0;
+}
+
+.rosa {
+    color: var(--cantinaRosa);
+}
+
+.menu-item.sandwiches>.menu__item-wrapper:nth-of-type(4) .price {
+    /* color: black; */
+    top: 2.5rem;
+}
+
+.cat-head-price.price {
+    /* position: relative; */
+    color: var(--cantinaCream);
+    top: 3.5rem;
+    right: 2.5rem;
+    /* background-color: #381460; */
+    width: 200px;
+}
+
+.kids.price.cat-head-price {
+    font-size: 1rem;
+    /* bottom: 36px; */
+    top: 50px;
+    left: 0;
+    text-align: center;
+    /* background-color: #33a58e; */
+}
+
+.dips.price.cat-head-price {
+    color: var(--cantinaLila);
+}
+
+.sides div.price {
+    color: var(--cantinaRosa);
+}
+
+.menu-item.sides > .menu__item-wrapper:nth-last-child(-n + 2) .price {
+    /* color: pink; */
+    top: 0;
+}
+
+.sweets div.price {
+    color: var(--cantinaCream);
+}
+
+/* IM HERE!!!!! */
 
 .allergy {
     margin-top: 48px;
@@ -851,45 +1035,79 @@ h2 {
 
 .menu__btn-wrapper {
     position: relative;
-    height: 48px;
+    /* height: 200px; */
     bottom: 0;
     /* left: 0; */
     /* justify-self: end; */
     /* height: fit-content; */
-    /* align-self: center; */
+    align-self: end;
     display: flex;
-    padding: 16px;
-    width: 100%;
-    justify-content: space-between;
+    flex-direction: column;
+    /* padding: 8px; */
+    width: 200px;
+    /* justify-content: space-between; */
     /* justify-items: stretch; */
-    gap: 16px;
-    background-color: var(--yellow);
+    /* gap: 16px; */
+    /* background-color: var(--cantinaCream); */
     z-index: 1000;
+    pointer-events: all;
     /* display: none; */
+}
 
+.menu__btn-wrapper div {
+    padding: 8px;
+    display: flex;
 }
 
 .menu__btn {
     all: none;
+    /* height: 50px; */
     /* text-align: ; */
     flex: 1 0 auto;
+    /* gap: 4px; */
     /* height: 30px; */
     background: none;
-    padding: 4px 8px;
+    padding: 8px 8px;
     /* border: 1px solid var(--darkPurple); */
     border-style: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
-    background-color: var(--lightPurple);
-    box-shadow: var(--darkOrange) 3px 3px 0px;
+    /* box-shadow: var(--darkOrange) 3px 3px 0px; */
 
     opacity: 1;
     transition: all .15s ease-in-out;
 }
 
-.menu__btn.btn-op {
-    text-align: center;
+.menu__sections-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    transition: transform .5s ease-in-out;
+}
+
+.menu__sections-wrapper.close {
+    transform: translateY(120%);
+}
+
+.btn-menu-section {
+    background-color: var(--cantinaCream);
+
+    color: var(--cantinaLila);
+    font-family: "acumin-variable", sans-serif;
+    font-variation-settings: "slnt" 0, "wdth" 30, "wght" 900;
+}
+
+.menu__op-wrap {
+    /* background-color: var(--cantinaCream); */
+    z-index: 100;
+
+}
+
+.btn-op {
+    background-color: #33a58e;
+    /* text-align: center; */
 }
 
 .menu__btn.pressed {
@@ -899,8 +1117,8 @@ h2 {
 }
 
 .menu__btn.active {
-    background-color: var(--darkGray);
-    color: var(--yellow);
+    background-color: var(--cantinaRosa);
+    color: var(--cantinaCream);
 }
 
 
@@ -946,61 +1164,9 @@ h2 {
     color: var(--cantinaCream);
 }
 
-@media (max-width: 500px) {
-    .temp-menu-body {
-        padding: 24px;
-    }
-
-    .food-popup-menu {
-        margin-bottom: 24px;
-    }
-}
-
-@media (min-width: 700px) {
-    .kolla-meny {
-        right: 200px;
-
-    }
-
-    .kolla-meny {
-        font-size: 2rem;
-        left: 100px;
-        top: 175px;
-    }
-}
-
 @media (max-height: 700px) {
-
-    .kolla-meny {
-        top: 200px;
-    }
 
     .ticker-item {
         top: 50px;
     }
-
-    /* .ticker-head {
-        font-size: .75rem;
-        height: 16px;
-    }
-
-    .ticker-text {
-        font-size: .75rem;
-    } */
-
-    /* .club-push {
-        top: 130px;
-        padding: 12px;
-        width: 240px;
-    } */
-
-    /* .logo-wrapper {
-        padding-bottom: 12px;
-    } */
-
-    /* .address {
-        margin-top: 8px;
-    } */
-
-
 }

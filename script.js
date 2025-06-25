@@ -37,6 +37,8 @@ const streetFoodSpans = Array.from(streetFoodWrap.querySelectorAll(".street-food
 
 // Ticker
 const ticker = document.querySelector(".ticker-wrapper");
+
+// Below logo
 const belowLogoWrapper = document.querySelector(".below-logo-wrapper")
 
 // Club
@@ -44,6 +46,8 @@ const clubPush = document.querySelector(".club-push")
 
 // Menu
 const menuContent = document.querySelector(".menu__content")
+const menuSecBtnWrap = document.querySelector(".menu__sections-wrapper")
+console.log(menuSecBtnWrap);
 
 const menuCategoryHeads = [...document.querySelectorAll(".menu__cat-head")];
 
@@ -56,10 +60,10 @@ const allMenuBtns = [...document.querySelectorAll(".menu__btn")]
 const menuOpBtn = document.querySelector(".btn-op")
 
 // Hide on start
-const fullDisplayArr = [ticker, belowLogoWrapper, clubBtn]
+const fullDisplayArr = [belowLogoWrapper, clubBtn]
 
 // Close Menu at start
-closeMenu()
+// closeMenu()
 
 // Opening Splash Page
 const sprayDots = document.querySelectorAll(".spray-splash")
@@ -134,32 +138,29 @@ const cLT = [
 
 const tickerItems = [
     {
-        head: "Dörren är öppen!",
-        text: "Vi är äntligen igång så kom in och säg hej! Öppettider nedan:"
+        head: "Tjom Pang!",
+        text: "Nu kör vi så kom in och säg hej!"
+    },
+    {
+        head: "Öppet till sent",
+        text: "Fredag och Lördag är dörrarna öppen tills 03. Alla öppettider hittar du nedan."
     },
     {
         head: "Äkta street food",
-        text: "Saftiga tacos, kryddiga bao buns, het ramen och färgglada cocktails – alltid med en twist!"
+        text: "Saftiga tacos, mumsiga bao buns, het ramen och mycket mer. Kolla menyn i botten på sidan."
     },
     {
         head: "Join the Club!",
-        text: "Vill du ha våra hetaste nyheter först? Klicka uppe till höger och bli en del av klubben – det lönar sig!"
+        text: "Vill du ha våra nyheter först? Klicka uppe till höger och bli en del av klubben!"
     },
-    {
-        head: "Kvalitetshäng",
-        text: "Grym mat, skön musik och en stämning som är både avslappnad och elektrisk."
-    },
+
     {
         head: "DJ:s!",
-        text: "Sköna beats, bra vibbar och en stämning som lyfter kvällen."
+        text: "Håll utkik på våra socials vem som styr spakarna, och när."
     },
     {
         head: "Cocktails!",
-        text: "På dansgolvet skakas rumpor och i baren skakar vi oförglömliga drinkar."
-    },
-    {
-        head: "Värdslig mat",
-        text: "Latinamerika, Asien, USA – vi har samlat det bästa från street food-scenen"
+        text: "På dansgolvet skakas rumpor och i baren skakar vi roliga drinkar."
     }
 ];
 
@@ -170,12 +171,14 @@ ticker.style.display = "none"
 const typeTickerTextContainer = document.querySelector(".ticker-text");
 
 function runNewsTicker() {
+
     const tickerItem = tickerItems[currentTickerItemIndex];
     const head = tickerItem.head;
     const text = tickerItem.text;
 
     // Step 1: Transition effect for head
     function updateHead() {
+    ticker.style.display = ""
         // Add a "fade-out" class
         typeTickerHeadContainer.classList.add("fade-out");
 
@@ -212,6 +215,9 @@ function runNewsTicker() {
     }
     typeText(); // Start typing the text
 }
+
+runNewsTicker();
+
 
 function showHomeElements() {
 
@@ -327,7 +333,7 @@ function showHomeElements() {
             }
         }
 
-        runNewsTicker();
+        // runNewsTicker();
     }, clubStampEnterTime + 1500);
 
     setTimeout(() => {
@@ -357,9 +363,15 @@ function fadeInFromOpacityZero(element) {
 let btnPressTransTime = parseFloat(getComputedStyle(menuOpBtn).transitionDuration) * 100;
 // console.log(btnPressTransTime);
 
-let bitesSectionHeader = document.querySelector(".bites")
-let barSectionHeader = document.querySelector(".bar")
-let restSectionHeader = document.querySelector(".rest")
+let snacksSectionHeader = document.querySelector(".h2snacks")
+console.log(snacksSectionHeader);
+let brothSectionHeader = document.querySelector(".h2broth")
+let tacosSectionHeader = document.querySelector(".h2tacos")
+let sandwichesSectionHeader = document.querySelector(".h2sandwiches")
+let kidsSectionHeader = document.querySelector(".h2kids")
+let sidesSectionHeader = document.querySelector(".h2sides")
+let dipsSectionHeader = document.querySelector(".h2dips")
+let sweetsSectionHeader = document.querySelector(".h2sweets")
 let menuTransTime;
 // Menu Sec Btns
 menuSectionBtns.forEach(btn => {
@@ -371,14 +383,24 @@ menuSectionBtns.forEach(btn => {
         console.log(btn);
 
         setTimeout(() => {
-            if (btn.textContent === "Bar") {
-                console.log("bar");
-                barSectionHeader.scrollIntoView({ behavior: "smooth" });
-            } else if (btn.textContent === "The Rest") {
-                console.log("rest");
-                restSectionHeader.scrollIntoView({ behavior: "smooth" });
+            if (btn.textContent === "snacks n nibbles") {
+                snacksSectionHeader.scrollIntoView({ behavior: "smooth" });
+            } else if (btn.textContent === "broth n buns") {
+                brothSectionHeader.scrollIntoView({ behavior: "smooth" });
+            } else if (btn.textContent === "tacos") {
+                tacosSectionHeader.scrollIntoView({ behavior: "smooth" });
+            } else if (btn.textContent === "sandwiches") {
+                sandwichesSectionHeader.scrollIntoView({ behavior: "smooth" });
+            } else if (btn.textContent === "kids") {
+                kidsSectionHeader.scrollIntoView({ behavior: "smooth" });
+            } else if (btn.textContent === "fries n sides") {
+                sidesSectionHeader.scrollIntoView({ behavior: "smooth" });
+            } else if (btn.textContent === "dips") {
+                sidesSectionHeader.scrollIntoView({ behavior: "smooth" });
+            } else if (btn.textContent === "sweets") {
+                sweetsSectionHeader.scrollIntoView({ behavior: "smooth" });
             } else {
-                bitesSectionHeader.scrollIntoView({ behavior: "smooth" });
+                snacksSectionHeader.scrollIntoView({ behavior: "smooth" });
             }
         }, menuTransTime * 0.75);
 
@@ -386,20 +408,29 @@ menuSectionBtns.forEach(btn => {
             menuCategoryHeads.forEach(catHead => {
                 makeFunkyMenuCategoryHeads(catHead)
             })
-        }, menuTransTime);
+        }, menuTransTime - 100);
     })
 })
 // Menu Btns
+
+let menuOpen = false;
+
 menuOpBtn.addEventListener("click", e => {
+    console.log("op clicked");
     let btn = e.target;
-    closeMenu()
+
+    menuOpen ? closeMenu() : openMenu();
+
+    menuOpen = !menuOpen;
+
+// closeMenu()
     setTimeout(() => {
         btn.classList.remove("pressed")
         btn.classList.remove("active")
     }, btnPressTransTime);
-
 })
 // All btns
+
 allMenuBtns.forEach(btn => {
     btn.addEventListener("click", e => {
         allMenuBtns.forEach(btn => {
@@ -419,14 +450,16 @@ allMenuBtns.forEach(btn => {
 })
 
 function closeMenu() {
-    menuWrapper.classList.add("close");
+    menuContent.classList.add("close");
+    menuSecBtnWrap.classList.add("close");
     allMenuBtns.forEach(btn => {
         btn.classList.remove("active", "pressed");
     })
     menuSection.classList.add("no-point")
 }
 function openMenu() {
-    menuWrapper.classList.remove("close");
+    menuContent.classList.remove("close");
+    menuSecBtnWrap.classList.remove("close");
     menuSection.classList.remove("no-point")
 
 }
@@ -539,7 +572,7 @@ clubBtn.addEventListener("click", (e) => {
     // clubFormDripContainer.classList.toggle("open");
 
     setTimeout(() => {
-            formDrips()
+        formDrips()
 
     }, 500);
 
