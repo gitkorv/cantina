@@ -70,7 +70,7 @@ section {
     /* flex: 0 1; */
     height: calc(100% - 48px);
     width: 100%;
-    padding: 24px 24px 16px;
+    padding: 24px 24px 24px;
     width: 100%;
     /* background-color: grey; */
 }
@@ -1055,7 +1055,7 @@ li {
 }
 
 .menu__btn-wrapper div {
-    padding: 8px;
+    padding: 8px 24px 24px 8px;
     display: flex;
 }
 
