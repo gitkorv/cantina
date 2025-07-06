@@ -91,14 +91,14 @@
 
             <div class="menu__btns-wrapper">
                 <div class="menu__btns__secBtns-wrapper menu__btns__secBtns-wrapper--closed">
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--snacks">snacks n nibbles</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--broth">broth n buns</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--tacos">tacos</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--sandwiches">sandwiches</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--kids">kids</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--sides">fries n sides</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--dips">dips</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--sweets">sweets</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--snacks" data-menu-cat="snacks-n-nibbles">snacks n nibbles</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--broth" data-menu-cat="broth-n-buns">broth n buns</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--tacos" data-menu-cat="tacos">tacos</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--sandwiches" data-menu-cat="sandwiches">sandwiches</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--kids" data-menu-cat="kids">kids</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--sides" data-menu-cat="sides">fries n sides</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--dips" data-menu-cat="dips">dips</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--sweets" data-menu-cat="sweets">sweets</button>
                 </div>
                 <div class="menu__btn__opBtn-wrapper">
                     <button class="menu__btn menu__btn__opBtn">menu</button>
@@ -15550,7 +15550,7 @@
                         <p class="menu____extra-info menu____extra-info--allergy">Vid frågor angående allergier eller ursprungsländer, fråga oss!</p>
                     </div>
 
-                    <div class="menu__cat-wrapper menu-cat--snacks-n-nibbles">
+                    <div class="menu__cat-wrapper menu-cat--snacks-n-nibbles" data-menu-cat="snacks-n-nibbles">
                         <div class="menu__cat__head-wrapper">
                             <h2 class="menu__cat__head">snacks n nibbles</h2>
                         </div>
@@ -15642,7 +15642,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="menu__cat-wrapper menu-cat--broth-n-buns">
+                    <div class="menu__cat-wrapper menu-cat--broth-n-buns" data-menu-cat="broth-n-buns">
                         <div class="menu__cat__head-wrapper">
                             <h2 class="menu__cat__head">broth n buns</h2>
                         </div>
@@ -15702,12 +15702,14 @@
                                             pork belly hot sauce</li>
                                     </ul>
                                 </div>
-                                <div class="menu____dish-price menu____dish-price--big">85:-
-                                    st</div>
+                                <div class="menu____dish-price menu____dish-price--big">
+                                    <span class="menu____dish-price__left-aligned">85:-</span> 
+                                    <span class="menu____dish-price__right-aligned">st</span> 
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="menu__cat-wrapper menu-cat--tacos">
+                    <div class="menu__cat-wrapper menu-cat--tacos" data-menu-cat="tacos">
                         <div class="menu__cat__dishes-wrapper ">
                             <div class="menu__cat__head-wrapper">
                                 <h2 class="menu__cat__head">tacos</h2>
@@ -15723,9 +15725,10 @@
                                             consommé</li>
                                     </ul>
                                 </div>
-                                <div class="menu____dish-price menu____dish-price--big">
-                                    2st
-                                    55:-</div>
+                                <div class="menu____dish-price menu____dish-price--big menu____dish-price--move-up">
+                                    <span class="menu____dish-price__left-aligned">2st</span> 
+                                    <span class="menu____dish-price__right-aligned">55:-</span> 
+                                </div>
                             </div>
                             <div class="menu____dish-wrapper">
                                 <div class="menu____dish-content">
@@ -15773,7 +15776,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="menu__cat-wrapper menu-cat--sandwiches">
+                    <div class="menu__cat-wrapper menu-cat--sandwiches" data-menu-cat="sandwiches">
                         <div class="menu__cat__head-wrapper">
                             <h2 class="menu__cat__head">sandwiches</h2>
                         </div>
@@ -15852,7 +15855,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="menu__cat-wrapper menu__cat--kids">
+                    <div class="menu__cat-wrapper menu__cat--kids" data-menu-cat="kids">
                         <div class="menu__cat__head-wrapper">
                             <h2 class="menu__cat__head kids">kids</h2>
                         </div>
@@ -15916,7 +15919,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="menu__cat-wrapper menu__cat--sides">
+                    <div class="menu__cat-wrapper menu__cat--sides" data-menu-cat="sides">
                         <div class="menu__cat__head-wrapper">
                             <h2 class="menu__cat__head">fries n sides</h2>
                         </div>
@@ -15978,7 +15981,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="menu__cat-wrapper menu__cat--dips">
+                    <div class="menu__cat-wrapper menu__cat--dips" data-menu-cat="dips">
                         <div class="menu__cat__head-wrapper">
                             <h2 class="menu__cat__head h2dips">dips</h2>
                         </div>
@@ -16001,7 +16004,7 @@
 
                         </div>
                     </div>
-                    <div class="menu__cat-wrapper menu__cat--sweets">
+                    <div class="menu__cat-wrapper menu__cat--sweets" data-menu-cat="sweets">
                         <div class="menu__cat__head-wrapper">
                             <h2 class="menu__cat__head">sweets</h2>
                         </div>

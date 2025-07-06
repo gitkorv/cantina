@@ -1,15 +1,13 @@
 // General
 const root = document.documentElement;
 const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+let windowHeight = window.innerHeight;
+let windowWidth = window.innerWidth;
 
 // CSS Variables
 const cssVarfoodMenuPaddingInner = parseFloat(getComputedStyle(root).getPropertyValue('--foodMenuPaddingInner').trim()) * rootFontSize;
 
-let windowHeight = window.innerHeight;
-let windowWidth = window.innerWidth;
-console.log(windowWidth);
 // Sections
-
 
 // Club
 const clubBtn = document.querySelector(".club-btn")
@@ -18,12 +16,10 @@ const clubFormContent = document.querySelector(".club-form__content")
 const clubFormWrapper = document.querySelector(".club-form-wrapper")
 let isFormOpen = false;
 const clubFormDripContainer = document.querySelector(".club-form__bottom-drip-container")
-console.log(clubFormDripContainer);
-// console.log(clubFormWrapper);
+
 // logo Cantina
 const logoWrapper = document.querySelector(".logo-wrapper")
 const logoHeadWrap = document.querySelector(".logo__head")
-// logoHeadWrap.style.transition = "none";
 const logoHeadWrapTextArr = [...logoHeadWrap.textContent]
 logoHeadWrap.textContent = "";
 
@@ -35,7 +31,6 @@ const clubTextWrapWidth = clubTextWrap.getBoundingClientRect().width;
 clubTextWrap.style.transition = "none"
 clubTextWrap.classList.add("rolled-up")
 streetFoodClubWrap.style.marginRight = clubTextWrapWidth + "px";
-
 const streetFoodWrap = document.querySelector(".logo__sub__streetfood-wrap")
 const streetFoodSpans = Array.from(streetFoodWrap.querySelectorAll(".street-food"))
 
@@ -45,11 +40,7 @@ const ticker = document.querySelector(".ticker-wrapper");
 // Below logo
 const belowLogoWrapper = document.querySelector(".below-logo-wrapper")
 
-// Club
-const clubPush = document.querySelector(".club-push")
-
 // Menu
-
 const menuBgGap = 24;
 let menuBgWidth = undefined;
 const menuWrapper = document.querySelector(".menu-wrapper")
@@ -59,6 +50,7 @@ const menuContentScroller = document.querySelector(".menu-content-scroller")
 const menuContentBg = document.querySelector(".menu-content-bg")
 let menuUnOpened = true;
 const menuCategoryHeads = [...document.querySelectorAll(".menu__cat__head")];
+const menuCategorySections = document.querySelectorAll(".menu__cat-wrapper");
 
 // Collect elm that need menwidth
 
@@ -66,8 +58,6 @@ const menuWidthElements = [
     ...document.querySelectorAll(".menu____dish-content"),
     ...document.querySelectorAll(".menu-content__extra-info-container")
 ]
-
-console.log(menuWidthElements);
 
 // Menu buttons
 const menuBtnWrapper = document.querySelector(".menu__btns-wrapper")
@@ -376,46 +366,21 @@ const menuCatMap = {};
 
 // Find all the headings
 document.querySelectorAll(".menu__cat__head").forEach(head => {
-  // Get the text of the heading
-  const text = head.textContent.trim().toLowerCase();
+    // Get the text of the heading
+    const text = head.textContent.trim().toLowerCase();
 
-  // Find the closest wrapper to scroll to
-  const wrapper = head.closest(".menu__cat-wrapper");
+    // Find the closest wrapper to scroll to
+    const wrapper = head.closest(".menu__cat-wrapper");
 
-  // Only add if found
-  if (wrapper) {
-    menuCatMap[text] = wrapper;
-  }
+    // Only add if found
+    if (wrapper) {
+        menuCatMap[text] = wrapper;
+    }
 });
 
 console.log(menuCatMap);
 
-menuSecBtnsAll.forEach(btn => {
-  btn.addEventListener("click", e => {
-    const clickedBtn = e.target;
 
-    menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
-
-    setTimeout(() => {
-      // ⬇️ Put them here:
-      const btnText = clickedBtn.textContent.trim().toLowerCase();
-      const targetSection = menuCatMap[btnText];
-
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-        window.scrollBy(0, -80); // Offset for your 24px fixed header
-      } else {
-        console.warn("No matching section for button:", btnText);
-      }
-    }, menuTransTime * 0.75);
-
-    setTimeout(() => {
-      menuCategoryHeads.forEach(catHead => {
-        makeFunkyMenuCategoryHeads(catHead);
-      });
-    }, menuTransTime - 100);
-  });
-});
 
 makeFunkyMenuCategoryHeads(menuCategoryHeads[0]);
 
@@ -441,8 +406,50 @@ function makeFunkyMenuCategoryHeads(headlineArr) {
     })
 }
 
+const menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
+
+menuSecBtnsAll.forEach(btn => {
+    btn.addEventListener("click", e => {
+        const clickedBtn = e.currentTarget;
+
+        // Remove pressed/active from all
+        menuSecBtnsAll.forEach(b => b.classList.remove("pressed", "active"));
+        // Add pressed to the one just clicked
+        clickedBtn.classList.add("pressed");
+
+        // Toggle menu transition timing
 
 
+        // Scroll and offset
+        setTimeout(() => {
+            const btnText = clickedBtn.textContent.trim().toLowerCase();
+            const targetSection = menuCatMap[btnText];
+
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                    inline: "nearest"
+                });
+            } else {
+                console.warn("No matching section for button:", btnText);
+            }
+        }, menuTransTime * 0.75);
+
+        // Mark as active after pressed animation
+        setTimeout(() => {
+            clickedBtn.classList.remove("pressed");
+            clickedBtn.classList.add("active");
+        }, btnPressTransTime);
+
+        // Re-style headers after transition
+        setTimeout(() => {
+            menuCategoryHeads.forEach(catHead => {
+                makeFunkyMenuCategoryHeads(catHead);
+            });
+        }, menuTransTime - 100);
+    });
+});
 
 // Menu Btns
 
@@ -452,58 +459,58 @@ let orgOpMenuText = menuOpBtn.textContent;
 
 menuOpBtn.addEventListener("click", e => {
     console.log("op clicked");
-    menuOpen = !menuOpen; // toggle first
-    menuOpen ? openMenu() : closeMenu();
-    // e.target.classList.remove('active, pressed"')
-    e.target.classList.add("pressed");
+
+    // Toggle menu state first
+    menuOpen = !menuOpen;
+
+    if (menuOpen) {
+        openMenu();
+    } else {
+        closeMenu();
+    }
+
+    // You were trying to remove "active, pressed" here with a typo
+    // If you want to reset pressed/active, do it consistently:
+    menuOpBtn.classList.add("pressed");
 });
 
 
-menuSecBtnsAll.forEach(btn => {
-    btn.addEventListener("click", e => {
-        menuSecBtnsAll.forEach(b => {
-            b.classList.remove("pressed", "active");
-        });
-
-        btn.classList.add("pressed");
-
-        setTimeout(() => {
-            btn.classList.remove("pressed");
-            btn.classList.add("active");
-        }, btnPressTransTime);
-    });
-});
-
+const MENU_TRANSITION_DELAY = 150;
 
 function closeMenu() {
     console.log("close menu");
     menuWrapper.classList.add("menu-wrapper--closed");
-    // menuContent.classList.add("menu-wrapper--closed");
     menuSecBtnsWrapper.classList.add("menu__btns__secBtns-wrapper--closed");
-
     menuOpBtn.classList.remove("active");
+
     setTimeout(() => {
         menuOpBtn.classList.remove("pressed");
         menuOpBtn.textContent = orgOpMenuText;
+    }, MENU_TRANSITION_DELAY);
 
-    }, 150);
     menuOpen = false;
-
 }
 
 function openMenu() {
     console.log("open menu");
 
-    menuUnOpened ? makeFunkyMenuCategoryHeads(menuCategoryHeads[0]) : null;
+    if (menuUnOpened) {
+        makeFunkyMenuCategoryHeads(menuCategoryHeads[0]);
+        // setTimeout(() => {
+        //     menuSecBtnsAll[0].classList.add("active");
+        // }, menuTransTime);
+
+    }
+
     menuUnOpened = false;
     menuWrapper.classList.remove("menu-wrapper--closed");
     menuSecBtnsWrapper.classList.remove("menu__btns__secBtns-wrapper--closed");
 
     setTimeout(() => {
         menuOpBtn.classList.add("active");
-        menuOpBtn.textContent = "X"
+        menuOpBtn.textContent = "X";
+    }, MENU_TRANSITION_DELAY);
 
-    }, 150);
     menuOpen = true;
 }
 
@@ -566,11 +573,6 @@ window.addEventListener("load", e => {
     belowLogoWrapper.style.transition = "none";
 })
 
-// const kollaMenuBtn = document.querySelector(".kolla-meny");
-// console.log(kollaMenuBtn)
-
-console.log(clubFormContent);
-
 clubBtn.addEventListener("click", (e) => {
     e.stopPropagation();  // Prevent event from bubbling to document
     const btn = e.target; // Reference to the clicked button
@@ -595,14 +597,6 @@ clubBtn.addEventListener("click", (e) => {
         formDrips()
 
     }, 500);
-
-    // clubFormContent.addEventListener('transitionend', (e) => {
-    //     if (isFormOpen) {
-    //         console.log('Transition finished for:', e.propertyName);
-    //         formDrips()
-    //     }
-
-    // })
 });
 
 document.addEventListener("click", (e) => {
@@ -669,7 +663,7 @@ function resizeElements() {
     menuBgWidth = menuBtnWrapperWidth - menuContent.getBoundingClientRect().left;
 
     setWidthToMatchMenuBg(menuBgWidth)
-    
+
 }
 
 menuWrapper.addEventListener('click', e => {
@@ -689,3 +683,47 @@ function setWidthToMatchMenuBg(menuBgWidth) {
     })
 
 }
+
+
+// Create observer for menu categories
+
+const menuCatObserverOptions = {
+    root: menuContentScroller,            // null = viewport
+    rootMargin: "-50% 0px -50% 0px",
+    threshold: 0
+};
+
+const menuCatObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const target = entry.target;
+
+        if (entry.isIntersecting) {
+            // The section is in view
+            console.log("Section visible:", target);
+
+            // Example: mark corresponding button as active
+            const id = target.dataset.menuCat;
+            if (id) {
+                // Remove previous actives
+                menuSecBtnsAll.forEach(btn => btn.classList.remove("active"));
+
+                // Find the button matching this section
+                const matchingBtn = Array.from(menuSecBtnsAll).find(btn =>
+                    btn.dataset.menuCat === id
+                );
+                if (matchingBtn) {
+                    matchingBtn.classList.add("active");
+                }
+            }
+
+        } else {
+            // Section leaving view if you want to handle that
+            // console.log("Section leaving:", target);
+        }
+    });
+}, menuCatObserverOptions);
+
+// 3. Observe each section
+menuCategorySections.forEach(section => {
+    menuCatObserver.observe(section);
+});

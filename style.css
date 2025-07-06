@@ -13,6 +13,7 @@
 
     --foodMenuPaddingOuter: 1rem;
     --foodMenuPaddingInner: .5rem;
+    --bodyPadding: 24px;
 }
 
 .bg-green {
@@ -99,8 +100,7 @@ section {
     top: 0;
     left: 0;
     /* flex: 0 1; */
-    height: calc(100% - 48px);
-    width: 100%;
+    /* height: calc(100% - 48px); */
     width: 100%;
     overflow: hidden;
     /* background-color: grey; */
@@ -110,22 +110,12 @@ section.home {
     position: absolute;
     display: flex;
     flex-direction: column;
-    padding: 24px 24px 24px;
+    padding: var(--bodyPadding);
     min-height: 100%;
 }
 
-section.menu {
-    display: flex;
-    align-items: end;
-    justify-content: end;
-    height: 100%;
-    padding-top: 24px;
-    /* z-index: -100; */
-}
+/* ----------> TICKER <---------- */
 
-section.menu.no-point {
-    pointer-events: none;
-}
 
 .ticker-wrapper {
     position: absolute;
@@ -172,6 +162,8 @@ section.menu.no-point {
     font-variation-settings: "wght" 600;
     color: var(--cantinaCream);
 }
+
+/* ----------> CLUB <---------- */
 
 .club-btn {
     position: absolute;
@@ -682,7 +674,7 @@ input[type=submit]:hover {
     padding-top: 0px;
     z-index: 200;
     /* display: flex; */
-    height: 100%;
+    height: calc(100% - 24px)
     /* width: 50%; */
     max-width: 100%;
     transform: translateY(0);
@@ -715,7 +707,7 @@ input[type=submit]:hover {
     left: var(--foodMenuPaddingOuter);
     height: 100%;
     width: 100%;
-    background-color: teal;
+    background-color: var(--cantinaRosa);
 
 }
 
@@ -821,43 +813,44 @@ input[type=submit]:hover {
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 300;
     overflow: visible;
     padding-bottom: 8px;
-    white-space: pre-wrap;
-    /* background-color: #72808a; */
-    padding-right: 48px;
+    padding-right: 80px;
 }
 
 .menu____dish-price {
+    position: absolute;
     display: flex;
+    flex-direction: column;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
-    position: absolute;
-    right: 8px;
-    color: var(--cantinaRosa);
-    text-shadow: var(--cantinaLila) 2px 2px 2px;
-    white-space: pre-wrap;
+    right: 12px;
+    color: var(--cantinaLila);
+    text-shadow: var(--cantinaCream) 2px 2px 2px;
     /* background-color: #72808a; */
     text-align: right;
+    width: 120px;
     /* width: fit-content; */
-    padding-top: 1rem;
+    /* padding-top: 1rem; */
 }
 
 .menu____dish-price--big {
-
     font-size: 2.5rem;
-    line-height: 1rem;
+    line-height: 1.5rem;
 }
 
-.menu____dish-price--top {
-    top: 8px;
+.menu____dish-price--prewrap {
+        white-space: pre-wrap;
+
+}
+.menu____dish-price--move-up {
+    top: -16px;
+}
+.menu____dish-price__left-aligned {
+    align-self: flex-start;
+    text-align: left;
 }
 
-.menu____dish-price--section {
-    top: 24px;
-}
-
-.menu____dish-price--section--low {
-    top: 64px;
-    right: 16px;
+.menu____dish-right-aligned {
+    align-self: flex-end;
 }
 
 .menu____dish__text-container {
@@ -1004,7 +997,9 @@ input[type=submit]:hover {
 }
 
 .menu__btn__opBtn {
-    background-color: #33a58e;
+    text-align: center;
+    padding: 12px 8px;
+    background-color: var(--cantinaGreen);
     box-shadow: var(--cantinaRosa) 2px 2px 0px;
 }
 
@@ -1014,10 +1009,14 @@ input[type=submit]:hover {
 }
 
 .menu__btn.active {
-    background-color: var(--cantinaRosa);
+    background-color: var(--cantinaGreen);
     color: var(--cantinaCream);
     box-shadow: var(--cantinaCream) 2px 2px 0px;
     scale: 100%;
+}
+
+.menu__btn.menu__btn__opBtn.active {
+    background-color: var(--cantinaGrey);
 }
 
 
