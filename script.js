@@ -3,6 +3,7 @@ const root = document.documentElement;
 const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
 let windowHeight = window.innerHeight;
 let windowWidth = window.innerWidth;
+const body = document.get
 
 // CSS Variables
 const cssVarfoodMenuPaddingInner = parseFloat(getComputedStyle(root).getPropertyValue('--foodMenuPaddingInner').trim()) * rootFontSize;
@@ -49,6 +50,7 @@ const menuContent = document.querySelector(".menu-content")
 const menuContentScroller = document.querySelector(".menu-content-scroller")
 const menuContentBg = document.querySelector(".menu-content-bg")
 let menuUnOpened = true;
+const menuCategoryHeadWrappers = [...document.querySelectorAll(".menu__cat__head-wrapper")];
 const menuCategoryHeads = [...document.querySelectorAll(".menu__cat__head")];
 const menuCategorySections = document.querySelectorAll(".menu__cat-wrapper");
 
@@ -56,6 +58,8 @@ const menuCategorySections = document.querySelectorAll(".menu__cat-wrapper");
 
 const menuWidthElements = [
     ...document.querySelectorAll(".menu____dish-content"),
+    ...menuCategoryHeadWrappers,
+    ...menuCategoryHeads,
     ...document.querySelectorAll(".menu-content__extra-info-container")
 ]
 
@@ -378,33 +382,8 @@ document.querySelectorAll(".menu__cat__head").forEach(head => {
     }
 });
 
-console.log(menuCatMap);
 
 
-
-makeFunkyMenuCategoryHeads(menuCategoryHeads[0]);
-
-function makeFunkyMenuCategoryHeads(headlineArr) {
-    let catHeadLetters = [...headlineArr.textContent]
-    headlineArr.textContent = "";
-    catHeadLetters.forEach((letter, i) => {
-        const catHeadSpan = document.createElement("span");
-        // catHeadSpan.classList.add("blob")
-        catHeadSpan.textContent = letter;
-        catHeadSpan.style.transition = `font-variation-settings 1s ease-in-out`;
-        // catHeadSpan.style.transitionDelay = 100 * i + "s";
-
-        let weight = Math.floor(Math.random() * (901 - 100) + 100)
-        let width = Math.floor(Math.random() * (116 - 50) + 50)
-        let slant = Math.random() > 0.5 ? Math.floor(Math.random() * (13) - 12) : 0;
-
-        setTimeout(() => {
-            catHeadSpan.style.fontVariationSettings = `"slnt" ${slant}, "wdth" ${width}, "wght" ${weight}`
-        }, 200);
-
-        headlineArr.appendChild(catHeadSpan)
-    })
-}
 
 const menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
 
@@ -494,13 +473,13 @@ function closeMenu() {
 function openMenu() {
     console.log("open menu");
 
-    if (menuUnOpened) {
-        makeFunkyMenuCategoryHeads(menuCategoryHeads[0]);
-        // setTimeout(() => {
-        //     menuSecBtnsAll[0].classList.add("active");
-        // }, menuTransTime);
+    // if (menuUnOpened) {
+    //     makeFunkyMenuCategoryHeads(menuCategoryHeads[0]);
+    //     // setTimeout(() => {
+    //     //     menuSecBtnsAll[0].classList.add("active");
+    //     // }, menuTransTime);
 
-    }
+    // }
 
     menuUnOpened = false;
     menuWrapper.classList.remove("menu-wrapper--closed");
@@ -667,8 +646,16 @@ function resizeElements() {
 }
 
 menuWrapper.addEventListener('click', e => {
-    console.log("meny wrapper is clicked");
+    console.log("meny wrapper is clicked", e.target);
+    if (e.target.matches(".menu-content")) {
+        return; // Ignore this click
+    }
     closeMenu()
+})
+
+menuContent.addEventListener('click', e => {
+    e.stopPropagation(); // stops bubbling
+  // your child click logic
 })
 
 // openMenu()
@@ -688,7 +675,7 @@ function setWidthToMatchMenuBg(menuBgWidth) {
 // Create observer for menu categories
 
 const menuCatObserverOptions = {
-    root: menuContentScroller,            // null = viewport
+    root: menuContentScroller,
     rootMargin: "-50% 0px -50% 0px",
     threshold: 0
 };
@@ -701,7 +688,6 @@ const menuCatObserver = new IntersectionObserver((entries) => {
             // The section is in view
             console.log("Section visible:", target);
 
-            // Example: mark corresponding button as active
             const id = target.dataset.menuCat;
             if (id) {
                 // Remove previous actives
@@ -723,7 +709,75 @@ const menuCatObserver = new IntersectionObserver((entries) => {
     });
 }, menuCatObserverOptions);
 
-// 3. Observe each section
 menuCategorySections.forEach(section => {
     menuCatObserver.observe(section);
 });
+
+
+// Create observer for menu heads
+
+const menuCatHeadObserverOptions = {
+    root: menuContentScroller,
+    rootMargin: "-25% 0px -25% 0px",
+    threshold: 0
+};
+
+const menuCatHeadObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const target = entry.target;    
+
+        if (entry.isIntersecting) {
+            // The section is in view
+            console.log("Section visible:", target);
+            makeFunkyMenuCategoryHeads(target)
+
+        } else {
+            // Section leaving view if you want to handle that
+            // console.log("Section leaving:", target);
+        }
+    });
+}, menuCatHeadObserverOptions);
+
+menuCategoryHeads.forEach(section => {
+    menuCatHeadObserver.observe(section);
+});
+
+
+
+
+// Make funky cathegoy heads
+
+// Start one directly
+menuCategoryHeads.forEach(head => {
+    makeFunkyMenuCategoryHeads(head)
+})
+
+// Then change on demand
+function makeFunkyMenuCategoryHeads(headlineEl) {
+    // If we haven’t replaced textContent before, build spans
+    if (!headlineEl.dataset.hasSpans) {
+        const letters = [...headlineEl.textContent];
+        headlineEl.textContent = "";
+        letters.forEach(letter => {
+            const span = document.createElement("span");
+            span.textContent = letter;
+            span.style.transition = `font-variation-settings 1s ease-in-out`;
+            headlineEl.appendChild(span);
+        });
+        // Mark that we initialized spans
+        headlineEl.dataset.hasSpans = "true";
+    }
+
+    // Now animate: for each span, assign random settings
+    const spans = headlineEl.querySelectorAll("span");
+    spans.forEach(span => {
+        const weight = Math.floor(Math.random() * (901 - 100) + 100);
+        const width = Math.floor(Math.random() * (116 - 50) + 50);
+        const slant = Math.random() > 0.5 ? Math.floor(Math.random() * 13) - 12 : 0;
+
+        // Animate (with optional timeout)
+        setTimeout(() => {
+            span.style.fontVariationSettings = `"slnt" ${slant}, "wdth" ${width}, "wght" ${weight}`;
+        }, 0);
+    });
+}
