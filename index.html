@@ -24,37 +24,45 @@
 
         <section class="home bg-lila">
             <div class="ticker-wrapper">
-                <div class="ticker-item">
-                    <p class="ticker-head"></p>
-                    <p class="ticker-text"></p>
+                <div class="ticker__item">
+                    <p class="ticker__item__head"></p>
+                    <p class="ticker__item__text"></p>
                 </div>
             </div>
 
-            <!-- <button class="club-btn zero-opacity"><span class="club-btn__text">Join<br>Club!</span></button> -->
-            <button class="club-btn bg-green"><span class="club-btn__text">Join<br>Club!</span></button>
+            <button class="club-btn">
+                <div class="club-btn__text-container"><span class="club-btn__text">Join Join Join Join Join Join</span>
+                </div>
+                <div class="club-btn__text-container"><span class="club-btn__text">Club! Club! Club! Club! Club!</span>
+                </div>
+                <div class="club-btn__text-container"><span class="club-btn__text">Klicka Klicka Klicka Klicka</span>
+                </div>
+                <div class="club-btn__text-container"><span class="club-btn__text">Här! Här! Här! Här! Här! Här!</span>
+                </div>
+            </button>
 
 
             <div class="logo-wrapper">
                 <div class="opening-hours-wrapper">
                     <div class="hours-head">Öppettider</div>
                     <li class="opening-hours-list">
-                        <ul class="opening-hours_list-item">Måndag <span class="hours-bold hours-closed">stängt</span>
+                        <ul class="opening-hours__days">Måndag <span class="opening-hours__hours hours-closed">stängt</span>
                         </ul>
-                        <ul class="opening-hours_list-item">Tisdag <span class="hours-bold">15-22</span></ul>
-                        <ul class="opening-hours_list-item">Onsdag <span class="hours-bold">15-23</span></ul>
-                        <ul class="opening-hours_list-item">Torsdag <span class="hours-bold">15-23</span></ul>
-                        <ul class="opening-hours_list-item">Fredag <span class="hours-bold">15-03</span></ul>
-                        <ul class="opening-hours_list-item">Lördag <span class="hours-bold">15-03</span></ul>
-                        <ul class="opening-hours_list-item">Söndag <span class="hours-bold hours-closed">stängt</span>
+                        <ul class="opening-hours__days">Tisdag <span class="opening-hours__hours">15-22</span></ul>
+                        <ul class="opening-hours__days">Onsdag <span class="opening-hours__hours">15-23</span></ul>
+                        <ul class="opening-hours__days">Torsdag <span class="opening-hours__hours">15-23</span></ul>
+                        <ul class="opening-hours__days">Fredag <span class="opening-hours__hours">15-03</span></ul>
+                        <ul class="opening-hours__days">Lördag <span class="opening-hours__hours">15-03</span></ul>
+                        <ul class="opening-hours__days">Söndag <span class="opening-hours__hours hours-closed">stängt</span>
                         </ul>
                     </li>
                 </div>
                 <p class="logo__head zero-opacity">cantina</p>
                 <div class="logo__sub">
-                    <h1 class="logo__sub__streetfood-wrap">
-                        <span class="street-food street">Street </span>
-                        <span class="street-food food">Food </span>
-                        <span class="club stamp">Club</span>
+                    <h1 class="logo__sub__streetfood-wrapper">
+                        <span class="logo__sub__streetfood--streetfood logo__sub__streetfood--street">Street </span>
+                        <span class="logo__sub__streetfood--streetfood logo__sub__streetfood--food">Food </span>
+                        <span class="logo__sub__streetfood--club">Club</span>
                     </h1>
 
                 </div>
@@ -64,23 +72,23 @@
             <div class="below-logo-wrapper zero-opacity">
                 <!-- <div class="below-the-fold"> -->
                 <div class="below-logo-container">
-                    <div class="splash-food">
-                        <span class="splash-word">Tacos</span>
-                        <div class="spray-splash-container"><img class="spray-splash start" src="/img/spray-splash.svg"
+                    <div class="below-logo__splash-food">
+                        <span class="splash-word splash-food__word">Tacos</span>
+                        <div class="spray-splash-container splash-food__splash-container"><img class="spray-splash splash-food__spray-img start" src="/img/spray-splash.svg"
                                 alt="splash"></div>
-                        <span class="splash-word">Ramen</span>
-                        <div class="spray-splash-container"><img class="spray-splash start" src="/img/spray-splash2.svg"
+                        <span class="splash-word splash-food__word">Ramen</span>
+                        <div class="spray-splash-container splash-food__splash-container"><img class="spray-splash splash-food__spray-img start" src="/img/spray-splash2.svg"
                                 alt="splash"></div><br>
-                        <span class="splash-word">Bao buns</span>
-                        <div class="spray-splash-container"><img class="spray-splash start" src="/img/spray-splash6.svg"
+                        <span class="splash-word splash-food__word">Bao buns</span>
+                        <div class="spray-splash-container splash-food__splash-container"><img class="spray-splash splash-food__spray-img start" src="/img/spray-splash6.svg"
                                 alt="splash"></div>
-                        <span class="splash-word">Sandwiches</span>
-                        <div class="spray-splash-container"><img class="spray-splash start" src="/img/spray-splash3.svg"
+                        <span class="splash-word splash-food__word">Sandwiches</span>
+                        <div class="spray-splash-container splash-food__splash-container"><img class="spray-splash splash-food__spray-img start" src="/img/spray-splash3.svg"
                                 alt="splash"></div>
-                        <span class="splash-word">Cocktails</span>
-                        <div class="spray-splash-container"><img class="spray-splash start" src="/img/spray-splash5.svg"
+                        <span class="splash-word splash-food__word">Cocktails</span>
+                        <div class="spray-splash-container splash-food__splash-container"><img class="spray-splash splash-food__spray-img start" src="/img/spray-splash5.svg"
                                 alt="splash"></div>
-                        <span class="splash-word">Beers</span>
+                        <span class="splash-word splash-food__word">Beers</span>
                     </div>
 
                 </div>
@@ -91,14 +99,22 @@
 
             <div class="menu__btns-wrapper">
                 <div class="menu__btns__secBtns-wrapper menu__btns__secBtns-wrapper--closed">
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--snacks" data-menu-cat="snacks-n-nibbles">snacks n nibbles</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--broth" data-menu-cat="broth-n-buns">broth n buns</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--tacos" data-menu-cat="tacos">tacos</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--sandwiches" data-menu-cat="sandwiches">sandwiches</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--kids" data-menu-cat="kids">kids</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--sides" data-menu-cat="sides">fries n sides</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--dips" data-menu-cat="dips">dips</button>
-                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--sweets" data-menu-cat="sweets">sweets</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--snacks"
+                        data-menu-cat="snacks-n-nibbles">snacks n nibbles</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--broth"
+                        data-menu-cat="broth-n-buns">broth n buns</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--tacos"
+                        data-menu-cat="tacos">tacos</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--sandwiches"
+                        data-menu-cat="sandwiches">sandwiches</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--kids"
+                        data-menu-cat="kids">kids</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--sides" data-menu-cat="sides">fries n
+                        sides</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--dips"
+                        data-menu-cat="dips">dips</button>
+                    <button class="menu__btn menu__btns__secBtn menu__btns__secBtn--sweets"
+                        data-menu-cat="sweets">sweets</button>
                 </div>
                 <div class="menu__btn__opBtn-wrapper">
                     <button class="menu__btn menu__btn__opBtn">menu</button>
@@ -15547,7 +15563,8 @@
                     <div class="menu-content-border"></div>
 
                     <div class="menu-content__extra-info-container">
-                        <p class="menu____extra-info menu____extra-info--allergy">Vid frågor angående allergier eller ursprungsländer, fråga oss!</p>
+                        <p class="menu____extra-info menu____extra-info--allergy">Vid frågor angående allergier eller
+                            ursprungsländer, fråga oss!</p>
                     </div>
 
                     <div class="menu__cat-wrapper menu-cat--snacks-n-nibbles" data-menu-cat="snacks-n-nibbles">
@@ -15703,17 +15720,17 @@
                                     </ul>
                                 </div>
                                 <div class="menu____dish-price menu____dish-price--big">
-                                    <span class="menu____dish-price__left-aligned">85:-</span> 
-                                    <span class="menu____dish-price__right-aligned">st</span> 
+                                    <span class="menu____dish-price__left-aligned">85:-</span>
+                                    <span class="menu____dish-price__right-aligned">st</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="menu__cat-wrapper menu-cat--tacos" data-menu-cat="tacos">
                         <div class="menu__cat__head-wrapper">
-                                <h2 class="menu__cat__head">tacos</h2>
+                            <h2 class="menu__cat__head">tacos</h2>
 
-                            </div>
+                        </div>
                         <div class="menu__cat__dishes-wrapper ">
                             <div class="menu____dish-wrapper">
                                 <div class="menu____dish-content">
@@ -15726,8 +15743,8 @@
                                     </ul>
                                 </div>
                                 <div class="menu____dish-price menu____dish-price--big menu____dish-price--move-up">
-                                    <span class="menu____dish-price__left-aligned">2st</span> 
-                                    <span class="menu____dish-price__right-aligned">55:-</span> 
+                                    <span class="menu____dish-price__left-aligned">2st</span>
+                                    <span class="menu____dish-price__right-aligned">55:-</span>
                                 </div>
                             </div>
                             <div class="menu____dish-wrapper">
@@ -15989,14 +16006,30 @@
                             <div class="menu____dish-wrapper">
                                 <div class="menu____dish-content">
                                     <ul class="menu____dish__text-container top-border">
-                                        <li class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head txt-rosa">Guacamole</li>
-                                        <li class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">Salsa Rojo</li>
-                                        <li class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">Sriracha­majonnäs</li>
-                                        <li class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">Cantinas Hot Sauce</li>
-                                        <li class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">Chipotle Crema</li>
-                                        <li class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">Ranchdressing</li>
-                                        <li class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">Consommé</li>
-                                        <li class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">Ostsås</li>
+                                        <li
+                                            class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head txt-rosa">
+                                            Guacamole</li>
+                                        <li
+                                            class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">
+                                            Salsa Rojo</li>
+                                        <li
+                                            class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">
+                                            Sriracha­majonnäs</li>
+                                        <li
+                                            class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">
+                                            Cantinas Hot Sauce</li>
+                                        <li
+                                            class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">
+                                            Chipotle Crema</li>
+                                        <li
+                                            class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">
+                                            Ranchdressing</li>
+                                        <li
+                                            class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">
+                                            Consommé</li>
+                                        <li
+                                            class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">
+                                            Ostsås</li>
                                     </ul>
                                 </div>
                             </div>
@@ -16016,7 +16049,7 @@
                                         <li class="menu____dish__text">churros, kanel, socker, nutella</li>
                                     </ul>
                                 </div>
-                                    <div class="menu____dish-price menu____dish-price--big">85:-</div>
+                                <div class="menu____dish-price menu____dish-price--big">85:-</div>
 
                             </div>
                             <div class="menu____dish-wrapper">
@@ -16026,7 +16059,7 @@
                                         <li class="menu____dish__text">Mango</li>
                                     </ul>
                                 </div>
-                                    <div class="menu____dish-price menu____dish-price--big">55:-</div>
+                                <div class="menu____dish-price menu____dish-price--big">55:-</div>
 
                             </div>
                             <div class="menu____dish-wrapper">
@@ -16036,7 +16069,7 @@
                                         <li class="menu____dish__text">Vanilj</li>
                                     </ul>
                                 </div>
-                                    <div class="menu____dish-price menu____dish-price--big">55:-</div>
+                                <div class="menu____dish-price menu____dish-price--big">55:-</div>
 
                             </div>
                             <div class="menu____dish-wrapper">
@@ -16046,7 +16079,7 @@
                                         <li class="menu____dish__text">Friterade mini munkar, kolasås</li>
                                     </ul>
                                 </div>
-                                    <div class="menu____dish-price menu____dish-price--big">75:-</div>
+                                <div class="menu____dish-price menu____dish-price--big">75:-</div>
 
                             </div>
                         </div>
@@ -16056,7 +16089,7 @@
                         <p class="menu____extra-info menu____extra-info--ask-staff">Funderar du över något? Fråga oss!
                         </p>
                     </div>
-                
+
                 </div>
             </div>
 

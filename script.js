@@ -7,7 +7,7 @@ const body = document.get
 
 // CSS Variables
 const cssVarfoodMenuPaddingInner = parseFloat(getComputedStyle(root).getPropertyValue('--foodMenuPaddingInner').trim()) * rootFontSize;
-
+console.log(cssVarfoodMenuPaddingInner);
 // Sections
 
 // Club
@@ -26,17 +26,21 @@ logoHeadWrap.textContent = "";
 
 // Logo subhead
 const logoSubheadWrap = document.querySelector(".logo__sub")
-const streetFoodClubWrap = document.querySelector(".logo__sub__streetfood-wrap")
-const clubTextWrap = document.querySelector(".club")
+const streetFoodClubWrap = document.querySelector(".logo__sub__streetfood-wrapper")
+const clubTextWrap = document.querySelector(".logo__sub__streetfood--club")
 const clubTextWrapWidth = clubTextWrap.getBoundingClientRect().width;
 clubTextWrap.style.transition = "none"
 clubTextWrap.classList.add("rolled-up")
 streetFoodClubWrap.style.marginRight = clubTextWrapWidth + "px";
-const streetFoodWrap = document.querySelector(".logo__sub__streetfood-wrap")
-const streetFoodSpans = Array.from(streetFoodWrap.querySelectorAll(".street-food"))
+const streetFoodSpans = Array.from(streetFoodClubWrap.querySelectorAll(".logo__sub__streetfood--streetfood"))
 
 // Ticker
 const ticker = document.querySelector(".ticker-wrapper");
+
+// Opening hours
+const openingHoursDaysAll = document.querySelectorAll(".opening-hours__days");
+const openingHoursHoursAll = document.querySelectorAll(".opening-hours__hours");
+console.log(openingHoursDaysAll);
 
 // Below logo
 const belowLogoWrapper = document.querySelector(".below-logo-wrapper")
@@ -82,9 +86,9 @@ const fullDisplayArr = [belowLogoWrapper, clubBtn]
 // closeMenu()
 
 // Opening Splash Page
-const sprayDots = document.querySelectorAll(".spray-splash")
-const spraySplashContainers = document.querySelectorAll(".spray-splash-container")
-const splashWords = document.querySelectorAll(".splash-word")
+const sprayDots = document.querySelectorAll(".splash-food__spray-img")
+const spraySplashContainers = document.querySelectorAll(".splash-food__splash-container")
+const splashWords = document.querySelectorAll(".splash-food__word")
 
 
 // Social logos
@@ -174,59 +178,71 @@ const tickerItems = [
     }
 ];
 
-let currentTickerItemIndex = 0; // Index of the current ticker item
-let typeTickerIndex = 0; // Index for typing individual characters
-const typeTickerHeadContainer = document.querySelector(".ticker-head");
-ticker.style.display = "none"
-const typeTickerTextContainer = document.querySelector(".ticker-text");
+let currentTickerItemIndex = 0;
+const typeTickerHeadContainer = document.querySelector(".ticker__item__head");
+const typeTickerTextContainer = document.querySelector(".ticker__item__text");
 
-function runNewsTicker() {
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
+async function runNewsTicker() {
+  ticker.style.display = "";
+  
+  while (true) {
     const tickerItem = tickerItems[currentTickerItemIndex];
-    const head = tickerItem.head;
-    const text = tickerItem.text;
+    const { head, text } = tickerItem;
 
-    // Step 1: Transition effect for head
-    function updateHead() {
-        ticker.style.display = ""
-        // Add a "fade-out" class
-        typeTickerHeadContainer.classList.add("fade-out");
+    // Fade out
+    typeTickerHeadContainer.classList.add("fade-out");
+    await sleep(500);
 
-        // Wait for the fade-out animation, then change the text
-        setTimeout(() => {
-            typeTickerHeadContainer.textContent = head; // Update the head
-            typeTickerHeadContainer.classList.remove("fade-out"); // Remove fade-out
-            typeTickerHeadContainer.classList.add("fade-in"); // Add fade-in
+    // Update head
+    typeTickerHeadContainer.textContent = head;
+    typeTickerHeadContainer.classList.remove("fade-out");
+    typeTickerHeadContainer.classList.add("fade-in");
+    await sleep(500);
+    typeTickerHeadContainer.classList.remove("fade-in");
 
-            // Remove the fade-in class after animation completes
-            setTimeout(() => {
-                typeTickerHeadContainer.classList.remove("fade-in");
-            }, 500); // Match the CSS transition duration
-        }, 500); // Match the CSS transition duration
+    // Type text
+    typeTickerTextContainer.textContent = "";
+    for (let i = 0; i < text.length; i++) {
+      typeTickerTextContainer.textContent += text[i];
+      await sleep(30 * Math.floor(Math.random() * 4 + 1));
     }
 
-    updateHead(); // Update the head with a transition
+    // Wait before moving on
+    await sleep(2000);
 
-    // Step 2: Type out the text
-    function typeText() {
-        if (typeTickerIndex < text.length) {
-            typeTickerTextContainer.textContent += text[typeTickerIndex];
-            typeTickerIndex++;
-            setTimeout(typeText, 100); // Type next character
-        } else {
-            // Step 3: After typing, move to the next item after a delay
-            setTimeout(() => {
-                typeTickerTextContainer.textContent = ""; // Clear text
-                typeTickerIndex = 0; // Reset typing index
-                currentTickerItemIndex = (currentTickerItemIndex + 1) % tickerItems.length; // Loop to next ticker item
-                runNewsTicker(); // Restart the process for the next item
-            }, 2000); // 2-second pause before switching
-        }
-    }
-    typeText(); // Start typing the text
+    // Move to next
+    currentTickerItemIndex = (currentTickerItemIndex + 1) % tickerItems.length;
+  }
 }
 
 runNewsTicker();
+
+// Flick opening times
+
+let currentHourIndex = 0;
+
+function cycleHighlight() {
+  // Remove highlight class from all
+  openingHoursDaysAll.forEach(item => item.classList.remove("highlight"));
+  openingHoursHoursAll.forEach(item => item.classList.remove("opening-hours__hours--blob"));
+
+  // Add highlight to the current
+  openingHoursDaysAll[currentHourIndex].classList.add("highlight");
+  openingHoursHoursAll[currentHourIndex].classList.add("opening-hours__hours--blob");
+
+  // Increment index and wrap around
+  currentHourIndex = (currentHourIndex + 1) % openingHoursDaysAll.length;
+
+  // Repeat after X ms
+  setTimeout(cycleHighlight, 1000); // 1 second per item
+}
+
+// Start the loop
+cycleHighlight();
 
 
 function showHomeElements() {
@@ -309,25 +325,29 @@ function showHomeElements() {
             let numberOfDripsForEachDot = Math.floor(Math.random() * 4 + 1)
             // console.log(numberOfDripsForEachDot);
 
+            let longerDrip = windowWidth > 767 ? 3 : 1;
+
+
             for (let d = 0; d < numberOfDripsForEachDot; d++) {
                 let makeDripAtAll = Math.floor(Math.random() * 10 + 1);
-                if (makeDripAtAll > 6) {
+                if (makeDripAtAll > 5) {
                     let longDrip = Math.floor(Math.random() * 10 + 1);
                     let dripHeight
                     if (longDrip > 7) {
-                        dripHeight = Math.floor(Math.random() * 80 + 10);
+                        dripHeight = Math.floor(Math.random() * 80 + 10) * longerDrip;
                     } else {
-                        dripHeight = Math.floor(Math.random() * 50 + 10);
+                        dripHeight = Math.floor(Math.random() * 50 + 10) * longerDrip;
                     }
                     let dripStartLeft = Math.floor(Math.random() * 40 + 30);
                     let dripDuration = Math.floor(Math.random() * 30 + 2);
                     let dripWidth = Math.floor(Math.random() * 5 + 1);
 
                     let sprayDripDiv = document.createElement("div")
-                    sprayDripDiv.className = "spray-splash-drip";
+                    sprayDripDiv.className = "splash-food__spray--drip";
                     sprayDripDiv.style.left = dripStartLeft + "%";
                     sprayDripDiv.style.transitionDuration = dripDuration + "s"
-                    sprayDripDiv.style.width = dripWidth > 1 ? "1px" : "2px";
+                    sprayDripDiv.style.width = dripWidth > 1 ? "2px" : "1px";
+
                     spraySplashContainers[i].appendChild(sprayDripDiv)
                     setTimeout(() => {
                         sprayDripDiv.style.height = dripHeight + "px";
@@ -569,7 +589,7 @@ clubBtn.addEventListener("click", (e) => {
     clubBtn.innerHTML = clubBtn.classList.contains("pressed") ? "X" : clubBtnInnerHTML;
 
     // Toggle the open classes for content and form
-    clubFormContent.classList.toggle("open");
+    clubFormContent.classList.toggle("club-form__content--open");
     // clubFormDripContainer.classList.toggle("open");
 
     setTimeout(() => {
@@ -634,17 +654,6 @@ window.addEventListener('resize', e => {
 
 })
 
-function resizeElements() {
-    windowWidth = window.innerWidth;
-    menuBtnWrapperWidth = menuBtnWrapper.getBoundingClientRect().left;
-    // Set width for menu
-    // console.log(menuWrapper.style.left);
-    menuBgWidth = menuBtnWrapperWidth - menuContent.getBoundingClientRect().left;
-
-    setWidthToMatchMenuBg(menuBgWidth)
-
-}
-
 menuWrapper.addEventListener('click', e => {
     console.log("meny wrapper is clicked", e.target);
     if (e.target.matches(".menu-content")) {
@@ -659,6 +668,17 @@ menuContent.addEventListener('click', e => {
 })
 
 // openMenu()
+
+function resizeElements() {
+    windowWidth = window.innerWidth;
+    menuBtnWrapperWidth = menuBtnWrapper.getBoundingClientRect().left;
+    // Set width for menu
+    // console.log(menuWrapper.style.left);
+    menuBgWidth = menuBtnWrapperWidth - menuContent.getBoundingClientRect().left;
+
+    setWidthToMatchMenuBg(menuBgWidth)
+
+}
 
 function setWidthToMatchMenuBg(menuBgWidth) {
     menuContent.style.width = menuBgWidth + "px";
@@ -686,7 +706,7 @@ const menuCatObserver = new IntersectionObserver((entries) => {
 
         if (entry.isIntersecting) {
             // The section is in view
-            console.log("Section visible:", target);
+            // console.log("Section visible:", target);
 
             const id = target.dataset.menuCat;
             if (id) {
@@ -728,7 +748,7 @@ const menuCatHeadObserver = new IntersectionObserver((entries) => {
 
         if (entry.isIntersecting) {
             // The section is in view
-            console.log("Section visible:", target);
+            // console.log("Section visible:", target);
             makeFunkyMenuCategoryHeads(target)
 
         } else {
