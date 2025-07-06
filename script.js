@@ -1,11 +1,15 @@
 // General
-const windowHeight = window.innerHeight;
+const root = document.documentElement;
+const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+// CSS Variables
+const cssVarfoodMenuPaddingInner = parseFloat(getComputedStyle(root).getPropertyValue('--foodMenuPaddingInner').trim()) * rootFontSize;
+
+let windowHeight = window.innerHeight;
+let windowWidth = window.innerWidth;
+console.log(windowWidth);
 // Sections
-const menuSection = document.querySelector("section.menu")
-const menuWrapper = document.querySelector(".menu-wrapper")
-// menuWrapper.style.transition = "none";
-// menuWrapper.classList.
-let menuHeight = menuSection.getBoundingClientRect().height;
+
 
 // Club
 const clubBtn = document.querySelector(".club-btn")
@@ -45,19 +49,37 @@ const belowLogoWrapper = document.querySelector(".below-logo-wrapper")
 const clubPush = document.querySelector(".club-push")
 
 // Menu
-const menuContent = document.querySelector(".menu__content")
-const menuSecBtnWrap = document.querySelector(".menu__sections-wrapper")
-console.log(menuSecBtnWrap);
 
-const menuCategoryHeads = [...document.querySelectorAll(".menu__cat-head")];
+const menuBgGap = 24;
+let menuBgWidth = undefined;
+const menuWrapper = document.querySelector(".menu-wrapper")
+const menuContentBorder = document.querySelector(".menu-content-border")
+const menuContent = document.querySelector(".menu-content")
+const menuContentScroller = document.querySelector(".menu-content-scroller")
+const menuContentBg = document.querySelector(".menu-content-bg")
+let menuUnOpened = true;
+const menuCategoryHeads = [...document.querySelectorAll(".menu__cat__head")];
+
+// Collect elm that need menwidth
+
+const menuWidthElements = [
+    ...document.querySelectorAll(".menu____dish-content"),
+    ...document.querySelectorAll(".menu-content__extra-info-container")
+]
+
+console.log(menuWidthElements);
 
 // Menu buttons
-const btnWrapper = document.querySelector(".menu__btn-wrapper")
-const menuSectionBtns = document.querySelectorAll(".btn-menu-section")
+const menuBtnWrapper = document.querySelector(".menu__btns-wrapper")
+const menuSecBtnsWrapper = document.querySelector(".menu__btns__secBtns-wrapper")
+const menuSecBtnsAll = [...document.querySelectorAll(".menu__btns__secBtn")]
+const menuOpBtn = document.querySelector(".menu__btn__opBtn")
 
-const allMenuBtns = [...document.querySelectorAll(".menu__btn")]
+// Get width of menuBtnWrapper
+let menuBtnWrapperWidth = menuBtnWrapper.getBoundingClientRect().left;
 
-const menuOpBtn = document.querySelector(".btn-op")
+// Set width for menu
+resizeElements(windowWidth, menuBtnWrapperWidth)
 
 // Hide on start
 const fullDisplayArr = [belowLogoWrapper, clubBtn]
@@ -67,15 +89,9 @@ const fullDisplayArr = [belowLogoWrapper, clubBtn]
 
 // Opening Splash Page
 const sprayDots = document.querySelectorAll(".spray-splash")
-// console.log(sprayDots);
 const spraySplashContainers = document.querySelectorAll(".spray-splash-container")
-// console.log(spraySplashContainers);
 const splashWords = document.querySelectorAll(".splash-word")
-// console.log(splashWords);
 
-// sprayDots.forEach(dot => {
-//     dot.style.opacity = 0;
-// })
 
 // Social logos
 const socialLogos = document.querySelectorAll(".social-logo-wrapper")
@@ -178,7 +194,7 @@ function runNewsTicker() {
 
     // Step 1: Transition effect for head
     function updateHead() {
-    ticker.style.display = ""
+        ticker.style.display = ""
         // Add a "fade-out" class
         typeTickerHeadContainer.classList.add("fade-out");
 
@@ -291,13 +307,6 @@ function showHomeElements() {
 
         let sprayDotTime = 0.5;
 
-        // for (let i = 0; i < splashWords.length; i++) {
-        //     setTimeout(() => {
-        //         splashWords[i].classList.remove("zero-opacity")
-        //     }, 0);
-
-        // }
-
         for (let i = 0; i < sprayDots.length; i++) {
             sprayDots[i].style.transitionDelay = sprayDotTime * i + "s";
             sprayDots[i].classList.remove("start")
@@ -361,108 +370,54 @@ function fadeInFromOpacityZero(element) {
 // Btn and menus
 
 let btnPressTransTime = parseFloat(getComputedStyle(menuOpBtn).transitionDuration) * 100;
-// console.log(btnPressTransTime);
 
-let snacksSectionHeader = document.querySelector(".h2snacks")
-console.log(snacksSectionHeader);
-let brothSectionHeader = document.querySelector(".h2broth")
-let tacosSectionHeader = document.querySelector(".h2tacos")
-let sandwichesSectionHeader = document.querySelector(".h2sandwiches")
-let kidsSectionHeader = document.querySelector(".h2kids")
-let sidesSectionHeader = document.querySelector(".h2sides")
-let dipsSectionHeader = document.querySelector(".h2dips")
-let sweetsSectionHeader = document.querySelector(".h2sweets")
-let menuTransTime;
-// Menu Sec Btns
-menuSectionBtns.forEach(btn => {
-    btn.addEventListener("click", e => {
-        let btn = e.target;
-        // menuSection.style.height = "100%";
-        openMenu()
-        menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
-        console.log(btn);
 
-        setTimeout(() => {
-            if (btn.textContent === "snacks n nibbles") {
-                snacksSectionHeader.scrollIntoView({ behavior: "smooth" });
-            } else if (btn.textContent === "broth n buns") {
-                brothSectionHeader.scrollIntoView({ behavior: "smooth" });
-            } else if (btn.textContent === "tacos") {
-                tacosSectionHeader.scrollIntoView({ behavior: "smooth" });
-            } else if (btn.textContent === "sandwiches") {
-                sandwichesSectionHeader.scrollIntoView({ behavior: "smooth" });
-            } else if (btn.textContent === "kids") {
-                kidsSectionHeader.scrollIntoView({ behavior: "smooth" });
-            } else if (btn.textContent === "fries n sides") {
-                sidesSectionHeader.scrollIntoView({ behavior: "smooth" });
-            } else if (btn.textContent === "dips") {
-                sidesSectionHeader.scrollIntoView({ behavior: "smooth" });
-            } else if (btn.textContent === "sweets") {
-                sweetsSectionHeader.scrollIntoView({ behavior: "smooth" });
-            } else {
-                snacksSectionHeader.scrollIntoView({ behavior: "smooth" });
-            }
-        }, menuTransTime * 0.75);
+const menuCatMap = {};
 
-        setTimeout(() => {
-            menuCategoryHeads.forEach(catHead => {
-                makeFunkyMenuCategoryHeads(catHead)
-            })
-        }, menuTransTime - 100);
-    })
-})
-// Menu Btns
+// Find all the headings
+document.querySelectorAll(".menu__cat__head").forEach(head => {
+  // Get the text of the heading
+  const text = head.textContent.trim().toLowerCase();
 
-let menuOpen = false;
+  // Find the closest wrapper to scroll to
+  const wrapper = head.closest(".menu__cat-wrapper");
 
-menuOpBtn.addEventListener("click", e => {
-    console.log("op clicked");
-    let btn = e.target;
+  // Only add if found
+  if (wrapper) {
+    menuCatMap[text] = wrapper;
+  }
+});
 
-    menuOpen ? closeMenu() : openMenu();
+console.log(menuCatMap);
 
-    menuOpen = !menuOpen;
+menuSecBtnsAll.forEach(btn => {
+  btn.addEventListener("click", e => {
+    const clickedBtn = e.target;
 
-// closeMenu()
+    menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
+
     setTimeout(() => {
-        btn.classList.remove("pressed")
-        btn.classList.remove("active")
-    }, btnPressTransTime);
-})
-// All btns
+      // ⬇️ Put them here:
+      const btnText = clickedBtn.textContent.trim().toLowerCase();
+      const targetSection = menuCatMap[btnText];
 
-allMenuBtns.forEach(btn => {
-    btn.addEventListener("click", e => {
-        allMenuBtns.forEach(btn => {
-            btn.classList.remove("active", "pressed");
-        })
-        btn.classList.add("pressed")
-        setTimeout(() => {
-            btn.classList.remove("pressed")
-            btn.classList.add("active")
-        }, btnPressTransTime);
-        if (btn.classList.contains("btn-op")) {
-            setTimeout(() => {
-                btn.classList.remove("active")
-            }, btnPressTransTime * 2);
-        }
-    })
-})
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+        window.scrollBy(0, -80); // Offset for your 24px fixed header
+      } else {
+        console.warn("No matching section for button:", btnText);
+      }
+    }, menuTransTime * 0.75);
 
-function closeMenu() {
-    menuContent.classList.add("close");
-    menuSecBtnWrap.classList.add("close");
-    allMenuBtns.forEach(btn => {
-        btn.classList.remove("active", "pressed");
-    })
-    menuSection.classList.add("no-point")
-}
-function openMenu() {
-    menuContent.classList.remove("close");
-    menuSecBtnWrap.classList.remove("close");
-    menuSection.classList.remove("no-point")
+    setTimeout(() => {
+      menuCategoryHeads.forEach(catHead => {
+        makeFunkyMenuCategoryHeads(catHead);
+      });
+    }, menuTransTime - 100);
+  });
+});
 
-}
+makeFunkyMenuCategoryHeads(menuCategoryHeads[0]);
 
 function makeFunkyMenuCategoryHeads(headlineArr) {
     let catHeadLetters = [...headlineArr.textContent]
@@ -486,7 +441,72 @@ function makeFunkyMenuCategoryHeads(headlineArr) {
     })
 }
 
-// makeFunkyMenuCategoryHeads(menuCategoryHeads[0])
+
+
+
+// Menu Btns
+
+let menuOpen = false;
+let currentOpBtn = null;
+let orgOpMenuText = menuOpBtn.textContent;
+
+menuOpBtn.addEventListener("click", e => {
+    console.log("op clicked");
+    menuOpen = !menuOpen; // toggle first
+    menuOpen ? openMenu() : closeMenu();
+    // e.target.classList.remove('active, pressed"')
+    e.target.classList.add("pressed");
+});
+
+
+menuSecBtnsAll.forEach(btn => {
+    btn.addEventListener("click", e => {
+        menuSecBtnsAll.forEach(b => {
+            b.classList.remove("pressed", "active");
+        });
+
+        btn.classList.add("pressed");
+
+        setTimeout(() => {
+            btn.classList.remove("pressed");
+            btn.classList.add("active");
+        }, btnPressTransTime);
+    });
+});
+
+
+function closeMenu() {
+    console.log("close menu");
+    menuWrapper.classList.add("menu-wrapper--closed");
+    // menuContent.classList.add("menu-wrapper--closed");
+    menuSecBtnsWrapper.classList.add("menu__btns__secBtns-wrapper--closed");
+
+    menuOpBtn.classList.remove("active");
+    setTimeout(() => {
+        menuOpBtn.classList.remove("pressed");
+        menuOpBtn.textContent = orgOpMenuText;
+
+    }, 150);
+    menuOpen = false;
+
+}
+
+function openMenu() {
+    console.log("open menu");
+
+    menuUnOpened ? makeFunkyMenuCategoryHeads(menuCategoryHeads[0]) : null;
+    menuUnOpened = false;
+    menuWrapper.classList.remove("menu-wrapper--closed");
+    menuSecBtnsWrapper.classList.remove("menu__btns__secBtns-wrapper--closed");
+
+    setTimeout(() => {
+        menuOpBtn.classList.add("active");
+        menuOpBtn.textContent = "X"
+
+    }, 150);
+    menuOpen = true;
+}
+
 
 // Scroll close menu
 
@@ -630,4 +650,42 @@ function formDrips() {
     }
 
     console.log(width, dripNumber);
+}
+
+
+
+window.addEventListener('resize', e => {
+    closeMenu()
+    windowWidth = window.innerWidth;
+    resizeElements(windowWidth)
+
+})
+
+function resizeElements() {
+    windowWidth = window.innerWidth;
+    menuBtnWrapperWidth = menuBtnWrapper.getBoundingClientRect().left;
+    // Set width for menu
+    // console.log(menuWrapper.style.left);
+    menuBgWidth = menuBtnWrapperWidth - menuContent.getBoundingClientRect().left;
+
+    setWidthToMatchMenuBg(menuBgWidth)
+    
+}
+
+menuWrapper.addEventListener('click', e => {
+    console.log("meny wrapper is clicked");
+    closeMenu()
+})
+
+// openMenu()
+
+function setWidthToMatchMenuBg(menuBgWidth) {
+    menuContent.style.width = menuBgWidth + "px";
+    menuContentBg.style.width = menuBgWidth - menuBgGap + "px";
+    menuContentBorder.style.width = menuBgWidth - menuBgGap + "px";
+
+    menuWidthElements.forEach(content => {
+        content.style.width = menuBgWidth - menuBgGap - cssVarfoodMenuPaddingInner * 2 + "px";
+    })
+
 }

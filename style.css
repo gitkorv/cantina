@@ -5,21 +5,54 @@
 }
 
 :root {
-    --orange: #FF8066;
-    --purple: #845EC2;
-    --darkGray: #4B4453;
-    --lightGray: #B0A8B9;
-    --rustRed: #C34A36;
-    --darkPurple: #3D348B;
-    --lightPurple: #7678ED;
-    --yellow: #F7B801;
-    --lightOrange: #F18701;
-    --darkOrange: #F35B04;
     --cantinaLila: #381460;
     --cantinaGreen: #33a58e;
     --cantinaRosa: #e99f96;
     --cantinaGrey: #72808a;
     --cantinaCream: #fffef2;
+
+    --foodMenuPaddingOuter: 1rem;
+    --foodMenuPaddingInner: .5rem;
+}
+
+.bg-green {
+    background-color: var(--cantinaGreen);
+}
+
+.bg-lila {
+    background-color: var(--cantinaLila);
+}
+
+.bg-cream {
+    background-color: var(--cantinaCream);
+}
+
+.bg-rosa {
+    background-color: var(--cantinaRosa);
+}
+
+.bg-grey {
+    background-color: var(--cantinaGrey);
+}
+
+.txt-green {
+    color: var(--cantinaGreen);
+}
+
+.txt-lila {
+    color: var(--cantinaLila);
+}
+
+.txt-cream {
+    color: var(--cantinaCream);
+}
+
+.txt-rosa {
+    color: var(--cantinaRosa);
+}
+
+.txt-grey {
+    color: var(--cantinaGrey);
 }
 
 @view-transition {
@@ -36,7 +69,7 @@ button {
 } */
 
 body {
-    position: relative;
+    position: absolute;
     display: block;
     top: 0;
     left: 0;
@@ -44,12 +77,9 @@ body {
     height: 100dvh;
     font-family: "acumin-variable", sans-serif;
     font-variation-settings: "slnt" 0, "wdth" 10, "wght" 300;
-
+    background-color: var(--cantinaLila);
+    overflow: hidden;
 }
-
-/* ul {
-    border-bottom: 1px solid var(--darkGray);
-} */
 
 main {
     position: fixed;
@@ -59,7 +89,8 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: unset;
+    overflow: hidden;
+
     /* background-color: pink; */
 }
 
@@ -70,29 +101,30 @@ section {
     /* flex: 0 1; */
     height: calc(100% - 48px);
     width: 100%;
-    padding: 24px 24px 24px;
     width: 100%;
+    overflow: hidden;
     /* background-color: grey; */
 }
 
 section.home {
+    position: absolute;
     display: flex;
     flex-direction: column;
-    background-color: var(--cantinaLila);
+    padding: 24px 24px 24px;
     min-height: 100%;
-    /* background-color: #C34A36; */
-    /* z-index: 6000; */
 }
 
 section.menu {
-    display: block;
+    display: flex;
+    align-items: end;
+    justify-content: end;
     height: 100%;
-    border-top: 1px solid var(--darkGray);
-    /* pointer-events: none; */
+    padding-top: 24px;
+    /* z-index: -100; */
 }
 
 section.menu.no-point {
-    /* pointer-events: none; */
+    pointer-events: none;
 }
 
 .ticker-wrapper {
@@ -101,20 +133,14 @@ section.menu.no-point {
     display: flex;
     margin-top: 0px;
     display: flex;
-    /* background-color: #7678ED; */
-    /* width: 100%; */
     margin-right: 40%;
     height: 50%;
-    z-index: 100;
-    /* display: none; */
-
 }
 
 .ticker-item {
     position: relative;
     top: 75px;
     width: 100%;
-    /* background-color: #a196ad; */
 }
 
 
@@ -164,12 +190,12 @@ section.menu.no-point {
     align-self: flex-end;
     text-align: center;
     /* max-width: fit-content; */
-    background-color: var(--cantinaGreen);
+    /* background-color: var(--cantinaGreen); */
     box-shadow: var(--cantinaCream) 5px 5px 0px;
     transition: all .25s ease-in-out;
     opacity: 1;
     cursor: pointer;
-    z-index: 200;
+    z-index: 500;
     transform: rotate(-15deg);
     animation: club-spin 2s ease-in-out infinite alternate;
 }
@@ -228,40 +254,27 @@ section.menu.no-point {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    /* height: 400px; */
     height: 0;
     background-color: var(--cantinaGreen);
     box-shadow: var(--cantinaCream) 5px 5px 0;
     opacity: 0;
-    /* Initially hidden */
-    /* overflow: hidden; */
-    /* Prevent content spill during height transition */
     transition: height 0.5s ease, opacity 0.5s ease;
     pointer-events: none;
     z-index: 300;
     border-radius: 24px;
     overflow-y: visible;
-    /* padding: 16px 24px 0; */
-
 }
 
 .club-form__content.open {
     height: 340px;
-    /* Expanded height */
     opacity: 1;
-    /* Fully visible */
     pointer-events: all;
 }
 
-
-
 .club-form {
     position: relative;
-
     width: 100%;
     padding: 16px;
-    /* overflow-y: visible; */
-    /* background-color: #381460; */
 }
 
 .form-labels {
@@ -277,14 +290,9 @@ section.menu.no-point {
 
 input {
     all: unset;
-    /* clear all browser defaults */
     display: block;
-    /* or inline-block or flex depending on context */
     width: 100%;
-    /* or a set width, like 300px */
-    /* padding: 0.25rem;         optional for spacing */
     box-sizing: border-box;
-    /* ensures width includes padding/border */
     background: var(--cantinaCream);
     border-radius: 16px;
     box-sizing: border-box;
@@ -303,8 +311,6 @@ select {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    /* border: 1px solid #ccc; */
-    /* border-radius: 4px; */
 }
 
 input[type=submit] {
@@ -329,14 +335,11 @@ input[type=submit]:hover {
 .club-form__bottom-drip-container {
     position: relative;
     display: block;
-
     top: -24px;
     width: 230px;
     background-color: wheat;
     height: 0px;
-    /* z-index: 100; */
     pointer-events: none;
-    /* overflow-y: visible; */
 }
 
 .club-form__bottom-drip-container.open {
@@ -363,8 +366,10 @@ input[type=submit]:hover {
     font-variation-settings: "slnt" 0, "wdth" 100, "wght" 800;
     padding-bottom: 8px;
     margin-right: 24px;
-    /* background-color: #72808a; */
-    /* margin-top: 80px; */
+}
+
+.opening-hours-list {
+    list-style: none;
 }
 
 .hours-head {
@@ -536,8 +541,6 @@ input[type=submit]:hover {
     justify-content: center;
     width: 100%;
     margin-top: 10px;
-    /* background-color: #3D348B; */
-    /* white-space: pre; */
 }
 
 .splash-food span {
@@ -547,20 +550,16 @@ input[type=submit]:hover {
 }
 
 .splash-food span:nth-of-type(3n+1) {
-    /* color: var(--darkOrange); */
     font-variation-settings: "slnt" -12, "wdth" 50, "wght" 900;
 
 }
 
 .splash-food span:nth-of-type(3n+2) {
     font-variation-settings: "slnt" 0, "wdth" 75, "wght" 600;
-    /* color: var(--rustRed); */
 }
 
 .splash-food span:nth-of-type(3n) {
     font-variation-settings: "slnt" -4, "wdth" 100, "wght" 900;
-
-    /* color: var(--lightPurple); */
 }
 
 .spray-splash-container {
@@ -620,7 +619,7 @@ input[type=submit]:hover {
     display: flex;
     /* flex-direction: column; */
     justify-content: center;
-    z-index: 100;
+    /* z-index: 100; */
     /* align-items: center; */
 }
 
@@ -671,202 +670,229 @@ input[type=submit]:hover {
     color: var(--cantinaGreen);
 }
 
-
-
+/* ---> MENU <--- */
 
 .menu-wrapper {
-    z-index: 200;
-    position: absolute;
-    display: flex;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    padding: 24px 0px 0px 24px;
-    /* margin-top: 24px 24px; */
-    /* flex: 1; */
-    transform: translateY(0);
-    /* background-color: #C34A36;
-    background-color: var(--yellow); */
-    transition: transform 1s ease-in-out;
-    pointer-events: none;
-}
-
-.menu-wrapper.close {
-    transform: translateY(100%);
-}
-
-.menu__content {
-    height: 100%;
+    position: fixed;
     display: block;
-    padding-left: 8px;
-    padding-bottom: 200px;
-    overflow-y: scroll;
-    overscroll-behavior: none;
-    background-color: #33a58e;
-    /* background-color: red; */
-    border-top: 4px solid var(--cantinaCream);
+    top: 24px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-top: 0px;
+    z-index: 200;
+    /* display: flex; */
+    height: 100%;
+    /* width: 50%; */
+    max-width: 100%;
+    transform: translateY(0);
     transition: transform 1s ease-in-out;
-    pointer-events: all;
-    /* overflow-x: visible; */
+    /* background-color: pink; */
+    overflow: hidden;
+    z-index: 0;
 }
 
-.menu__content.close {
-    transform: translateY(100%);
+.menu-wrapper--closed {
+    transform: translateY(150%);
 }
 
-.menu__content.show {
-    display: flex;
-}
-
-.menu__cat {
+.menu-content-scroller {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    overflow-x: hidden;
+    top: 0px;
+    left: var(--foodMenuPaddingOuter);
+    height: 100%;
+    overflow-y: scroll;
+    /* background-color: black; */
+
 }
 
-.menu__cat-head {
+.menu-content-bg {
+    position: fixed;
+    display: block;
+    top: 0px;
+    left: var(--foodMenuPaddingOuter);
+    height: 100%;
+    width: 100%;
+    background-color: teal;
+
+}
+
+.menu-content {
     position: relative;
-    padding-top: 1rem;
+    /* top: 0; */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 100px;
+    z-index: 500;
+    padding-left: var(--foodMenuPaddingInner);
+}
+
+.menu-content-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    min-height: 8px;
+    width: 100%;
+    background-color: black;
+}
+
+.menu-content--closed {
+    transform: translateY(100%);
+}
+
+/* MENU CATHEGORIES */
+
+.menu__cat-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0 8px;
+    /* gap: 1rem; */
+    /* overflow-x: visible; */
+    height: auto;
+}
+
+.menu__cat__head-wrapper {
+    position: relative;
+    display: flex;
+    align-items: end;
+    width: 100%;
+    height: 36px;
+    height: 6rem;
+    padding-right: 1.5rem;
+    /* background-color: #F18701; */
+    z-index: 500;
+    /* background-color: var(--cantinaGreen); */
+}
+
+.menu__cat__head {
+    position: relative;
     font-size: 2rem;
-    line-height: 2rem;
-    padding: 24px 8px 0px 4px;
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 900;
     transition: font-variation-settings 1s ease-in-out;
     color: var(--cantinaLila);
 }
 
-.menu__cat-head .blob {
-    color: var(--darkPurple);
+.menu__cat__head .blob {
+    color: var(--cantinaLila);
 }
 
-h2 {
-    font-size: 5rem;
-}
+/* MENU DISHES */
 
-.menu-item {
+.menu__cat__dishes-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    max-width: 100%;
+    padding-top: 8px;
+    /* overflow-x: visible; */
 }
 
-li {
+.menu____dish-wrapper {
+    position: relative;
+    display: flex;
+    /* padding: 0 16px 0 0px; */
+    overflow: visible;
+    /* background-color: var(--cantinaGreen); */
+
+}
+
+.menu____dish-content {
+    position: relative;
+    display: block;
+    width: 100%;
+    background-color: var(--cantinaCream);
+    /* margin-right: 8px; */
+    padding: 16px 8px 8px 8px;
+    overflow-x: visible;
+}
+
+.menu____dish-head {
+    position: relative;
+    font-size: 1.8rem;
+    line-height: 1.5rem;
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 300;
+    overflow: visible;
+    padding-bottom: 8px;
+    white-space: pre-wrap;
+    /* background-color: #72808a; */
+    padding-right: 48px;
+}
+
+.menu____dish-price {
+    display: flex;
+    font-family: "ltr-ncnd-variable", sans-serif;
+    font-variation-settings: "wght" 600;
+    position: absolute;
+    right: 8px;
+    color: var(--cantinaRosa);
+    text-shadow: var(--cantinaLila) 2px 2px 2px;
+    white-space: pre-wrap;
+    /* background-color: #72808a; */
+    text-align: right;
+    /* width: fit-content; */
+    padding-top: 1rem;
+}
+
+.menu____dish-price--big {
+
+    font-size: 2.5rem;
+    line-height: 1rem;
+}
+
+.menu____dish-price--top {
+    top: 8px;
+}
+
+.menu____dish-price--section {
+    top: 24px;
+}
+
+.menu____dish-price--section--low {
+    top: 64px;
+    right: 16px;
+}
+
+.menu____dish__text-container {
     list-style: none;
-}
-
-.menu__item-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
     height: auto;
-    width: 90%;
-    padding: 8px;
+    width: 100%;
     margin-right: 25px;
 }
 
-.menu__item.head {
-    position: relative;
-    font-size: 1.8rem;
-    line-height: 1.8rem;
-    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 300;
-    overflow: visible;
-}
-
-.tacos .menu__item-wrapper {
-    color: var(--cantinaCream);
-}
-
-
-/* background color */
-
-.snacks-n-nibbles .menu__item-wrapper {
-    background-color: var(--cantinaRosa);
-}
-
-.broth-n-buns .menu__item-wrapper {
-    background-color: var(--cantinaCream);
-}
-
-.tacos .menu__item-wrapper {
-    background-color: black;
-}
-
-.sandwiches .menu__item-wrapper {
-    background-color: var(--cantinaLila);
-}
-
-.kids .menu__item-wrapper {
-    background-color: var(--cantinaRosa);
-}
-
-.sides .menu__item-wrapper {
-    background-color: var(--cantinaGrey);
-}
-
-.dips .menu__item-wrapper {
-    background-color: var(--cantinaCream);
-}
-
-.sweets .menu__item-wrapper {
-    background-color: var(--cantinaRosa);
-}
-
-/* Item headlines */
-
-.snacks.head {
-    color: var(--cantinaCream);
-}
-
-.ramen.head {
-    color: var(--cantinaRosa);
-}
-
-/* ramen dishes heads */
-.menu__item.sans.ramen {
-    /* font-variation-settings: "slnt" 0, "wdth" 90, "wght" 900; */
-    color: var(--cantinaLila);
-}
-
-.bao.head {
-    color: black;
-}
-
-.tacos.head {
-    /* font-variation-settings: "slnt" 0, "wdth" 50, "wght" 600; */
-
-    color: var(--cantinaCream);
-}
-
-.sandwiches.head {
-    color: var(--cantinaRosa);
-}
-
-.sides.head {
-    color: var(--cantinaLila);
-}
-
-.sweets.head {
-    color: var(--cantinaCream);
-}
-
-
-
-
-/* item list text */
-
-.menu__item.sans {
+.menu____dish__text {
     width: 100%;
     padding-top: 4px;
-    padding-right: 50px;
+    /* padding-right: 50px; */
     position: relative;
     font-size: 1.3rem;
     line-height: 1.3rem;
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 700;
 }
 
-.menu__item.typewriter {
+.menu____dish__text--dish-head {
+    padding-bottom: 4px;
+    padding-right: 8px;
+}
+
+.menu____dish__text--top-border {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--cantinaLila);
+}
+
+.menu____dish__text--add-extra,
+.menu____dish__text--intro {
     position: relative;
     padding-top: 4px;
     font-family: "ltr-ncnd-variable", sans-serif;
@@ -874,75 +900,31 @@ li {
     color: var(--cantinaLila);
 }
 
-.menu__item.typewriter.bold {
+.menu____dish__text--intro {
+    padding-right: 24px;
+}
+
+.menu-cat--broth-n-buns .menu__cat____dish-content:first-child .menu____dish__text--add-extra {
+    color: var(--cantinaGreen);
+}
+
+.menu____dish__text--add-extra--txtRosa {
+    color: var(--cantinaRosa);
+}
+
+.menu____dish__text--add-extra .bold {
     font-variation-settings: "wght" 900;
 }
 
-.menu__item.intro {
-    padding-top: .5rem;
-    border-top: var(--cantinaLila) 4px solid;
-}
 
-/* Baos */
-
-.bao .menu__item.sans.top-border {
-    color: var(--cantinaGreen);
-}
-
-/* tacos */
-
-.tacos.typewriter {
-    color: var(--cantinaRosa);
-}
-
-.sandwiches.sans {
-    color: var(--cantinaCream);
-}
-
-.sides div ul {
-    color: var(--cantinaCream);
-}
-
-.dips div ul li {
-    color: var(--cantinaRosa);
-}
-
-/* sides */
-
-.menu-item.sides > .menu__item-wrapper:nth-last-child(-n + 2) .typewriter {
-    color: var(--cantinaCream);
-}
-
-/* dips */
-
-.menu-item.dips > .menu__item-wrapper > ul li:first-child {
-    border-top: none;
-}
-
-.menu-item.dips > .menu__item-wrapper > ul li:nth-child(3n + 2) {
-    color: var(--cantinaGreen);
-}
-.menu-item.dips > .menu__item-wrapper > ul li:nth-child(3n + 3) {
-    color: var(--cantinaLila);
-}
-
-/* top border */
-.menu__item.sans.top-border {
-    padding-top: .5rem;
-    border-top: var(--cantinaLila) 1px solid;
-}
-
-.menu__item.sans.indent {
-    padding: .25em .5em;
-}
-
-.sweets div ul li {
-    color: var(--cantinaLila);
-}
 
 /* dotted list item */
 
-.list-dot::before {
+.menu____dish__text--indent {
+    padding-left: 8px;
+}
+
+.menu____dish__text--indent::before {
     content: "•";
     position: absolute;
     left: 0;
@@ -951,135 +933,59 @@ li {
     width: 1rem;
 }
 
-/* prices */
-
-.price {
-    position: absolute;
-    font-size: 1.4rem;
-    line-height: 2rem;
-
-    text-align: end;
-
-    font-family: "ltr-ncnd-variable", sans-serif;
-    font-variation-settings: "wght" 900;
-    color: var(--cantinaLila);
-    top: 40%;
-    right: -16px;
-    width: 120px;
-    z-index: 100;
-    /* height: 64px; */
-    /* background-color: wheat; */
-}
-
-.price.big {
-    font-size: 2rem;
-}
-
-.price-top {
-    top: 0;
-}
-
-.rosa {
-    color: var(--cantinaRosa);
-}
-
-.menu-item.sandwiches>.menu__item-wrapper:nth-of-type(4) .price {
-    /* color: black; */
-    top: 2.5rem;
-}
-
-.cat-head-price.price {
-    /* position: relative; */
-    color: var(--cantinaCream);
-    top: 3.5rem;
-    right: 2.5rem;
-    /* background-color: #381460; */
-    width: 200px;
-}
-
-.kids.price.cat-head-price {
-    font-size: 1rem;
-    /* bottom: 36px; */
-    top: 50px;
-    left: 0;
-    text-align: center;
-    /* background-color: #33a58e; */
-}
-
-.dips.price.cat-head-price {
-    color: var(--cantinaLila);
-}
-
-.sides div.price {
-    color: var(--cantinaRosa);
-}
-
-.menu-item.sides > .menu__item-wrapper:nth-last-child(-n + 2) .price {
-    /* color: pink; */
-    top: 0;
-}
-
-.sweets div.price {
-    color: var(--cantinaCream);
-}
 
 /* IM HERE!!!!! */
 
-.allergy {
-    margin-top: 48px;
-    width: 200px;
-    font-family: "ltr-ncnd-variable", sans-serif;
-    font-variation-settings: "wght" 900;
-    color: var(--darkGray);
+.menu-content__extra-info-container {
+    position: relative;
+    margin-top: 24px;
+    position: relative;
+    display: flex;
 }
 
-.menu__btn-wrapper {
+.menu____extra-info {
     position: relative;
-    /* height: 200px; */
-    bottom: 0;
-    /* left: 0; */
-    /* justify-self: end; */
+    display: block;
+    width: auto;
     /* height: fit-content; */
+    /* padding-bottom: 48px; */
+    font-family: "ltr-ncnd-variable", sans-serif;
+    font-variation-settings: "wght" 600;
+    color: var(--cantinaCream);
+    /* white-space: pre-wrap; */
+    /* border: 1px solid red; */
+}
+
+.menu__btns-wrapper {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
     align-self: end;
     display: flex;
     flex-direction: column;
-    /* padding: 8px; */
-    width: 200px;
-    /* justify-content: space-between; */
-    /* justify-items: stretch; */
-    /* gap: 16px; */
-    /* background-color: var(--cantinaCream); */
-    z-index: 1000;
+    gap: 8px;
+    width: 90px;
+    z-index: 100;
+    /* padding: 0 24px 24px 0px; */
     pointer-events: all;
-    /* display: none; */
-}
-
-.menu__btn-wrapper div {
-    padding: 8px 24px 24px 8px;
-    display: flex;
 }
 
 .menu__btn {
     all: none;
-    /* height: 50px; */
-    /* text-align: ; */
     flex: 1 0 auto;
-    /* gap: 4px; */
-    /* height: 30px; */
-    background: none;
+    background-color: var(--cantinaCream);
     padding: 8px 8px;
-    /* border: 1px solid var(--darkPurple); */
     border-style: none;
     font-size: 1rem;
+    letter-spacing: -1px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
-    /* box-shadow: var(--darkOrange) 3px 3px 0px; */
-
+    white-space: wrap;
     opacity: 1;
     transition: all .15s ease-in-out;
 }
 
-.menu__sections-wrapper {
+.menu__btns__secBtns-wrapper {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -1087,38 +993,31 @@ li {
     transition: transform .5s ease-in-out;
 }
 
-.menu__sections-wrapper.close {
-    transform: translateY(120%);
+.menu__btns__secBtns-wrapper--closed {
+    transform: translateY(150%);
 }
 
-.btn-menu-section {
-    background-color: var(--cantinaCream);
 
-    color: var(--cantinaLila);
-    font-family: "acumin-variable", sans-serif;
-    font-variation-settings: "slnt" 0, "wdth" 30, "wght" 900;
-}
-
-.menu__op-wrap {
-    /* background-color: var(--cantinaCream); */
+.menu__btn__opBtn-wrapper {
+    display: flex;
     z-index: 100;
-
 }
 
-.btn-op {
+.menu__btn__opBtn {
     background-color: #33a58e;
-    /* text-align: center; */
+    box-shadow: var(--cantinaRosa) 2px 2px 0px;
 }
 
 .menu__btn.pressed {
     scale: 90%;
-    background-color: var(--darkPurple);
-    box-shadow: var(--darkOrange) 1px 1px 0px;
+    background-color: var(--cantinaLila);
 }
 
 .menu__btn.active {
     background-color: var(--cantinaRosa);
     color: var(--cantinaCream);
+    box-shadow: var(--cantinaCream) 2px 2px 0px;
+    scale: 100%;
 }
 
 
@@ -1126,19 +1025,6 @@ li {
     transition: opacity 1.5s ease-in;
     opacity: 0;
 }
-
-/* .club-btn.pressed {
-    font-size: 2rem;
-    scale: 75%;
-    background-color: var(--lightPurple);
-    box-shadow: var(--darkOrange) 2px 2px 0px;
-
-
-}
-
-.club-btn.active {
-    background-color: var(--orange);
-} */
 
 .form-body {
     display: flex;
