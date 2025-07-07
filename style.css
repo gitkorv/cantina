@@ -184,7 +184,7 @@ section.home {
     transform: rotate(-15deg);
     border-radius: 50%;
     aspect-ratio: 1/1;
-    width: calc(var(--bodyPadding) * 3);
+    width: calc(var(--bodyPadding) * 2.5);
     padding: 0;
     overflow: hidden;
     box-shadow: var(--cantinaCream) 0px 0px 0px;
@@ -218,33 +218,33 @@ section.home {
     background-color: var(--cantinaCream);
 }
 
-.club-btn__text-container {
+.club-btn__text-wrapper {
     position: relative;
     display: inline-flex;
-    flex-wrap: nowrap;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    top: 4px;
-    left: 4px;
-    width: 1000px;
-    /* height: auto; */
-    /* border-radius: 50%; */
-    overflow: hidden;
-    font-size: calc(var(--textFontSize) * 1.5);
-    line-height: calc(var(--textFontSize) * 1.3);
-    font-variation-settings: "slnt" 0, "wdth" 10, "wght" 600;
-
-    /* background-color: var(--cantinaCream); */
-    /* z-index: 800; fully behind everything */
+    /* top: calc(0px - var(--textFontSize) / 2); */
+    flex-direction: column;
+    /* padding-bottom: var(--textFontSize); */
 }
 
+.club-btn__text-container {
+    position: relative;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+
+    font-size: calc(var(--textFontSize));
+    line-height: calc(var(--textFontSize) * 0.95);
+    font-variation-settings: "slnt" 0, "wdth" 10, "wght" 600;
+}
+
+
+
 .club-btn__text-container:nth-of-type(odd) {
-    transform: translateX(100px);
+    transform: translateX(25px);
 }
 
 .club-btn__text-container:nth-of-type(even) {
-    transform: translateX(-100px);
+    transform: translateX(-25px);
 }
 
 .club-btn__text-container {
@@ -254,12 +254,16 @@ section.home {
 @keyframes slide {
     to {
         transform: translateX(0);
-        font-size: calc(var(--textFontSize) * 2);
-        line-height: calc(var(--textFontSize) * 3);
+        /* font-size: calc(var(--textFontSize) * 2); */
+        /* line-height: calc(var(--textFontSize) * 3); */
 
     }
 }
 
+.club-btn__text {
+  white-space: nowrap; /* Never wrap text */
+  display: inline-block; /* Make sure it behaves as a box if needed */
+}
 
 .club-form-wrapper {
     position: fixed;
