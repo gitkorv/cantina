@@ -392,6 +392,7 @@ const menuCatMap = {};
 document.querySelectorAll(".menu__cat__head").forEach(head => {
     // Get the text of the heading
     const text = head.textContent.trim().toLowerCase();
+    const dataMenuCat = head.dataset.menuCat;
 
     // Find the closest wrapper to scroll to
     const wrapper = head.closest(".menu__cat-wrapper");
@@ -402,7 +403,7 @@ document.querySelectorAll(".menu__cat__head").forEach(head => {
     }
 });
 
-
+console.log(menuCatMap);
 
 
 const menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;

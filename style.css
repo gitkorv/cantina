@@ -1033,7 +1033,7 @@ input[type=submit]:hover {
     flex-direction: column;
     gap: 8px;
     width: 90px;
-    z-index: 100;
+    z-index: 200;
     /* padding: 0 24px 24px 0px; */
     pointer-events: all;
 }
