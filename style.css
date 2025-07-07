@@ -746,7 +746,7 @@ input[type=submit]:hover {
     padding: var(--bodyPadding);
     padding-bottom: 0;
     grid-template-columns: repeat(4, 1fr) auto;
-    pointer-events: unset;
+    /* pointer-events: unset; */
     /* z-index: -10; */
 }
 
@@ -759,7 +759,7 @@ input[type=submit]:hover {
     transition: transform .5s ease-in-out;
     z-index: 100;
     justify-content: end;
-    /* pointer-events: none; */
+    pointer-events: none;
     /* background-color: #33a58e; */
 }
 
@@ -1012,6 +1012,7 @@ input[type=submit]:hover {
     gap: var(--bodyPadding);
     padding-bottom: var(--bodyPadding);
     z-index: 1000;
+    pointer-events: none;
 }
 
 .menu__btn {
@@ -1026,6 +1027,7 @@ input[type=submit]:hover {
     font-variation-settings: "wght" 600;
     transition: all .15s ease-in-out;
     z-index: 1000;
+    pointer-events: all;
 }
 
 .menu__btns__secBtns-wrapper {
@@ -1051,6 +1053,7 @@ input[type=submit]:hover {
     padding: 12px 8px;
     background-color: var(--cantinaGreen);
     box-shadow: var(--cantinaRosa) 2px 2px 0px;
+    pointer-events: all;
 }
 
 .menu__btn.pressed {
@@ -1247,10 +1250,14 @@ input[type=submit]:hover {
         --textFontSize: 1.5rem
     }
 
+    .menu__cat__head-wrapper {
+        height: auto;
+    }
     .menu__cat__head {
         font-size: 6rem;
         line-height: 6rem;
         padding-bottom: 8px;
+        padding-top: 8px;
     }
 
     .menu____dish-price {
