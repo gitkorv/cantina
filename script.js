@@ -388,67 +388,57 @@ let btnPressTransTime = parseFloat(getComputedStyle(menuOpBtn).transitionDuratio
 
 const menuCatMap = {};
 
-// Find all the headings
-document.querySelectorAll(".menu__cat__head").forEach(head => {
-    // Get the text of the heading
-    const text = head.textContent.trim().toLowerCase();
-    const dataMenuCat = head.dataset.menuCat;
+// Build the mapping
+document.querySelectorAll(".menu__cat-wrapper").forEach(head => {
+  const dataMenuCat = head.dataset.menuCat;
+  const wrapper = head.closest(".menu__cat-wrapper");
 
-    // Find the closest wrapper to scroll to
-    const wrapper = head.closest(".menu__cat-wrapper");
-
-    // Only add if found
-    if (wrapper) {
-        menuCatMap[text] = wrapper;
-    }
+  if (wrapper && dataMenuCat) {
+    menuCatMap[dataMenuCat] = wrapper;
+  }
 });
 
 console.log(menuCatMap);
 
-
+// Get transition time
 const menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
 
 menuSecBtnsAll.forEach(btn => {
-    btn.addEventListener("click", e => {
-        const clickedBtn = e.currentTarget;
+  btn.addEventListener("click", e => {
+    const clickedBtn = e.currentTarget;
 
-        // Remove pressed/active from all
-        menuSecBtnsAll.forEach(b => b.classList.remove("pressed", "active"));
-        // Add pressed to the one just clicked
-        clickedBtn.classList.add("pressed");
+    // Remove pressed/active from all
+    menuSecBtnsAll.forEach(b => b.classList.remove("pressed", "active"));
+    clickedBtn.classList.add("pressed");
 
-        // Toggle menu transition timing
+    // Get the data-menu-cat of this button
+    const targetCat = clickedBtn.dataset.menuCat;
 
+    setTimeout(() => {
+      const targetSection = menuCatMap[targetCat];
 
-        // Scroll and offset
-        setTimeout(() => {
-            const btnText = clickedBtn.textContent.trim().toLowerCase();
-            const targetSection = menuCatMap[btnText];
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest"
+        });
+      } else {
+        console.warn("No matching section for data-menu-cat:", targetCat);
+      }
+    }, menuTransTime * 0.75);
 
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                    inline: "nearest"
-                });
-            } else {
-                console.warn("No matching section for button:", btnText);
-            }
-        }, menuTransTime * 0.75);
+    setTimeout(() => {
+      clickedBtn.classList.remove("pressed");
+      clickedBtn.classList.add("active");
+    }, btnPressTransTime);
 
-        // Mark as active after pressed animation
-        setTimeout(() => {
-            clickedBtn.classList.remove("pressed");
-            clickedBtn.classList.add("active");
-        }, btnPressTransTime);
-
-        // Re-style headers after transition
-        setTimeout(() => {
-            menuCategoryHeads.forEach(catHead => {
-                makeFunkyMenuCategoryHeads(catHead);
-            });
-        }, menuTransTime - 100);
-    });
+    setTimeout(() => {
+      menuCategoryHeads.forEach(catHead => {
+        makeFunkyMenuCategoryHeads(catHead);
+      });
+    }, menuTransTime - 100);
+  });
 });
 
 // Menu Btns
@@ -668,7 +658,7 @@ menuContent.addEventListener('click', e => {
   // your child click logic
 })
 
-// openMenu()
+openMenu()
 
 function resizeElements() {
     windowWidth = window.innerWidth;
