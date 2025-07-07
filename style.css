@@ -1250,6 +1250,10 @@ input[type=submit]:hover {
         --textFontSize: 1.5rem
     }
 
+    .logo__sub__streetfood--club {
+        top: -4px;
+    }
+
     .menu__cat__head-wrapper {
         height: auto;
     }
