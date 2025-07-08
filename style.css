@@ -95,7 +95,7 @@ body {
     overflow: hidden;
 }
 
-/* ----------> LOGO <---------- */
+/* --> LOGO <---------- */
 
 .logo-wrapper {
     position: relative;
@@ -106,7 +106,7 @@ body {
     height: 100%;
     width: 100%;
     text-align: center;
-    flex: .65;
+    flex: .62;
     /* background-color: blue; */
     /* z-index: 5000; */
 }
@@ -341,11 +341,14 @@ main {
     position: fixed;
     display: flex;
     flex-direction: column;
+    /* align-items: end; */
+    /* justify-content: end; */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    padding-bottom: var(--bodyPadding);
 
     /* background-color: pink; */
 }
@@ -428,7 +431,7 @@ section.home {
     justify-content: center;
     right: var(--bodyPadding);
     top: var(--bodyPadding);
-    color: var(--cantinaLila);
+    color: var(--cantinaRosa);
     transition: all .25s ease-in-out;
     opacity: 1;
     cursor: pointer;
@@ -441,16 +444,22 @@ section.home {
     overflow: hidden;
     box-shadow: var(--cantinaCream) 0px 0px 0px;
     background-color: var(--cantinaGreen);
-    animation: club-spin 5s ease-in-out infinite alternate;
+    animation: club-spin 2.5s ease-in-out infinite alternate;
 }
 
 @keyframes club-spin {
-    to {
+    50% {
+        background-color: var(--cantinaLila);
+    }
+    
+    100% {
         scale: 110%;
         box-shadow: var(--cantinaCream) 5px 5px 0px;
         /* color: var(--cantinaCream); */
         transform: rotate(24deg);
         background-color: var(--cantinaRosa);
+        color: var(--cantinaGreen);
+        /* border: 1px solid var(--cantinaCream); */
     }
 }
 
@@ -698,26 +707,22 @@ input[type=submit]:hover {
 
 
 
-/* ----------> SOCIALs <---------- */
+/* --> SOCIALs <---------- */
 
 .social-section-container {
     position: absolute;
     /* padding-top: 16px; */
-    left: 48px;
-    top: 30%;
+    /* left: 0; */
+    bottom: calc(var(--bodyPadding) * 2);
     /* background-color: #9e93aa; */
     height: fit-content;
     /* flex: 1; */
     display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-    /* z-index: 100; */
-    /* align-items: center; */
 }
 
 .social-logo-wrapper {
     position: relative;
-    display: block;
+    display: flex;
     /* border: red solid 1px; */
 
     /* background-color: #3D348B; */
@@ -730,9 +735,14 @@ input[type=submit]:hover {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    margin-right: calc(0px - var(--textFontSizeSmall));
     /* background-color: #7678ED; */
     /* background-image: url(/img/Cantina_insta.svg) */
     transition: transform .1s ease-out;
+}
+
+.social-logo--insta {
+    margin-left: var(--textFontSizeSmall);
 }
 
 .svg-insta,
@@ -813,7 +823,7 @@ input[type=submit]:hover {
     content: "";
     width: calc(100% - var(--bodyPadding));
     height: var(--food-menu-full-height, 50px);
-    background-color: var(--cantinaGreen);
+    background-color: var(--cantinaLila);
     z-index: -100;
 }
 
@@ -848,7 +858,7 @@ input[type=submit]:hover {
     line-height: 2.5rem;
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 900;
     transition: font-variation-settings 1s ease-in-out;
-    color: var(--cantinaLila);
+    color: var(--cantinaRosa);
     word-break: break-word;
 }
 
@@ -1079,7 +1089,8 @@ input[type=submit]:hover {
 .menu__btn__opBtn {
     text-align: center;
     padding: 12px 8px;
-    background-color: var(--cantinaGreen);
+    background-color: var(--cantinaLila);
+    color: var(--cantinaCream);
     box-shadow: var(--cantinaRosa) 2px 2px 0px;
     pointer-events: all;
 }
@@ -1280,11 +1291,11 @@ input[type=submit]:hover {
 
 /* ----------> MEDIA QUERRIES <---------- */
 
-/* @media (min-height: 778px) and (min-height: 500px) {
-    .opening-hours-wrapper {
-        top: 150px;
-    }
-} */
+@media (min-height: 720px) {
+    .logo-wrapper {
+    flex: .55;
+}
+}
 
 @media (min-width: 768px) and (min-height: 768px) {
 
