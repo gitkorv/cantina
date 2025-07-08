@@ -1,9 +1,11 @@
 // General
 const root = document.documentElement;
+const rootStyles = getComputedStyle(root)
+const rootDocPadding = parseFloat(rootStyles.getPropertyValue('--bodyPadding'));
+console.log(rootDocPadding);
 const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
 let windowHeight = window.innerHeight;
 let windowWidth = window.innerWidth;
-const body = document.get
 
 // CSS Variables
 const cssVarfoodMenuPaddingInner = parseFloat(getComputedStyle(root).getPropertyValue('--foodMenuPaddingInner').trim()) * rootFontSize;
@@ -17,27 +19,40 @@ const clubFormContent = document.querySelector(".club-form__content")
 const clubFormWrapper = document.querySelector(".club-form-wrapper")
 let isFormOpen = false;
 const clubFormDripContainer = document.querySelector(".club-form__bottom-drip-container")
+console.log(clubBtn.getBoundingClientRect().height);
 
 // logo Cantina
-const logoWrapper = document.querySelector(".logo-wrapper")
-const logoHeadWrap = document.querySelector(".logo__head")
-const logoHeadWrapTextArr = [...logoHeadWrap.textContent]
-logoHeadWrap.textContent = "";
+const logoWrapper = document.querySelector(".logo")
+const logoWordCantinaWrapper = document.querySelector(".logo__word--cantina-wrapper")
+const logoWordCantina = document.querySelector(".logo__word--cantina")
+const logoCantinaTextArr = [...logoWordCantina.textContent]
+logoWordCantina.textContent = "";
 
 // Logo subhead
-const logoSubheadWrap = document.querySelector(".logo__sub")
-const streetFoodClubWrap = document.querySelector(".logo__sub__streetfood-wrapper")
-const clubTextWrap = document.querySelector(".logo__sub__streetfood--club")
+const logoSubheadWrap = document.querySelector(".logo__line--bottom")
+const streetFoodClubWrap = document.querySelector(".logo__line--sfc-wrapper")
+const clubTextWrap = document.querySelector(".logo__word--club-wrapper")
 const clubTextWrapWidth = clubTextWrap.getBoundingClientRect().width;
 clubTextWrap.style.transition = "none"
-clubTextWrap.classList.add("rolled-up")
-streetFoodClubWrap.style.marginRight = clubTextWrapWidth + "px";
-const streetFoodSpans = Array.from(streetFoodClubWrap.querySelectorAll(".logo__sub__streetfood--streetfood"))
+// clubTextWrap.classList.add("rolled-up")
+// streetFoodClubWrap.style.marginRight = clubTextWrapWidth + "px";
+const streetFoodSpans = Array.from(streetFoodClubWrap.querySelectorAll(".logo__words--streetfood"))
 
 // Ticker
 const ticker = document.querySelector(".ticker-wrapper");
 
 // Opening hours
+const openingHoursWrapper = document.querySelector(".opening-hours-wrapper")
+const bottomOFClubBtn = clubBtn.getBoundingClientRect().height
+
+// if (windowWidth < 767) {
+//     openingHoursWrapper.style.top = rootDocPadding + "px";
+// } else {
+    
+// }
+// openingHoursWrapper.style.top = bottomOFClubBtn + rootDocPadding + "px";
+
+
 const openingHoursDaysAll = document.querySelectorAll(".opening-hours__days");
 const openingHoursHoursAll = document.querySelectorAll(".opening-hours__hours");
 
@@ -87,7 +102,7 @@ const socialLogos = document.querySelectorAll(".social-logo-wrapper")
 clubBtn.style.transition = "none";
 belowLogoWrapper.style.transition = "none";
 
-const cLT = [
+const cantinaLettersSettings = [
     {
         letter: "c",
         ltrSpc: "-1px",
@@ -217,11 +232,11 @@ let currentHourIndex = 0;
 function cycleHighlight() {
     // Remove highlight class from all
     openingHoursDaysAll.forEach(item => item.classList.remove("highlight"));
-    openingHoursHoursAll.forEach(item => item.classList.remove("opening-hours__hours--blob"));
+    openingHoursHoursAll.forEach(item => item.classList.remove("opening-hours__hours--blob", "highlight"));
 
     // Add highlight to the current
     openingHoursDaysAll[currentHourIndex].classList.add("highlight");
-    openingHoursHoursAll[currentHourIndex].classList.add("opening-hours__hours--blob");
+    openingHoursHoursAll[currentHourIndex].classList.add("opening-hours__hours--blob", "highlight");
 
     // Increment index and wrap around
     currentHourIndex = (currentHourIndex + 1) % openingHoursDaysAll.length;
@@ -237,22 +252,28 @@ cycleHighlight();
 function showHomeElements() {
 
     // Cantina
-    let logoTransTime = parseFloat(getComputedStyle(logoHeadWrap).transitionDuration) * 1000
+    let logoTransTime = parseFloat(getComputedStyle(logoWordCantina).transitionDuration) * 1000
+    console.log(logoTransTime);
+    console.log(logoWordCantina);
     setInterval(() => {
-        logoHeadWrap.classList.remove("zero-opacity")
+        logoWordCantinaWrapper.classList.remove("zero-opacity")
     }, logoTransTime / 4);
 
-    for (let i = 0; i < logoHeadWrapTextArr.length; i++) {
+    for (let i = 0; i < logoCantinaTextArr.length; i++) {
         const span = document.createElement("span");
-        span.style.letterSpacing = cLT[i].ltrSpc;
+        span.style.letterSpacing = cantinaLettersSettings[i].ltrSpc;
         span.classList.add("cantina-letter")
-        span.textContent = logoHeadWrapTextArr[i];
-        logoHeadWrap.append(span)
-        let revealTime = Math.floor(Math.random() * (logoHeadWrapTextArr.length - 2) + 2);
+        span.textContent = logoCantinaTextArr[i];
+        logoWordCantina.append(span)
+        let revealTime = Math.floor(Math.random() * (logoCantinaTextArr.length - 2) + 2);
         let logoHeadTransTime = parseFloat(getComputedStyle(span).transitionDuration);
 
         span.style.transitionDelay = logoHeadTransTime * revealTime + "s";
-        span.style.fontVariationSettings = `"slnt" ${cLT[i].slnt}, "wdth" ${cLT[i].wdth}, "wght" ${cLT[i].wght}`
+        span.style.fontVariationSettings =
+            `"slnt" ${cantinaLettersSettings[i].slnt}, 
+        "wdth" ${cantinaLettersSettings[i].wdth}, 
+        "wght" ${cantinaLettersSettings[i].wght}`
+        span.style.opacity = 1;
     }
 
     // Subhead
@@ -268,24 +289,30 @@ function showHomeElements() {
 
             const letterSpan = document.createElement("span")
             letterSpan.classList.add("zero-opacity")
-            const randomNumber = Math.floor(Math.random() * (900 - 250 + 1)) + 250;
+            const allowedWeights = [250, 400, 550, 700, 850];
+            const randomNumber = allowedWeights[Math.floor(Math.random() * allowedWeights.length)];
             letterSpan.style.fontVariationSettings = `"wght" ${randomNumber}`;
             letterSpan.textContent = letter;
+
+            let shiftUpOrDownDice = Math.random() * 10;
+            if (shiftUpOrDownDice > 9) { letterSpan.style.top = "1px"; }
+            if (shiftUpOrDownDice < 1) { letterSpan.style.top = "-1px"; }
+
             span.appendChild(letterSpan)
 
             setTimeout(() => {
                 letterSpan.classList.remove("zero-opacity");
 
-            }, typeWriterTime * streetFoodCounter + 2000);
+            }, typeWriterTime * streetFoodCounter + 2500);
         })
     });
 
-    let clubStampEnterTime = streetFoodCounter * typeWriterTime + 2500
+    let clubEnterTime = streetFoodCounter * typeWriterTime + 2500
 
     setTimeout(() => {
         clubTextWrap.style.transition = ""
         clubTextWrap.classList.remove("rolled-up");
-    }, clubStampEnterTime);
+    }, clubEnterTime);
 
     setTimeout(() => {
         fullDisplayArr.forEach(element => {
@@ -297,7 +324,7 @@ function showHomeElements() {
                 fadeInFromOpacityZero(element)
             }
         })
-    }, clubStampEnterTime + 500);
+    }, clubEnterTime + 500);
 
     setTimeout(() => {
         // Start the ticker
@@ -346,14 +373,14 @@ function showHomeElements() {
         }
 
         // runNewsTicker();
-    }, clubStampEnterTime + 1500);
+    }, clubEnterTime + 1500);
 
     setTimeout(() => {
         socialLogos.forEach(logo => {
             logo.style.transitionDuration = "5s";
             logo.classList.remove("zero-opacity")
         })
-    }, clubStampEnterTime + 3500);
+    }, clubEnterTime + 3500);
 }
 
 showHomeElements()
@@ -680,6 +707,11 @@ function resizeElements() {
     menuBgWidth = menuBtnWrapperWidth - menuContent.getBoundingClientRect().left;
 
     // setWidthToMatchMenuBg(menuBgWidth)
+    // if (windowWidth > 767) {
+    //     openingHoursWrapper.style.top = rootDocPadding + "px";
+    // } else {
+    //     openingHoursWrapper.style.top = bottomOFClubBtn + rootDocPadding + "px";
+    // }
 
 }
 
