@@ -773,7 +773,7 @@ input[type=submit]:hover {
     padding-bottom: 0;
     grid-template-columns: repeat(4, 1fr) auto;
     /* pointer-events: unset; */
-    pointer-events: none;
+    /* pointer-events: none; */
     /* z-index: -10; */
 }
 
