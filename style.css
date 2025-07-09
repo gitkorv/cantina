@@ -681,6 +681,7 @@ input[type=submit]:hover {
 
 .hours-head {
     color: var(--cantinaLila);
+    color: black;
 }
 
 .opening-hours__days {
@@ -700,7 +701,7 @@ input[type=submit]:hover {
 }
 
 .opening-hours__hours--blob {
-    /* color: var(--cantinaRosa); */
+    color: var(--cantinaCream);
     font-variation-settings: "slnt" 0, "wdth" 150, "wght" 900;
 
 }
@@ -1521,7 +1522,8 @@ input[type=submit]:hover {
     /* background-color: #381460; */
 }
 
-.half-circle-pointer__arrow--meny, .half-circle-pointer__arc--meny {
+.half-circle-pointer__arrow--meny,
+.half-circle-pointer__arc--meny {
     animation-delay: 1s;
 }
 
@@ -1704,13 +1706,35 @@ input[type=submit]:hover {
     }
 
     .boka-bord-wrapper {
-        top: 60%;
+        top: 50%;
         left: calc(var(--textFontSize) / 2);
+    }
+
+    .social-section-container {
+        left: var(--bodyPadding);
+        bottom: calc(var(--bodyPadding) * 2);
+    }
+
+    .half-circle-svg-pointer-wrapper {
+        top: 0;
+        left: 20%;
+        transform: rotate(10deg);
+        /* background-color: #33a58e; */
+    }
+
+    .half-circle-svg-pointer__svg {
+        transform: scale(-1, -1);
     }
 }
 
 @media (min-width: 1024px) {
     .opening-hours-wrapper {
         right: 10%;
+    }
+
+    .boka-bord-wrapper {
+        top: calc(var(--bodyPadding) * 10);
+        left: calc(var(--textFontSize) * 4);
+
     }
 }
