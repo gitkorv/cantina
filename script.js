@@ -1,83 +1,108 @@
 // General
-const windowHeight = window.innerHeight;
+const root = document.documentElement;
+const rootStyles = getComputedStyle(root)
+const rootDocPadding = parseFloat(rootStyles.getPropertyValue('--bodyPadding'));
+console.log(rootDocPadding);
+const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+let windowHeight = window.innerHeight;
+let windowWidth = window.innerWidth;
+
+// CSS Variables
+const cssVarfoodMenuPaddingInner = parseFloat(getComputedStyle(root).getPropertyValue('--foodMenuPaddingInner').trim()) * rootFontSize;
+
 // Sections
-const menuSection = document.querySelector("section.menu")
-const menuWrapper = document.querySelector(".menu-wrapper")
-menuWrapper.style.transition = "none";
-// menuWrapper.classList.
-let menuHeight = menuSection.getBoundingClientRect().height;
 
 // Club
 const clubBtn = document.querySelector(".club-btn")
 const clubBtnInnerHTML = clubBtn.innerHTML;
 const clubFormContent = document.querySelector(".club-form__content")
-// const clubForm = document.querySelector(".club-form")
-// console.log(clubForm);
+const clubFormWrapper = document.querySelector(".club-form-wrapper")
+let isFormOpen = false;
+const clubFormDripContainer = document.querySelector(".club-form__bottom-drip-container")
+console.log(clubBtn.getBoundingClientRect().height);
+
 // logo Cantina
-const logoWrapper = document.querySelector(".logo-wrapper")
-const logoHeadWrap = document.querySelector(".logo__head")
-// logoHeadWrap.style.transition = "none";
-const logoHeadWrapTextArr = [...logoHeadWrap.textContent]
-logoHeadWrap.textContent = "";
+const logoWrapper = document.querySelector(".logo")
+const logoWordCantinaWrapper = document.querySelector(".logo__word--cantina-wrapper")
+const logoWordCantina = document.querySelector(".logo__word--cantina")
+const logoCantinaTextArr = [...logoWordCantina.textContent]
+logoWordCantina.textContent = "";
 
 // Logo subhead
-const logoSubheadWrap = document.querySelector(".logo__sub")
-const streetFoodClubWrap = document.querySelector(".logo__sub__streetfood-wrap")
-const clubTextWrap = document.querySelector(".club")
+const logoSubheadWrap = document.querySelector(".logo__line--bottom")
+const streetFoodClubWrap = document.querySelector(".logo__line--sfc-wrapper")
+const clubTextWrap = document.querySelector(".logo__word--club-wrapper")
 const clubTextWrapWidth = clubTextWrap.getBoundingClientRect().width;
 clubTextWrap.style.transition = "none"
-clubTextWrap.classList.add("rolled-up")
-streetFoodClubWrap.style.marginRight = clubTextWrapWidth + "px";
-
-const streetFoodWrap = document.querySelector(".logo__sub__streetfood-wrap")
-const streetFoodSpans = Array.from(streetFoodWrap.querySelectorAll(".street-food"))
+// clubTextWrap.classList.add("rolled-up")
+// streetFoodClubWrap.style.marginRight = clubTextWrapWidth + "px";
+const streetFoodSpans = Array.from(streetFoodClubWrap.querySelectorAll(".logo__words--streetfood"))
 
 // Ticker
 const ticker = document.querySelector(".ticker-wrapper");
-const belowTheFold = document.querySelector(".below-the-fold")
 
-// Club
-const clubPush = document.querySelector(".club-push")
+// Opening hours
+const openingHoursWrapper = document.querySelector(".opening-hours-wrapper")
+const bottomOFClubBtn = clubBtn.getBoundingClientRect().height
+
+// if (windowWidth < 767) {
+//     openingHoursWrapper.style.top = rootDocPadding + "px";
+// } else {
+    
+// }
+// openingHoursWrapper.style.top = bottomOFClubBtn + rootDocPadding + "px";
+
+
+const openingHoursDaysAll = document.querySelectorAll(".opening-hours__days");
+const openingHoursHoursAll = document.querySelectorAll(".opening-hours__hours");
+
+// Below logo
+const belowLogoWrapper = document.querySelector(".below-logo-wrapper")
 
 // Menu
-const menuContent = document.querySelector(".menu__content")
-
-const menuCategoryHeads = [...document.querySelectorAll(".menu__cat-head")];
+const menuBgGap = 24;
+let menuBgWidth = undefined;
+const menuWrapper = document.querySelector(".menu-wrapper")
+const menuContentBorder = document.querySelector(".menu-content-border")
+const menuContent = document.querySelector(".menu-content")
+const menuContentScroller = document.querySelector(".menu-content-scroller")
+const menuContentBg = document.querySelector(".menu-content-bg")
+let menuUnOpened = true;
+const menuCategoryHeadWrappers = [...document.querySelectorAll(".menu__cat__head-wrapper")];
+const menuCategoryHeads = [...document.querySelectorAll(".menu__cat__head")];
+const menuCategorySections = document.querySelectorAll(".menu__cat-wrapper");
+const menuDishContentAll = document.querySelectorAll(".menu____dish-content");
+const menuExtraInfoAll = document.querySelectorAll(".menu-content__extra-info-container")
 
 // Menu buttons
-const btnWrapper = document.querySelector(".menu__btn-wrapper")
-const menuSectionBtns = document.querySelectorAll(".btn-menu-section")
+const menuBtnWrapper = document.querySelector(".menu__btns-wrapper")
+const menuSecBtnsWrapper = document.querySelector(".menu__btns__secBtns-wrapper")
+const menuSecBtnsAll = [...document.querySelectorAll(".menu__btns__secBtn")]
+const menuOpBtn = document.querySelector(".menu__btn__opBtn")
+// Get width of menuBtnWrapper
+let menuBtnWrapperWidth = menuBtnWrapper.getBoundingClientRect().left;
 
-const allMenuBtns = [...document.querySelectorAll(".menu__btn")]
-
-const menuOpBtn = document.querySelector(".btn-op")
 
 // Hide on start
-const fullDisplayArr = [ticker, belowTheFold, allMenuBtns, clubBtn, clubPush]
+const fullDisplayArr = [belowLogoWrapper, clubBtn]
 
 // Close Menu at start
-closeMenu()
+// closeMenu()
 
 // Opening Splash Page
-const sprayDots = document.querySelectorAll(".spray-splash")
-console.log(sprayDots);
-const spraySplashContainers = document.querySelectorAll(".spray-splash-container")
-console.log(spraySplashContainers);
-const splashWords = document.querySelectorAll(".splash-word")
-console.log(splashWords);
+const sprayDots = document.querySelectorAll(".splash-food__spray-img")
+const spraySplashContainers = document.querySelectorAll(".splash-food__splash-container")
+const splashWords = document.querySelectorAll(".splash-food__word")
 
-// sprayDots.forEach(dot => {
-//     dot.style.opacity = 0;
-// })
 
 // Social logos
 const socialLogos = document.querySelectorAll(".social-logo-wrapper")
 
 // Turn off transition on elements over start
 clubBtn.style.transition = "none";
-belowTheFold.style.transition = "none";
+belowLogoWrapper.style.transition = "none";
 
-const cLT = [
+const cantinaLettersSettings = [
     {
         letter: "c",
         ltrSpc: "-1px",
@@ -131,104 +156,124 @@ const cLT = [
 
 const tickerItems = [
     {
-        head: "Dörren är öppen!",
-        text: "Vi är äntligen igång så kom in och säg hej! Öppettider nedan:"
+        head: "Tjom Pang!",
+        text: "Nu kör vi så kom in och säg hej!"
+    },
+    {
+        head: "Öppet till sent",
+        text: "Fredag och Lördag är dörrarna öppen tills 03. Alla öppettider hittar du nedan."
     },
     {
         head: "Äkta street food",
-        text: "Saftiga tacos, kryddiga bao buns, het ramen och färgglada cocktails – alltid med en twist!"
+        text: "Saftiga tacos, mumsiga bao buns, het ramen och mycket mer. Kolla menyn i botten på sidan."
     },
     {
         head: "Join the Club!",
-        text: "Vill du ha våra hetaste nyheter först? Klicka uppe till höger och bli en del av klubben – det lönar sig!"
+        text: "Vill du ha våra nyheter först? Klicka uppe till höger och bli en del av klubben!"
     },
-    {
-        head: "Kvalitetshäng",
-        text: "Grym mat, skön musik och en stämning som är både avslappnad och elektrisk."
-    },
+
     {
         head: "DJ:s!",
-        text: "Sköna beats, bra vibbar och en stämning som lyfter kvällen."
+        text: "Håll utkik på våra socials vem som styr spakarna, och när."
     },
     {
         head: "Cocktails!",
-        text: "På dansgolvet skakas rumpor och i baren skakar vi oförglömliga drinkar."
-    },
-    {
-        head: "Värdslig mat",
-        text: "Latinamerika, Asien, USA – vi har samlat det bästa från street food-scenen"
+        text: "På dansgolvet skakas rumpor och i baren skakar vi roliga drinkar."
     }
 ];
 
-let currentTickerItemIndex = 0; // Index of the current ticker item
-let typeTickerIndex = 0; // Index for typing individual characters
-const typeTickerHeadContainer = document.querySelector(".ticker-head");
-ticker.style.display = "none"
-const typeTickerTextContainer = document.querySelector(".ticker-text");
+let currentTickerItemIndex = 0;
+const typeTickerHeadContainer = document.querySelector(".ticker__item__head");
+const typeTickerTextContainer = document.querySelector(".ticker__item__text");
 
-function runNewsTicker() {
-    const tickerItem = tickerItems[currentTickerItemIndex];
-    const head = tickerItem.head;
-    const text = tickerItem.text;
-
-    // Step 1: Transition effect for head
-    function updateHead() {
-        // Add a "fade-out" class
-        typeTickerHeadContainer.classList.add("fade-out");
-
-        // Wait for the fade-out animation, then change the text
-        setTimeout(() => {
-            typeTickerHeadContainer.textContent = head; // Update the head
-            typeTickerHeadContainer.classList.remove("fade-out"); // Remove fade-out
-            typeTickerHeadContainer.classList.add("fade-in"); // Add fade-in
-
-            // Remove the fade-in class after animation completes
-            setTimeout(() => {
-                typeTickerHeadContainer.classList.remove("fade-in");
-            }, 500); // Match the CSS transition duration
-        }, 500); // Match the CSS transition duration
-    }
-
-    updateHead(); // Update the head with a transition
-
-    // Step 2: Type out the text
-    function typeText() {
-        if (typeTickerIndex < text.length) {
-            typeTickerTextContainer.textContent += text[typeTickerIndex];
-            typeTickerIndex++;
-            setTimeout(typeText, 100); // Type next character
-        } else {
-            // Step 3: After typing, move to the next item after a delay
-            setTimeout(() => {
-                typeTickerTextContainer.textContent = ""; // Clear text
-                typeTickerIndex = 0; // Reset typing index
-                currentTickerItemIndex = (currentTickerItemIndex + 1) % tickerItems.length; // Loop to next ticker item
-                runNewsTicker(); // Restart the process for the next item
-            }, 2000); // 2-second pause before switching
-        }
-    }
-    typeText(); // Start typing the text
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+async function runNewsTicker() {
+    ticker.style.display = "";
+
+    while (true) {
+        const tickerItem = tickerItems[currentTickerItemIndex];
+        const { head, text } = tickerItem;
+
+        // Fade out
+        typeTickerHeadContainer.classList.add("fade-out");
+        await sleep(500);
+
+        // Update head
+        typeTickerHeadContainer.textContent = head;
+        typeTickerHeadContainer.classList.remove("fade-out");
+        typeTickerHeadContainer.classList.add("fade-in");
+        await sleep(500);
+        typeTickerHeadContainer.classList.remove("fade-in");
+
+        // Type text
+        typeTickerTextContainer.textContent = "";
+        for (let i = 0; i < text.length; i++) {
+            typeTickerTextContainer.textContent += text[i];
+            await sleep(30 * Math.floor(Math.random() * 4 + 1));
+        }
+
+        // Wait before moving on
+        await sleep(2000);
+
+        // Move to next
+        currentTickerItemIndex = (currentTickerItemIndex + 1) % tickerItems.length;
+    }
+}
+
+runNewsTicker();
+
+// Flick opening times
+
+let currentHourIndex = 0;
+
+function cycleHighlight() {
+    // Remove highlight class from all
+    openingHoursDaysAll.forEach(item => item.classList.remove("highlight"));
+    openingHoursHoursAll.forEach(item => item.classList.remove("opening-hours__hours--blob", "highlight"));
+
+    // Add highlight to the current
+    openingHoursDaysAll[currentHourIndex].classList.add("highlight");
+    openingHoursHoursAll[currentHourIndex].classList.add("opening-hours__hours--blob", "highlight");
+
+    // Increment index and wrap around
+    currentHourIndex = (currentHourIndex + 1) % openingHoursDaysAll.length;
+
+    // Repeat after X ms
+    setTimeout(cycleHighlight, 1000); // 1 second per item
+}
+
+// Start the loop
+cycleHighlight();
+
 
 function showHomeElements() {
 
     // Cantina
-    let logoTransTime = parseFloat(getComputedStyle(logoHeadWrap).transitionDuration) * 1000
+    let logoTransTime = parseFloat(getComputedStyle(logoWordCantina).transitionDuration) * 1000
+    console.log(logoTransTime);
+    console.log(logoWordCantina);
     setInterval(() => {
-        logoHeadWrap.classList.remove("zero-opacity")
+        logoWordCantinaWrapper.classList.remove("zero-opacity")
     }, logoTransTime / 4);
 
-    for (let i = 0; i < logoHeadWrapTextArr.length; i++) {
+    for (let i = 0; i < logoCantinaTextArr.length; i++) {
         const span = document.createElement("span");
-        span.style.letterSpacing = cLT[i].ltrSpc;
+        span.style.letterSpacing = cantinaLettersSettings[i].ltrSpc;
         span.classList.add("cantina-letter")
-        span.textContent = logoHeadWrapTextArr[i];
-        logoHeadWrap.append(span)
-        let revealTime = Math.floor(Math.random() * (logoHeadWrapTextArr.length - 2) + 2);
+        span.textContent = logoCantinaTextArr[i];
+        logoWordCantina.append(span)
+        let revealTime = Math.floor(Math.random() * (logoCantinaTextArr.length - 2) + 2);
         let logoHeadTransTime = parseFloat(getComputedStyle(span).transitionDuration);
 
         span.style.transitionDelay = logoHeadTransTime * revealTime + "s";
-        span.style.fontVariationSettings = `"slnt" ${cLT[i].slnt}, "wdth" ${cLT[i].wdth}, "wght" ${cLT[i].wght}`
+        span.style.fontVariationSettings =
+            `"slnt" ${cantinaLettersSettings[i].slnt}, 
+        "wdth" ${cantinaLettersSettings[i].wdth}, 
+        "wght" ${cantinaLettersSettings[i].wght}`
+        span.style.opacity = 1;
     }
 
     // Subhead
@@ -244,24 +289,30 @@ function showHomeElements() {
 
             const letterSpan = document.createElement("span")
             letterSpan.classList.add("zero-opacity")
-            const randomNumber = Math.floor(Math.random() * (900 - 250 + 1)) + 250;
+            const allowedWeights = [250, 400, 550, 700, 850];
+            const randomNumber = allowedWeights[Math.floor(Math.random() * allowedWeights.length)];
             letterSpan.style.fontVariationSettings = `"wght" ${randomNumber}`;
             letterSpan.textContent = letter;
+
+            let shiftUpOrDownDice = Math.random() * 10;
+            if (shiftUpOrDownDice > 9) { letterSpan.style.top = "1px"; }
+            if (shiftUpOrDownDice < 1) { letterSpan.style.top = "-1px"; }
+
             span.appendChild(letterSpan)
 
             setTimeout(() => {
                 letterSpan.classList.remove("zero-opacity");
 
-            }, typeWriterTime * streetFoodCounter + 2000);
+            }, typeWriterTime * streetFoodCounter + 2500);
         })
     });
 
-    let clubStampEnterTime = streetFoodCounter * typeWriterTime + 2500
+    let clubEnterTime = streetFoodCounter * typeWriterTime + 2500
 
     setTimeout(() => {
         clubTextWrap.style.transition = ""
         clubTextWrap.classList.remove("rolled-up");
-    }, clubStampEnterTime);
+    }, clubEnterTime);
 
     setTimeout(() => {
         fullDisplayArr.forEach(element => {
@@ -273,7 +324,7 @@ function showHomeElements() {
                 fadeInFromOpacityZero(element)
             }
         })
-    }, clubStampEnterTime + 500);
+    }, clubEnterTime + 500);
 
     setTimeout(() => {
         // Start the ticker
@@ -282,40 +333,37 @@ function showHomeElements() {
 
         let sprayDotTime = 0.5;
 
-        // for (let i = 0; i < splashWords.length; i++) {
-        //     setTimeout(() => {
-        //         splashWords[i].classList.remove("zero-opacity")
-        //     }, 0);
-            
-        // }
-
         for (let i = 0; i < sprayDots.length; i++) {
             sprayDots[i].style.transitionDelay = sprayDotTime * i + "s";
             sprayDots[i].classList.remove("start")
 
             // Add drip
             let numberOfDripsForEachDot = Math.floor(Math.random() * 4 + 1)
-            console.log(numberOfDripsForEachDot);
+            // console.log(numberOfDripsForEachDot);
+
+            let longerDrip = windowWidth > 767 ? 3 : 1;
+
 
             for (let d = 0; d < numberOfDripsForEachDot; d++) {
                 let makeDripAtAll = Math.floor(Math.random() * 10 + 1);
-                if (makeDripAtAll > 6) {
+                if (makeDripAtAll > 5) {
                     let longDrip = Math.floor(Math.random() * 10 + 1);
                     let dripHeight
                     if (longDrip > 7) {
-                        dripHeight = Math.floor(Math.random() * 80 + 10);
+                        dripHeight = Math.floor(Math.random() * 80 + 10) * longerDrip;
                     } else {
-                        dripHeight = Math.floor(Math.random() * 50 + 10);
+                        dripHeight = Math.floor(Math.random() * 50 + 10) * longerDrip;
                     }
                     let dripStartLeft = Math.floor(Math.random() * 40 + 30);
                     let dripDuration = Math.floor(Math.random() * 30 + 2);
                     let dripWidth = Math.floor(Math.random() * 5 + 1);
 
                     let sprayDripDiv = document.createElement("div")
-                    sprayDripDiv.className = "spray-splash-drip";
+                    sprayDripDiv.className = "splash-food__spray--drip";
                     sprayDripDiv.style.left = dripStartLeft + "%";
                     sprayDripDiv.style.transitionDuration = dripDuration + "s"
-                    sprayDripDiv.style.width = dripWidth > 1 ? "1px" : "2px";
+                    sprayDripDiv.style.width = dripWidth > 1 ? "2px" : "1px";
+
                     spraySplashContainers[i].appendChild(sprayDripDiv)
                     setTimeout(() => {
                         sprayDripDiv.style.height = dripHeight + "px";
@@ -324,15 +372,15 @@ function showHomeElements() {
             }
         }
 
-        runNewsTicker();
-    }, clubStampEnterTime + 1500);
+        // runNewsTicker();
+    }, clubEnterTime + 1500);
 
     setTimeout(() => {
         socialLogos.forEach(logo => {
             logo.style.transitionDuration = "5s";
             logo.classList.remove("zero-opacity")
-        }) 
-    }, clubStampEnterTime + 3500);
+        })
+    }, clubEnterTime + 3500);
 }
 
 showHomeElements()
@@ -351,106 +399,162 @@ function fadeInFromOpacityZero(element) {
 
 // Btn and menus
 
-let btnPressTransTime = parseFloat(getComputedStyle(menuOpBtn).transitionDuration) * 100;
-console.log(btnPressTransTime);
+function setheightAndWidthForFoodMenuContents(menuContent) {
+    let foodMenuContentHeight = menuContent.scrollHeight;
+    menuContent.style.setProperty('--food-menu-full-height', foodMenuContentHeight + "px");
 
-let bitesSectionHeader = document.querySelector(".bites")
-let barSectionHeader = document.querySelector(".bar")
-let restSectionHeader = document.querySelector(".rest")
-let menuTransTime;
-// Menu Sec Btns
-menuSectionBtns.forEach(btn => {
+    let afterStyles = getComputedStyle(menuContent, '::after');
+    let width = parseFloat(afterStyles.getPropertyValue('width'));
+
+    const styles = getComputedStyle(menuContent);
+
+    // Read individual paddings
+    const paddingTop = styles.getPropertyValue('padding-top');
+    const paddingRight = styles.getPropertyValue('padding-right');
+    const paddingBottom = styles.getPropertyValue('padding-bottom');
+    const paddingLeft = parseFloat(styles.getPropertyValue('padding-left'));
+
+    // Collect elm that need menwidth
+
+    const menuWidthElements = [
+        ...menuDishContentAll,
+        ...menuCategoryHeadWrappers,
+        ...menuCategoryHeads,
+        ...menuExtraInfoAll
+    ]
+
+    menuWidthElements.forEach(dishContent => {
+        dishContent.style.width = width - paddingLeft * 2 + "px";
+    })
+}
+
+setheightAndWidthForFoodMenuContents(menuContent)
+
+let btnPressTransTime = parseFloat(getComputedStyle(menuOpBtn).transitionDuration) * 100;
+
+
+const menuCatMap = {};
+
+// Build the mapping
+document.querySelectorAll(".menu__cat-wrapper").forEach(head => {
+    const dataMenuCat = head.dataset.menuCat;
+    const wrapper = head.closest(".menu__cat-wrapper");
+
+    if (wrapper && dataMenuCat) {
+        menuCatMap[dataMenuCat] = wrapper;
+    }
+});
+
+console.log(menuCatMap);
+
+// Get transition time
+const menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
+
+menuSecBtnsAll.forEach(btn => {
     btn.addEventListener("click", e => {
-        let btn = e.target;
-        // menuSection.style.height = "100%";
-        openMenu()
-        menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
-        console.log(btn);
+        const clickedBtn = e.currentTarget;
+
+        // Remove pressed/active from all
+        menuSecBtnsAll.forEach(b => b.classList.remove("pressed", "active"));
+        clickedBtn.classList.add("pressed");
+
+        // Get the data-menu-cat of this button
+        const targetCat = clickedBtn.dataset.menuCat;
 
         setTimeout(() => {
-            if (btn.textContent === "Bar") {
-                console.log("bar");
-                barSectionHeader.scrollIntoView({ behavior: "smooth" });
-            } else if (btn.textContent === "The Rest") {
-                console.log("rest");
-                restSectionHeader.scrollIntoView({ behavior: "smooth" });
+            const targetSection = menuCatMap[targetCat];
+
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                    inline: "nearest"
+                });
             } else {
-                bitesSectionHeader.scrollIntoView({ behavior: "smooth" });
+                console.warn("No matching section for data-menu-cat:", targetCat);
             }
         }, menuTransTime * 0.75);
 
         setTimeout(() => {
-            menuCategoryHeads.forEach(catHead => {
-                makeFunkyMenuCategoryHeads(catHead)
-            })
-        }, menuTransTime);
-    })
-})
-// Menu Btns
-menuOpBtn.addEventListener("click", e => {
-    let btn = e.target;
-    closeMenu()
-    setTimeout(() => {
-        btn.classList.remove("pressed")
-        btn.classList.remove("active")
-    }, btnPressTransTime);
-
-})
-// All btns
-allMenuBtns.forEach(btn => {
-    btn.addEventListener("click", e => {
-        allMenuBtns.forEach(btn => {
-            btn.classList.remove("active", "pressed");
-        })
-        btn.classList.add("pressed")
-        setTimeout(() => {
-            btn.classList.remove("pressed")
-            btn.classList.add("active")
+            clickedBtn.classList.remove("pressed");
+            clickedBtn.classList.add("active");
         }, btnPressTransTime);
-        if (btn.classList.contains("btn-op")) {
-            setTimeout(() => {
-                btn.classList.remove("active")
-            }, btnPressTransTime * 2);
-        }
-    })
+
+        setTimeout(() => {
+            menuCategoryHeads.forEach(catHead => {
+                makeFunkyMenuCategoryHeads(catHead);
+            });
+        }, menuTransTime - 100);
+    });
+});
+
+// Menu Btns
+
+let menuOpen = false;
+let currentOpBtn = null;
+let orgOpMenuText = menuOpBtn.textContent;
+
+menuOpBtn.addEventListener("click", e => {
+    e.stopPropagation;
+    console.log("op clicked");
+
+    // Toggle menu state first
+    menuOpen = !menuOpen;
+
+    if (menuOpen) {
+        openMenu();
+    } else {
+        closeMenu();
+    }
+
+    // You were trying to remove "active, pressed" here with a typo
+    // If you want to reset pressed/active, do it consistently:
+    menuOpBtn.classList.add("pressed");
+});
+
+menuWrapper.addEventListener('click', e => {
+    console.log("meny wrapper is clicked", e.target);
+    if (!e.target.matches(".menu-wrapper")) {
+        return; // Ignore this click
+    }
+    closeMenu()
 })
+
+
+const MENU_TRANSITION_DELAY = 150;
 
 function closeMenu() {
-    menuWrapper.classList.add("close");
-    allMenuBtns.forEach(btn => {
-        btn.classList.remove("active", "pressed");
-    })
-    menuSection.classList.add("no-point")
+    console.log("close menu");
+    menuContentScroller.classList.add("menu-content-scroller--closed");
+    menuSecBtnsWrapper.classList.add("menu__btns__secBtns-wrapper--closed");
+    menuOpBtn.classList.remove("active");
+
+    setTimeout(() => {
+        menuOpBtn.classList.remove("pressed");
+        menuOpBtn.textContent = orgOpMenuText;
+    }, MENU_TRANSITION_DELAY);
+    menuWrapper.style.pointerEvents = "none";
+
+    menuOpen = false;
 }
+
 function openMenu() {
-    menuWrapper.classList.remove("close");
-    menuSection.classList.remove("no-point")
+    console.log("open menu");
 
+    menuUnOpened = false;
+    menuContentScroller.classList.remove("menu-content-scroller--closed");
+    menuSecBtnsWrapper.classList.remove("menu__btns__secBtns-wrapper--closed");
+
+    setTimeout(() => {
+        menuOpBtn.classList.add("active");
+        menuOpBtn.textContent = "X";
+    }, MENU_TRANSITION_DELAY);
+    menuWrapper.style.pointerEvents = "";
+
+
+    menuOpen = true;
 }
 
-function makeFunkyMenuCategoryHeads(headlineArr) {
-    let catHeadLetters = [...headlineArr.textContent]
-    headlineArr.textContent = "";
-    catHeadLetters.forEach((letter, i) => {
-        const catHeadSpan = document.createElement("span");
-        // catHeadSpan.classList.add("blob")
-        catHeadSpan.textContent = letter;
-        catHeadSpan.style.transition = `font-variation-settings 1s ease-in-out`;
-        // catHeadSpan.style.transitionDelay = 100 * i + "s";
-
-        let weight = Math.floor(Math.random() * (901 - 100) + 100)
-        let width = Math.floor(Math.random() * (116 - 50) + 50)
-        let slant = Math.random() > 0.5 ? Math.floor(Math.random() * (13) - 12) : 0;
-
-        setTimeout(() => {
-            catHeadSpan.style.fontVariationSettings = `"slnt" ${slant}, "wdth" ${width}, "wght" ${weight}`
-        }, 200);
-
-        headlineArr.appendChild(catHeadSpan)
-    })
-}
-
-// makeFunkyMenuCategoryHeads(menuCategoryHeads[0])
 
 // Scroll close menu
 
@@ -505,25 +609,230 @@ menuContent.addEventListener("touchmove", (e) => {
 }, { passive: true });
 
 window.addEventListener("load", e => {
-    menuWrapper.style.transition = "none";
+    // menuWrapper.style.transition = "none";
     clubBtn.style.transition = "none";
-    belowTheFold.style.transition = "none";
+    belowLogoWrapper.style.transition = "none";
 })
 
-const kollaMenuBtn = document.querySelector(".kolla-meny");
-console.log(kollaMenuBtn)
-
 clubBtn.addEventListener("click", (e) => {
+    e.stopPropagation();  // Prevent event from bubbling to document
     const btn = e.target; // Reference to the clicked button
-    console.log(btn);
+
+    clubFormDripContainer.innerHTML = "";
+
+
+    isFormOpen = !isFormOpen;
 
     clubBtn.classList.toggle("pressed");
-    kollaMenuBtn.classList.toggle("form-open");
+    // Move form wrapper up in index
+    clubFormWrapper.classList.toggle("form-above");
 
     // Toggle button text between "X" and original
     clubBtn.innerHTML = clubBtn.classList.contains("pressed") ? "X" : clubBtnInnerHTML;
 
     // Toggle the open classes for content and form
-    clubFormContent.classList.toggle("open");
-    // clubForm.classList.toggle("open");
+    clubFormContent.classList.toggle("club-form__content--open");
+    // clubFormDripContainer.classList.toggle("open");
+
+    setTimeout(() => {
+        formDrips()
+
+    }, 500);
 });
+
+document.addEventListener("click", (e) => {
+    const clickedEl = e.target;
+
+    if (
+        isFormOpen &&
+        !clubFormWrapper.contains(clickedEl) &&
+        !clubBtn.contains(clickedEl)
+    ) {
+        isFormOpen = false;
+
+        clubBtn.classList.remove("pressed");
+        clubFormWrapper.classList.remove("form-above");
+        clubBtn.innerHTML = clubBtnInnerHTML;
+        clubFormContent.classList.remove("open");
+        clubFormDripContainer.classList.remove("open");
+        clubFormDripContainer.innerHTML = "";
+    }
+});
+
+function formDrips() {
+    const width = clubFormDripContainer.getBoundingClientRect().width;
+    const dripNumber = Math.floor(Math.random() * (9 - 5 + 1)) + 5;
+
+    for (let i = 0; i < dripNumber; i++) {
+        const dot = document.createElement("div");
+
+        const dotWidth = Math.floor(Math.random() * (5 - 1 + 1) + 1) * 4;
+        dot.style.width = dotWidth + "px";
+
+        const maxLeft = width - dotWidth;
+        const leftPos = Math.random() * maxLeft;
+        dot.style.left = `${leftPos}px`;
+
+        dot.style.transitionDuration = Math.floor(Math.random() * (10 - 2 + 1) + 2) + "s";
+        dot.style.transitionDelay = Math.floor(Math.random() * 2) + "s";
+        dot.classList.add("form-drip");
+
+        clubFormDripContainer.appendChild(dot);
+
+        setTimeout(() => {
+            dot.style.height = Math.floor(Math.random() * (200 - 10 + 1) + 10) + "px";
+        }, 10);
+    }
+
+    console.log(width, dripNumber);
+}
+
+
+
+window.addEventListener('resize', e => {
+    closeMenu()
+    windowWidth = window.innerWidth;
+    setheightAndWidthForFoodMenuContents(menuContent)
+
+})
+
+
+// openMenu()
+
+function resizeElements() {
+    windowWidth = window.innerWidth;
+    menuBtnWrapperWidth = menuBtnWrapper.getBoundingClientRect().left;
+    // Set width for menu
+    // console.log(menuWrapper.style.left);
+    menuBgWidth = menuBtnWrapperWidth - menuContent.getBoundingClientRect().left;
+
+    // setWidthToMatchMenuBg(menuBgWidth)
+    // if (windowWidth > 767) {
+    //     openingHoursWrapper.style.top = rootDocPadding + "px";
+    // } else {
+    //     openingHoursWrapper.style.top = bottomOFClubBtn + rootDocPadding + "px";
+    // }
+
+}
+
+// function setWidthToMatchMenuBg(menuBgWidth) {
+//     menuContent.style.width = menuBgWidth + "px";
+//     menuContentBg.style.width = menuBgWidth - menuBgGap + "px";
+//     menuContentBorder.style.width = menuBgWidth - menuBgGap + "px";
+
+//     menuWidthElements.forEach(content => {
+//         content.style.width = menuBgWidth - menuBgGap - cssVarfoodMenuPaddingInner * 2 + "px";
+//     })
+
+// }
+
+
+// Create observer for menu categories
+
+const menuCatObserverOptions = {
+    root: menuContentScroller,
+    rootMargin: "-50% 0px -50% 0px",
+    threshold: 0
+};
+
+const menuCatObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const target = entry.target;
+
+        if (entry.isIntersecting) {
+            // The section is in view
+            // console.log("Section visible:", target);
+
+            const id = target.dataset.menuCat;
+            if (id) {
+                // Remove previous actives
+                menuSecBtnsAll.forEach(btn => btn.classList.remove("active"));
+
+                // Find the button matching this section
+                const matchingBtn = Array.from(menuSecBtnsAll).find(btn =>
+                    btn.dataset.menuCat === id
+                );
+                if (matchingBtn) {
+                    matchingBtn.classList.add("active");
+                }
+            }
+
+        } else {
+            // Section leaving view if you want to handle that
+            // console.log("Section leaving:", target);
+        }
+    });
+}, menuCatObserverOptions);
+
+menuCategorySections.forEach(section => {
+    menuCatObserver.observe(section);
+});
+
+
+// Create observer for menu heads
+
+const menuCatHeadObserverOptions = {
+    root: menuContentScroller,
+    rootMargin: "-25% 0px -25% 0px",
+    threshold: 0
+};
+
+const menuCatHeadObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const target = entry.target;
+
+        if (entry.isIntersecting) {
+            // The section is in view
+            // console.log("Section visible:", target);
+            makeFunkyMenuCategoryHeads(target)
+
+        } else {
+            // Section leaving view if you want to handle that
+            // console.log("Section leaving:", target);
+        }
+    });
+}, menuCatHeadObserverOptions);
+
+menuCategoryHeads.forEach(section => {
+    menuCatHeadObserver.observe(section);
+});
+
+
+
+
+// Make funky cathegoy heads
+
+// Start one directly
+menuCategoryHeads.forEach(head => {
+    makeFunkyMenuCategoryHeads(head)
+})
+
+// Then change on demand
+function makeFunkyMenuCategoryHeads(headlineEl) {
+    // If we haven’t replaced textContent before, build spans
+    if (!headlineEl.dataset.hasSpans) {
+        const letters = [...headlineEl.textContent];
+        headlineEl.textContent = "";
+        letters.forEach(letter => {
+            const span = document.createElement("span");
+            span.textContent = letter;
+            span.style.transition = `font-variation-settings 1s ease-in-out`;
+            headlineEl.appendChild(span);
+        });
+        // Mark that we initialized spans
+        headlineEl.dataset.hasSpans = "true";
+    }
+
+    // Now animate: for each span, assign random settings
+    const spans = headlineEl.querySelectorAll("span");
+    spans.forEach(span => {
+        const weight = Math.floor(Math.random() * (901 - 100) + 100);
+        const width = Math.floor(Math.random() * (116 - 50) + 50);
+        const slant = Math.random() > 0.5 ? Math.floor(Math.random() * 13) - 12 : 0;
+
+        // Animate (with optional timeout)
+        setTimeout(() => {
+            span.style.fontVariationSettings = `"slnt" ${slant}, "wdth" ${width}, "wght" ${weight}`;
+        }, 0);
+    });
+}
