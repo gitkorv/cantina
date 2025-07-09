@@ -341,7 +341,7 @@ body {
 /* ----------> MAIN ELEMENTS <---------- */
 
 main {
-    position: fixed;
+    position: absolute;
     display: flex;
     flex-direction: column;
     /* align-items: end; */
@@ -349,7 +349,7 @@ main {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100dvh;
     overflow: hidden;
     padding-bottom: var(--bodyPadding);
 
@@ -1320,7 +1320,7 @@ input[type=submit]:hover {
 
 .boka-bord-wrapper {
     position: absolute;
-    top: calc(var(--bodyPadding) * 8);
+    top: calc(var(--bodyPadding) * 7.5);
     left: calc(var(--textFontSize) / 2);
     display: flex;
 }
@@ -1423,6 +1423,8 @@ input[type=submit]:hover {
     color: var(--cantinaLila);
 }
 
+/* -> Pil <---------- */
+
 .half-circle-svg-pointer-wrapper {
     position: absolute;
     top: -190%;
@@ -1444,6 +1446,7 @@ input[type=submit]:hover {
     right: 0;
     top: 30%;
     transform: rotate(-20deg);
+    color: var(--cantinaCream);
     /* background-color: #381460; */
 }
 
@@ -1477,11 +1480,11 @@ input[type=submit]:hover {
         opacity: 0;
     }
 
-    40% {
+    45% {
         opacity: 0;
     }
 
-    41% {
+    46% {
         opacity: 1;
     }
 
@@ -1490,6 +1493,37 @@ input[type=submit]:hover {
     }
 }
 
+.half-circle-svg-pointer-wrapper--menu {
+    position: absolute;
+    top: 75%;
+    left: 40%;
+    margin-top: var(--bodyPadding);
+    width: 100px;
+    height: 100px;
+    transform: rotate(-25deg);
+    /* background-color: #33a58e; */
+}
+
+.half-circle-svg-pointer__svg--menu {
+    transform: scale(1, 1);
+}
+
+/* .half-circle-pointer__arrow--meny {
+    transform: rotate(25deg);
+} */
+
+.half-circle-svg-pointer__text--meny {
+    position: absolute;
+    display: flex;
+    left: 0;
+    top: 40%;
+    transform: rotate(30deg);
+    /* background-color: #381460; */
+}
+
+.half-circle-pointer__arrow--meny, .half-circle-pointer__arc--meny {
+    animation-delay: 1s;
+}
 
 /* ----------> EXTRA PAGES GENERAL <---------- */
 
