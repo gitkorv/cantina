@@ -20,6 +20,8 @@
     --textFontSizeSmall: .5rem;
     --extraPagesHeadline: 3rem;
 
+    --fontCantina: "acumin-variable", sans-serif;
+
     --fontTypewriter: "ltr-ncnd-variable", sans-serif;
     --foodMenuContentHeight: 1000px;
 }
@@ -1177,6 +1179,7 @@ input[type=submit]:hover {
     55% {
         transform: translate(-50%, 0%) rotate(-15deg);
     }
+
     60% {
         transform: translate(-50%, 0%) rotate(-15deg);
     }
@@ -1313,7 +1316,7 @@ input[type=submit]:hover {
     visibility: hidden;
 }
 
-/* ----------> BOKA BORD <---------- */
+/* -> BOKA BORD <---------- */
 
 .boka-bord-wrapper {
     position: absolute;
@@ -1342,14 +1345,12 @@ input[type=submit]:hover {
 .boka-bord__link {
     position: relative;
     display: inline-block;
-    text-decoration: underline;
-    text-decoration-color: var(--cantinaCream);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
+
     color: var(--cantinaCream);
     background: var(--cantinaGreen);
-    padding: var(--textFontSize);
+    padding: var(--textFontSizeSmall) var(--textFontSize);
     font-family: var(--fontTypewriter);
+    font-variation-settings: "wght" 600;
     font-size: var(--textFontSize);
     box-shadow: inset 0 0 0 1px var(--cantinaCream);
     /* border: 4px solid var(--cantinaCream); */
@@ -1402,10 +1403,92 @@ input[type=submit]:hover {
     color: var(--cantinaLila);
     text-decoration-color: var(--cantinaLila);
     transform: rotate(-15deg);
-
-
 }
 
+.boka-bord__link span {
+    text-decoration: underline;
+    text-decoration-color: var(--cantinaCream);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+}
+
+.boka-bord__dummy-text span {
+    font-family: var(--fontCantina);
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 300;
+    text-decoration: none;
+}
+
+.boka-bord__dummy-text span:nth-child(even) {
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 500;
+    color: var(--cantinaLila);
+}
+
+.half-circle-svg-pointer-wrapper {
+    position: absolute;
+    top: -190%;
+    left: 80%;
+    margin-top: var(--bodyPadding);
+    width: 100px;
+    height: 100px;
+    transform: rotate(30deg);
+    /* background-color: #33a58e; */
+}
+
+.half-circle-pointer__content {
+    position: relative;
+}
+
+.half-circle-svg-pointer__text {
+    position: absolute;
+    display: flex;
+    right: 0;
+    top: 30%;
+    transform: rotate(-20deg);
+    /* background-color: #381460; */
+}
+
+.half-circle-svg-pointer__svg {
+    transform: scale(-1, 1);
+}
+
+.half-circle-pointer__arc {
+    fill: none;
+    stroke: var(--cantinaLila);
+    stroke-width: 1;
+    stroke-dasharray: 157;
+    stroke-dashoffset: 157;
+    animation: drawArc 2s linear infinite;
+}
+
+@keyframes drawArc {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.half-circle-pointer__arrow {
+    fill: var(--cantinaLila);
+    opacity: 0;
+    animation: fadeArrow 2s linear infinite;
+}
+
+@keyframes fadeArrow {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    41% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 
 
 /* ----------> EXTRA PAGES GENERAL <---------- */
@@ -1514,6 +1597,11 @@ input[type=submit]:hover {
 @media (min-height: 720px) {
     .logo-wrapper {
         flex: .55;
+    }
+
+    .boka-bord-wrapper {
+        top: calc(var(--bodyPadding) * 9);
+
     }
 }
 
