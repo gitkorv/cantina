@@ -936,7 +936,7 @@ input[type=submit]:hover {
 }
 
 .menu____dish-price--move-up {
-    top: calc(0px - var(--bodyPadding));
+    top: calc(0px - var(--textFontSize));
 }
 
 .menu____dish-price__left-aligned {
@@ -946,6 +946,10 @@ input[type=submit]:hover {
     line-height: var(--textFontSizeSmall);
 
 }
+
+/* .menu-cat--tacos .menu____dish-price--big {
+        top: 0px;
+    } */
 
 /* .menu____dish-price__right-aligned {
     align-self: flex-end;
@@ -1686,6 +1690,10 @@ input[type=submit]:hover {
     .menu-cat--broth-n-buns .menu____dish-wrapper:last-child .menu____dish-price--big {
         top: 50%;
     }
+
+    .menu____dish-price--move-up {
+    top: calc(0px - var(--bodyPadding));
+}
 
     .menu-cat--tacos .menu____dish-price--big {
         align-items: center;
