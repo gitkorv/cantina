@@ -917,8 +917,8 @@ input[type=submit]:hover {
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
     right: var(--textFontSizeSmall);
-    color: black;
-    text-shadow: var(--cantinaCream) 2px 2px 2px;
+    color: var(--cantinaGreen);
+    text-shadow: var(--cantinaLila) 2px 2px 2px;
     /* background-color: #72808a; */
     text-align: right;
     width: 200px;
@@ -987,7 +987,7 @@ input[type=submit]:hover {
     padding-top: 4px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
-    /* color: var(--cantinaRosa); */
+    color: var(--cantinaGreen);
 }
 
 .menu____dish__text--intro {
