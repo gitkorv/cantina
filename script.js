@@ -174,7 +174,7 @@ const tickerItems = [
 
     {
         head: "DJ:s!",
-        text: "Håll utkik på våra socials vem som styr spakarna, och när."
+        text: "Håll utkik på våra socials (nere till vänster) vem som styr spakarna, och när."
     },
     {
         head: "Cocktails!",
