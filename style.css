@@ -1725,6 +1725,9 @@ input[type=submit]:hover {
     .half-circle-svg-pointer__svg {
         transform: scale(-1, -1);
     }
+    .cantina-skull-svg-wrapper {
+        height: 150px;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -1736,5 +1739,9 @@ input[type=submit]:hover {
         top: calc(var(--bodyPadding) * 10);
         left: calc(var(--textFontSize) * 4);
 
+    }
+
+    .cantina-skull-svg-wrapper {
+        height: 180px;
     }
 }
