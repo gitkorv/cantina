@@ -48,7 +48,7 @@ const bottomOFClubBtn = clubBtn.getBoundingClientRect().height
 // if (windowWidth < 767) {
 //     openingHoursWrapper.style.top = rootDocPadding + "px";
 // } else {
-    
+
 // }
 // openingHoursWrapper.style.top = bottomOFClubBtn + rootDocPadding + "px";
 
@@ -270,7 +270,7 @@ function showHomeElements() {
 
         span.style.transitionDelay = logoHeadTransTime * revealTime + "s";
         span.style.fontVariationSettings =
-            `"slnt" ${cantinaLettersSettings[i].slnt}, 
+        `"slnt" ${cantinaLettersSettings[i].slnt}, 
         "wdth" ${cantinaLettersSettings[i].wdth}, 
         "wght" ${cantinaLettersSettings[i].wght}`
         span.style.opacity = 1;
@@ -455,7 +455,7 @@ menuSecBtnsAll.forEach(btn => {
         const clickedBtn = e.currentTarget;
 
         // Remove pressed/active from all
-        menuSecBtnsAll.forEach(b => b.classList.remove("pressed", "active"));
+        menuSecBtnsAll.forEach(b => b.classList.remove("pressed", "active", "hover"));
         clickedBtn.classList.add("pressed");
 
         // Get the data-menu-cat of this button
@@ -478,7 +478,7 @@ menuSecBtnsAll.forEach(btn => {
         setTimeout(() => {
             clickedBtn.classList.remove("pressed");
             clickedBtn.classList.add("active");
-        }, btnPressTransTime);
+        }, 200);
 
         setTimeout(() => {
             menuCategoryHeads.forEach(catHead => {
@@ -496,6 +496,7 @@ let orgOpMenuText = menuOpBtn.textContent;
 
 menuOpBtn.addEventListener("click", e => {
     e.stopPropagation;
+    const clickedBtn = e.target;
     console.log("op clicked");
 
     // Toggle menu state first
@@ -510,6 +511,10 @@ menuOpBtn.addEventListener("click", e => {
     // You were trying to remove "active, pressed" here with a typo
     // If you want to reset pressed/active, do it consistently:
     menuOpBtn.classList.add("pressed");
+    // setTimeout(() => {
+    //     clickedBtn.classList.remove("pressed");
+    //     clickedBtn.classList.add("active");
+    // }, 200);
 });
 
 menuWrapper.addEventListener('click', e => {

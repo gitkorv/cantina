@@ -677,6 +677,7 @@ input[type=submit]:hover {
 
 .opening-hours-list {
     list-style: none;
+    display: grid;
 }
 
 .hours-head {
@@ -688,20 +689,19 @@ input[type=submit]:hover {
     font-variation-settings: "slnt" 0, "wdth" 70, "wght" 400;
 }
 
-.opening-hours__days.highlight {
+/* .opening-hours__days.highlight {
     color: var(--cantinaLila);
-    /* font-variation-settings: "slnt" 0, "wdth" 70, "wght" 400; */
-}
+} */
 
 .opening-hours__hours {
-    color: var(--cantinaGreen);
+    color: var(--cantinaLila);
     transition: font-variation-settings .25s ease-in;
 
     font-variation-settings: "slnt" 0, "wdth" 115, "wght" 600;
 }
 
 .opening-hours__hours--blob {
-    color: var(--cantinaCream);
+    color: var(--cantinaGreen);
     font-variation-settings: "slnt" 0, "wdth" 150, "wght" 900;
 
 }
@@ -1062,6 +1062,18 @@ input[type=submit]:hover {
     pointer-events: none;
 }
 
+.menu__btns__secBtns-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    transition: transform .5s ease-in-out;
+}
+
+.menu__btns__secBtns-wrapper--closed {
+    transform: translateY(150%);
+}
+
 .menu__btn {
     all: none;
     flex: 1 0 auto;
@@ -1077,16 +1089,24 @@ input[type=submit]:hover {
     pointer-events: all;
 }
 
-.menu__btns__secBtns-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    position: relative;
-    transition: transform .5s ease-in-out;
+.menu__btn:hover {
+    background-color: var(--cantinaGrey);
+    color: var(--cantinaCream);
+    animation: none;
 }
 
-.menu__btns__secBtns-wrapper--closed {
-    transform: translateY(150%);
+button.menu__btn.pressed {
+    scale: 90%;
+    background-color: var(--cantinaLila);
+}
+
+.menu__btn.active {
+    background-color: var(--cantinaGreen);
+    color: var(--cantinaCream);
+    box-shadow: var(--cantinaCream) 2px 2px 0px;
+    scale: 100%;
+    animation: none;
+    outline: none;
 }
 
 
@@ -1118,21 +1138,11 @@ input[type=submit]:hover {
     }
 }
 
-.menu__btn.pressed {
-    scale: 90%;
-    background-color: var(--cantinaLila);
-}
-
-.menu__btn.active {
-    background-color: var(--cantinaGreen);
-    color: var(--cantinaCream);
-    box-shadow: var(--cantinaCream) 2px 2px 0px;
+.menu__btn__opBtn.pressed.active {
     scale: 100%;
 }
 
-.menu__btn.menu__btn__opBtn.active {
-    background-color: var(--cantinaGrey);
-}
+
 
 .cantina-skull-svg-wrapper {
     position: absolute;
@@ -1148,6 +1158,7 @@ input[type=submit]:hover {
     /* aspect-ratio: 1/1; */
     /* background-color: #72808a; */
     z-index: -1000;
+    pointer-events: none;
 }
 
 .cantina-skull-svg-wrapper svg {
@@ -1645,11 +1656,15 @@ input[type=submit]:hover {
     }
 }
 
-@media (min-width: 768px) and (min-height: 768px) {
+@media (min-width: 768px) and (min-height: 1024px) {
 
     :root {
         --bodyPadding: 48px;
         --textFontSize: 1.5rem
+    }
+
+    .logo-wrapper {
+        flex: .65;
     }
 
     .logo {
@@ -1659,8 +1674,19 @@ input[type=submit]:hover {
     }
 
     .opening-hours-wrapper {
-        top: 200px;
-        right: 0;
+        top: 220px;
+        left: 35%;
+        width: 100%;
+        /* background-color: #33a58e; */
+        /* right: unset; */
+    }
+
+    .opening-hours-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(2, 150px);
+        grid-template-rows: repeat(3, 1fr);
+        grid-auto-flow: column;
     }
 
 
@@ -1692,8 +1718,8 @@ input[type=submit]:hover {
     }
 
     .menu____dish-price--move-up {
-    top: calc(0px - var(--bodyPadding));
-}
+        top: calc(0px - var(--bodyPadding));
+    }
 
     .menu-cat--tacos .menu____dish-price--big {
         align-items: center;
@@ -1714,7 +1740,7 @@ input[type=submit]:hover {
     }
 
     .boka-bord-wrapper {
-        top: 50%;
+        top: 60%;
         left: calc(var(--textFontSize) / 2);
     }
 
@@ -1733,15 +1759,33 @@ input[type=submit]:hover {
     .half-circle-svg-pointer__svg {
         transform: scale(-1, -1);
     }
+
     .cantina-skull-svg-wrapper {
         height: 150px;
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (min-height:1366px) {
+
     .opening-hours-wrapper {
-        right: 10%;
+        top: 300px;
+        right: 36px;
+        width: 50%;
+        left: unset;
+        padding-right: 80px;
+        width: fit-content;
+        /* background-color: #33a58e; */
+        /* right: unset; */
     }
+
+    .opening-hours-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(1, 150px);
+        grid-template-rows: repeat(1, 1fr);
+        grid-auto-flow: unset;
+    }
+
 
     .boka-bord-wrapper {
         top: calc(var(--bodyPadding) * 10);
