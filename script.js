@@ -43,7 +43,13 @@ const ticker = document.querySelector(".ticker-wrapper");
 
 // Opening hours
 const openingHoursWrapper = document.querySelector(".opening-hours-wrapper")
+// const openingHoursDayItems = [...document.querySelectorAll(".opening-hours__days")]
+// const openingHoursHourItems = [...document.querySelectorAll(".opening-hours__hours")]
+// console.log(openingHoursHoursAll);
 const bottomOFClubBtn = clubBtn.getBoundingClientRect().height
+
+
+
 
 // if (windowWidth < 767) {
 //     openingHoursWrapper.style.top = rootDocPadding + "px";
@@ -55,6 +61,42 @@ const bottomOFClubBtn = clubBtn.getBoundingClientRect().height
 
 const openingHoursDaysAll = document.querySelectorAll(".opening-hours__days");
 const openingHoursHoursAll = document.querySelectorAll(".opening-hours__hours");
+
+function setWidthForHours() {
+  requestAnimationFrame(() => {
+    // Apply font variation settings
+    openingHoursHoursAll.forEach(hour => {
+        hour.style.transition = "none";
+      hour.style.fontVariationSettings = `"slnt" 0, "wdth" 150, "wght" 900`;
+    });
+
+    // Let styles apply
+    requestAnimationFrame(() => {
+      const getMaxWidth = (elements) =>
+        [...elements].reduce((max, el) => Math.max(max, el.getBoundingClientRect().width), 0);
+
+      const maxWidth = getMaxWidth(openingHoursDaysAll);
+      console.log(maxWidth);
+
+      openingHoursDaysAll.forEach(dayLine => {
+        dayLine.style.width = maxWidth + "px";
+
+      });
+
+      // Wait one more frame *after* measurement to clear styles
+      requestAnimationFrame(() => {
+        openingHoursHoursAll.forEach(hour => {
+                    hour.style.transition = "";
+
+          hour.style.fontVariationSettings = "";
+        });
+      });
+    });
+  });
+}
+
+setWidthForHours()
+
 
 // Below logo
 const belowLogoWrapper = document.querySelector(".below-logo-wrapper")
@@ -270,7 +312,7 @@ function showHomeElements() {
 
         span.style.transitionDelay = logoHeadTransTime * revealTime + "s";
         span.style.fontVariationSettings =
-        `"slnt" ${cantinaLettersSettings[i].slnt}, 
+            `"slnt" ${cantinaLettersSettings[i].slnt}, 
         "wdth" ${cantinaLettersSettings[i].wdth}, 
         "wght" ${cantinaLettersSettings[i].wght}`
         span.style.opacity = 1;
@@ -698,6 +740,7 @@ window.addEventListener('resize', e => {
     closeMenu()
     windowWidth = window.innerWidth;
     setheightAndWidthForFoodMenuContents(menuContent)
+    setWidthForHours()
 
 })
 

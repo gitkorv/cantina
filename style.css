@@ -663,26 +663,30 @@ input[type=submit]:hover {
     position: relative;
     top: 100px;
     right: var(--bodyPadding);
-    width: calc(var(--bodyPadding) * 4);
     align-self: flex-end;
     justify-self: center;
     text-align: left;
     color: var(--cantinaCream);
     font-variation-settings: "slnt" 0, "wdth" 100, "wght" 600;
     padding-bottom: 8px;
-    /* margin-right: 24px; */
     font-size: calc(var(--textFontSize) * 0.75);
     /* background-color: aliceblue; */
+    overflow-x: visible;
 }
 
 .opening-hours-list {
     list-style: none;
     display: grid;
+    /* background-color: orange; */
+    /* overflow-x: visible; */
+            padding-left: var(--textFontSize);
+
 }
 
 .hours-head {
     color: var(--cantinaLila);
     color: black;
+    padding-bottom: var(--textFontSizeSmall);
 }
 
 .opening-hours__days {
@@ -1675,18 +1679,22 @@ button.menu__btn.pressed {
 
     .opening-hours-wrapper {
         top: 220px;
-        left: 35%;
-        width: 100%;
-        /* background-color: #33a58e; */
+        right: var(--bodyPadding);
+        align-items: stretch;
+        /* width: fit-content; */
+        /* background-color: pink; */
         /* right: unset; */
     }
 
     .opening-hours-list {
         list-style: none;
         display: grid;
-        grid-template-columns: repeat(2, 150px);
-        grid-template-rows: repeat(3, 1fr);
+        gap: 0 var(--textFontSize);
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4, 1fr);
         grid-auto-flow: column;
+        /* padding-left: var(--textFontSize); */
+        /* background-color: #72808a; */
     }
 
 
