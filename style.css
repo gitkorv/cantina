@@ -686,7 +686,7 @@ input[type=submit]:hover {
 .hours-head {
     color: var(--cantinaLila);
     color: black;
-    padding-bottom: var(--textFontSizeSmall);
+    padding-bottom: calc(var(--textFontSizeSmall) / 4);
 }
 
 .opening-hours__days {
