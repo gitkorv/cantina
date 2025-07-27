@@ -661,7 +661,7 @@ input[type=submit]:hover {
 
 .opening-hours-wrapper {
     position: relative;
-    top: 100px;
+    top: 96px;
     right: var(--bodyPadding);
     align-self: flex-end;
     justify-self: center;
@@ -685,9 +685,29 @@ input[type=submit]:hover {
 
 .hours-head {
     color: var(--cantinaLila);
-    color: black;
+    /* color: black; */
     padding-bottom: calc(var(--textFontSizeSmall) / 4);
 }
+
+.yran-head {
+    font-variation-settings: "slnt" 0, "wdth" 110, "wght" 800;
+    animation: yran-times .5s infinite alternate;
+}
+
+@keyframes yran-times {
+    74% {
+        color: var(--cantinaLila);
+    }
+    75% {
+       color: var(--cantinaCream); 
+    }
+}
+
+.yran-head--span {
+    display: block;
+}
+
+
 
 .opening-hours__days {
     font-variation-settings: "slnt" 0, "wdth" 70, "wght" 400;
@@ -705,7 +725,7 @@ input[type=submit]:hover {
 }
 
 .opening-hours__hours--blob {
-    color: var(--cantinaGreen);
+    color: var(--cantinaLila);
     font-variation-settings: "slnt" 0, "wdth" 150, "wght" 900;
 
 }
@@ -1695,6 +1715,9 @@ button.menu__btn.pressed {
         grid-auto-flow: column;
         /* padding-left: var(--textFontSize); */
         /* background-color: #72808a; */
+    }
+    .yran-head--span {
+        display: inline-block;
     }
 
 
