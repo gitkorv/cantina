@@ -198,12 +198,12 @@ const cantinaLettersSettings = [
 
 const tickerItems = [
     {
-        head: "Tjom Pang!",
-        text: "Nu kör vi så kom in och säg hej!"
+        head: "Yra på hela natten",
+        text: "Vi stänger kl 03 hela yran veckan!!!"
     },
     {
-        head: "Öppet till sent",
-        text: "Fredag och Lördag är dörrarna öppen tills 03. Alla öppettider hittar du nedan."
+        head: "DJ's hela veckan!",
+        text: "Kolla våra socials (nere till vänster) vem som styr spakarna, och när."
     },
     {
         head: "Äkta street food",
@@ -212,11 +212,6 @@ const tickerItems = [
     {
         head: "Join the Club!",
         text: "Vill du ha våra nyheter först? Klicka uppe till höger och bli en del av klubben!"
-    },
-
-    {
-        head: "DJ:s!",
-        text: "Håll utkik på våra socials (nere till vänster) vem som styr spakarna, och när."
     },
     {
         head: "Cocktails!",
