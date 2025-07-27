@@ -679,7 +679,7 @@ input[type=submit]:hover {
     display: grid;
     /* background-color: orange; */
     /* overflow-x: visible; */
-            padding-left: var(--textFontSize);
+    padding-left: var(--textFontSize);
 
 }
 
@@ -698,8 +698,9 @@ input[type=submit]:hover {
     74% {
         color: var(--cantinaLila);
     }
+
     75% {
-       color: var(--cantinaCream); 
+        color: var(--cantinaCream);
     }
 }
 
@@ -1669,6 +1670,31 @@ button.menu__btn.pressed {
 
 /* ----------> MEDIA QUERRIES <---------- */
 
+@media (max-height: 612px) {
+    .logo__tagline {
+        padding-top: var(--textFontSizeSmall);
+    }
+
+    .below-logo-wrapper {
+        position: relative;
+        width: 100%;
+        flex: .25;
+        display: flex;
+        align-self: flex-start;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        justify-items: start;
+        color: var(--cantinaGreen);
+        /* z-index: 11; */
+    }
+
+    .below-logo__container {
+        margin-top: 0px;
+        /* flex: 0.5; */
+    }
+}
+
 @media (min-height: 720px) {
     .logo-wrapper {
         flex: .55;
@@ -1716,6 +1742,7 @@ button.menu__btn.pressed {
         /* padding-left: var(--textFontSize); */
         /* background-color: #72808a; */
     }
+
     .yran-head--span {
         display: inline-block;
     }
