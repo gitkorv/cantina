@@ -199,7 +199,7 @@ const cantinaLettersSettings = [
 const tickerItems = [
     {
         head: "Yra på hela natten",
-        text: "Vi stänger kl 03 hela yran veckan!!!"
+        text: "Vi stänger kl 03 hela Yran veckan!!!"
     },
     {
         head: "Poke Bowls 145:-",
