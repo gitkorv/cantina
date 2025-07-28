@@ -1670,7 +1670,7 @@ button.menu__btn.pressed {
 
 /* --> MEDIA QUERRIES <---------- */
 
-@media (max-height: 560px) {
+@media (max-height: 620px) {
     .ticker-wrapper {
         font-size: calc(var(--textFontSize) * 0.85);
     }
