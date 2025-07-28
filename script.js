@@ -892,6 +892,10 @@ window.onload = function() {
   console.log(yranPopUpWrapper);
   setTimeout(() => {
     yranPopUpWrapper.classList.add("yran-popup-wrapper--open")
+    setTimeout(() => {
+        yranPopUpWrapper.style.transitionDuration = ".5s"
+    }, 500);
+    
   }, 500);
 };
 
