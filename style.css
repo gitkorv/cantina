@@ -486,7 +486,7 @@ section.home {
     justify-content: end;
     color: var(--cantinaGreen);
     font-size: 36px;
-    padding-bottom: var(--textFontSize);
+    /* padding-bottom: var(--textFontSize); */
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 300;
     line-height: 36px;
     /* background-color: black; */
@@ -501,13 +501,12 @@ section.home {
     font-variation-settings: "slnt" -4, "wdth" 100, "wght" 900;
     text-align: center;
     color: var(--cantinaLila);
+    padding-top: var(--textFontSizeSmall);
     /* line-height: 28px; */
     /* background-color: blue; */
 }
 
-.yran__dj-container .yran-text {
-    color: var(--cantinaGreen);
-}
+
 .yran-text__sub {
     font-size: 18px;
     font-family: var(--fontTypewriter);
@@ -516,15 +515,16 @@ section.home {
 
 }
 
-.yran__dj-container {
-    padding-top: var(--textFontSizeSmall);
+.yran-popup__content *:nth-child(4) {
+    color: var(--cantinaGreen);
 }
+
 
 .dj-list {
     display: flex;
     flex-direction: column;
     width: 100%;
-    font-variation-settings: "slnt" 0, "wdth" 150, "wght" 500;
+    font-variation-settings: "slnt" 0, "wdth" 100, "wght" 500;
     color: var(--cantinaRosa);
     grid-auto-flow: column;
 
@@ -542,7 +542,7 @@ section.home {
 
 .yran-text--opening-times {
     text-align: center;
-    padding-top: var(--textFontSize);
+    /* padding-top: var(--textFontSize); */
     color: var(--cantinaLila);
 }
 
