@@ -661,7 +661,7 @@ input[type=submit]:hover {
 
 .opening-hours-wrapper {
     position: relative;
-    top: 96px;
+    top: 110px;
     right: var(--bodyPadding);
     align-self: flex-end;
     justify-self: center;
@@ -1671,6 +1671,11 @@ button.menu__btn.pressed {
 /* --> MEDIA QUERRIES <---------- */
 
 @media (max-height: 612px) {
+    .opening-hours-wrapper {
+        top: 102px;
+
+    }
+
     .logo-wrapper {
         flex: 0.65;
     }

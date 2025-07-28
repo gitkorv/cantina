@@ -202,6 +202,10 @@ const tickerItems = [
         text: "Vi stänger kl 03 hela yran veckan!!!"
     },
     {
+        head: "Poke Bowls 145:-",
+        text: "Nudlar eller ris med all trim, plus Birria, Carne asada, Fried chicken, Halloumi eller Shrimp."
+    },
+    {
         head: "DJ's hela veckan!",
         text: "Kolla våra socials (nere till vänster) vem som styr spakarna, och när."
     },
