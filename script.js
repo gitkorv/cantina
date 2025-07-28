@@ -883,3 +883,18 @@ function makeFunkyMenuCategoryHeads(headlineEl) {
         }, 0);
     });
 }
+
+const yranPopUpWrapper = document.querySelector(".yran-popup-wrapper")
+const yranBtn = document.querySelector(".yran-popup__btn")
+
+window.onload = function() {
+  console.log("window loaded");
+  console.log(yranPopUpWrapper);
+  setTimeout(() => {
+    yranPopUpWrapper.classList.add("yran-popup-wrapper--open")
+  }, 2000);
+};
+
+yranBtn.addEventListener("click", e => {
+    yranPopUpWrapper.classList.remove("yran-popup-wrapper--open")
+})

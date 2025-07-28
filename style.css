@@ -375,6 +375,148 @@ section.home {
     min-height: 100%;
 }
 
+
+
+/* --> YRAN <---------- */
+.yran-popup-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: color-mix(in srgb, var(--cantinaGreen) 75%, transparent);
+    height: 100%;
+    width: 100%;
+    z-index: 200;
+    padding: calc(var(--bodyPadding) * 2);
+    pointer-events: none;
+    transition: opacity 2s ease-in;
+    opacity: 0;
+}
+
+.yran-popup-wrapper--open {
+    pointer-events: all;
+    opacity: 1;
+}
+
+.yran-popup__btn {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* justify-items: center; */
+    right: -16px;
+    top: -16px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: var(--cantinaLila);
+    box-shadow: var(--cantinaGreen) 3px 3px 0px;
+    cursor: pointer;
+    z-index: 200;
+}
+
+.yran-popup__btn:hover {
+    background-color: var(--cantinaGrey);
+}
+
+.yran-popup__btn span {
+    color: var(--cantinaCream);
+    font-size: 36px;
+
+}
+
+.yran-popup-container {
+    position: relative;
+    display: flex;
+    height: 100%;
+    max-height: 700px;
+    width: 100%;
+    max-width: 300px;
+    background-color: var(--cantinaCream);
+    padding: var(--textFontSize);
+}
+
+.yran-popup-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* fill parent */
+    border-radius: inherit;
+    padding: 60px;
+    /* frame thickness */
+    background: conic-gradient(from 0deg,
+            var(--cantinaRosa),
+            var(--cantinaLila),
+           var(--cantinaCream),
+           var(--cantinaLila),
+           var(--cantinaGrey),
+           var(--cantinaRosa));
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: spin 2s linear infinite;
+    z-index: -50;
+    pointer-events: none;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.yran-popup__content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.yran-headline {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    color: var(--cantinaRosa);
+    font-size: 48px;
+    padding-bottom: var(--textFontSize);
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 300;
+    line-height: 40px;
+    /* background-color: black; */
+}
+
+.yran-head, .yran-text {
+    line-height: 40px;
+}
+
+.yran-text {
+    font-size: 36px;
+    font-variation-settings: "slnt" -4, "wdth" 100, "wght" 900;
+    /* background-color: blue; */
+}
+
+.yran-text__sub {
+    font-size: 18px;
+    font-family: var(--fontTypewriter);
+    font-variation-settings: "wght" 600;
+}
+
+.yran__dj-container {
+    padding-top: var(--textFontSize);
+}
+
+.yran-text--opening-times {
+    padding-top: var(--textFontSize);
+}
+
+
+
 /* --> TICKER <---------- */
 
 
@@ -1801,7 +1943,7 @@ button.menu__btn.pressed {
 }
 
 @media (min-width: 768px) and (min-height: 1024px),
-       (min-width: 1256px) and (min-height: 768px) {
+(min-width: 1256px) and (min-height: 768px) {
 
     :root {
         --bodyPadding: 48px;
