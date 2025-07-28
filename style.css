@@ -1361,7 +1361,7 @@ button.menu__btn.pressed {
 
 .boka-bord-wrapper {
     position: absolute;
-    top: calc(var(--bodyPadding) * 7.5);
+    top: calc(var(--bodyPadding) * 8);
     left: calc(var(--textFontSize) / 2);
     display: flex;
 }
@@ -1468,12 +1468,12 @@ button.menu__btn.pressed {
 
 .half-circle-svg-pointer-wrapper {
     position: absolute;
-    top: -190%;
+    top: -130%;
     left: 80%;
     margin-top: var(--bodyPadding);
     width: 100px;
     height: 100px;
-    transform: rotate(30deg);
+    transform: rotate(50deg);
     /* background-color: #33a58e; */
 }
 
@@ -1486,7 +1486,7 @@ button.menu__btn.pressed {
     display: flex;
     right: 0;
     top: 30%;
-    transform: rotate(-20deg);
+    transform: rotate(-40deg);
     color: var(--cantinaCream);
     /* background-color: #381460; */
 }
@@ -1670,9 +1670,18 @@ button.menu__btn.pressed {
 
 /* --> MEDIA QUERRIES <---------- */
 
-@media (max-height: 612px) {
+@media (max-height: 560px) {
+    .ticker-wrapper {
+        font-size: calc(var(--textFontSize) * 0.85);
+    }
+
+    .boka-bord-wrapper {
+        top: calc(var(--bodyPadding) * 7);
+    }
+
     .opening-hours-wrapper {
         top: 102px;
+        font-size: calc(var(--textFontSize) * 0.65);
 
     }
 
@@ -1689,8 +1698,16 @@ button.menu__btn.pressed {
         /* flex: 0.5; */
     }
 
-    .below-logo__splash-food {
-        margin-top: 0pc;
+    /* .below-logo__splash-food {
+        margin-top: 4px;
+    } */
+
+    .below-logo__splash-food span {
+        font-size: calc(var(--textFontSize) * 1.25);
+    }
+
+    .splash-food__spray-img {
+        top: 2px;
     }
 
     .cantina-skull-svg-wrapper {
