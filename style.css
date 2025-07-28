@@ -522,6 +522,14 @@ section.home {
     color: var(--cantinaLila);
 }
 
+.yran-text--opening-times--mini {
+    font-size: 12px;
+    line-height: 8px;
+    padding-top: 4px;
+    color: var(--cantinaGreen);
+    font-variation-settings: "slnt" 0, "wdth" 150, "wght" 300;
+}
+
 .dj-list {
     display: grid;
     width: 100%;
