@@ -892,7 +892,7 @@ window.onload = function() {
   console.log(yranPopUpWrapper);
   setTimeout(() => {
     yranPopUpWrapper.classList.add("yran-popup-wrapper--open")
-  }, 1500);
+  }, 500);
 };
 
 yranBtn.addEventListener("click", e => {
