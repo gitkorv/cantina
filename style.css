@@ -438,6 +438,7 @@ section.home {
     max-width: 300px;
     background-color: var(--cantinaCream);
     padding: var(--textFontSize);
+    text-align: center;
 }
 
 .yran-popup-container::before {
@@ -451,10 +452,10 @@ section.home {
     background: conic-gradient(from 0deg,
             var(--cantinaRosa),
             var(--cantinaLila),
-           var(--cantinaCream),
-           var(--cantinaLila),
-           var(--cantinaGrey),
-           var(--cantinaRosa));
+            var(--cantinaCream),
+            var(--cantinaLila),
+            var(--cantinaGrey),
+            var(--cantinaRosa));
     -webkit-mask:
         linear-gradient(#000 0 0) content-box,
         linear-gradient(#000 0 0);
@@ -483,21 +484,23 @@ section.home {
     display: flex;
     flex-direction: column;
     justify-content: end;
-    color: var(--cantinaRosa);
-    font-size: 48px;
+    color: var(--cantinaGreen);
+    font-size: 36px;
     padding-bottom: var(--textFontSize);
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 300;
-    line-height: 40px;
+    line-height: 36px;
     /* background-color: black; */
 }
 
-.yran-head, .yran-text {
-    line-height: 40px;
+.yran-text {
+    line-height: 28px;
 }
 
 .yran-text {
-    font-size: 36px;
+    font-size: 24px;
     font-variation-settings: "slnt" -4, "wdth" 100, "wght" 900;
+    text-align: center;
+    /* line-height: 28px; */
     /* background-color: blue; */
 }
 
@@ -505,6 +508,8 @@ section.home {
     font-size: 18px;
     font-family: var(--fontTypewriter);
     font-variation-settings: "wght" 600;
+    text-align: center;
+
 }
 
 .yran__dj-container {
@@ -512,7 +517,26 @@ section.home {
 }
 
 .yran-text--opening-times {
-    padding-top: var(--textFontSize);
+    text-align: center;
+    padding-top: var(--bodyPadding);
+    color: var(--cantinaLila);
+}
+
+.dj-list {
+    display: grid;
+    width: 100%;
+    font-variation-settings: "slnt" 0, "wdth" 150, "wght" 300;
+    color: var(--cantinaRosa);
+
+    /* height: 100%; */
+    /* grid-template-rows: 2 repeat(1fr); */
+    grid-template-columns: repeat(2, 1fr);
+    /* background-color: #381460; */
+}
+
+.yran-artist {
+    color: var(--cantinaLila);
+    font-variation-settings: "slnt" 0, "wdth" 75, "wght" 600;
 }
 
 
@@ -1928,6 +1952,11 @@ button.menu__btn.pressed {
         100% {
             transform: translate(0%, 0%);
         }
+    }
+
+    .yran-popup-wrapper {
+        padding: calc(var(--textFontSize) * 2);
+
     }
 }
 
