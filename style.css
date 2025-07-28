@@ -1789,7 +1789,7 @@ button.menu__btn.pressed {
     }
 }
 
-@media (min-height: 720px) {
+@media (min-height: 640px) {
     .logo-wrapper {
         flex: .55;
     }
@@ -1800,7 +1800,8 @@ button.menu__btn.pressed {
     }
 }
 
-@media (min-width: 768px) and (min-height: 1024px) {
+@media (min-width: 768px) and (min-height: 1024px),
+       (min-width: 1256px) and (min-height: 768px) {
 
     :root {
         --bodyPadding: 48px;
@@ -1917,10 +1918,10 @@ button.menu__btn.pressed {
     }
 }
 
-@media (min-width: 1024px) and (min-height:700px) {
+@media (min-width: 1440) and (min-height:768px) {
 
     .opening-hours-wrapper {
-        top: 300px;
+        top: 200px;
         right: 36px;
         width: 50%;
         left: unset;
@@ -1931,11 +1932,9 @@ button.menu__btn.pressed {
     }
 
     .opening-hours-list {
-        list-style: none;
-        display: grid;
         grid-template-columns: repeat(1, 150px);
-        grid-template-rows: repeat(1, 1fr);
-        grid-auto-flow: unset;
+        grid-template-rows: repeat(4, 1fr);
+        /* grid-auto-flow: unset; */
     }
 
 
