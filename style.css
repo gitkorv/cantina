@@ -378,6 +378,7 @@ section.home {
 
 
 /* --> YRAN <---------- */
+
 .yran-popup-wrapper {
     position: relative;
     display: flex;
@@ -485,10 +486,10 @@ section.home {
     flex-direction: column;
     justify-content: end;
     color: var(--cantinaGreen);
-    font-size: 36px;
+    font-size: 42px;
     /* padding-bottom: var(--textFontSize); */
-    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 300;
-    line-height: 36px;
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 500;
+    line-height: 42px;
     /* background-color: black; */
 }
 
