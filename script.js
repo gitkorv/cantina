@@ -886,6 +886,9 @@ function makeFunkyMenuCategoryHeads(headlineEl) {
 
 const yranPopUpWrapper = document.querySelector(".yran-popup-wrapper")
 const yranBtn = document.querySelector(".yran-popup__btn")
+const yranSvgContainer = document.querySelector(".yran__svg-container")
+const yranDrip = document.getElementById("yran-drip")
+console.log(yranSvgContainer);
 
 window.onload = function() {
   console.log("window loaded");
@@ -894,6 +897,7 @@ window.onload = function() {
     yranPopUpWrapper.classList.add("yran-popup-wrapper--open")
     setTimeout(() => {
         yranPopUpWrapper.style.transitionDuration = ".5s"
+        // yranSvgContainer.style.display = "none"
     }, 500);
     
   }, 500);

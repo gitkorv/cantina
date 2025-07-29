@@ -379,6 +379,30 @@ section.home {
 
 /* --> YRAN <---------- */
 
+.yran__svg-container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    /* background-color: #33a58e; */
+    overflow: hidden;
+}
+
+#yran-drip {
+    position: absolute;
+    height: 300px;
+    right: -15px;
+    top: -60px;
+    transform: rotateY(180deg);
+    /* fill: var(--cantinaRosa); */
+}
+
+.yran-drip {
+    fill: black;
+    fill: var(--cantinaRosa);
+}
+
 .yran-popup-wrapper {
     position: relative;
     display: flex;
@@ -440,6 +464,7 @@ section.home {
     background-color: var(--cantinaCream);
     padding: var(--textFontSize);
     text-align: center;
+    /* overflow: hidden; */
 }
 
 .yran-popup-container::before {
@@ -479,13 +504,14 @@ section.home {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 100;
 }
 
 .yran-headline {
     display: flex;
     flex-direction: column;
     justify-content: end;
-    color: var(--cantinaGreen);
+    color: black;
     font-size: 42px;
     /* padding-bottom: var(--textFontSize); */
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 500;
