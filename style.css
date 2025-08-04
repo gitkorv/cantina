@@ -399,7 +399,7 @@ section.home {
 }
 
 .yran-drip {
-    fill: black;
+    fill: black; 
     fill: var(--cantinaRosa);
 }
 

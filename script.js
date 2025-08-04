@@ -893,14 +893,14 @@ console.log(yranSvgContainer);
 window.onload = function() {
   console.log("window loaded");
   console.log(yranPopUpWrapper);
-  setTimeout(() => {
-    yranPopUpWrapper.classList.add("yran-popup-wrapper--open")
-    setTimeout(() => {
-        yranPopUpWrapper.style.transitionDuration = ".5s"
-        // yranSvgContainer.style.display = "none"
-    }, 500);
+//   setTimeout(() => {
+//     yranPopUpWrapper.classList.add("yran-popup-wrapper--open")
+//     setTimeout(() => {
+//         yranPopUpWrapper.style.transitionDuration = ".5s"
+//         // yranSvgContainer.style.display = "none"
+//     }, 500);
     
-  }, 500);
+//   }, 500);
 };
 
 yranBtn.addEventListener("click", e => {
