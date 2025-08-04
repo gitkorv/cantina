@@ -198,20 +198,16 @@ const cantinaLettersSettings = [
 
 const tickerItems = [
     {
-        head: "Yra på hela natten",
-        text: "Vi stänger kl 03 hela Yran veckan!!!"
+        head: "Festival come down",
+        text: "Vi kör lite annorlunda öppettider denna vecka, kolla in dom till höger"
     },
     {
-        head: "Poke Bowls 145:-",
-        text: "Nudlar eller ris med all trim, plus Birria, Carne asada, Fried chicken, Halloumi eller Shrimp."
-    },
-    {
-        head: "DJ's hela veckan!",
-        text: "Kolla våra socials (nere till vänster) vem som styr spakarna, och när."
+        head: "DJ's!",
+        text: "Kika in på våra socials (nere till vänster) vem som styr spakarna, och när"
     },
     {
         head: "Äkta street food",
-        text: "Saftiga tacos, mumsiga bao buns, het ramen och mycket mer. Kolla menyn i botten på sidan."
+        text: "Saftiga tacos, mumsiga bao buns, het ramen och mycket mer. Klicka på menyn i botten höger på sidan"
     },
     {
         head: "Join the Club!",
@@ -219,7 +215,7 @@ const tickerItems = [
     },
     {
         head: "Cocktails!",
-        text: "På dansgolvet skakas rumpor och i baren skakar vi roliga drinkar."
+        text: "På dansgolvet skakas rumpor och i baren skakar vi fantastiska drinkar"
     }
 ];
 
