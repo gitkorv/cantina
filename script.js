@@ -198,8 +198,8 @@ const cantinaLettersSettings = [
 
 const tickerItems = [
     {
-        head: "Festival come down",
-        text: "Vi kör lite annorlunda öppettider denna vecka, kolla in dom till höger"
+        head: "Nu kör vi igen!",
+        text: "Öppet till 03 fredag och lördag"
     },
     {
         head: "DJ's!",
