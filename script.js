@@ -62,41 +62,6 @@ const bottomOFClubBtn = clubBtn.getBoundingClientRect().height
 const openingHoursDaysAll = document.querySelectorAll(".opening-hours__days");
 const openingHoursHoursAll = document.querySelectorAll(".opening-hours__hours");
 
-function setWidthForHours() {
-  requestAnimationFrame(() => {
-    // Apply font variation settings
-    openingHoursHoursAll.forEach(hour => {
-        hour.style.transition = "none";
-      hour.style.fontVariationSettings = `"slnt" 0, "wdth" 150, "wght" 900`;
-    });
-
-    // Let styles apply
-    requestAnimationFrame(() => {
-      const getMaxWidth = (elements) =>
-        [...elements].reduce((max, el) => Math.max(max, el.getBoundingClientRect().width), 0);
-
-      const maxWidth = getMaxWidth(openingHoursDaysAll);
-      console.log(maxWidth);
-
-      openingHoursDaysAll.forEach(dayLine => {
-        dayLine.style.width = maxWidth + "px";
-
-      });
-
-      // Wait one more frame *after* measurement to clear styles
-      requestAnimationFrame(() => {
-        openingHoursHoursAll.forEach(hour => {
-                    hour.style.transition = "";
-
-          hour.style.fontVariationSettings = "";
-        });
-      });
-    });
-  });
-}
-
-setWidthForHours()
-
 
 // Below logo
 const belowLogoWrapper = document.querySelector(".below-logo-wrapper")
@@ -198,8 +163,12 @@ const cantinaLettersSettings = [
 
 const tickerItems = [
     {
-        head: "Nu kör vi igen!",
-        text: "Öppet till 03 fredag och lördag"
+        head: "NYHET! Lunch 145:-",
+        text: "Ramen eller Dagens Tacos + kaffe. Öppet från klockan 11 på vardagar"
+    },
+    {
+        head: "Lördagsöppet från 13",
+        text: "Då vi deltar i Jämtlandsgången"
     },
     {
         head: "DJ's!",
@@ -262,28 +231,7 @@ async function runNewsTicker() {
 
 runNewsTicker();
 
-// Flick opening times
 
-let currentHourIndex = 0;
-
-function cycleHighlight() {
-    // Remove highlight class from all
-    openingHoursDaysAll.forEach(item => item.classList.remove("highlight"));
-    openingHoursHoursAll.forEach(item => item.classList.remove("opening-hours__hours--blob", "highlight"));
-
-    // Add highlight to the current
-    openingHoursDaysAll[currentHourIndex].classList.add("highlight");
-    openingHoursHoursAll[currentHourIndex].classList.add("opening-hours__hours--blob", "highlight");
-
-    // Increment index and wrap around
-    currentHourIndex = (currentHourIndex + 1) % openingHoursDaysAll.length;
-
-    // Repeat after X ms
-    setTimeout(cycleHighlight, 1000); // 1 second per item
-}
-
-// Start the loop
-cycleHighlight();
 
 
 function showHomeElements() {
@@ -433,6 +381,69 @@ function fadeInFromOpacityZero(element) {
     }, 1500);
 
 }
+
+// Opening Hours Settings
+
+function setWidthForHours() {
+  requestAnimationFrame(() => {
+    // Apply font variation settings
+    openingHoursHoursAll.forEach(hour => {
+        hour.style.transition = "none";
+      hour.style.fontVariationSettings = `"slnt" 0, "wdth" 150, "wght" 900`;
+    });
+
+    // Let styles apply
+    requestAnimationFrame(() => {
+      const getMaxWidth = (elements) =>
+        [...elements].reduce((max, el) => Math.max(max, el.getBoundingClientRect().width), 0);
+
+      const maxWidth = getMaxWidth(openingHoursDaysAll);
+      console.log(maxWidth);
+
+      openingHoursDaysAll.forEach(dayLine => {
+        dayLine.style.width = maxWidth + "px";
+
+      });
+
+      // Wait one more frame *after* measurement to clear styles
+      requestAnimationFrame(() => {
+        openingHoursHoursAll.forEach(hour => {
+                    hour.style.transition = "";
+
+          hour.style.fontVariationSettings = "";
+        });
+      });
+    });
+  });
+}
+
+setWidthForHours()
+
+// Flick opening times
+
+let currentHourIndex = 0;
+
+function cycleHighlight() {
+    // Remove highlight class from all
+    openingHoursDaysAll.forEach(item => item.classList.remove("highlight"));
+    openingHoursHoursAll.forEach(item => item.classList.remove("opening-hours__hours--blob", "highlight"));
+
+    // Add highlight to the current
+    openingHoursDaysAll[currentHourIndex].classList.add("highlight");
+    openingHoursHoursAll[currentHourIndex].classList.add("opening-hours__hours--blob", "highlight");
+
+    // Increment index and wrap around
+    currentHourIndex = (currentHourIndex + 1) % openingHoursDaysAll.length;
+
+    // Repeat after X ms
+    setTimeout(cycleHighlight, 1000); // 1 second per item
+}
+
+// Start the loop
+cycleHighlight();
+
+open
+
 
 // Btn and menus
 
@@ -899,6 +910,6 @@ window.onload = function() {
 //   }, 500);
 };
 
-yranBtn.addEventListener("click", e => {
-    yranPopUpWrapper.classList.remove("yran-popup-wrapper--open")
-})
+// yranBtn.addEventListener("click", e => {
+//     yranPopUpWrapper.classList.remove("yran-popup-wrapper--open")
+// })
