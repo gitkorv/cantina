@@ -823,7 +823,7 @@ menuCategorySections.forEach(section => {
 
 const menuCatHeadObserverOptions = {
     root: menuContentScroller,
-    rootMargin: "-25% 0px -25% 0px",
+    rootMargin: "-25% 0px -50% 0px",
     threshold: 0
 };
 
