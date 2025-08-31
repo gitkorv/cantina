@@ -887,25 +887,25 @@ function makeFunkyMenuCategoryHeads(headlineEl) {
     });
 }
 
-const yranPopUpWrapper = document.querySelector(".yran-popup-wrapper")
-const yranBtn = document.querySelector(".yran-popup__btn")
-const yranSvgContainer = document.querySelector(".yran__svg-container")
-const yranDrip = document.getElementById("yran-drip")
-console.log(yranSvgContainer);
+const popUpWrapper = document.querySelector(".popup-wrapper")
+const popUpBtn = document.querySelector(".popup__btn")
+const popUpSvgContainer = document.querySelector(".popup__svg-container")
+const popUpDrip = document.getElementById("popup-drip")
+console.log(popUpSvgContainer);
 
 window.onload = function() {
   console.log("window loaded");
-  console.log(yranPopUpWrapper);
-//   setTimeout(() => {
-//     yranPopUpWrapper.classList.add("yran-popup-wrapper--open")
-//     setTimeout(() => {
-//         yranPopUpWrapper.style.transitionDuration = ".5s"
-//         // yranSvgContainer.style.display = "none"
-//     }, 500);
+  console.log(popUpWrapper);
+  setTimeout(() => {
+    popUpWrapper.classList.add("popup-wrapper--open")
+    setTimeout(() => {
+        popUpWrapper.style.transitionDuration = ".5s"
+        // yranSvgContainer.style.display = "none"
+    }, 500);
     
-//   }, 500);
+  }, 500);
 };
 
-// yranBtn.addEventListener("click", e => {
-//     yranPopUpWrapper.classList.remove("yran-popup-wrapper--open")
-// })
+popUpBtn.addEventListener("click", e => {
+    popUpWrapper.classList.remove("popup-wrapper--open")
+})
