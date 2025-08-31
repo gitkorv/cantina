@@ -781,7 +781,7 @@ function resizeElements() {
 
 const menuCatObserverOptions = {
     root: menuContentScroller,
-    rootMargin: "-50% 0px -50% 0px",
+    rootMargin: "-25% 0px -75% 0px",
     threshold: 0
 };
 
@@ -823,7 +823,7 @@ menuCategorySections.forEach(section => {
 
 const menuCatHeadObserverOptions = {
     root: menuContentScroller,
-    rootMargin: "-25% 0px -50% 0px",
+    rootMargin: "-25% 0px -25% 0px",
     threshold: 0
 };
 
