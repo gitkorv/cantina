@@ -167,10 +167,6 @@ const tickerItems = [
         text: "Ramen eller Dagens Tacos + kaffe. Öppet från klockan 11 på vardagar"
     },
     {
-        head: "Lördagsöppet från 13",
-        text: "Då vi deltar i Jämtlandsgången"
-    },
-    {
         head: "DJ's!",
         text: "Kika in på våra socials (nere till vänster) vem som styr spakarna, och när"
     },
