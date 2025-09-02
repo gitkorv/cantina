@@ -909,3 +909,4 @@ window.onload = function() {
 popUpBtn.addEventListener("click", e => {
     popUpWrapper.classList.remove("popup-wrapper--open")
 })
+
