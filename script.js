@@ -914,22 +914,38 @@ popUpBtn.addEventListener("click", e => {
 
 const form = document.getElementById("signupForm");
 form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const formData = new FormData(form);
-    const payload = {
-        email: formData.get("email"),
-        firstName: formData.get("firstName"),
-        lastName: formData.get("lastName")
-    };
+  const formData = new FormData(form);
+  const payload = {
+    email: formData.get("email"),
+    firstName: formData.get("firstName"),
+    lastName: formData.get("lastName"),
+  };
 
+  try {
     const res = await fetch("/.netlify/functions/zohoSignup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
     });
 
-    const result = await res.json();
-    console.log(result);
-    alert("Signup submitted!");
+    const text = await res.text(); // read raw text first
+    let result;
+    try {
+      result = JSON.parse(text); // try to parse JSON
+    } catch {
+      result = { raw: text };
+    }
+
+    console.log("Result:", result);
+
+    if (res.ok) {
+      alert("Signup successful!");
+    } else {
+      alert("Error: " + (result.error || "Something went wrong"));
+    }
+  } catch (err) {
+    alert("Request failed: " + err.message);
+  }
 });
