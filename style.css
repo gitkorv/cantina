@@ -71,7 +71,7 @@
 }
 
 button {
-    all: unset;
+    /* all: unset; */
 }
 
 a {
@@ -764,6 +764,23 @@ section.home {
     display: inline-block;
     /* Make sure it behaves as a box if needed */
 }
+
+/* <-- Club Form */
+
+.zoho-form-wrapper {
+    position: absolute;
+    width: 300px;
+    padding: 24px;
+    z-index: 500;
+    background-color: paleturquoise;
+}
+
+.zoho-form__submit-btn {
+    all: initial;
+}
+
+
+/* <-- Club Form */
 
 .club-form-wrapper {
     position: fixed;

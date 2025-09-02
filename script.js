@@ -381,36 +381,36 @@ function fadeInFromOpacityZero(element) {
 // Opening Hours Settings
 
 function setWidthForHours() {
-  requestAnimationFrame(() => {
-    // Apply font variation settings
-    openingHoursHoursAll.forEach(hour => {
-        hour.style.transition = "none";
-      hour.style.fontVariationSettings = `"slnt" 0, "wdth" 150, "wght" 900`;
-    });
-
-    // Let styles apply
     requestAnimationFrame(() => {
-      const getMaxWidth = (elements) =>
-        [...elements].reduce((max, el) => Math.max(max, el.getBoundingClientRect().width), 0);
-
-      const maxWidth = getMaxWidth(openingHoursDaysAll);
-      console.log(maxWidth);
-
-      openingHoursDaysAll.forEach(dayLine => {
-        dayLine.style.width = maxWidth + "px";
-
-      });
-
-      // Wait one more frame *after* measurement to clear styles
-      requestAnimationFrame(() => {
+        // Apply font variation settings
         openingHoursHoursAll.forEach(hour => {
+            hour.style.transition = "none";
+            hour.style.fontVariationSettings = `"slnt" 0, "wdth" 150, "wght" 900`;
+        });
+
+        // Let styles apply
+        requestAnimationFrame(() => {
+            const getMaxWidth = (elements) =>
+                [...elements].reduce((max, el) => Math.max(max, el.getBoundingClientRect().width), 0);
+
+            const maxWidth = getMaxWidth(openingHoursDaysAll);
+            console.log(maxWidth);
+
+            openingHoursDaysAll.forEach(dayLine => {
+                dayLine.style.width = maxWidth + "px";
+
+            });
+
+            // Wait one more frame *after* measurement to clear styles
+            requestAnimationFrame(() => {
+                openingHoursHoursAll.forEach(hour => {
                     hour.style.transition = "";
 
-          hour.style.fontVariationSettings = "";
+                    hour.style.fontVariationSettings = "";
+                });
+            });
         });
-      });
     });
-  });
 }
 
 setWidthForHours()
@@ -893,20 +893,43 @@ const popUpSvgContainer = document.querySelector(".popup__svg-container")
 const popUpDrip = document.getElementById("popup-drip")
 console.log(popUpSvgContainer);
 
-window.onload = function() {
-  console.log("window loaded");
-  console.log(popUpWrapper);
-  setTimeout(() => {
-    popUpWrapper.classList.add("popup-wrapper--open")
+window.onload = function () {
+    console.log("window loaded");
+    console.log(popUpWrapper);
     setTimeout(() => {
-        popUpWrapper.style.transitionDuration = ".5s"
-        // yranSvgContainer.style.display = "none"
+        popUpWrapper.classList.add("popup-wrapper--open")
+        setTimeout(() => {
+            popUpWrapper.style.transitionDuration = ".5s"
+            // yranSvgContainer.style.display = "none"
+        }, 500);
+
     }, 500);
-    
-  }, 500);
 };
 
 popUpBtn.addEventListener("click", e => {
     popUpWrapper.classList.remove("popup-wrapper--open")
 })
 
+// Zoho Form
+
+const form = document.getElementById("signupForm");
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const payload = {
+        email: formData.get("email"),
+        firstName: formData.get("firstName"),
+        lastName: formData.get("lastName")
+    };
+
+    const res = await fetch("/.netlify/functions/zohoSignup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    });
+
+    const result = await res.json();
+    console.log(result);
+    alert("Signup submitted!");
+});
