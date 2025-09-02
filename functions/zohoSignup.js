@@ -22,7 +22,7 @@ export async function handler(event, context) {
     };
 
     const response = await fetch(
-      "https://campaigns.zoho.com/api/v1/lists/248828000000037021/contacts",
+      "https://campaigns.zoho.com/api/v1/lists/248828000000037021/contacts", // 👈 replace <LIST_ID>
       {
         method: "POST",
         headers: {
@@ -33,11 +33,15 @@ export async function handler(event, context) {
       }
     );
 
+    const text = await response.text(); // get raw text
+    console.log("Zoho response status:", response.status);
+    console.log("Zoho response body:", text);
+
     let result;
     try {
-      result = await response.json();
+      result = JSON.parse(text);
     } catch {
-      result = { error: "Zoho returned a non-JSON response" };
+      result = { raw: text };
     }
 
     return {
@@ -45,11 +49,13 @@ export async function handler(event, context) {
       body: JSON.stringify(result),
     };
   } catch (err) {
+    console.error("Function error:", err);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: err.message }),
     };
   }
 }
+
 
 
