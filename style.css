@@ -886,6 +886,31 @@ section.home {
     color: #fff;
 }
 
+/* Success message */
+#zohoCantinaSignUpForm #Zc_SignupSuccess {
+    display: none; /* Hidden by default */
+    background-color: #c2e19a;
+    color: #498c84;
+    padding: 15px 10px;
+    border: 2px solid #498c84;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Show class to trigger animation */
+#zohoCantinaSignUpForm #Zc_SignupSuccess.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 /* Responsive */
 @media screen and (max-width: 480px) {
     #zohoCantinaSignUpForm {

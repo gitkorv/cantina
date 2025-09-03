@@ -919,6 +919,5 @@ document.addEventListener("DOMContentLoaded", function(){
 
 // Optional: run custom code on submit
 function runOnFormSubmit_zohoCantinaSignUpForm(th){
-    // Your custom JS before form submission
-    // For example, console.log(th);
+    console.log("Form submitted!", th);
 }
