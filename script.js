@@ -683,10 +683,14 @@ clubBtn.addEventListener("click", (e) => {
     clubFormContent.classList.toggle("club-form__content--open");
     // clubFormDripContainer.classList.toggle("open");
 
-    setTimeout(() => {
-        formDrips()
 
-    }, 500);
+    if (clubBtn.innerHTML === "X") {
+        setTimeout(() => {
+            formDrips()
+
+        }, 600);
+    }
+
 });
 
 document.addEventListener("click", (e) => {
@@ -709,7 +713,8 @@ document.addEventListener("click", (e) => {
 });
 
 function formDrips() {
-    const width = clubFormDripContainer.getBoundingClientRect().width;
+    const width = clubFormDripContainer.getBoundingClientRect().width - 48;
+    console.log(width);
     const dripNumber = Math.floor(Math.random() * (9 - 5 + 1)) + 5;
 
     for (let i = 0; i < dripNumber; i++) {
@@ -719,7 +724,7 @@ function formDrips() {
         dot.style.width = dotWidth + "px";
 
         const maxLeft = width - dotWidth;
-        const leftPos = Math.random() * maxLeft;
+        const leftPos = Math.random() * maxLeft + 24;
         dot.style.left = `${leftPos}px`;
 
         dot.style.transitionDuration = Math.floor(Math.random() * (10 - 2 + 1) + 2) + "s";
@@ -911,14 +916,4 @@ popUpBtn.addEventListener("click", e => {
 })
 
 
-// Zoho form
 
-document.addEventListener("DOMContentLoaded", function(){
-    // IMPORTANT: Use the original Zoho ID
-    setupSF('sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e','ZCFORMVIEW',false,'dark',false,'1');
-});
-
-// Optional: run custom code on submit
-function runOnFormSubmit_sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e(th){
-    console.log('Form submitted:', th);
-}
