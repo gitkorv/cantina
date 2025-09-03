@@ -913,11 +913,34 @@ popUpBtn.addEventListener("click", e => {
 
 // Zoho form
 
-document.addEventListener("DOMContentLoaded", function(){
-    setupSF('zohoCantinaSignUpForm','ZCFORMVIEW',false,'dark',false,'1');
-});
+window.onload = function() {
+    // Initialize the Zoho form
+    setupSF('zohoCantinaSignUpForm', 'ZCFORMVIEW', false, 'dark', false, '1');
+
+    // Optional: run custom code on submit
+    window.runOnFormSubmit_zohoCantinaSignUpForm = function(th) {
+        // This runs before the form is submitted
+        console.log('Form submitted data:', th);
+
+        // Show a success message after submission
+        const successMsg = document.getElementById('Zc_SignupSuccess');
+        if (successMsg) {
+            successMsg.style.display = 'block';
+            successMsg.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+};
 
 // Optional: run custom code on submit
+
 function runOnFormSubmit_zohoCantinaSignUpForm(th){
     console.log("Form submitted!", th);
+
+    const successMsg = document.getElementById("Zc_SignupSuccess");
+    successMsg.classList.add("show"); // Trigger the animation
+
+    // Optional: hide after 5 seconds
+    setTimeout(() => {
+        successMsg.classList.remove("show");
+    }, 5000);
 }
