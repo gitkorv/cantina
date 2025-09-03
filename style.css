@@ -2088,6 +2088,9 @@ button.menu__btn.pressed {
         top: calc(var(--bodyPadding) * 9);
 
     }
+    .club-form__content--open {
+    height: 440px;
+}
 }
 
 @media (min-width: 768px) and (min-height: 1024px),
