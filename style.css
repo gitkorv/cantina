@@ -767,16 +767,14 @@ section.home {
 
 /* <-- Club Form */
 
-/* Parent wrapper */
 .zoho-form-wrapper {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     padding: 40px 20px;
-    background-color: #f7f7f7; /* optional section background */
+    background-color: #f7f7f7;
 }
 
-/* Container */
 #zohoCantinaSignUpForm {
     font-family: Arial, sans-serif;
     color: #fff;
@@ -788,7 +786,6 @@ section.home {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Logo */
 #zohoCantinaSignUpForm .logoDiv {
     text-align: center;
     padding: 15px 0;
@@ -799,8 +796,7 @@ section.home {
     height: auto;
 }
 
-/* Form heading */
-#zohoCantinaSignUpForm #SIGNUP_HEADING {
+#SIGNUP_HEADING {
     font-size: 22px;
     text-align: center;
     padding: 20px;
@@ -809,31 +805,24 @@ section.home {
     margin: 0;
 }
 
-/* Form body */
-#zohoCantinaSignUpForm #SIGNUP_BODY {
+#SIGNUP_BODY {
     padding: 20px;
     background-color: #33a58e;
 }
 
-#zohoCantinaSignUpForm #SIGNUP_DESCRIPTION {
-    margin-bottom: 15px;
-    font-size: 14px;
-}
-
-/* Form fields */
-#zohoCantinaSignUpForm .zcsffieldsdiv {
+.zcsffieldsdiv {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-#zohoCantinaSignUpForm .zcsffield label {
+.zcsffield label {
     font-size: 13px;
     margin-bottom: 4px;
     display: block;
 }
 
-#zohoCantinaSignUpForm .zcsffield input {
+.zcsffield input {
     width: 100%;
     padding: 8px 10px;
     border: 1px solid #fff;
@@ -843,15 +832,13 @@ section.home {
     color: #000;
 }
 
-/* Captcha */
-#zohoCantinaSignUpForm .recaptcha {
+.recaptcha {
     margin: 15px 0;
     transform: scale(0.85);
     transform-origin: 0 0;
 }
 
-/* Submit button */
-#zohoCantinaSignUpForm #zcWebOptin {
+#zcWebOptin {
     background-color: #363636;
     color: #fff;
     font-size: 15px;
@@ -863,12 +850,11 @@ section.home {
     transition: background-color 0.2s ease;
 }
 
-#zohoCantinaSignUpForm #zcWebOptin:hover {
+#zcWebOptin:hover {
     background-color: #222;
 }
 
-/* Success message */
-#zohoCantinaSignUpForm #Zc_SignupSuccess {
+#Zc_SignupSuccess {
     display: none;
     background-color: #c2e19a;
     color: #498c84;
@@ -878,53 +864,13 @@ section.home {
     border-radius: 4px;
 }
 
-/* Privacy note */
-#zohoCantinaSignUpForm #privacyNotes {
+#privacyNotes {
     font-size: 11px;
     margin-top: 15px;
     text-align: center;
     color: #fff;
 }
 
-/* Success message */
-#zohoCantinaSignUpForm #Zc_SignupSuccess {
-    display: none; /* Hidden by default */
-    background-color: #c2e19a;
-    color: #498c84;
-    padding: 15px 10px;
-    border: 2px solid #498c84;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 14px;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-/* Show class to trigger animation */
-#zohoCantinaSignUpForm #Zc_SignupSuccess.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* Responsive */
-@media screen and (max-width: 480px) {
-    #zohoCantinaSignUpForm {
-        margin: 10px;
-    }
-    #zohoCantinaSignUpForm #SIGNUP_HEADING {
-        font-size: 18px;
-        padding: 15px;
-    }
-    #zohoCantinaSignUpForm .zcsffield input {
-        font-size: 13px;
-        padding: 6px 8px;
-    }
-}
 
 
 
