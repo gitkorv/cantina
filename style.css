@@ -1882,9 +1882,12 @@ button.menu__btn.pressed {
     /* background-color: #72808a; */
 }
 
-.cantina-svg-logo--boka-bord,
-.cantina-svg-logo--form-success {
+.cantina-svg-logo--boka-bord {
     margin: var(--bodyPadding) 0;
+}
+
+.cantina-svg-logo--form-success {
+    margin: 16px 0;
 }
 
 .back-to-cantina-link {
@@ -1906,6 +1909,7 @@ button.menu__btn.pressed {
 
 .extra-pages-sub--form-success {
     color: var(--cantinaLila);
+    font-size: 16px;
     /* font-size: var(--textFontSizeSmall); */
 }
 
