@@ -1857,7 +1857,7 @@ button.menu__btn.pressed {
 }
 
 .extra-pages-headline {
-    font-size: var(--bodyPadding);
+    font-size: var(--textFontSize);
     text-align: center;
     padding-bottom: var(--textFontSize);
 }
@@ -1875,7 +1875,7 @@ button.menu__btn.pressed {
 .cantina-svg-logo {
     display: flex;
     justify-content: center;
-    height: 60px;
+    height: 40px;
     width: 100%;
     /* padding-right: var(--bodyPadding); */
     /* aspect-ratio: 1/1; */
@@ -1906,6 +1906,7 @@ button.menu__btn.pressed {
 
 .extra-pages-sub--form-success {
     color: var(--cantinaLila);
+    /* font-size: var(--textFontSizeSmall); */
 }
 
 
