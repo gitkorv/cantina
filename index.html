@@ -16296,15 +16296,59 @@
         </div>
 
 
-        <!-- Zoho form -->
+        <!-- Zoho Campaigns Web-Optin Form Starts Here -->
+
         <div class="zoho-form-wrapper">
-            <form id="signupForm">
-                <input type="email" name="email" placeholder="Email" required />
-                <input type="text" name="firstName" placeholder="First Name" />
-                <input type="text" name="lastName" placeholder="Last Name" />
-                <button type="submit">Join</button>
-            </form>
+            <div id="zohoCantinaSignUpForm" data-type="signupform">
+                <div id="customForm">
+                    <div id="SIGNUP_PAGE" class="SIGNUP_PAGE large_form_6_css">
+                        <div id="imgBlock" class="logoDiv">
+                            <img src="https://stratus.campaign-image.eu/images/14ae901711_whitepurple.png"
+                                alt="Cantina Club Logo">
+                        </div>
+                        <div id="signupMainDiv">
+                            <div id="Zc_SignupSuccess" style="display:none;">
+                                <span id="signupSuccessMsg">Thank you for Signing Up</span>
+                            </div>
+                            <form method="POST" id="zcampaignOptinForm"
+                                action="https://zcv2-zcmp.maillist-manage.eu/weboptin.zc" target="_zcSignup">
+                                <div id="SIGNUP_BODY_ALL">
+                                    <h1 id="SIGNUP_HEADING">Join The Cantina Club!</h1>
+                                    <div id="SIGNUP_BODY">
+                                        <div id="SIGNUP_DESCRIPTION">Please complete this form to receive email updates and
+                                            much more.</div>
+                                        <div class="zcsffieldsdiv">
+                                            <div class="zcsffield">
+                                                <label>Your email <span>*</span></label>
+                                                <input name="CONTACT_EMAIL" type="email" required>
+                                            </div>
+                                            <div class="zcsffield">
+                                                <label>First Name</label>
+                                                <input name="FIRSTNAME" type="text">
+                                            </div>
+                                            <div class="zcsffield">
+                                                <label>Last Name</label>
+                                                <input name="LASTNAME" type="text">
+                                            </div>
+                                        </div>
+                                        <!-- Captcha -->
+                                        <div class="recapDivdark recaptcha" id="recapDiv"></div>
+                                        <input type="hidden" id="secretid" value="6LdNeDUUAAAAAG5l7cJfv1AA5OKLslkrOa_xXxLs">
+                                        <div style="text-align:center; padding:10px;">
+                                            <input type="button" action="Save" id="zcWebOptin" value="Join Now">
+                                        </div>
+                                        <div id="privacyNotes">
+                                            <span>We guarantee that your data will be completely confidential.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!-- Zoho Campaigns Web-Optin Form Ends Here -->
 
 
 
@@ -16348,6 +16392,8 @@
         <p class="address__para">Stortorget 10 <br> 831 31 Östersund</p>
     </footer>
 
+    <script src="https://zcv2-zcmp.maillist-manage.eu/js/optin.min.js"></script>
+    <script src="zoho-form.js"></script>
     <script src="script.js"></script>
 </body>
 

@@ -767,17 +767,140 @@ section.home {
 
 /* <-- Club Form */
 
+/* Parent wrapper */
 .zoho-form-wrapper {
-    position: absolute;
-    width: 300px;
-    padding: 24px;
-    z-index: 500;
-    background-color: paleturquoise;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    background-color: #f7f7f7; /* optional section background */
 }
 
-.zoho-form__submit-btn {
-    all: initial;
+/* Main form container */
+#zohoCantinaSignUpForm {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 30px 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    color: #333;
 }
+
+/* Logo */
+#zohoCantinaSignUpForm .logoDiv img {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 300px;
+    height: auto;
+}
+
+/* Headings */
+#SIGNUP_HEADING {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Description */
+#SIGNUP_DESCRIPTION {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* Fields */
+.zcsffieldsdiv {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.zcsffield label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.zcsffield input[type="text"],
+.zcsffield input[type="email"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Submit button */
+#zcWebOptin {
+    background-color: #3644CC;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#zcWebOptin:hover {
+    background-color: #2a35a0;
+}
+
+/* Captcha */
+.recapDivdark.recaptcha {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Privacy note */
+#privacyNotes {
+    text-align: center;
+    font-size: 11px;
+    color: #666;
+    margin-top: 15px;
+}
+
+/* Success message */
+#Zc_SignupSuccess {
+    background-color: #dff0d8;
+    border: 1px solid #a3d3a1;
+    color: #3c763d;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    display: none; /* show after successful submission */
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+    #zohoCantinaSignUpForm {
+        padding: 20px 15px;
+    }
+
+    #SIGNUP_HEADING {
+        font-size: 20px;
+    }
+
+    .zcsffield input[type="text"],
+    .zcsffield input[type="email"] {
+        font-size: 13px;
+    }
+
+    #zcWebOptin {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
 
 
 /* <-- Club Form */
