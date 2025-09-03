@@ -767,15 +767,17 @@ section.home {
 
 /* <-- Club Form */
 
+/* Parent wrapper */
 .zoho-form-wrapper {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     padding: 40px 20px;
-    background-color: #f7f7f7;
+    background-color: #f7f7f7; /* optional section background */
 }
 
-#zohoCantinaSignUpForm {
+/* Container - use original Zoho ID */
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e {
     font-family: Arial, sans-serif;
     color: #fff;
     max-width: 600px;
@@ -786,17 +788,19 @@ section.home {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-#zohoCantinaSignUpForm .logoDiv {
+/* Logo */
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e .logoDiv {
     text-align: center;
     padding: 15px 0;
 }
 
-#zohoCantinaSignUpForm .logoDiv img {
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e .logoDiv img {
     max-width: 100%;
     height: auto;
 }
 
-#SIGNUP_HEADING {
+/* Form heading */
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e #SIGNUP_HEADING {
     font-size: 22px;
     text-align: center;
     padding: 20px;
@@ -805,24 +809,31 @@ section.home {
     margin: 0;
 }
 
-#SIGNUP_BODY {
+/* Form body */
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e #SIGNUP_BODY {
     padding: 20px;
     background-color: #33a58e;
 }
 
-.zcsffieldsdiv {
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e #SIGNUP_DESCRIPTION {
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* Form fields */
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e .zcsffieldsdiv {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.zcsffield label {
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e .zcsffield label {
     font-size: 13px;
     margin-bottom: 4px;
     display: block;
 }
 
-.zcsffield input {
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e .zcsffield input {
     width: 100%;
     padding: 8px 10px;
     border: 1px solid #fff;
@@ -832,13 +843,15 @@ section.home {
     color: #000;
 }
 
-.recaptcha {
+/* Captcha */
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e .recaptcha {
     margin: 15px 0;
     transform: scale(0.85);
     transform-origin: 0 0;
 }
 
-#zcWebOptin {
+/* Submit button */
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e #zcWebOptin {
     background-color: #363636;
     color: #fff;
     font-size: 15px;
@@ -850,11 +863,12 @@ section.home {
     transition: background-color 0.2s ease;
 }
 
-#zcWebOptin:hover {
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e #zcWebOptin:hover {
     background-color: #222;
 }
 
-#Zc_SignupSuccess {
+/* Success message */
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e #Zc_SignupSuccess {
     display: none;
     background-color: #c2e19a;
     color: #498c84;
@@ -864,13 +878,28 @@ section.home {
     border-radius: 4px;
 }
 
-#privacyNotes {
+/* Privacy note */
+#sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e #privacyNotes {
     font-size: 11px;
     margin-top: 15px;
     text-align: center;
     color: #fff;
 }
 
+/* Responsive */
+@media screen and (max-width: 480px) {
+    #sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e {
+        margin: 10px;
+    }
+    #sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e #SIGNUP_HEADING {
+        font-size: 18px;
+        padding: 15px;
+    }
+    #sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e .zcsffield input {
+        font-size: 13px;
+        padding: 6px 8px;
+    }
+}
 
 
 

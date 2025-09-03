@@ -913,13 +913,12 @@ popUpBtn.addEventListener("click", e => {
 
 // Zoho form
 
-// Optional: run custom code on submit
-function runOnFormSubmit_zohoCantinaSignUpForm(th) {
-    console.log('Form submitted data:', th);
-    // You can do extra things here, e.g., trigger analytics
-}
-
-// Initialize Zoho form after DOM is ready
-document.addEventListener("DOMContentLoaded", function() {
-    setupSF('zohoCantinaSignUpForm', 'ZCFORMVIEW', false, 'dark', false, '1');
+document.addEventListener("DOMContentLoaded", function(){
+    // IMPORTANT: Use the original Zoho ID
+    setupSF('sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e','ZCFORMVIEW',false,'dark',false,'1');
 });
+
+// Optional: run custom code on submit
+function runOnFormSubmit_sf3ze1b96d19db0ecaddd031c9284fa3b4aebfcfd9223fa3a37f99f668ae6099017e(th){
+    console.log('Form submitted:', th);
+}
