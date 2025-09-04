@@ -206,8 +206,8 @@ body {
     padding-right: calc(var(--textFontSize) / 8);
     margin-left: calc(var(--textFontSize) / 2);
     width: fit-content;
-    background-color: var(--cantinaGreen);
-    background-color: black;
+    background-color: var(--cantinaLila);
+    /* background-color: black; */
     /* background-color: black; */
     color: var(--cantinaGrey);
 
