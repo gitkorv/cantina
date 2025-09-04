@@ -1837,7 +1837,7 @@ button.menu__btn.pressed {
     display: grid;
     justify-content: center;
     align-items: center;
-    background-color: var(--cantinaGreen);
+    background-color: var(--cantinaCream);
     padding: var(--bodyPadding);
     overflow-y: scroll;
 }
@@ -1850,7 +1850,7 @@ button.menu__btn.pressed {
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
     text-align: center;
-    color: var(--cantinaCream);
+    color: var(--cantinaLila);
     height: auto;
     width: auto;
     margin-bottom: calc(var(--bodyPadding) * 2);
@@ -1905,15 +1905,18 @@ button.menu__btn.pressed {
 /* ----------> EXTRA PAGES FORM SUCCESS <---------- */
 
 .cantina-svg-logo--form-success svg {
-    fill: var(--cantinaCream);
+    fill: var(--cantinaLila);
 }
 
 .extra-pages-sub--form-success {
-    color: var(--cantinaLila);
+    color: var(--cantinaGrey);
     font-size: 16px;
     /* font-size: var(--textFontSizeSmall); */
 }
 
+.form__back-to-enter-new-member {
+    color: var(--cantinaGreen);
+}
 
 
 
