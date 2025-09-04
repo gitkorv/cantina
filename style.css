@@ -93,7 +93,7 @@ body {
     height: 100dvh;
     font-family: "acumin-variable", sans-serif;
     font-variation-settings: "slnt" 0, "wdth" 10, "wght" 300;
-    background-color: var(--cantinaRosa);
+    background-color: var(--cantinaGrey);
     overflow: hidden;
 }
 
@@ -153,7 +153,7 @@ body {
     font-variation-settings: "slnt" 0, "wdth" 80, "wght" 300;
     letter-spacing: -2px;
     font-size: var(--logo-font-size);
-    color: var(--cantinaLila);
+    color: var(--cantinaRosa);
     transition: font-variation-settings 2s ease-in 2s,
         opacity .25s ease-in;
     /* background-color: aliceblue; */
@@ -186,7 +186,7 @@ body {
 .logo__word--streetfood-wrapper span {
     /* opacity: 1; */
     transition: opacity 0.1s ease-out;
-    color: black;
+    color: var(--cantinaCream);
 }
 
 .logo__words--streetfood.zero-opacity {
@@ -206,8 +206,10 @@ body {
     padding-right: calc(var(--textFontSize) / 8);
     margin-left: calc(var(--textFontSize) / 2);
     width: fit-content;
-    background-color: var(--cantinaCream);
-    color: var(--cantinaRosa);
+    background-color: var(--cantinaGreen);
+    background-color: black;
+    /* background-color: black; */
+    color: var(--cantinaGrey);
 
     transform-origin: right;
     transform: rotateY(0deg);
@@ -231,6 +233,8 @@ body {
     font-family: var(--fontTypewriter);
     font-variation-settings: "wght" 350;
     font-size: var(--textFontSize);
+    color: var(--cantinaLila);
+    color: black;
 }
 
 .logo__tagline {
@@ -275,7 +279,7 @@ body {
 
 .below-logo__splash-food span {
     font-size: calc(var(--textFontSize) * 1.5);
-    color: var(--cantinaLila);
+    color: var(--cantinaRosa);
     letter-spacing: 1px;
 }
 
@@ -352,6 +356,8 @@ main {
     height: 100dvh;
     overflow: hidden;
     padding-bottom: var(--bodyPadding);
+    pointer-events: none;
+    /* z-index: -100; */
 
     /* background-color: pink; */
 }
@@ -388,7 +394,7 @@ section.home {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: color-mix(in srgb, var(--cantinaGreen) 75%, transparent);
+    background-color: color-mix(in srgb, var(--cantinaLila) 75%, transparent);
     height: 100%;
     width: 100%;
     z-index: 200;
@@ -426,9 +432,8 @@ section.home {
     /* frame thickness */
     background: conic-gradient(from 0deg,
             var(--cantinaRosa),
-            var(--cantinaLila),
-            var(--cantinaCream),
-            var(--cantinaLila),
+            var(--cantinaGrey),
+            var(--cantinaGreen),
             var(--cantinaGrey),
             var(--cantinaRosa));
     -webkit-mask:
@@ -460,8 +465,8 @@ section.home {
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    background-color: var(--cantinaLila);
-    box-shadow: var(--cantinaGreen) 3px 3px 0px;
+    background-color: var(--cantinaGreen);
+    box-shadow: var(--cantinaLila) 3px 3px 0px;
     cursor: pointer;
     z-index: 200;
 }
@@ -602,7 +607,7 @@ section.home {
 
 .popup-drip {
     fill: black;
-    fill: var(--cantinaRosa);
+    fill: var(--cantinaGrey);
 }
 
 
@@ -620,6 +625,8 @@ section.home {
     margin-right: 40%;
     /* height: 50%; */
     font-size: var(--textFontSize);
+    /* z-index: 500; */
+    pointer-events: auto;
 }
 
 .ticker__item {
@@ -668,7 +675,7 @@ section.home {
     justify-content: center;
     right: var(--bodyPadding);
     top: var(--bodyPadding);
-    color: var(--cantinaRosa);
+    color: var(--cantinaGrey);
     transition: all .25s ease-in-out;
     opacity: 1;
     cursor: pointer;
@@ -680,14 +687,15 @@ section.home {
     padding: 0;
     overflow: hidden;
     box-shadow: var(--cantinaCream) 0px 0px 0px;
-    background-color: var(--cantinaGreen);
+    background-color: var(--cantinaRosa);
     animation: club-spin 2.5s ease-in-out infinite alternate;
+    pointer-events: auto;
 
 }
 
 @keyframes club-spin {
     50% {
-        background-color: var(--cantinaLila);
+        /* background-color: var(--cantinaLila); */
     }
 
     100% {
@@ -695,22 +703,28 @@ section.home {
         box-shadow: var(--cantinaCream) 5px 5px 0px;
         /* color: var(--cantinaCream); */
         transform: rotate(24deg);
-        background-color: var(--cantinaRosa);
-        color: var(--cantinaGreen);
+        /* background-color: var(--cantinaRosa); */
+        /* color: var(--cantinaGreen); */
         /* border: 1px solid var(--cantinaCream); */
     }
 }
 
 .club-btn:hover {
-    background-color: var(--cantinaGrey);
+    background-color: var(--cantinaLila);
     color: white;
+    animation-play-state: paused;
 }
 
 .club-btn.pressed {
     font-size: 2rem;
     scale: 75%;
-    background-color: var(--cantinaGrey);
+    background-color: var(--cantinaGreen);
     box-shadow: var(--cantinaCream) 2px 2px 0px;
+    color: var(--cantinaCream);
+}
+
+.club-btn.club-btn.pressed:hover {
+    color: var(--cantinaLila);
 }
 
 .club-btn.active {
@@ -731,23 +745,23 @@ section.home {
     align-items: center;
     justify-content: center;
 
-    font-size: calc(var(--textFontSize));
-    line-height: calc(var(--textFontSize) * 0.95);
+    font-size: calc(var(--bodyPadding));
+    line-height: calc(var(--bodyPadding) * 0.95);
     font-variation-settings: "slnt" 0, "wdth" 10, "wght" 600;
 }
 
 
 
 .club-btn__text-container:nth-of-type(odd) {
-    transform: translateX(25px);
+    transform: translateX(50px);
 }
 
 .club-btn__text-container:nth-of-type(even) {
-    transform: translateX(-25px);
+    transform: translateX(-50px);
 }
 
 .club-btn__text-container {
-    animation: slide 10s ease-in-out infinite alternate;
+    animation: slide 2s ease-in-out infinite alternate;
 }
 
 @keyframes slide {
@@ -933,6 +947,7 @@ input[type=submit]:hover {
     font-size: calc(var(--textFontSize) * 0.75);
     /* background-color: aliceblue; */
     overflow-x: visible;
+    pointer-events: auto;
 }
 
 .opening-hours-list {
@@ -945,7 +960,7 @@ input[type=submit]:hover {
 }
 
 .hours-head {
-    color: var(--cantinaLila);
+    color: var(--cantinaGreen);
     /* color: black; */
     padding-bottom: calc(var(--textFontSizeSmall) / 4);
     font-variation-settings: "slnt" 0, "wdth" 110, "wght" 800;
@@ -955,11 +970,11 @@ input[type=submit]:hover {
 
 
 @keyframes hour-times {
-    74% {
+    29% {
         color: var(--cantinaLila);
     }
 
-    75% {
+    30% {
         color: var(--cantinaCream);
     }
 }
@@ -986,7 +1001,7 @@ input[type=submit]:hover {
 }
 
 .opening-hours__hours--blob {
-    color: var(--cantinaLila);
+    color: var(--cantinaRosa);
     font-variation-settings: "slnt" 0, "wdth" 150, "wght" 900;
 
 }
@@ -1008,6 +1023,7 @@ input[type=submit]:hover {
     height: fit-content;
     /* flex: 1; */
     display: flex;
+    pointer-events: auto;
 }
 
 .social-logo-wrapper {
@@ -1048,7 +1064,7 @@ input[type=submit]:hover {
 
 .social-logo:hover .svg-insta,
 .social-logo:hover .svg-fb {
-    fill: var(--cantinaGreen);
+    fill: var(--cantinaRosa);
     /* background-image: url(/img/Cantina_insta--hover.svg); */
 }
 
@@ -1344,7 +1360,7 @@ input[type=submit]:hover {
     gap: var(--bodyPadding);
     padding-bottom: var(--bodyPadding);
     /* z-index: 1000; */
-    pointer-events: none;
+    pointer-events: auto;
 }
 
 .menu__btns__secBtns-wrapper {
@@ -1371,11 +1387,12 @@ input[type=submit]:hover {
     font-variation-settings: "wght" 600;
     transition: all .15s ease-in-out;
     /* z-index: 1000; */
-    pointer-events: all;
+    /* pointer-events: all; */
+    cursor: pointer;
 }
 
 .menu__btn:hover {
-    background-color: var(--cantinaGrey);
+    background-color: var(--cantinaRosa);
     color: var(--cantinaCream);
     animation: none;
 }
@@ -1403,14 +1420,14 @@ button.menu__btn.pressed {
 .menu__btn__opBtn {
     text-align: center;
     padding: 12px 8px;
-    background-color: var(--cantinaLila);
+    background-color: var(--cantinaGreen);
     color: var(--cantinaCream);
     box-shadow: var(--cantinaRosa) 2px 2px 0px;
-    pointer-events: all;
+    pointer-events: auto;
 
     box-shadow: var(--cantinaCream) 0px 0px 0px;
 
-    outline: 1px dashed var(--cantinaGreen);
+    outline: 1px dashed var(--cantinaCream);
     outline-offset: 0;
     animation: opBtnAnim .5s linear infinite reverse;
 }
@@ -1418,8 +1435,8 @@ button.menu__btn.pressed {
 @keyframes opBtnAnim {
     to {
         outline-offset: -10px;
-        color: var(--cantinaGreen);
-        box-shadow: var(--cantinaCream) 4px 4px 0px;
+        color: var(--cantinaRosa);
+        box-shadow: var(--cantinaLila) 4px 4px 0px;
     }
 }
 
@@ -1628,6 +1645,7 @@ button.menu__btn.pressed {
     top: calc(var(--bodyPadding) * 8);
     left: calc(var(--textFontSize) / 2);
     display: flex;
+    pointer-events: auto;
 }
 
 .boka-bord__link,
@@ -1927,6 +1945,14 @@ button.menu__btn.pressed {
 
 /* ----------> BOKA BORD <---------- */
 
+.boka-bord-body {
+    background-color: var(--cantinaRosa);
+}
+
+.extra-pages-headline--boka-bord {
+    color: var(--cantinaCream);
+}
+
 .page-boka-bord-wrapper {
     height: fit-content;
 }
@@ -1937,7 +1963,7 @@ button.menu__btn.pressed {
     position: absolute;
     bottom: var(--bodyPadding);
     left: var(--bodyPadding);
-    z-index: -100;
+    /* z-index: -100; */
 }
 
 
