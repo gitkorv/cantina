@@ -788,6 +788,10 @@ section.home {
 
 /* <-- Club Form */
 
+.club-form-wrapper, .club-form__bottom-drip-container {
+    width: 315px;
+}
+
 .club-form-wrapper {
     position: fixed;
     display: flex;
@@ -795,7 +799,6 @@ section.home {
     align-items: center;
     top: calc(var(--bodyPadding) * 3.5);
     right: var(--bodyPadding);
-    width: 300px;
     max-width: 100%;
     z-index: 100;
     /* border-radius: 24px; */
@@ -824,7 +827,9 @@ section.home {
     border-radius: 24px;
     overflow-y: hidden;
     padding: 16px 0 16px 0;
+    /* width: 500px; */
     /* background-color: pink; */
+    overflow-x: hidden;
 }
 
 .club-form__content--open {
@@ -832,6 +837,11 @@ section.home {
     opacity: 1;
     pointer-events: all;
 }
+
+.club-form__content__zoho-iframe {
+    width: 350px;
+}
+
 
 .club-form {
     position: relative;
@@ -900,8 +910,8 @@ input[type=submit]:hover {
     pointer-events: none;
     width: 100px;
     height: auto;
-    top: 10px;
-    right: -6px;
+    top: 38px;
+    right: -4px;
     z-index: 100;
 }
 
@@ -909,7 +919,7 @@ input[type=submit]:hover {
     position: relative;
     display: block;
     top: -8px;
-    width: 300px;
+    /* width: 300px; */
     /* background-color: wheat; */
     height: 200px;
     pointer-events: none;
@@ -1933,7 +1943,7 @@ button.menu__btn.pressed {
 }
 
 .form__back-to-enter-new-member {
-    
+
     color: var(--cantinaGreen);
 }
 
@@ -2131,6 +2141,19 @@ button.menu__btn.pressed {
     :root {
         --bodyPadding: 48px;
         --textFontSize: 1.5rem
+    }
+
+    .club-form-wrapper, .club-form__bottom-drip-container {
+        width: 600px;
+    }
+
+    .club-form__content__zoho-iframe {
+        width: 1000px;
+    }
+
+    .club-form__gummy-img {
+        width: 150px;
+        right: 50px;
     }
 
     .logo-wrapper {
