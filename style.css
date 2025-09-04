@@ -1915,6 +1915,7 @@ button.menu__btn.pressed {
 }
 
 .form__back-to-enter-new-member {
+    
     color: var(--cantinaGreen);
 }
 
