@@ -906,9 +906,9 @@ window.onload = function () {
         setTimeout(() => {
             popUpWrapper.style.transitionDuration = ".5s"
             // yranSvgContainer.style.display = "none"
-        }, 500);
+        }, 250);
 
-    }, 500);
+    }, 100);
 };
 
 popUpBtn.addEventListener("click", e => {
