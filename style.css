@@ -501,7 +501,7 @@ section.home {
     /* line-height: 20px; */
     color: var(--cantinaRosa);
     text-shadow: 3px 3px 0px var(--cantinaLila);
-    
+
 }
 
 .popup__subhead {
@@ -513,7 +513,7 @@ section.home {
     padding-top: var(--textFontSize);
 }
 
-.popup__text{
+.popup__text {
     font-size: 18px;
     line-height: 18px;
     font-family: var(--fontTypewriter);
@@ -553,7 +553,8 @@ section.home {
     font-variation-settings: "slnt" 0, "wdth" 100, "wght" 700;
 }
 
-.popup__list-item--day, .popup__list-item--text {
+.popup__list-item--day,
+.popup__list-item--text {
     font-size: 12px;
 
 }
@@ -808,8 +809,8 @@ section.home {
     z-index: 300;
     border-radius: 24px;
     overflow-y: hidden;
-        padding: 16px 0 16px 0;
-
+    padding: 16px 0 16px 0;
+    /* background-color: pink; */
 }
 
 .club-form__content--open {
@@ -880,12 +881,12 @@ input[type=submit]:hover {
     outline: 2px solid black;
 }
 
-.club-form__skull-img {
+.club-form__gummy-img {
     position: absolute;
     pointer-events: none;
-    width: 150px;
+    width: 100px;
     height: auto;
-    bottom: 0;
+    top: 80px;
     right: 0;
     z-index: -10;
 }
@@ -1945,16 +1946,16 @@ button.menu__btn.pressed {
     }
 
     .popup__subhead {
-    padding-top: 4px;
-}
+        padding-top: 4px;
+    }
 
     .popup__list-container {
         padding-top: 0px;
     }
 
     .popup__list-content {
-    gap: 4px;
-}
+        gap: 4px;
+    }
 
     .popup__text {
         font-size: 18px;
@@ -2088,9 +2089,10 @@ button.menu__btn.pressed {
         top: calc(var(--bodyPadding) * 9);
 
     }
+
     .club-form__content--open {
-    height: 440px;
-}
+        height: 440px;
+    }
 }
 
 @media (min-width: 768px) and (min-height: 1024px),
