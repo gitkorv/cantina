@@ -1747,13 +1747,16 @@ button.menu__btn.pressed {
         transform: rotate(-15deg);
     }
 }
-
-.boka-bord__link:hover {
+@media (hover: hover) {
+    .boka-bord__link:hover {
     background-color: var(--cantinaCream);
     color: var(--cantinaLila);
     text-decoration-color: var(--cantinaLila);
-    transform: rotate(-15deg);
+    transform: rotate(-17deg);
+    animation: paused;
 }
+}
+
 
 .boka-bord__link span {
     text-decoration: underline;
