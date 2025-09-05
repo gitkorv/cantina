@@ -233,7 +233,7 @@ body {
 .address {
     max-width: 300px;
     font-family: var(--fontTypewriter);
-    font-variation-settings: "wght" 350;
+    font-variation-settings: "wght" 750;
     font-size: var(--textFontSize);
     color: var(--cantinaLila);
     color: black;
@@ -1995,6 +1995,7 @@ button.menu__btn.pressed {
     position: absolute;
     bottom: var(--bodyPadding);
     left: var(--bodyPadding);
+    color: var(--cantinaLila);
     /* z-index: -100; */
 }
 
