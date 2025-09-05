@@ -1400,12 +1400,13 @@ input[type=submit]:hover {
     /* pointer-events: all; */
     cursor: pointer;
 }
-
-.menu__btn:hover {
+@media (hover: hover) {
+    .menu__btn:hover {
     background-color: var(--cantinaRosa);
     color: var(--cantinaCream);
-    animation: none;
 }
+}
+
 
 button.menu__btn.pressed {
     scale: 90%;
@@ -1417,7 +1418,6 @@ button.menu__btn.pressed {
     color: var(--cantinaCream);
     box-shadow: var(--cantinaCream) 2px 2px 0px;
     scale: 100%;
-    animation: none;
     outline: none;
 }
 
@@ -1450,13 +1450,25 @@ button.menu__btn.pressed {
     }
 }
 
+/* .menu__btn__opBtn.active {
+} */
+
 .menu__btn__opBtn.pressed.active {
     scale: 100%;
+        animation: none;
+
 }
 
-.menu__btn__opBtn.pressed.active:hover {
-    background-color: var(--cantinaGrey);
+.menu__btn__opBtn.pressed.active {
+    background-color: var(--cantinaLila);
 }
+
+@media (hover: hover) {
+    .menu__btn__opBtn.pressed.active:hover {
+    background-color: var(--cantinaRosa);
+}
+}
+
 
 
 
