@@ -709,11 +709,14 @@ section.home {
     }
 }
 
-.club-btn:hover {
-    background-color: var(--cantinaLila);
-    color: white;
-    animation-play-state: paused;
+@media (hover: hover) {
+    .club-btn:hover {
+        background-color: var(--cantinaLila);
+        color: white;
+        animation-play-state: paused;
+    }
 }
+
 
 .club-btn.pressed {
     font-size: 2rem;
@@ -788,7 +791,8 @@ section.home {
 
 /* <-- Club Form */
 
-.club-form-wrapper, .club-form__bottom-drip-container {
+.club-form-wrapper,
+.club-form__bottom-drip-container {
     width: 315px;
 }
 
@@ -1400,11 +1404,12 @@ input[type=submit]:hover {
     /* pointer-events: all; */
     cursor: pointer;
 }
+
 @media (hover: hover) {
     .menu__btn:hover {
-    background-color: var(--cantinaRosa);
-    color: var(--cantinaCream);
-}
+        background-color: var(--cantinaRosa);
+        color: var(--cantinaCream);
+    }
 }
 
 
@@ -1455,7 +1460,7 @@ button.menu__btn.pressed {
 
 .menu__btn__opBtn.pressed.active {
     scale: 100%;
-        animation: none;
+    animation: none;
 
 }
 
@@ -1465,8 +1470,8 @@ button.menu__btn.pressed {
 
 @media (hover: hover) {
     .menu__btn__opBtn.pressed.active:hover {
-    background-color: var(--cantinaRosa);
-}
+        background-color: var(--cantinaRosa);
+    }
 }
 
 
@@ -2155,7 +2160,8 @@ button.menu__btn.pressed {
         --textFontSize: 1.5rem
     }
 
-    .club-form-wrapper, .club-form__bottom-drip-container {
+    .club-form-wrapper,
+    .club-form__bottom-drip-container {
         width: 600px;
     }
 
