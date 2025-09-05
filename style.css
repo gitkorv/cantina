@@ -1925,6 +1925,9 @@ button.menu__btn.pressed {
 
 .extra-pages-sub {
     max-width: 75%;
+    color: var(--cantinaLila);
+    color: black;
+    font-size: 16px;
 }
 
 .back-to-cantina-link {
@@ -1962,6 +1965,18 @@ button.menu__btn.pressed {
     fill: var(--cantinaLila);
 }
 
+/* ----------> EXTRA PAGES FORM CONFIRMED <---------- */
+
+.form-confirmed-body {
+    background-color: var(--cantinaCream);
+}
+
+.form-confirmed-headline {
+    font-size: 24px;
+}
+
+
+
 /* ----------> EXTRA PAGES FORM SUCCESS <---------- */
 
 .form-success-body, .form-exists-body {
@@ -1987,7 +2002,9 @@ button.menu__btn.pressed {
     color: var(--cantinaGreen);
 }
 
-
+.cantina-svg-logo--form-confirmed svg {
+    fill: var(--cantinaLila);
+}
 
 
 
