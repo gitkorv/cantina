@@ -1484,7 +1484,7 @@ button.menu__btn.pressed {
 
 .cantina-skull-svg-wrapper {
     position: absolute;
-    --skull-color: var(--cantinaCream);
+    --skull-color: var(--cantinaGreen);
     bottom: calc(var(--bodyPadding) + var(--textFontSize));
     padding: 0 var(--bodyPadding);
     /* right: var(--bodyPadding); */
