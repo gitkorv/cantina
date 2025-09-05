@@ -74,7 +74,7 @@ const menuContentBorder = document.querySelector(".menu-content-border")
 const menuContent = document.querySelector(".menu-content")
 const menuContentScroller = document.querySelector(".menu-content-scroller")
 const menuContentBg = document.querySelector(".menu-content-bg")
-let menuUnOpened = true;
+// let menuUnOpened = true;
 const menuCategoryHeadWrappers = [...document.querySelectorAll(".menu__cat__head-wrapper")];
 const menuCategoryHeads = [...document.querySelectorAll(".menu__cat__head")];
 const menuCategorySections = document.querySelectorAll(".menu__cat-wrapper");
@@ -590,7 +590,7 @@ function closeMenu() {
 function openMenu() {
     console.log("open menu");
 
-    menuUnOpened = false;
+    // menuUnOpened = false;
     menuContentScroller.classList.remove("menu-content-scroller--closed");
     menuSecBtnsWrapper.classList.remove("menu__btns__secBtns-wrapper--closed");
 
@@ -698,7 +698,7 @@ document.addEventListener("click", (e) => {
 
     if (
         isFormOpen &&
-        !clubFormWrapper.contains(clickedEl) &&
+        !clubFormContent.contains(clickedEl) &&
         !clubBtn.contains(clickedEl)
     ) {
         isFormOpen = false;
@@ -706,9 +706,15 @@ document.addEventListener("click", (e) => {
         clubBtn.classList.remove("pressed");
         clubFormWrapper.classList.remove("form-above");
         clubBtn.innerHTML = clubBtnInnerHTML;
-        clubFormContent.classList.remove("open");
+        clubFormContent.classList.remove("club-form__content--open");
         clubFormDripContainer.classList.remove("open");
         clubFormDripContainer.innerHTML = "";
+    }
+    if (
+        menuOpen &&
+        !clickedEl.classList.contains("menu__btn")
+    ) {
+        closeMenu()
     }
 });
 
