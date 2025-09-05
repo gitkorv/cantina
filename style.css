@@ -444,7 +444,7 @@ section.home {
     -webkit-mask-composite: destination-out;
     mask-composite: subtract;
     mask-composite: exclude;
-    animation: spin 2s linear infinite;
+    animation: spin 20s linear infinite;
     z-index: -50;
     pointer-events: none;
 }
