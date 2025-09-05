@@ -728,11 +728,12 @@ section.home {
     box-shadow: var(--cantinaCream) 2px 2px 0px;
     color: var(--cantinaCream);
 }
+
 @media (hover: hover) {
     .club-btn.club-btn.pressed:hover {
-    color: var(--cantinaLila);
-    background-color: var(--cantinaRosa);
-}
+        color: var(--cantinaLila);
+        background-color: var(--cantinaRosa);
+    }
 }
 
 
@@ -1412,7 +1413,9 @@ input[type=submit]:hover {
 }
 
 @media (hover: hover) {
-    .menu__btn:hover, .menu__btn.active:hover {
+
+    .menu__btn:hover,
+    .menu__btn.active:hover {
         background-color: var(--cantinaGrey);
         color: var(--cantinaCream);
     }
@@ -1473,7 +1476,9 @@ button.menu__btn.pressed {
 }
 
 @media (hover: hover) {
-    .menu__btn__opBtn.pressed.active:hover, .menu__btn__opBtn:hover {
+
+    .menu__btn__opBtn.pressed.active:hover,
+    .menu__btn__opBtn:hover {
         background-color: var(--cantinaGrey);
         animation-play-state: paused;
     }
@@ -1752,14 +1757,15 @@ button.menu__btn.pressed {
         transform: rotate(-15deg);
     }
 }
+
 @media (hover: hover) {
     .boka-bord__link:hover {
-    background-color: var(--cantinaRosa);
-    color: var(--cantinaLila);
-    text-decoration-color: var(--cantinaLila);
-    /* transform: rotate(-17deg); */
-    animation-play-state: paused;
-}
+        background-color: var(--cantinaRosa);
+        color: var(--cantinaLila);
+        text-decoration-color: var(--cantinaLila);
+        /* transform: rotate(-17deg); */
+        animation-play-state: paused;
+    }
 }
 
 
@@ -1890,7 +1896,7 @@ button.menu__btn.pressed {
     display: grid;
     justify-content: center;
     align-items: center;
-    background-color: var(--cantinaCream);
+    background-color: var(--cantinaLila);
     padding: var(--bodyPadding);
     overflow-y: scroll;
 }
@@ -1903,7 +1909,6 @@ button.menu__btn.pressed {
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
     text-align: center;
-    color: var(--cantinaLila);
     height: auto;
     width: auto;
     margin-bottom: calc(var(--bodyPadding) * 2);
@@ -1914,6 +1919,8 @@ button.menu__btn.pressed {
     font-size: var(--textFontSize);
     text-align: center;
     padding-bottom: var(--textFontSize);
+    color: var(--cantinaGreen);
+
 }
 
 .extra-pages-sub {
@@ -1957,20 +1964,20 @@ button.menu__btn.pressed {
 
 /* ----------> EXTRA PAGES FORM SUCCESS <---------- */
 
-.form-success-body {
+.form-success-body, .form-exists-body {
     align-items: end;
 }
 
-.form-success-wrapper {
-    margin-bottom: 0;    
+.form-success-wrapper, .form-exists-wrapper {
+    margin-bottom: 0;
 }
 
 .cantina-svg-logo--form-success svg {
-    fill: var(--cantinaLila);
+    fill: var(--cantinaRosa);
 }
 
 .extra-pages-sub--form-success {
-    color: var(--cantinaGrey);
+    color: var(--cantinaCream);
     font-size: 16px;
     /* font-size: var(--textFontSizeSmall); */
 }
