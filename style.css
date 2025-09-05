@@ -1112,7 +1112,7 @@ input[type=submit]:hover {
     transition: transform .5s ease-in-out;
     z-index: 100;
     justify-content: end;
-    /* pointer-events: none; */
+    pointer-events: auto;
     /* background-color: #33a58e; */
 }
 
