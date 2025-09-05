@@ -550,6 +550,7 @@ menuOpBtn.addEventListener("click", e => {
         openMenu();
     } else {
         closeMenu();
+        menuOpBtn.classList.remove("active")
     }
 
     // You were trying to remove "active, pressed" here with a typo
