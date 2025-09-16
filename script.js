@@ -912,7 +912,7 @@ window.onload = function () {
         setTimeout(() => {
             popUpWrapper.style.transitionDuration = ".5s"
             // yranSvgContainer.style.display = "none"
-        }, 250);
+        }, 0);
 
     }, 100);
 };
