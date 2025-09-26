@@ -1471,9 +1471,9 @@ input[type=submit]:hover {
     line-height: 1em;
 }
 
-/* .menu-cat--tacos .menu____dish-price--big {
-        top: 0px;
-    } */
+.menu-cat--tacos .menu____dish__text--intro {
+        padding-right: 6rem;
+    }
 
 /* .menu____dish-price__right-aligned {
     align-self: flex-end;
