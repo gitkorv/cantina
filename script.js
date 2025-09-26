@@ -444,6 +444,7 @@ open
 // Btn and menus
 
 function setheightAndWidthForFoodMenuContents(menuContent) {
+
     let foodMenuContentHeight = menuContent.scrollHeight;
     menuContent.style.setProperty('--food-menu-full-height', foodMenuContentHeight + "px");
 
@@ -467,8 +468,10 @@ function setheightAndWidthForFoodMenuContents(menuContent) {
         ...menuExtraInfoAll
     ]
 
-    menuWidthElements.forEach(dishContent => {
-        dishContent.style.width = width - paddingLeft * 2 + "px";
+    requestAnimationFrame(() => {
+        menuWidthElements.forEach(dishContent => {
+            dishContent.style.width = width - paddingLeft * 2 + "px";
+        })
     })
 }
 
@@ -927,22 +930,22 @@ popUpBtn.addEventListener("click", e => {
 let index = 0;
 
 function cycleColors() {
-  // reset all
-  popUpSwipeTextSpans.forEach(span => span.classList.remove('active'));
+    // reset all
+    popUpSwipeTextSpans.forEach(span => span.classList.remove('active'));
 
-  // highlight current one
-  popUpSwipeTextSpans[index].classList.add('active');
+    // highlight current one
+    popUpSwipeTextSpans[index].classList.add('active');
 
-  // move to next
-  index++;
+    // move to next
+    index++;
 
-  // if we’ve gone past the last span, reset after a pause
-  if (index >= popUpSwipeTextSpans.length) {
-    index = 0;
-    setTimeout(cycleColors, 1500); // pause before restarting
-  } else {
-    setTimeout(cycleColors, 500); // quick switch between spans
-  }
+    // if we’ve gone past the last span, reset after a pause
+    if (index >= popUpSwipeTextSpans.length) {
+        index = 0;
+        setTimeout(cycleColors, 1500); // pause before restarting
+    } else {
+        setTimeout(cycleColors, 500); // quick switch between spans
+    }
 }
 
 // start the loop
