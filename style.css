@@ -1435,6 +1435,7 @@ input[type=submit]:hover {
     /* background-color: #72808a; */
     text-align: right;
     width: 200px;
+    z-index: 100;
 }
 
 .menu____dish-price--big {
@@ -1456,7 +1457,14 @@ input[type=submit]:hover {
     text-align: right;
     padding-right: var(--textFontSize);
     line-height: var(--textFontSizeSmall);
+}
 
+.menu____dish-price__left-aligned--mixa {
+    margin-top: 1rem;
+    z-index: 10;
+    font-size: var(--bodyPadding);
+    line-height: auto;
+    line-height: 1em;
 }
 
 /* .menu-cat--tacos .menu____dish-price--big {
