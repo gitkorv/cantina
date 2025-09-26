@@ -1421,6 +1421,11 @@ input[type=submit]:hover {
     color: var(--cantinaCream);
 }
 
+.menu-cat--tacos .menu____dish-head {
+    color: var(--cantinaLila);
+    color: black;
+}
+
 /* --> Menu Prices <-- */
 
 .menu____dish-price {
@@ -1460,10 +1465,9 @@ input[type=submit]:hover {
 }
 
 .menu____dish-price__left-aligned--mixa {
-    margin-top: 1rem;
+    margin-top: 1.2rem;
     z-index: 10;
     font-size: var(--bodyPadding);
-    line-height: auto;
     line-height: 1em;
 }
 
