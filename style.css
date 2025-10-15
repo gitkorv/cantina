@@ -1464,6 +1464,10 @@ input[type=submit]:hover {
     top: 20px;
 }
 
+.menu-cat--broth-n-buns .menu__cat__dishes-wrapper  div:nth-child(2) .menu____dish__text--intro {
+    color: black;
+}
+
 /* .menu____dish-price--move-up {
     top: calc(0px - var(--textFontSize));
 } */
@@ -1557,7 +1561,7 @@ input[type=submit]:hover {
     content: "•";
     position: absolute;
     left: 0;
-    top: 0.25em;
+    /* top: 0.25em; */
     color: var(--cantinaLila);
     width: 1rem;
 }
@@ -2398,6 +2402,12 @@ button.menu__btn.pressed {
         }
     }
 
+}
+
+@media (min-width: 375px) {
+    .menu-cat--tacos .menu____dish-price {
+        top: 110px;
+    }
 }
 
 @media (min-height: 768px) {
