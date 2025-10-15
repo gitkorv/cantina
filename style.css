@@ -1441,6 +1441,12 @@ input[type=submit]:hover {
     text-align: right;
     width: 200px;
     z-index: 100;
+
+
+}
+
+.menu-cat--tacos .menu____dish-price {
+        top: 120px;
 }
 
 .menu____dish-price--big {
@@ -1453,9 +1459,14 @@ input[type=submit]:hover {
 
 }
 
-.menu____dish-price--move-up {
-    top: calc(0px - var(--textFontSize));
+.menu-cat--broth-n-buns .menu__cat__dishes-wrapper  div:nth-child(2) .menu____dish-price {
+    /* background-color: #381460; */
+    top: 20px;
 }
+
+/* .menu____dish-price--move-up {
+    top: calc(0px - var(--textFontSize));
+} */
 
 .menu____dish-price__left-aligned {
     /* align-self: flex-start; */
@@ -1465,7 +1476,7 @@ input[type=submit]:hover {
 }
 
 .menu____dish-price__left-aligned--mixa {
-    margin-top: 2rem;
+    margin-top: 1rem;
     z-index: 10;
     font-size: var(--bodyPadding);
     line-height: 1em;
@@ -2487,10 +2498,13 @@ button.menu__btn.pressed {
         /* background-color: #33a58e; */
     }
 
-    .menu____dish__text,
-    .menu____dish__text--add-extra {
-        /* color: pink; */
+    .menu____dish__text-container {
         padding-right: 180px;
+    }
+    
+    .menu__cat--dips .menu____dish__text-container, 
+    .menu-cat--broth-n-buns .menu____dish__text-container {
+        padding-right: 0px;
     }
 
     .menu-cat--broth-n-buns .menu____dish-wrapper:last-child .menu____dish-price--big {
@@ -2502,7 +2516,7 @@ button.menu__btn.pressed {
     }
 
     .menu-cat--tacos .menu____dish-price--big {
-        align-items: center;
+        align-items: end;
     }
 
     .menu____dish__text--indent,
