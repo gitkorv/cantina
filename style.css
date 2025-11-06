@@ -2146,7 +2146,7 @@ button.menu__btn.pressed {
     height: auto;
     width: auto;
     margin-bottom: calc(var(--bodyPadding) * 2);
-    /* align-self: flex-end; */
+    align-self: flex-end;
 
 }
 
@@ -2214,10 +2214,10 @@ button.menu__btn.pressed {
 
 /* ----------> EXTRA PAGES FORM SUCCESS <---------- */
 
-@container extra-pages-body (max-width: 600px) {
+@container extra-pages-body (min-width: 600px) {
 
     .extra-pages-body-response .extra-pages-wrapper {
-        align-self: end;
+        align-self: center;
         /* background-color: orange; */
     }
 }
