@@ -485,12 +485,15 @@ section.home {
     5% {
         background-color: var(--cantinaGreen);
     }
+
     10% {
         background-color: var(--cantinaRosa);
     }
+
     15% {
         background-color: var(--cantinaGreen);
     }
+
     20% {
         background-color: var(--cantinaRosa);
     }
@@ -574,12 +577,15 @@ section.home {
     85% {
         color: var(--cantinaGreen);
     }
+
     90% {
         color: var(--cantinaLila);
     }
+
     95% {
         color: var(--cantinaGreen);
     }
+
     100% {
         color: var(--cantinaLila);
     }
@@ -727,9 +733,9 @@ section.home {
     color: var(--cantinaLila);
 }
 
-.popup__content:nth-of-type(2) .popup__headline--price, 
+.popup__content:nth-of-type(2) .popup__headline--price,
 .popup__content:nth-of-type(2) .popup__list-item--day,
-.popup__content:nth-of-type(3) .popup__headline--price, 
+.popup__content:nth-of-type(3) .popup__headline--price,
 .popup__content:nth-of-type(3) .popup__list-item--day {
     color: var(--cantinaCream);
 }
@@ -754,7 +760,8 @@ section.home {
     fill: var(--cantinaGrey);
 }
 
-.popup__content:nth-of-type(4) .popup__text, .popup__content:nth-of-type(4) .popup__subhead {
+.popup__content:nth-of-type(4) .popup__text,
+.popup__content:nth-of-type(4) .popup__subhead {
     color: var(--cantinaCream);
 }
 
@@ -763,26 +770,27 @@ section.home {
 }
 
 
-.popup__content--opener > div:nth-child(2) > p {
+.popup__content--opener>div:nth-child(2)>p {
     transform: rotate(0deg);
     /* color: pink; */
     animation: popup-opener-menu-item-wiggle 4s linear infinite;
 }
 
-.popup__content--opener > div:nth-child(3) > p {
+.popup__content--opener>div:nth-child(3)>p {
     transform: rotate(0deg);
     /* color: pink; */
     animation: popup-opener-menu-item-wiggle 4s linear infinite;
     animation-delay: 1s;
 }
-.popup__content--opener > div:nth-child(4) > p:first-child {
+
+.popup__content--opener>div:nth-child(4)>p:first-child {
     transform: rotate(0deg);
     /* color: pink; */
     animation: popup-opener-menu-item-wiggle 4s linear infinite;
     animation-delay: 2s;
 }
 
-.popup__content--opener > div:nth-child(5) > p:first-child {
+.popup__content--opener>div:nth-child(5)>p:first-child {
     transform: rotate(0deg);
     /* color: pink; */
     animation: popup-opener-menu-item-wiggle 4s linear infinite;
@@ -793,15 +801,19 @@ section.home {
     10% {
         transform: rotate(0deg);
     }
+
     12% {
         transform: rotate(15deg);
     }
+
     14% {
         transform: rotate(0deg);
     }
+
     16% {
         transform: rotate(-15deg);
     }
+
     18% {
         transform: rotate(0deg);
     }
@@ -1002,11 +1014,14 @@ section.home {
     right: var(--bodyPadding);
     max-width: 100%;
     z-index: 100;
+
     /* border-radius: 24px; */
     /* overflow: hidden; */
 
     /* overflow-y: visible; */
 }
+
+
 
 .club-form-wrapper.form-above {
     z-index: 200;
@@ -1446,7 +1461,7 @@ input[type=submit]:hover {
 }
 
 .menu-cat--tacos .menu____dish-price {
-        top: 120px;
+    top: 120px;
 }
 
 .menu____dish-price--big {
@@ -1459,12 +1474,12 @@ input[type=submit]:hover {
 
 }
 
-.menu-cat--broth-n-buns .menu__cat__dishes-wrapper  div:nth-child(2) .menu____dish-price {
+.menu-cat--broth-n-buns .menu__cat__dishes-wrapper div:nth-child(2) .menu____dish-price {
     /* background-color: #381460; */
     top: 20px;
 }
 
-.menu-cat--broth-n-buns .menu__cat__dishes-wrapper  div:nth-child(2) .menu____dish__text--intro {
+.menu-cat--broth-n-buns .menu__cat__dishes-wrapper div:nth-child(2) .menu____dish__text--intro {
     color: black;
 }
 
@@ -1487,8 +1502,8 @@ input[type=submit]:hover {
 }
 
 .menu-cat--tacos .menu____dish__text--intro {
-        padding-right: 6rem;
-    }
+    padding-right: 6rem;
+}
 
 /* .menu____dish-price__right-aligned {
     align-self: flex-end;
@@ -2116,6 +2131,8 @@ button.menu__btn.pressed {
     background-color: var(--cantinaLila);
     padding: var(--bodyPadding);
     overflow-y: scroll;
+    container-type: inline-size;
+    container-name: extra-pages-body;
 }
 
 .extra-pages-wrapper {
@@ -2129,6 +2146,7 @@ button.menu__btn.pressed {
     height: auto;
     width: auto;
     margin-bottom: calc(var(--bodyPadding) * 2);
+    /* align-self: flex-end; */
 
 }
 
@@ -2196,10 +2214,19 @@ button.menu__btn.pressed {
 
 /* ----------> EXTRA PAGES FORM SUCCESS <---------- */
 
-.form-success-body,
+@container extra-pages-body (max-width: 600px) {
+
+    .extra-pages-body-response .extra-pages-wrapper {
+        align-self: end;
+        /* background-color: orange; */
+    }
+}
+
+/* .form-success-body,
 .form-exists-body {
     align-items: end;
-}
+} */
+
 
 .form-success-wrapper,
 .form-exists-wrapper {
@@ -2511,8 +2538,8 @@ button.menu__btn.pressed {
     .menu____dish__text-container {
         padding-right: 180px;
     }
-    
-    .menu__cat--dips .menu____dish__text-container, 
+
+    .menu__cat--dips .menu____dish__text-container,
     .menu-cat--broth-n-buns .menu____dish__text-container {
         padding-right: 0px;
     }
