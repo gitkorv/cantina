@@ -24,6 +24,12 @@
 
     --fontTypewriter: "ltr-ncnd-variable", sans-serif;
     --foodMenuContentHeight: 1000px;
+
+    --bgColor: var(--cantinaLila);
+    --logoColor: var(--cantinaCream);
+
+    --clubBGColor: var(--cantinaGreen);
+    --clubShadowColor: var(--cantinaRosa);
 }
 
 .bg-green {
@@ -93,9 +99,36 @@ body {
     height: 100dvh;
     font-family: "acumin-variable", sans-serif;
     font-variation-settings: "slnt" 0, "wdth" 10, "wght" 300;
-    background-color: var(--cantinaCream);
+    background-color: var(--bgColor);
     overflow: hidden;
 }
+
+/* --> SNOW <---------- */
+
+#snow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999; /* ⬅ foreground snow */
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  top: -50px;
+  color: white;
+  user-select: none;
+  animation-name: fall;
+  animation-timing-function: linear;
+  text-shadow: 0 0 6px currentColor;
+}
+
+@keyframes fall {
+  to {
+    transform: translate(var(--drift), 110vh) rotate(720deg);
+  }
+}
+
 
 /* --> LOGO <---------- */
 
@@ -153,7 +186,7 @@ body {
     font-variation-settings: "slnt" 0, "wdth" 80, "wght" 300;
     letter-spacing: -2px;
     font-size: var(--logo-font-size);
-    color: var(--cantinaRosa);
+    color: var(--logoColor);
     transition: font-variation-settings 2s ease-in 2s,
         opacity .25s ease-in;
     /* background-color: aliceblue; */
@@ -187,7 +220,7 @@ body {
     /* opacity: 1; */
     transition: opacity 0.1s ease-out;
     color: var(--cantinaGrey);
-    color: black;
+    color: var(--logoColor);
 }
 
 .logo__words--streetfood.zero-opacity {
@@ -211,7 +244,7 @@ body {
     /* border: .75px solid var(--cantinaLila); */
     /* background-color: black; */
     /* background-color: black; */
-    color: var(--cantinaCream);
+    color: var(--bgColor);
     /* color: black; */
 
     transform-origin: right;
@@ -236,7 +269,7 @@ body {
     font-family: var(--fontTypewriter);
     font-variation-settings: "wght" 750;
     font-size: var(--textFontSize);
-    color: var(--cantinaGrey);
+    color: var(--cantinaRosa);
     /* color: black; */
 }
 
@@ -282,7 +315,7 @@ body {
 
 .below-logo__splash-food span {
     font-size: calc(var(--textFontSize) * 1.5);
-    color: var(--cantinaLila);
+    color: var(--logoColor);
     letter-spacing: 1px;
 }
 
@@ -341,8 +374,13 @@ body {
     height: 0px;
     width: calc(var(--textFontSize) / 16);
     transform-origin: top;
-    background-color: var(--cantinaGreen);
+    background-color: var(--cantinaRosa);
     transition: height;
+}
+
+.splash-food__spray--drip.spray-drip-second-color {
+    background-color: var(--cantinaGreen);
+    z-index: 10;
 }
 
 /* ----------> MAIN ELEMENTS <---------- */
@@ -391,7 +429,7 @@ section.home {
 
 .popup-wrapper {
     position: relative;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -422,7 +460,7 @@ section.home {
     max-height: 700px;
     width: auto;
     max-width: 300px;
-    background-color: var(--cantinaCream);
+    background-color: var(--bgColor);
     text-align: center;
     overflow-x: auto;
     display: flex;
@@ -844,8 +882,8 @@ section.home {
 .ticker__item__head {
     width: fit-content;
     padding: 4px;
-    color: var(--cantinaRosa);
-    background-color: var(--cantinaLila);
+    color: var(--bgColor);
+    background-color: var(--cantinaRosa);
     padding: 0 4px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
@@ -867,7 +905,7 @@ section.home {
     padding-top: calc(var(--bodyPadding) * 0.25);
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
-    /* color: var(--cantinaCream); */
+    color: var(--logoColor);
 }
 
 /* --> CLUB <---------- */
@@ -880,7 +918,7 @@ section.home {
     justify-content: center;
     right: var(--bodyPadding);
     top: var(--bodyPadding);
-    color: var(--cantinaCream);
+    color: var(--bgColor);
     transition: all .25s ease-in-out;
     opacity: 1;
     cursor: pointer;
@@ -892,7 +930,7 @@ section.home {
     padding: 0;
     overflow: hidden;
     box-shadow: var(--cantinaLila) 0px 0px 0px;
-    background-color: var(--cantinaRosa);
+    background-color: var(--logoColor);
     animation: club-spin 2.5s ease-in-out infinite alternate;
     pointer-events: auto;
 
@@ -927,20 +965,20 @@ section.home {
     font-size: 2rem;
     scale: 75%;
     background-color: var(--cantinaGrey);
-    box-shadow: var(--cantinaCream) 2px 2px 0px;
-    color: var(--cantinaCream);
+    box-shadow: var(--bgColor) 2px 2px 0px;
+    color: var(--bgColor);
 }
 
 @media (hover: hover) {
     .club-btn.club-btn.pressed:hover {
         color: var(--cantinaLila);
-        background-color: var(--cantinaRosa);
+        background-color: var(--logoColor);
     }
 }
 
 
 .club-btn.active {
-    background-color: var(--cantinaCream);
+    background-color: var(--bgColor);
 }
 
 .club-btn__text-wrapper {
@@ -994,12 +1032,6 @@ section.home {
 
 /* <-- Club Form */
 
-
-
-
-
-/* <-- Club Form */
-
 .club-form-wrapper,
 .club-form__bottom-drip-container {
     width: 315px;
@@ -1014,11 +1046,6 @@ section.home {
     right: var(--bodyPadding);
     max-width: 100%;
     z-index: 100;
-
-    /* border-radius: 24px; */
-    /* overflow: hidden; */
-
-    /* overflow-y: visible; */
 }
 
 
@@ -1034,8 +1061,8 @@ section.home {
     align-items: center;
     width: 100%;
     height: 0;
-    background-color: var(--cantinaLila);
-    box-shadow: var(--cantinaGreen) 5px 5px 0;
+    background-color: var(--clubBGColor);
+    box-shadow: var(--clubShadowColor) 5px 5px 0;
     opacity: 0;
     transition: height 0.5s ease, opacity 0.5s ease;
     pointer-events: none;
@@ -1081,7 +1108,7 @@ input {
     display: block;
     width: 100%;
     box-sizing: border-box;
-    background: var(--cantinaCream);
+    background: var(--bgColor);
     border-radius: 16px;
     box-sizing: border-box;
 }
@@ -1089,7 +1116,7 @@ input {
 
 input:focus {
     background: var(--cantinaRosa);
-    outline: 2px solid var(--cantinaCream);
+    outline: 2px solid var(--bgColor);
     z-index: 300;
 }
 
@@ -1152,7 +1179,7 @@ input[type=submit]:hover {
     position: absolute;
     height: 0px;
     aspect-ratio: 1 / 1;
-    background-color: var(--cantinaLila);
+    background-color: var(--clubBGColor);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     transition: height ease-out;
@@ -1161,37 +1188,54 @@ input[type=submit]:hover {
 /* --> OPENING HOURS <---------- */
 
 .opening-hours-wrapper {
-    position: relative;
-    top: 110px;
-    right: var(--bodyPadding);
-    align-self: flex-end;
-    justify-self: center;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    right: 0;
+    top: 140px;
+    width: 100%;
+    padding-left: var(--bodyPadding);
     text-align: left;
-    color: var(--cantinaLila);
-    font-variation-settings: "slnt" 0, "wdth" 100, "wght" 600;
-    padding-bottom: 8px;
+    color: var(--cantinaRosa);
+    font-variation-settings: "slnt" 0, "wdth" 100, "wght" 800;
     font-size: calc(var(--textFontSize) * 0.75);
-    /* background-color: aliceblue; */
-    overflow-x: visible;
     pointer-events: auto;
+    /* z-index: 500; */
+}
+
+.opening-hours-list-container {
+    display: flex;
+    position: relative;
+    column-gap: 8px;
+    /* background-color: #72808a; */
+    width: fit-content;
+    /* right: 0; */
+    /* width: 70%; */
 }
 
 .opening-hours-list {
     list-style: none;
-    display: grid;
-    /* background-color: orange; */
-    /* overflow-x: visible; */
-    padding-left: var(--textFontSize);
+    width: 150px;
+    overflow-x: visible;
+}
 
+.opening-hours-list ul {
+    align-self: flex-start;
+    justify-self: start;
 }
 
 .hours-head {
     color: var(--cantinaGreen);
+    align-self: flex-start;
+    font-size: larger;
+    /* padding-left: var(--bodyPadding); */
+    /* background-color: orange; */
     /* color: black; */
     padding-bottom: calc(var(--textFontSizeSmall) / 4);
-    font-variation-settings: "slnt" 0, "wdth" 110, "wght" 800;
     animation: hour-times .5s infinite alternate;
     display: block;
+    transform: translateX(0%);
 }
 
 
@@ -1201,7 +1245,7 @@ input[type=submit]:hover {
     }
 
     30% {
-        color: var(--cantinaCream);
+        color: var(--bgColor);
     }
 }
 
@@ -1212,7 +1256,8 @@ input[type=submit]:hover {
 
 
 .opening-hours__days {
-    font-variation-settings: "slnt" 0, "wdth" 70, "wght" 400;
+    font-variation-settings: "slnt" 0, "wdth" 70, "wght" 600;
+    letter-spacing: 1px;
 }
 
 /* .opening-hours__days.highlight {
@@ -1220,14 +1265,14 @@ input[type=submit]:hover {
 } */
 
 .opening-hours__hours {
-    color: var(--cantinaLila);
+    color: var(--logoColor);
     transition: font-variation-settings .25s ease-in;
 
     font-variation-settings: "slnt" 0, "wdth" 115, "wght" 600;
 }
 
 .opening-hours__hours--blob {
-    color: var(--cantinaRosa);
+    color: var(--cantinaGreen);
     font-variation-settings: "slnt" 0, "wdth" 150, "wght" 900;
 
 }
@@ -1279,7 +1324,7 @@ input[type=submit]:hover {
 
 .svg-insta,
 .svg-fb {
-    fill: var(--cantinaLila);
+    fill: var(--logoColor);
     transition: fill .1s ease-out;
 }
 
@@ -1345,7 +1390,7 @@ input[type=submit]:hover {
     width: 100%;
     max-width: 600px;
     z-index: 200;
-    /* pointer-events: none; */
+    /* pointer-events: auto; */
 }
 
 .menu-content::after {
@@ -1391,7 +1436,11 @@ input[type=submit]:hover {
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 900;
     transition: font-variation-settings 1s ease-in-out;
     color: var(--cantinaLila);
-    word-break: break-word;
+
+    hyphens: auto;
+    overflow-wrap: break-word;
+    /* allows breaking WITH hyphens */
+    word-break: normal;
 }
 
 .menu__cat__head .blob {
@@ -1432,8 +1481,12 @@ input[type=submit]:hover {
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 300;
     overflow: visible;
     padding-bottom: 8px;
-    padding-right: calc(var(--bodyPadding) * 3.3);
-    color: var(--cantinaCream);
+
+    color: var(--bgColor);
+    hyphens: auto;
+    overflow-wrap: break-word;
+    /* or word-wrap */
+    word-break: normal;
 }
 
 .menu-cat--tacos .menu____dish-head {
@@ -1450,19 +1503,15 @@ input[type=submit]:hover {
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
     right: var(--textFontSizeSmall);
-    color: var(--cantinaCream);
+    color: var(--logoColor);
     text-shadow: var(--cantinaLila) 2px 2px 2px;
     /* background-color: #72808a; */
     text-align: right;
     width: 200px;
     z-index: 100;
-
-
 }
 
-.menu-cat--tacos .menu____dish-price {
-    top: 120px;
-}
+
 
 .menu____dish-price--big {
     font-size: calc(var(--bodyPadding) * 1.75);
@@ -1479,26 +1528,37 @@ input[type=submit]:hover {
     top: 20px;
 }
 
-.menu-cat--broth-n-buns .menu__cat__dishes-wrapper div:nth-child(2) .menu____dish__text--intro {
-    color: black;
+.menu____dish-price.move-up {
+    transform: translateY(-5%);
 }
 
-/* .menu____dish-price--move-up {
-    top: calc(0px - var(--textFontSize));
+.menu____dish-price.move-down {
+    transform: translateY(10%);
+}
+
+/* .menu____dish-price.flex-row div:nth-child(2){
+    background-color: orange;
 } */
 
-.menu____dish-price__left-aligned {
-    /* align-self: flex-start; */
-    text-align: right;
-    padding-right: var(--textFontSize);
-    line-height: var(--textFontSizeSmall);
+.dish-price--flex-item {
+    display: flex;
+    flex-direction: column;
 }
 
-.menu____dish-price__left-aligned--mixa {
+div.menu__cat-wrapper[data-menu-cat="tacos"] .dish-price--flex-item:nth-child(1) span:first-child {
+    height: calc(1em * 0.75);
+}
+
+.menu____dish-price__left-aligned {
+    text-align: right;
+}
+
+.menu____dish-price__left-aligned.small {
     margin-top: 1rem;
     z-index: 10;
     font-size: var(--bodyPadding);
-    line-height: 1em;
+    line-height: var(--bodyPadding);
+    /* background-color: green; */
 }
 
 .menu-cat--tacos .menu____dish__text--intro {
@@ -1546,12 +1606,21 @@ input[type=submit]:hover {
     padding-top: 4px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
-    color: var(--cantinaCream);
+    color: var(--logoColor);
 }
 
 .menu____dish__text--intro {
     padding-right: 24px;
+    text-decoration: underline 16px solid var(--cantinaLila);
+    text-decoration-skip-ink: none;
+    text-underline-offset: -.8em;
 }
+
+[data-menu-cat="bao"] .menu____dish__text--intro {
+    text-decoration-thickness: 20px;
+}
+
+
 
 .menu-cat--broth-n-buns .menu__cat____dish-content:first-child .menu____dish__text--add-extra {
     color: black;
@@ -1564,12 +1633,16 @@ input[type=submit]:hover {
 /* Dotted Menu Items */
 
 .menu____dish__text--indent {
-    color: var(--cantinaCream);
+    color: var(--bgColor);
     padding-left: 8px;
 }
 
-.menu____dish__text--indent:nth-child(odd) {
-    color: var(--cantinaLila);
+/* .menu____dish__text--indent:nth-child(odd) {
+    color: var(--cantinaGrey);
+} */
+
+[data-menu-cat="bao"] ul li {
+    color: var(--cantinaCream);
 }
 
 .menu____dish__text--indent::before {
@@ -1596,7 +1669,7 @@ input[type=submit]:hover {
     /* padding-bottom: 48px; */
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
-    color: var(--cantinaCream);
+    color: var(--bgColor);
     /* white-space: pre-wrap; */
     /* border: 1px solid red; */
 }
@@ -1634,10 +1707,12 @@ input[type=submit]:hover {
     background-color: var(--cantinaRosa);
     padding: 12px 8px;
     border-style: none;
+    font-size: calc(var(--textFontSize) * 1.25);
     font-size: var(--textFontSize);
-    letter-spacing: -1px;
-    font-family: var(--fontTypewriter);
+    /* letter-spacing: -1px; */
+    font-family: var(--fontCantina);
     font-variation-settings: "wght" 600;
+    font-variation-settings: "slnt" 0, "wdth" 100, "wght" 400;
     transition: all .15s ease-in-out;
     /* z-index: 1000; */
     /* pointer-events: all; */
@@ -1649,7 +1724,7 @@ input[type=submit]:hover {
     .menu__btn:hover,
     .menu__btn.active:hover {
         background-color: var(--cantinaGrey);
-        color: var(--cantinaCream);
+        color: var(--bgColor);
     }
 }
 
@@ -1660,7 +1735,7 @@ button.menu__btn.pressed {
 
 .menu__btn.active {
     background-color: var(--cantinaGreen);
-    color: var(--cantinaCream);
+    color: var(--bgColor);
     box-shadow: var(--cantinaLila) 2px 2px 0px;
     scale: 100%;
     outline: none;
@@ -1674,14 +1749,14 @@ button.menu__btn.pressed {
 .menu__btn__opBtn {
     text-align: center;
     padding: 12px 8px;
-    background-color: var(--cantinaLila);
-    color: var(--cantinaCream);
-    box-shadow: var(--cantinaRosa) 2px 2px 0px;
+    background-color: var(--cantinaRosa);
+    color: var(--bgColor);
+    /* box-shadow: var(--logoColor) 2px 2px 0px; */
     pointer-events: auto;
 
-    box-shadow: var(--cantinaGreen) 0px 0px 0px;
+    /* box-shadow: var(--logoColor) 0px 0px 0px; */
 
-    outline: 1px dashed var(--cantinaCream);
+    outline: 1px dashed var(--logoColor);
     outline-offset: 0;
     animation: opBtnAnim .5s linear infinite reverse;
 }
@@ -1721,7 +1796,7 @@ button.menu__btn.pressed {
 
 .cantina-skull-svg-wrapper {
     position: absolute;
-    --skull-color: var(--cantinaGreen);
+    --skull-color: var(--logoColor);
     bottom: calc(var(--bodyPadding) + var(--textFontSize));
     padding: 0 var(--bodyPadding);
     /* right: var(--bodyPadding); */
@@ -1827,7 +1902,7 @@ button.menu__btn.pressed {
     }
 
     25% {
-        fill: var(--cantinaRosa);
+        fill: var(--cantinaGreen);
     }
 
     27% {
@@ -1839,7 +1914,7 @@ button.menu__btn.pressed {
     }
 
     57% {
-        fill: var(--cantinaRosa);
+        fill: var(--cantinaGreen);
     }
 
     59% {
@@ -1852,7 +1927,7 @@ button.menu__btn.pressed {
     }
 
     88% {
-        fill: var(--cantinaRosa);
+        fill: var(--cantinaGreen);
     }
 
     90% {
@@ -1872,7 +1947,7 @@ button.menu__btn.pressed {
     }
 
     25% {
-        fill: var(--cantinaRosa);
+        fill: var(--cantinaGreen);
     }
 
     27% {
@@ -1885,7 +1960,7 @@ button.menu__btn.pressed {
     }
 
     88% {
-        fill: var(--cantinaRosa);
+        fill: var(--cantinaGreen);
     }
 
     90% {
@@ -1910,9 +1985,13 @@ button.menu__btn.pressed {
 /* -> BOKA BORD <---------- */
 
 .boka-bord-wrapper {
+    --bokaBordBGVinkel: 0deg;
+    --bokaBordLinkVinkel: calc(var(--bokaBordBGVinkel) - 5deg);
+    /* --bokaBordLinkVinkel: rotate(-20deg); */
     position: absolute;
-    top: calc(var(--bodyPadding) * 8);
-    left: calc(var(--textFontSize) / 2);
+    bottom: calc(var(--bodyPadding) * 6.5);
+    left: 50%;
+    transform: translate(-50%, 15px) rotate(-10deg);
     display: flex;
     pointer-events: auto;
 }
@@ -1930,7 +2009,7 @@ button.menu__btn.pressed {
     width: 100%;
     height: 100%;
     background-color: var(--cantinaLilaDark);
-    transform: rotate(-15deg);
+    transform: rotate(var(--bokaBordBGVinkel));
     z-index: 0;
 }
 
@@ -1938,15 +2017,15 @@ button.menu__btn.pressed {
     position: relative;
     display: inline-block;
 
-    color: var(--cantinaCream);
+    color: var(--bgColor);
     background: var(--cantinaGreen);
     padding: var(--textFontSizeSmall) var(--textFontSize);
     font-family: var(--fontTypewriter);
     font-variation-settings: "wght" 600;
     font-size: var(--textFontSize);
-    box-shadow: inset 0 0 0 1px var(--cantinaCream);
+    box-shadow: inset 0 0 0 1px var(--bgColor);
     /* border: 4px solid var(--cantinaCream); */
-    transform: rotate(-20deg);
+    transform: rotate(var(--bokaBordBGVinkel));
     transition: color .25s, background-color .25s, text-decoration-color .25s, transform .25s;
     z-index: 1;
     animation: boka-flicker 4s linear infinite alternate-reverse;
@@ -1954,39 +2033,39 @@ button.menu__btn.pressed {
 
 @keyframes boka-flicker {
     0% {
-        transform: rotate(-15deg);
+        transform: rotate(var(--bokaBordBGVinkel));
     }
 
     60% {
-        transform: rotate(-20deg);
+        transform: rotate(var(--bokaBordLinkVinkel));
     }
 
     65% {
-        transform: rotate(-15deg);
+        transform: rotate(var(--bokaBordBGVinkel));
     }
 
     70% {
-        transform: rotate(-20deg);
+        transform: rotate(var(--bokaBordLinkVinkel));
     }
 
     75% {
-        transform: rotate(-15deg);
+        transform: rotate(var(--bokaBordBGVinkel));
     }
 
     80% {
-        transform: rotate(-20deg);
+        transform: rotate(var(--bokaBordLinkVinkel));
     }
 
     85% {
-        transform: rotate(-15deg);
+        transform: rotate(var(--bokaBordBGVinkel));
     }
 
     95% {
-        transform: rotate(-20deg);
+        transform: rotate(var(--bokaBordLinkVinkel));
     }
 
     100% {
-        transform: rotate(-15deg);
+        transform: rotate(var(--bokaBordBGVinkel));
     }
 }
 
@@ -2003,7 +2082,7 @@ button.menu__btn.pressed {
 
 .boka-bord__link span {
     text-decoration: underline;
-    text-decoration-color: var(--cantinaCream);
+    text-decoration-color: var(--bgColor);
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
 }
@@ -2023,12 +2102,14 @@ button.menu__btn.pressed {
 
 .half-circle-svg-pointer-wrapper {
     position: absolute;
-    top: -130%;
-    left: 80%;
+    top: -8px;
+    left: 0;
     margin-top: var(--bodyPadding);
     width: 100px;
     height: 100px;
-    transform: rotate(50deg);
+    transform: translate(-70px, -60px) rotate(-35deg);
+    z-index: 100;
+    pointer-events: none;
     /* background-color: #33a58e; */
 }
 
@@ -2040,19 +2121,20 @@ button.menu__btn.pressed {
     position: absolute;
     display: flex;
     right: 0;
-    top: 30%;
-    transform: rotate(-40deg);
-    color: var(--cantinaLila);
+    top: 0;
+    transform: translate(-20px, -5px);
+    color: var(--logoColor);
+    font-variation-settings: "slnt" 0, "wdth" 75, "wght" 700;
     /* background-color: #381460; */
 }
 
 .half-circle-svg-pointer__svg {
-    transform: scale(-1, 1);
+    transform: scale(-1, 1) rotate(45deg) translateY(0px);
 }
 
 .half-circle-pointer__arc {
     fill: none;
-    stroke: var(--cantinaLila);
+    stroke: var(--logoColor);
     stroke-width: 1;
     stroke-dasharray: 157;
     stroke-dashoffset: 157;
@@ -2066,7 +2148,7 @@ button.menu__btn.pressed {
 }
 
 .half-circle-pointer__arrow {
-    fill: var(--cantinaLila);
+    fill: var(--logoColor);
     opacity: 0;
     animation: fadeArrow 2s linear infinite;
 }
@@ -2203,7 +2285,7 @@ button.menu__btn.pressed {
 /* ----------> EXTRA PAGES FORM CONFIRMED <---------- */
 
 .form-confirmed-body {
-    background-color: var(--cantinaCream);
+    background-color: var(--bgColor);
 }
 
 .form-confirmed-headline {
@@ -2238,7 +2320,7 @@ button.menu__btn.pressed {
 }
 
 .extra-pages-sub--form-success {
-    color: var(--cantinaCream);
+    color: var(--bgColor);
     font-size: 16px;
     /* font-size: var(--textFontSizeSmall); */
 }
@@ -2263,7 +2345,7 @@ button.menu__btn.pressed {
 }
 
 .extra-pages-headline--boka-bord {
-    color: var(--cantinaCream);
+    color: var(--bgColor);
 }
 
 .page-boka-bord-wrapper {
@@ -2276,30 +2358,35 @@ button.menu__btn.pressed {
     position: absolute;
     bottom: var(--bodyPadding);
     left: var(--bodyPadding);
-    color: var(--cantinaLila);
+    color: var(--logoColor);
     /* z-index: -100; */
 }
 
 
 /* --> MEDIA QUERRIES <---------- */
 
-@media (max-height: 668px) {
-
-    /* .popup-wrapper {
-        padding: 24px;
+@media (max-width: 424px) {
+    .long-head {
+        padding-right: calc(var(--bodyPadding) * 3.5);
     }
+}
 
-    .popup__subhead {
-        padding-top: 4px;
+@media (max-width: 375px) {
+    body {
+        /* background-color: yellow; */
     }
-
-    .popup__list-container {
-        padding-top: 0px;
+}
+@media (max-height: 664px) {
+    .opening-hours-wrapper {
+        top: 105px;
+        /* font-size: calc(var(--textFontSize) * 0.65); */
     }
+        body {
+        /* background-color: orange */
+    }
+}
 
-    .popup__list-content {
-        gap: 4px;
-    } */
+@media (max-height: 767px) {
 
     .popup__list-content {
         gap: 8px;
@@ -2310,20 +2397,13 @@ button.menu__btn.pressed {
         line-height: 1.2em;
     }
 
-
-
     .ticker-wrapper {
         font-size: calc(var(--textFontSize) * 0.85);
     }
 
-    .boka-bord-wrapper {
-        top: calc(var(--bodyPadding) * 7);
-    }
-
     .opening-hours-wrapper {
-        top: 102px;
+        /* top: 120px; */
         font-size: calc(var(--textFontSize) * 0.65);
-
     }
 
     .logo-wrapper {
@@ -2339,16 +2419,36 @@ button.menu__btn.pressed {
         /* flex: 0.5; */
     }
 
-    /* .below-logo__splash-food {
-        margin-top: 4px;
-    } */
-
     .below-logo__splash-food span {
         font-size: calc(var(--textFontSize) * 1.25);
     }
 
     .splash-food__spray-img {
         top: 2px;
+    }
+
+    .boka-bord-wrapper {
+        --bokaBordBGVinkel: 90deg;
+        transform: rotate(0) translate(-4px, -56px);
+        left: 0;
+        bottom: 45%;
+    }
+
+    .boka-bord__dummy-text {
+        display: none;
+    }
+
+    .half-circle-svg-pointer-wrapper {
+        right: 0;
+        transform: translate(0px, -36px);
+    }
+
+    .half-circle-svg-pointer__svg {
+        transform: scale(-1, 1) translate(0px, 0px);
+    }
+
+    .half-circle-svg-pointer__text {
+        transform: translate(15px, 0px);
     }
 
     .cantina-skull-svg-wrapper {
@@ -2431,20 +2531,10 @@ button.menu__btn.pressed {
 
 }
 
-@media (min-width: 375px) {
-    .menu-cat--tacos .menu____dish-price {
-        top: 110px;
-    }
-}
 
 @media (min-height: 768px) {
     .logo-wrapper {
         flex: .55;
-    }
-
-    .boka-bord-wrapper {
-        top: calc(var(--bodyPadding) * 9);
-
     }
 
     .club-form__content--open {
@@ -2456,6 +2546,10 @@ button.menu__btn.pressed {
     .popup__btn {
         height: 100px;
         width: 100px;
+    }
+
+    .menu____dish-price.flex-row {
+        flex-direction: row;
     }
 }
 
@@ -2495,22 +2589,20 @@ button.menu__btn.pressed {
 
     .opening-hours-wrapper {
         top: 220px;
-        right: var(--bodyPadding);
-        align-items: stretch;
-        /* width: fit-content; */
+        width: 300px;
+
         /* background-color: pink; */
-        /* right: unset; */
+        align-items: start;
+        padding-left: 0;
+        /* padding-right: var(--bodyPadding); */
+    }
+
+    .opening-hours-list-container {
+        flex-direction: column;
     }
 
     .opening-hours-list {
-        list-style: none;
-        display: grid;
-        gap: 0 var(--textFontSize);
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(4, 1fr);
-        grid-auto-flow: column;
-        /* padding-left: var(--textFontSize); */
-        /* background-color: #72808a; */
+        width: 250px;
     }
 
     .hours-head--span {
@@ -2531,11 +2623,11 @@ button.menu__btn.pressed {
     }
 
     .menu____dish-price {
-        width: 400px;
-        /* background-color: #33a58e; */
+        width: 100%;
+        /* background-color: orange; */
     }
 
-    .menu____dish__text-container {
+    [data-item-price="individual"] .menu____dish__text-container {
         padding-right: 180px;
     }
 
@@ -2553,7 +2645,8 @@ button.menu__btn.pressed {
     }
 
     .menu-cat--tacos .menu____dish-price--big {
-        align-items: end;
+        /* align-items: end; */
+        justify-content: end;
     }
 
     .menu____dish__text--indent,
@@ -2571,8 +2664,13 @@ button.menu__btn.pressed {
     }
 
     .boka-bord-wrapper {
-        top: 60%;
-        left: calc(var(--textFontSize) / 2);
+        bottom: 40%;
+        left: 20%;
+    }
+
+    .half-circle-svg-pointer-wrapper {
+        /* top: 0;
+        left: 20%; */
     }
 
     .social-section-container {
@@ -2580,16 +2678,8 @@ button.menu__btn.pressed {
         bottom: calc(var(--bodyPadding) * 2);
     }
 
-    .half-circle-svg-pointer-wrapper {
-        top: 0;
-        left: 20%;
-        transform: rotate(10deg);
-        /* background-color: #33a58e; */
-    }
+    
 
-    .half-circle-svg-pointer__svg {
-        transform: scale(-1, -1);
-    }
 
     .cantina-skull-svg-wrapper {
         height: 150px;

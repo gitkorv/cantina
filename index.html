@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en-US">
 
 <head>
     <meta charset="UTF-8">
@@ -20,6 +20,8 @@
 </head>
 
 <body>
+
+    <div class="snow" id="snow"></div>
 
     <header class="logo-wrapper">
         <h1 class="logo">
@@ -92,23 +94,31 @@
         </button>
 
         <div class="opening-hours-wrapper">
-            <div class="hours-head"><span class="hours-head--span">Öppettider</span>
+            <div class="hours-head"><span class="hours-head--span">Öppettider Jul & Nyår</span>
             </div>
-            <li class="opening-hours-list">
-                <ul class="opening-hours__days">Måndag <span class="opening-hours__hours monday-hours">11-15</span></ul>
-                <ul class="opening-hours__days">Tisdag <span class="opening-hours__hours tuesday-hours">11-22</span>
+            <div class="opening-hours-list-container">
+                <ul class="opening-hours-list left">
+                    <li class="opening-hours__days">Måndag 22/12 <span class="opening-hours__hours monday-hours">11-15</span></li>
+                    <li class="opening-hours__days">Tisdag 23/12 <span class="opening-hours__hours tuesday-hours">11-22</span></li>
+                    <li class="opening-hours__days">Julafton <span class="opening-hours__hours wednesday-hours">stängt</span></li>
+                    <li class="opening-hours__days">Juldagen <span class="opening-hours__hours thursday-hours">17-03</span></li>
+                    <li class="opening-hours__days">Annandag <span class="opening-hours__hours friday-hours">12-03</span></li>
+                    <li class="opening-hours__days">Lördag 27/12 <span class="opening-hours__hours saturday-hours">12-03</span></li>
+                    <li class="opening-hours__days">Söndag 28/12 <span class="opening-hours__hours sunday-hours hours-closed">stängt</span></li>
+                
                 </ul>
-                <ul class="opening-hours__days">Onsdag <span class="opening-hours__hours wednesday-hours">11-22</span>
-                </ul>
-                <ul class="opening-hours__days">Torsdag <span class="opening-hours__hours thursday-hours">11-22</span>
-                </ul>
-                <ul class="opening-hours__days">Fredag <span class="opening-hours__hours friday-hours">11-03</span></ul>
-                <ul class="opening-hours__days">Lördag <span class="opening-hours__hours saturday-hours">12-03</span>
-                </ul>
-                <ul class="opening-hours__days">Söndag <span
-                        class="opening-hours__hours sunday-hours hours-closed">stängt</span>
-                </ul>
-            </li>
+                <ul class="opening-hours-list right">
+                        <li class="opening-hours__days">Måndag 29/12 <span class="opening-hours__hours monday-hours">12-21</span></li>
+                        <li class="opening-hours__days">Tisdag 30/12 <span class="opening-hours__hours tuesday-hours">12-18</span></li>
+                        <li class="opening-hours__days">Nyårsafton <span class="opening-hours__hours wednesday-hours">stängt</span></li>
+                        <li class="opening-hours__days">Nyårsdagen <span class="opening-hours__hours thursday-hours">stängt</span></li>
+                        <br>
+                        <li class="opening-hours__days opening-hours__note">
+                            <span class="opening-hours__hours">Öppnar åter<br>Onsdag 7/1</span>
+                        </li>
+                    </ul>
+            </div>
+
         </div>
 
         <div class="cantina-skull-svg-wrapper">
@@ -388,14 +398,14 @@
                                 ursprungsländer, fråga oss!</p>
                         </div>
 
-                        <div class="menu__cat-wrapper menu-cat--snacks-n-nibbles" data-menu-cat="snacks-n-nibbles">
+                        <div class="menu__cat-wrapper menu-cat--snacks-n-nibbles" data-menu-cat="snacks-n-nibbles" data-item-price="individual">
                             <div class="menu__cat__head-wrapper">
-                                <h2 class="menu__cat__head">snacks n nibbles</h2>
+                                <h2 class="menu__cat__head" ">snacks n nibbles</h2>
                             </div>
                             <div class="menu__cat__dishes-wrapper">
                                 <div class="menu____dish-wrapper">
                                     <div class="menu____dish-content">
-                                        <h3 class="menu____dish-head">totopos guacamole</h3>
+                                        <h3 class="menu____dish-head dish-head-padding-right">totopos guacamole</h3>
                                         <ul class="menu____dish__text-container">
                                             <li class="menu____dish__text">Nacho chips, guacamole</li>
                                             <li class="menu____dish__text--add-extra">Add salsa +35:-</li>
@@ -405,7 +415,7 @@
                                 </div>
                                 <div class="menu____dish-wrapper">
                                     <div class="menu____dish-content">
-                                        <h3 class="menu____dish-head">cantinas dorados</h3>
+                                        <h3 class="menu____dish-head dish-head-padding-right">cantinas dorados</h3>
                                         <ul class="menu____dish__text-container">
                                             <li class="menu____dish__text">3st minitacos fylld med köttfärs och ost,
                                                 serveras med salsa</li>
@@ -415,7 +425,7 @@
                                 </div>
                                 <div class="menu____dish-wrapper">
                                     <div class="menu____dish-content">
-                                        <h3 class="menu____dish-head">cantinas elotes</h3>
+                                        <h3 class="menu____dish-head dish-head-padding-right">cantinas elotes</h3>
                                         <ul class="menu____dish__text-container">
                                             <li class="menu____dish__text">Grillad majskolv, manchego,
                                                 gräslök, chipotle crema</li>
@@ -427,7 +437,7 @@
                                 </div>
                                 <div class="menu____dish-wrapper">
                                     <div class="menu____dish-content">
-                                        <h3 class="menu____dish-head">dirty doritos</h3>
+                                        <h3 class="menu____dish-head dish-head-padding-right">dirty doritos</h3>
                                         <ul class="menu____dish__text-container">
                                             <li class="menu____dish__text">Doritos, ostsås,
                                                 Pico de Gallo, jalapeño</li>
@@ -440,7 +450,7 @@
 
                                 <div class="menu____dish-wrapper">
                                     <div class="menu____dish-content">
-                                        <h3 class="menu____dish-head">pimientos de padrón</h3>
+                                        <h3 class="menu____dish-head dish-head-padding-right">pimientos de padrón</h3>
                                         <ul class="menu____dish__text-container">
                                             <li class="menu____dish__text">Padrones paprika, chili, vitlök, manchego
                                             </li>
@@ -452,7 +462,7 @@
                                 </div>
                                 <div class="menu____dish-wrapper">
                                     <div class="menu____dish-content">
-                                        <h3 class="menu____dish-head">buffalo hot wings</h3>
+                                        <h3 class="menu____dish-head dish-head-padding-right">buffalo hot wings</h3>
                                         <ul class="menu____dish__text-container">
                                             <li class="menu____dish__text">5 st kycklingvingar, cantinas hot sauce,
                                                 ranchdressing
@@ -465,7 +475,7 @@
                                 </div>
                                 <div class="menu____dish-wrapper">
                                     <div class="menu____dish-content">
-                                        <h3 class="menu____dish-head">cantina corn salad</h3>
+                                        <h3 class="menu____dish-head dish-head-padding-right">cantina corn salad</h3>
                                         <ul class="menu____dish__text-container">
                                             <li class="menu____dish__text">Rostad majs, chipotle crema, koriander,
                                                 chili,
@@ -479,9 +489,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="menu__cat-wrapper menu-cat--broth-n-buns" data-menu-cat="broth-n-buns">
+                        <div class="menu__cat-wrapper menu-cat--broth-n-buns" data-menu-cat="broth-n-buns"  data-item-price="grouped">
                             <div class="menu__cat__head-wrapper">
-                                <h2 class="menu__cat__head">broth n buns</h2>
+                                <h2 class="menu__cat__head" ">broth n buns</h2>
                             </div>
                             <div class="menu__cat__dishes-wrapper">
                                 <div class="menu____dish-wrapper">
@@ -520,7 +530,7 @@
                                     </div>
                                     <div class="menu____dish-price menu____dish-price--big">180:-</div>
                                 </div>
-                                <div class="menu____dish-wrapper">
+                                <div class="menu____dish-wrapper" data-menu-cat="bao">
                                     <div class="menu____dish-content">
                                         <h3 class="menu____dish-head">bao buns</h3>
 
@@ -530,17 +540,17 @@
                                         </div>
                                         <ul class="menu____dish__text-container top-border">
                                             <li
-                                                class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">
+                                                class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border">
                                                 fried chicken hot sauce
                                             </li>
                                             <li
-                                                class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">
+                                                class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border">
                                                 grilled scampi lemon garlic butter</li>
                                             <li
-                                                class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">
+                                                class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border">
                                                 hoisin duck</li>
                                             <li
-                                                class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border txt-rosa">
+                                                class="menu____dish__text menu____dish__text--indent menu____dish__text--dish-head menu____dish__text--top-border">
                                                 pork belly hot sauce</li>
                                         </ul>
                                     </div>
@@ -551,17 +561,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="menu__cat-wrapper menu-cat--tacos" data-menu-cat="tacos">
+                        <div class="menu__cat-wrapper menu-cat--tacos" data-menu-cat="tacos" data-item-price="grouped">
                             <div class="menu__cat__head-wrapper">
-                                <h2 class="menu__cat__head">tacos</h2>
+                                <h2 class="menu__cat__head" ">tacos</h2>
                             </div>
                             <div class="menu____dish__text--intro">2 per servering.<br>Extra taco 79:-</div>
-                            <div class="menu____dish-price menu____dish-price--big menu____dish-price--move-up">
-                                <span class="menu____dish-price__left-aligned">2st</span>
-                                <span class="menu____dish-price__right-aligned">155:-</span>
-                                <span
-                                    class="menu____dish-price__left-aligned menu____dish-price__left-aligned--mixa">mixa<br>själv</span>
-                                <span class="menu____dish-price__right-aligned">165:-</span>
+                            <div class="menu____dish-price menu____dish-price--big move-down flex-row">
+                                <div class="dish-price--flex-item">
+                                    <span class="menu____dish-price__left-aligned">2st</span>
+                                    <span class="menu____dish-price__right-aligned">155:-</span>
+                                </div>
+                                <div class="dish-price--flex-item">
+                                    <span
+                                        class="menu____dish-price__left-aligned menu____dish-price__left-aligned small">mixa<br>själv</span>
+                                    <span class="menu____dish-price__right-aligned">165:-</span>
+                                </div>
                             </div>
 
                             <div class="menu__cat__dishes-wrapper ">
@@ -645,9 +659,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="menu__cat-wrapper menu-cat--sandwiches" data-menu-cat="sandwiches">
+                        <div class="menu__cat-wrapper menu-cat--sandwiches" data-menu-cat="sandwiches" data-item-price="individual">
                             <div class="menu__cat__head-wrapper">
-                                <h2 class="menu__cat__head">sandwiches</h2>
+                                <h2 class="menu__cat__head" ">sandwiches</h2>
                             </div>
                             <div class="menu__cat__dishes-wrapper">
 
@@ -726,7 +740,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="menu__cat-wrapper menu__cat--kids" data-menu-cat="kids">
+                        <div class="menu__cat-wrapper menu__cat--kids" data-menu-cat="kids" data-item-price="individual">
                             <div class="menu__cat__head-wrapper">
                                 <h2 class="menu__cat__head kids">kids</h2>
                             </div>
@@ -790,9 +804,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="menu__cat-wrapper menu__cat--sides" data-menu-cat="sides">
+                        <div class="menu__cat-wrapper menu__cat--sides" data-menu-cat="sides" data-item-price="individual">
                             <div class="menu__cat__head-wrapper">
-                                <h2 class="menu__cat__head">fries n sides</h2>
+                                <h2 class="menu__cat__head" ">fries n sides</h2>
                             </div>
                             <div class="menu__cat__dishes-wrapper">
                                 <div class="menu____dish-wrapper">
@@ -852,7 +866,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="menu__cat-wrapper menu__cat--dips" data-menu-cat="dips">
+                        <div class="menu__cat-wrapper menu__cat--dips" data-menu-cat="dips" data-item-price="grouped">
                             <div class="menu__cat__head-wrapper">
                                 <h2 class="menu__cat__head h2dips">dips</h2>
                             </div>
@@ -891,9 +905,9 @@
 
                             </div>
                         </div>
-                        <div class="menu__cat-wrapper menu__cat--sweets" data-menu-cat="sweets">
+                        <div class="menu__cat-wrapper menu__cat--sweets" data-menu-cat="sweets" data-item-price="individual">
                             <div class="menu__cat__head-wrapper">
-                                <h2 class="menu__cat__head">sweets</h2>
+                                <h2 class="menu__cat__head" ">sweets</h2>
                             </div>
                             <div class="menu__cat__dishes-wrapper">
                                 <div class="menu____dish-wrapper">
@@ -985,6 +999,8 @@
                 <p class="boka-bord__dummy-text"><span>Tid: </span><span>19-03 </span><span>Namn:
                     </span><span>Musse</span></p>
             </a>
+
+            
 
             <div class="half-circle-svg-pointer-wrapper half-circle-svg-pointer-wrapper--boka">
                 <div class="half-circle-pointer__content">

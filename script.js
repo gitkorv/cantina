@@ -163,24 +163,20 @@ const cantinaLettersSettings = [
 
 const tickerItems = [
     {
-        head: "NYHET! Lunch 145:-",
-        text: "Ramen eller Dagens Tacos + kaffe. Öppet från klockan 11 på vardagar"
+        head: "Jul & Nyår!",
+        text: "Vi kör till sent med Dj's många dagar, kolla in öppettiderna nedan"
+    },
+    {
+        head: "Kom och käka lunch!",
+        text: "Ramen, Pokénoodles, Dagens Tacos eller kanske Burgare? Kaffe ingår. Öppet från klockan 11 på vardagar"
     },
     {
         head: "DJ's!",
         text: "Kika in på våra socials (nere till vänster) vem som styr spakarna, och när"
     },
     {
-        head: "Äkta street food",
-        text: "Saftiga tacos, mumsiga bao buns, het ramen och mycket mer. Klicka på menyn i botten höger på sidan"
-    },
-    {
         head: "Join the Club!",
         text: "Vill du ha våra nyheter först? Klicka uppe till höger och bli en del av klubben!"
-    },
-    {
-        head: "Cocktails!",
-        text: "På dansgolvet skakas rumpor och i baren skakar vi fantastiska drinkar"
     }
 ];
 
@@ -345,6 +341,12 @@ function showHomeElements() {
                     sprayDripDiv.style.transitionDuration = dripDuration + "s"
                     sprayDripDiv.style.width = dripWidth > 1 ? "2px" : "1px";
 
+                    // add class to some drips
+                    if (i === 1 || i === 2) {
+                        sprayDripDiv.classList.add("spray-drip-second-color");
+                    }
+
+
                     spraySplashContainers[i].appendChild(sprayDripDiv)
                     setTimeout(() => {
                         sprayDripDiv.style.height = dripHeight + "px";
@@ -413,7 +415,7 @@ function setWidthForHours() {
     });
 }
 
-setWidthForHours()
+// setWidthForHours()
 
 // Flick opening times
 
@@ -438,44 +440,62 @@ function cycleHighlight() {
 // Start the loop
 cycleHighlight();
 
-open
-
 
 // Btn and menus
 
+
 function setheightAndWidthForFoodMenuContents(menuContent) {
 
-    let foodMenuContentHeight = menuContent.scrollHeight;
-    menuContent.style.setProperty('--food-menu-full-height', foodMenuContentHeight + "px");
+    // --- FIX 2: neutralize height ---
+    const prevHeight = menuContent.style.height;
+    menuContent.style.height = 'auto';
 
-    let afterStyles = getComputedStyle(menuContent, '::after');
-    let width = parseFloat(afterStyles.getPropertyValue('width'));
+    // --- FIX 1: measure first ---
+    const foodMenuContentHeight = menuContent.scrollHeight;
+    console.log(foodMenuContentHeight);
+
+    // restore
+    menuContent.style.height = prevHeight;
+
+    windowHeight = window.innerHeight;
+    console.log(windowHeight);
+    const quarterWindowHeight = windowHeight * 0.1;
+    console.log(quarterWindowHeight);
+
+    // set CSS variable AFTER measuring
+    menuContent.style.setProperty(
+        '--food-menu-full-height',
+        foodMenuContentHeight + 'px'
+    );
+
+    // --- read styles ---
+    const afterStyles = getComputedStyle(menuContent, '::after');
+    const width = parseFloat(afterStyles.getPropertyValue('width'));
 
     const styles = getComputedStyle(menuContent);
-
-    // Read individual paddings
-    const paddingTop = styles.getPropertyValue('padding-top');
-    const paddingRight = styles.getPropertyValue('padding-right');
-    const paddingBottom = styles.getPropertyValue('padding-bottom');
     const paddingLeft = parseFloat(styles.getPropertyValue('padding-left'));
-
-    // Collect elm that need menwidth
 
     const menuWidthElements = [
         ...menuDishContentAll,
         ...menuCategoryHeadWrappers,
         ...menuCategoryHeads,
         ...menuExtraInfoAll
-    ]
+    ];
 
+    // --- FIX 3: layout changes AFTER measurement ---
     requestAnimationFrame(() => {
-        menuWidthElements.forEach(dishContent => {
-            dishContent.style.width = width - paddingLeft * 2 + "px";
-        })
-    })
+        menuWidthElements.forEach(el => {
+            el.style.width = (width - paddingLeft * 2) + 'px';
+        });
+    });
 }
 
-setheightAndWidthForFoodMenuContents(menuContent)
+document.addEventListener('DOMContentLoaded', () => {
+    setheightAndWidthForFoodMenuContents(menuContent);
+});
+
+
+
 
 let btnPressTransTime = parseFloat(getComputedStyle(menuOpBtn).transitionDuration) * 100;
 
@@ -553,6 +573,7 @@ menuOpBtn.addEventListener("click", e => {
         openMenu();
     } else {
         closeMenu();
+        console.log("here");
     }
 
     // You were trying to remove "active, pressed" here with a typo
@@ -564,13 +585,13 @@ menuOpBtn.addEventListener("click", e => {
     // }, 200);
 });
 
-menuWrapper.addEventListener('click', e => {
-    console.log("meny wrapper is clicked", e.target);
-    if (!e.target.matches(".menu-wrapper")) {
-        return; // Ignore this click
-    }
-    closeMenu()
-})
+// menuWrapper.addEventListener('click', e => {
+//     console.log("meny wrapper is clicked", e.target);
+//     if (!e.target.matches(".menu-wrapper")) {
+//         return; // Ignore this click
+//     }
+//     // closeMenu()
+// })
 
 
 const MENU_TRANSITION_DELAY = 150;
@@ -698,6 +719,7 @@ clubBtn.addEventListener("click", (e) => {
 
 document.addEventListener("click", (e) => {
     const clickedEl = e.target;
+    console.log(e.target);
 
     if (
         isFormOpen &&
@@ -705,6 +727,7 @@ document.addEventListener("click", (e) => {
         !clubBtn.contains(clickedEl)
     ) {
         isFormOpen = false;
+        console.log("this fired");
 
         clubBtn.classList.remove("pressed");
         clubFormWrapper.classList.remove("form-above");
@@ -717,7 +740,7 @@ document.addEventListener("click", (e) => {
         menuOpen &&
         !clickedEl.classList.contains("menu__btn")
     ) {
-        closeMenu()
+        // closeMenu()
     }
 });
 
@@ -950,4 +973,74 @@ function cycleColors() {
 
 // start the loop
 cycleColors();
+
+// CHECK IF MENU HEADS ARE LONG AND ADD CLASS IF SO
+
+const allMenuHeads = document.querySelectorAll('[data-item-price="individual"] .menu____dish-head');
+console.log(allMenuHeads);
+
+allMenuHeads.forEach(headline => {
+    if (headline.innerHTML.length > 10) {
+        headline.classList.add("long-head")
+    }
+})
+
+// SNOW EFFECT
+
+
+
+const SNOWFLAKE_COUNT = 80;
+const MIN_DURATION = 5;
+const MAX_DURATION = 70;
+const MIN_SIZE = 2;
+const MAX_SIZE = 20;
+
+const snowContainer = document.getElementById("snow");
+
+const SNOW_COLORS = [
+"var(--cantinaGreen)",
+  "var(--cantinaRosa)",
+  "var(--cantinaGrey)",
+  "var(--cantinaCream)",
+  "var(--cantinaCream)"
+];
+
+function random(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function randomFromArray(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function createSnowflake() {
+  const snowflake = document.createElement("div");
+  snowflake.className = "snowflake";
+  snowflake.textContent = "❄";
+
+  const size = random(MIN_SIZE, MAX_SIZE);
+  const duration = random(MIN_DURATION, MAX_DURATION);
+  const drift = random(-50, 50);
+
+  snowflake.style.left = random(0, 100) + "vw";
+  snowflake.style.fontSize = size + "px";
+  snowflake.style.opacity = random(0.2, 1);
+  snowflake.style.color = randomFromArray(SNOW_COLORS);
+  snowflake.style.animationDuration = duration + "s";
+  snowflake.style.setProperty("--drift", drift + "px");
+
+  snowContainer.appendChild(snowflake);
+
+  setTimeout(() => {
+    snowflake.remove();
+    createSnowflake(); // keep snowfall continuous
+  }, duration * 1000);
+}
+
+// Initial population
+for (let i = 0; i < SNOWFLAKE_COUNT; i++) {
+    setTimeout(createSnowflake, random(0, 5000)); // stagger start
+}
+
+
 
