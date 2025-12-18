@@ -13,7 +13,8 @@ const cssVarfoodMenuPaddingInner = parseFloat(getComputedStyle(root).getProperty
 // Sections
 
 // Club
-const clubBtn = document.querySelector(".club-btn")
+const clubBtn = document.querySelector(".club-btn");
+clubBtn.classList.add("zero-opacity")
 const clubBtnInnerHTML = clubBtn.innerHTML;
 const clubFormContent = document.querySelector(".club-form__content")
 const clubFormWrapper = document.querySelector(".club-form-wrapper")
@@ -43,20 +44,9 @@ const ticker = document.querySelector(".ticker-wrapper");
 
 // Opening hours
 const openingHoursWrapper = document.querySelector(".opening-hours-wrapper")
-// const openingHoursDayItems = [...document.querySelectorAll(".opening-hours__days")]
-// const openingHoursHourItems = [...document.querySelectorAll(".opening-hours__hours")]
-// console.log(openingHoursHoursAll);
+
 const bottomOFClubBtn = clubBtn.getBoundingClientRect().height
 
-
-
-
-// if (windowWidth < 767) {
-//     openingHoursWrapper.style.top = rootDocPadding + "px";
-// } else {
-
-// }
-// openingHoursWrapper.style.top = bottomOFClubBtn + rootDocPadding + "px";
 
 
 const openingHoursDaysAll = document.querySelectorAll(".opening-hours__days");
@@ -189,7 +179,7 @@ function sleep(ms) {
 }
 
 async function runNewsTicker() {
-    ticker.style.display = "";
+    // ticker.style.display = "";
 
     while (true) {
         const tickerItem = tickerItems[currentTickerItemIndex];
@@ -202,9 +192,7 @@ async function runNewsTicker() {
         // Update head
         typeTickerHeadContainer.textContent = head;
         typeTickerHeadContainer.classList.remove("fade-out");
-        typeTickerHeadContainer.classList.add("fade-in");
         await sleep(500);
-        typeTickerHeadContainer.classList.remove("fade-in");
 
         // Type text
         typeTickerTextContainer.textContent = "";
@@ -306,7 +294,7 @@ function showHomeElements() {
     setTimeout(() => {
         // Start the ticker
         ticker.style.display = ""
-        clubBtn.style.display = ""
+        clubBtn.style.display = "";
 
         let sprayDotTime = 0.5;
 
@@ -415,7 +403,7 @@ function setWidthForHours() {
     });
 }
 
-// setWidthForHours()
+setWidthForHours()
 
 // Flick opening times
 
@@ -687,35 +675,41 @@ window.addEventListener("load", e => {
     belowLogoWrapper.style.transition = "none";
 })
 
-clubBtn.addEventListener("click", (e) => {
-    e.stopPropagation();  // Prevent event from bubbling to document
-    const btn = e.target; // Reference to the clicked button
+const DRIP_DELAY = 600;
 
+clubBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    // Reset drip container
     clubFormDripContainer.innerHTML = "";
 
-
+    // Toggle state
     isFormOpen = !isFormOpen;
+    const isActive = isFormOpen;
 
-    clubBtn.classList.toggle("pressed");
-    // Move form wrapper up in index
-    clubFormWrapper.classList.toggle("form-above");
+    // Button state
+    clubBtn.classList.add("pressed");
+    clubBtn.classList.toggle("active", isActive);
 
-    // Toggle button text between "X" and original
-    clubBtn.innerHTML = clubBtn.classList.contains("pressed") ? "X" : clubBtnInnerHTML;
+    // Layout / content state
+    clubFormWrapper.classList.toggle("form-above", isActive);
+    clubFormContent.classList.toggle("club-form__content--open", isActive);
 
-    // Toggle the open classes for content and form
-    clubFormContent.classList.toggle("club-form__content--open");
-    // clubFormDripContainer.classList.toggle("open");
-
-
-    if (clubBtn.innerHTML === "X") {
+    if (isActive) {
+        clubBtn.innerHTML = "X";
         setTimeout(() => {
-            formDrips()
-
-        }, 600);
+            formDrips();
+            clubBtn.classList.remove("pressed");
+        }, DRIP_DELAY);
+    } else {
+        clubBtn.innerHTML = clubBtnInnerHTML;
+        setTimeout(() => {
+            clubBtn.classList.remove("pressed");
+        }, DRIP_DELAY);
+        
     }
-
 });
+
 
 document.addEventListener("click", (e) => {
     const clickedEl = e.target;
@@ -729,11 +723,10 @@ document.addEventListener("click", (e) => {
         isFormOpen = false;
         console.log("this fired");
 
-        clubBtn.classList.remove("pressed");
+        clubBtn.classList.remove("pressed", "active");
         clubFormWrapper.classList.remove("form-above");
         clubBtn.innerHTML = clubBtnInnerHTML;
         clubFormContent.classList.remove("club-form__content--open");
-        clubFormDripContainer.classList.remove("open");
         clubFormDripContainer.innerHTML = "";
     }
     if (
