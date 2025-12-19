@@ -1,33 +1,127 @@
 /* --> POPUP <---------- */
 
+/* XMAS */
+
+
+
+
 .popup-wrapper {
     position: relative;
-    display: none;
+    /* display: none; */
     align-items: center;
     justify-content: center;
     position: absolute;
     top: 0;
     left: 0;
-    background-color: color-mix(in srgb, var(--cantinaLila) 50%, transparent);
     height: 100%;
     width: 100%;
-    z-index: 200;
+    z-index: 400;
     padding: calc(var(--bodyPadding) * 2);
     pointer-events: none;
-    transition: opacity 1.5s ease-in;
+    transition: opacity ease-in;
     opacity: 0;
-    background-image: url(/img/barRight_white.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    
+    
+    
 }
+
+.popup-wrapper.popup-xmas {
+    background-color: black;
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 600;
+    font-size: calc(var(--bodyPadding) * 1.5);
+    padding: var(--bodyPadding);
+
+}
+
+
 
 .popup-wrapper--open {
     pointer-events: all;
     opacity: 1;
 }
 
-.popup-container {
+/* XMAS */
+
+.popup-contianer--xmas {
+    color: var(--cantinaCream);
+    height: 100%;
+    /* background-color: pink; */
+}
+
+.xmas-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* align-items: end; */
+    justify-content: end;
+    height: 100%;
+    /* background-color: orange; */
+}
+
+.xmas-head.falling-text {
+    transform: translateY(-100vh);
+}
+
+.xmas-head {
+    margin-top: var(--bodyPaddingHalf);
+    display: flex;
+    flex-direction: column;
+    /* position: absolute; */
+    bottom: 0;
+    transform: translate(0);
+    transition-duration: 2s;
+    transition-property: transform;
+}
+
+.xmas-head.gigg:nth-child(even) {
+    text-align: end;
+    align-self: end;
+}
+
+.xmas-head span {
+    font-family: var(--fontTypewriter);
+    font-size: calc(var(--textFontSize) * 1.5);
+    color: var(--cantinaRosa);
+}
+
+.xmas-head:nth-child(odd) span {
+    color: var(--cantinaGreen);
+}
+
+.xmas-head.xmas-dropfooter {
+    margin-top: var(--bodyPadding);
+    text-align: center;
+    font-variation-settings: "slnt" 0, "wdth" 150, "wght" 900;
+    animation: xmas-bang .25s linear infinite;
+    /* font-size: var(--textFontSize); */
+}
+
+@keyframes xmas-bang {
+    55% {
+        color: var(--cantinaCream);
+    }
+    75% {
+        color: var(--cantinaLila);
+    }
+    95% {
+        color: var(--cantinaCream);
+    }
+}
+
+
+
+/* LUNCH */
+
+.popup-wrapper.popup-lunch {
+    background-color: color-mix(in srgb, var(--cantinaLila) 50%, transparent);
+
+    background-image: url(/img/barRight_white.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.popup-container--lunch {
     position: relative;
     height: 100%;
     max-height: 700px;
@@ -42,6 +136,7 @@
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     box-shadow: 5px 5px 0px var(--cantinaLila);
+    display: none;
 }
 
 /* .popup-container::before {

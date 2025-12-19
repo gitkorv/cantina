@@ -2,7 +2,6 @@
 const root = document.documentElement;
 const rootStyles = getComputedStyle(root)
 const rootDocPadding = parseFloat(rootStyles.getPropertyValue('--bodyPadding'));
-console.log(rootDocPadding);
 const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
 let windowHeight = window.innerHeight;
 let windowWidth = window.innerWidth;
@@ -20,7 +19,6 @@ const clubFormContent = document.querySelector(".club-form__content")
 const clubFormWrapper = document.querySelector(".club-form-wrapper")
 let isFormOpen = false;
 const clubFormDripContainer = document.querySelector(".club-form__bottom-drip-container")
-console.log(clubBtn.getBoundingClientRect().height);
 
 // logo Cantina
 const logoWrapper = document.querySelector(".logo")
@@ -34,24 +32,17 @@ const logoSubheadWrap = document.querySelector(".logo__line--bottom")
 const streetFoodClubWrap = document.querySelector(".logo__line--sfc-wrapper")
 const clubTextWrap = document.querySelector(".logo__word--club-wrapper")
 const clubTextWrapWidth = clubTextWrap.getBoundingClientRect().width;
-clubTextWrap.style.transition = "none"
-// clubTextWrap.classList.add("rolled-up")
-// streetFoodClubWrap.style.marginRight = clubTextWrapWidth + "px";
+clubTextWrap.style.transition = "none";
 const streetFoodSpans = Array.from(streetFoodClubWrap.querySelectorAll(".logo__words--streetfood"))
 
 // Ticker
 const ticker = document.querySelector(".ticker-wrapper");
 
 // Opening hours
-const openingHoursWrapper = document.querySelector(".opening-hours-wrapper")
-
-const bottomOFClubBtn = clubBtn.getBoundingClientRect().height
-
-
-
+const openingHoursWrapper = document.querySelector(".opening-hours-wrapper");
+const bottomOFClubBtn = clubBtn.getBoundingClientRect().height;
 const openingHoursDaysAll = document.querySelectorAll(".opening-hours__days");
 const openingHoursHoursAll = document.querySelectorAll(".opening-hours__hours");
-
 
 // Below logo
 const belowLogoWrapper = document.querySelector(".below-logo-wrapper")
@@ -82,9 +73,6 @@ let menuBtnWrapperWidth = menuBtnWrapper.getBoundingClientRect().left;
 
 // Hide on start
 const fullDisplayArr = [belowLogoWrapper, clubBtn]
-
-// Close Menu at start
-// closeMenu()
 
 // Opening Splash Page
 const sprayDots = document.querySelectorAll(".splash-food__spray-img")
@@ -212,14 +200,12 @@ async function runNewsTicker() {
 runNewsTicker();
 
 
-
-
 function showHomeElements() {
+
+    logoWordCantina.classList.add("show")
 
     // Cantina
     let logoTransTime = parseFloat(getComputedStyle(logoWordCantina).transitionDuration) * 1000
-    console.log(logoTransTime);
-    console.log(logoWordCantina);
     setInterval(() => {
         logoWordCantinaWrapper.classList.remove("zero-opacity")
     }, logoTransTime / 4);
@@ -234,11 +220,11 @@ function showHomeElements() {
         let logoHeadTransTime = parseFloat(getComputedStyle(span).transitionDuration);
 
         span.style.transitionDelay = logoHeadTransTime * revealTime + "s";
-        span.style.fontVariationSettings =
-            `"slnt" ${cantinaLettersSettings[i].slnt}, 
-        "wdth" ${cantinaLettersSettings[i].wdth}, 
-        "wght" ${cantinaLettersSettings[i].wght}`
-        span.style.opacity = 1;
+        span.style.fontVariationSettings = `
+            "slnt" ${cantinaLettersSettings[i].slnt}, 
+            "wdth" ${cantinaLettersSettings[i].wdth}, 
+            "wght" ${cantinaLettersSettings[i].wght}
+            `
     }
 
     // Subhead
@@ -384,7 +370,6 @@ function setWidthForHours() {
                 [...elements].reduce((max, el) => Math.max(max, el.getBoundingClientRect().width), 0);
 
             const maxWidth = getMaxWidth(openingHoursDaysAll);
-            console.log(maxWidth);
 
             openingHoursDaysAll.forEach(dayLine => {
                 dayLine.style.width = maxWidth + "px";
@@ -440,15 +425,12 @@ function setheightAndWidthForFoodMenuContents(menuContent) {
 
     // --- FIX 1: measure first ---
     const foodMenuContentHeight = menuContent.scrollHeight;
-    console.log(foodMenuContentHeight);
 
     // restore
     menuContent.style.height = prevHeight;
 
     windowHeight = window.innerHeight;
-    console.log(windowHeight);
     const quarterWindowHeight = windowHeight * 0.1;
-    console.log(quarterWindowHeight);
 
     // set CSS variable AFTER measuring
     menuContent.style.setProperty(
@@ -499,8 +481,6 @@ document.querySelectorAll(".menu__cat-wrapper").forEach(head => {
         menuCatMap[dataMenuCat] = wrapper;
     }
 });
-
-console.log(menuCatMap);
 
 // Get transition time
 const menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
@@ -706,14 +686,13 @@ clubBtn.addEventListener("click", (e) => {
         setTimeout(() => {
             clubBtn.classList.remove("pressed");
         }, DRIP_DELAY);
-        
+
     }
 });
 
 
 document.addEventListener("click", (e) => {
     const clickedEl = e.target;
-    console.log(e.target);
 
     if (
         isFormOpen &&
@@ -917,26 +896,54 @@ function makeFunkyMenuCategoryHeads(headlineEl) {
     });
 }
 
-const popUpWrapper = document.querySelector(".popup-wrapper")
+const popUpWrapper = document.querySelector(".popup-wrapper");
+const popUpTransTime = 3000;
+const timeToStartPopUpFadeIn = 500;
+
+
+const allFallingTexts = document.querySelectorAll(".falling-text");
+
+console.log(popUpTransTime);
+const popActiveName = "popup-xmas";
+popUpWrapper.classList.add(popActiveName);
+
 const popUpBtn = document.querySelector(".popup__btn")
 const popUpSvgContainer = document.querySelector(".popup__svg-container")
 const popUpDrip = document.getElementById("popup-drip")
 const popUpSwipeText = document.querySelector(".popup__subhead--swipe")
 const popUpSwipeTextSpans = [...popUpSwipeText.children];
-console.log(popUpSwipeTextSpans);
-console.log(popUpSvgContainer);
 
 window.onload = function () {
-    console.log("window loaded");
-    console.log(popUpWrapper);
+    popUpWrapper.style.transitionDuration = popUpTransTime + "ms";
     setTimeout(() => {
         popUpWrapper.classList.add("popup-wrapper--open")
         setTimeout(() => {
             popUpWrapper.style.transitionDuration = ".5s"
             // yranSvgContainer.style.display = "none"
-        }, 0);
+            
 
-    }, 100);
+        }, popUpTransTime);
+
+        setTimeout(() => {
+            const baseDelay = 0.75;
+            const step = 0.2;
+            const lastIndex = allFallingTexts.length - 1;
+
+            for (let i = 0; i < allFallingTexts.length; i++) {
+                const element = allFallingTexts[i];
+
+                const delay = i === lastIndex
+                    ? 0
+                    : baseDelay + i * step;
+
+                element.style.transitionDelay = `${delay}s`;
+                element.classList.remove("falling-text");
+            }
+        }, popUpTransTime / 2);
+
+        
+
+    }, timeToStartPopUpFadeIn);
 };
 
 popUpBtn.addEventListener("click", e => {
@@ -970,7 +977,6 @@ cycleColors();
 // CHECK IF MENU HEADS ARE LONG AND ADD CLASS IF SO
 
 const allMenuHeads = document.querySelectorAll('[data-item-price="individual"] .menu____dish-head');
-console.log(allMenuHeads);
 
 allMenuHeads.forEach(headline => {
     if (headline.innerHTML.length > 10) {
@@ -991,43 +997,43 @@ const MAX_SIZE = 20;
 const snowContainer = document.getElementById("snow");
 
 const SNOW_COLORS = [
-"var(--cantinaGreen)",
-  "var(--cantinaRosa)",
-  "var(--cantinaGrey)",
-  "var(--cantinaCream)",
-  "var(--cantinaCream)"
+    "var(--cantinaGreen)",
+    "var(--cantinaRosa)",
+    "var(--cantinaGrey)",
+    "var(--cantinaCream)",
+    "var(--cantinaCream)"
 ];
 
 function random(min, max) {
-  return Math.random() * (max - min) + min;
+    return Math.random() * (max - min) + min;
 }
 
 function randomFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+    return arr[Math.floor(Math.random() * arr.length)];
 }
 
 function createSnowflake() {
-  const snowflake = document.createElement("div");
-  snowflake.className = "snowflake";
-  snowflake.textContent = "❄";
+    const snowflake = document.createElement("div");
+    snowflake.className = "snowflake";
+    snowflake.textContent = "❄";
 
-  const size = random(MIN_SIZE, MAX_SIZE);
-  const duration = random(MIN_DURATION, MAX_DURATION);
-  const drift = random(-50, 50);
+    const size = random(MIN_SIZE, MAX_SIZE);
+    const duration = random(MIN_DURATION, MAX_DURATION);
+    const drift = random(-50, 50);
 
-  snowflake.style.left = random(0, 100) + "vw";
-  snowflake.style.fontSize = size + "px";
-  snowflake.style.opacity = random(0.2, 1);
-  snowflake.style.color = randomFromArray(SNOW_COLORS);
-  snowflake.style.animationDuration = duration + "s";
-  snowflake.style.setProperty("--drift", drift + "px");
+    snowflake.style.left = random(0, 100) + "vw";
+    snowflake.style.fontSize = size + "px";
+    snowflake.style.opacity = random(0.2, 1);
+    snowflake.style.color = randomFromArray(SNOW_COLORS);
+    snowflake.style.animationDuration = duration + "s";
+    snowflake.style.setProperty("--drift", drift + "px");
 
-  snowContainer.appendChild(snowflake);
+    snowContainer.appendChild(snowflake);
 
-  setTimeout(() => {
-    snowflake.remove();
-    createSnowflake(); // keep snowfall continuous
-  }, duration * 1000);
+    setTimeout(() => {
+        snowflake.remove();
+        createSnowflake(); // keep snowfall continuous
+    }, duration * 1000);
 }
 
 // Initial population
