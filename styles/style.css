@@ -24,9 +24,10 @@
 
     --textFontSize: 0.9rem;
     --text-lineHeight: 0.9;
-
     --textFontSizeSmall: calc(var(--textFontSize) * 0.5);
     --extraPagesHeadline: 3rem;
+
+    --logoWrapperFlexVal: 0.65;
 
     --menuCatHead: 3rem;
 
@@ -150,7 +151,7 @@ body {
     height: 100%;
     width: 100%;
     text-align: center;
-    flex: .65;
+    flex: var(--logoWrapperFlexVal);
 }
 
 .logo__tagline {
@@ -310,7 +311,8 @@ body {
     /* align-items: center; */
     justify-content: center;
     width: 100%;
-    margin-top: 10px;
+    max-width: 500px;
+    margin-top: var(--textFontSize);
 }
 
 .below-logo__splash-food span {
@@ -650,6 +652,7 @@ section.home {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-items: center;
     right: 0;
     top: 100px;
     width: 100%;
@@ -934,6 +937,7 @@ section.home {
     text-align: right;
     width: 100%;
     z-index: 100;
+    pointer-events: none;
 }
 
 .menu____dish-price--big {
@@ -951,7 +955,7 @@ section.home {
 }
 
 .menu____dish-price.move-down {
-    transform: translateY(10%);
+    transform: translateY(24px);
 }
 
 
@@ -1402,11 +1406,7 @@ button.menu__btn.pressed {
     display: flex;
     pointer-events: auto;
     width: 100%;
-    /* align-items: end; */
     pointer-events: none;
-    /* border: 1px solid red; */
-    /* background-color: orange; */
-    /* z-index: 1000; */
 }
 
 
@@ -1420,6 +1420,8 @@ button.menu__btn.pressed {
 
 .boka-bord__link {
     position: relative;
+    display: flex;
+    flex-direction: column;
     writing-mode: vertical-rl;
     text-orientation: upright;
     text-transform: uppercase;
@@ -1427,11 +1429,16 @@ button.menu__btn.pressed {
     color: var(--cantinaCream);
     background-color: var(--cantinaGreen);
     font-variation-settings: "slnt" 0, "wdth" 75, "wght" 300;
-    transform-origin: top right;
+    transform-origin: bottom right;
     transition: background-color .25s;
     animation: boka-flicker 4s linear infinite alternate-reverse;
+    /* outline: .5px solid var(--cantinaCream);
+    outline-offset: -10px; */
+}
+
+.boka-bord__link>span {
     outline: .5px solid var(--cantinaCream);
-    outline-offset: -10px;
+    outline-offset: 2px;
 }
 
 @keyframes boka-flicker {
@@ -1516,14 +1523,15 @@ button.menu__btn.pressed {
     color: var(--logoColor);
     font-variation-settings: "slnt" 0, "wdth" 75, "wght" 700;
     z-index: 100;
-    /* text-align: left; */
-    align-self: flex-start;
+    white-space: pre-wrap;
+    width: 1ch;
 }
 
 .half-circle-svg-pointer__svg {
     position: absolute;
     /* rotate: 90deg; */
     width: 100%;
+    transform-origin: center;
     transform: translate(-16px, 2px) rotate(58deg);
     top: 0;
     /* transform: scale(-1, 1) rotate(45deg) translateY(0px); */
@@ -1732,21 +1740,133 @@ button.menu__btn.pressed {
 
 
 
-@media (min-width: 420px) {
+@media (min-width: 390px) {
 
+    :root {
+        --textFontSize: 1rem;
+        --logoWrapperFlexVal: 0.65;
+    }
+
+    .opening-hours-wrapper {
+        top: 125px;
+        font-size: var(--textFontSize);
+    }
+    .cantina-skull-svg-wrapper {
+        --skullHeight: 100px;
+    }
+    .boka-bord-wrapper {
+        --bokaBordBGVinkel: 0deg;
+        top: unset;
+        bottom: calc(var(--bodyPadding) * 7);
+
+    }
+    .boka-bord-button-wrapper {
+        left: 48px;
+        display: flex;
+        /* background-color: pink; */
+        /* width: 200px; */
+    }
+    .boka-bord__link {
+        writing-mode: unset;
+        width: fit-content;
+        transform-origin: bottom left;
+    }
+        .boka-bord__link>span {
+        outline: .5px solid var(--cantinaCream);
+        outline-offset: 2px;
+        font-family: var(--fontTypewriter);
+        font-variation-settings: "wght" 600;
+    }   
+    .boka-bord__dummy-text {
+        margin-top: var(--bodyPaddingQuarter);
+        display: flex;
+        flex-wrap: nowrap;
+        letter-spacing: 2px;
+        width: 100%;
+        /* flex-direction: column; */
+    }
+    .half-circle-svg-pointer__text {
+        white-space: unset;
+        width: 200px;
+    }
+    .half-circle-svg-pointer__svg {
+        transform: rotate(-15deg);
+    }
 
 
 }
 
 
 
-@media (min-width: 769px) and (min-height: 1024px),
-(min-width: 1256px) and (min-height: 769px) {
+@media (min-width: 768px) {
+    :root{
+        --logo-font-size: 120px;
+        --textFontSize: 1.25rem;
+        --logoWrapperFlexVal: 0.6;
 
+    }
+    .opening-hours-wrapper {
+        top: 160px;
+        /* width: 75%; */
+    }
+    .hours-head {
+        padding-left: 15%;
+    }
+    .below-logo__container {
+        max-width: 60%;
+    }
+    .boka-bord-wrapper {
+        --bokaBordFontPadding: 1rem;
+        left: unset;
+        right: 0;
+        width: 95%;
+        bottom: calc(var(--bodyPadding) * 8);
+        /* background-color: #72808a; */
+    }
 
 }
 
-@media (min-width: 1440) and (min-height:768px) {
+/* @media (min-width: 1024px) {
+    :root{
+        --logo-font-size: 160px;
+        --textFontSize: 1.5rem;
 
+    }
+    .opening-hours-wrapper {
+        top: 200px;
+    }
+    .boka-bord-wrapper {
+        bottom: calc(var(--bodyPadding) * 9);
+
+    }
+} */
+
+
+@media (min-width: 1400px) {
+    :root{
+        --logo-font-size: 160px;
+        --textFontSize: 1.5rem;
+
+    }
+    .opening-hours-wrapper {
+        top: 200px;
+    }
+    .boka-bord-wrapper {
+        bottom: calc(var(--bodyPadding) * 12);
+
+    }
+    .opening-hours-wrapper {
+        align-items: end;
+        padding-right: 10%;
+    }
+
+    .hours-head {
+        padding-left: 0;
+        align-self: unset;
+    }
+
+    .opening-hours-list-container {
+        display: block;
+    }
 
 }

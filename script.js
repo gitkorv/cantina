@@ -939,9 +939,7 @@ window.onload = function () {
                 element.style.transitionDelay = `${delay}s`;
                 element.classList.remove("falling-text");
             }
-        }, popUpTransTime / 2);
-
-        
+        }, popUpTransTime / 2);   
 
     }, timeToStartPopUpFadeIn);
 };
@@ -979,7 +977,7 @@ cycleColors();
 const allMenuHeads = document.querySelectorAll('[data-item-price="individual"] .menu____dish-head');
 
 allMenuHeads.forEach(headline => {
-    if (headline.innerHTML.length > 10) {
+    if (headline.innerHTML.length > 9) {
         headline.classList.add("long-head")
     }
 })
