@@ -1751,32 +1751,38 @@ button.menu__btn.pressed {
         top: 125px;
         font-size: var(--textFontSize);
     }
+
     .cantina-skull-svg-wrapper {
         --skullHeight: 100px;
     }
+
     .boka-bord-wrapper {
         --bokaBordBGVinkel: 0deg;
         top: unset;
         bottom: calc(var(--bodyPadding) * 7);
 
     }
+
     .boka-bord-button-wrapper {
         left: 48px;
         display: flex;
         /* background-color: pink; */
         /* width: 200px; */
     }
+
     .boka-bord__link {
         writing-mode: unset;
         width: fit-content;
         transform-origin: bottom left;
     }
-        .boka-bord__link>span {
+
+    .boka-bord__link>span {
         outline: .5px solid var(--cantinaCream);
         outline-offset: 2px;
         font-family: var(--fontTypewriter);
         font-variation-settings: "wght" 600;
-    }   
+    }
+
     .boka-bord__dummy-text {
         margin-top: var(--bodyPaddingQuarter);
         display: flex;
@@ -1785,10 +1791,12 @@ button.menu__btn.pressed {
         width: 100%;
         /* flex-direction: column; */
     }
+
     .half-circle-svg-pointer__text {
         white-space: unset;
         width: 200px;
     }
+
     .half-circle-svg-pointer__svg {
         transform: rotate(-15deg);
     }
@@ -1799,22 +1807,26 @@ button.menu__btn.pressed {
 
 
 @media (min-width: 768px) {
-    :root{
+    :root {
         --logo-font-size: 120px;
         --textFontSize: 1.25rem;
         --logoWrapperFlexVal: 0.6;
 
     }
+
     .opening-hours-wrapper {
         top: 160px;
         /* width: 75%; */
     }
+
     .hours-head {
         padding-left: 15%;
     }
+
     .below-logo__container {
         max-width: 60%;
     }
+
     .boka-bord-wrapper {
         --bokaBordFontPadding: 1rem;
         left: unset;
@@ -1843,18 +1855,21 @@ button.menu__btn.pressed {
 
 
 @media (min-width: 1400px) {
-    :root{
+    :root {
         --logo-font-size: 160px;
         --textFontSize: 1.5rem;
 
     }
+
     .opening-hours-wrapper {
         top: 200px;
     }
+
     .boka-bord-wrapper {
         bottom: calc(var(--bodyPadding) * 12);
 
     }
+
     .opening-hours-wrapper {
         align-items: end;
         padding-right: 10%;
@@ -1869,4 +1884,7 @@ button.menu__btn.pressed {
         display: block;
     }
 
+    .social-section-container {
+        bottom: calc(var(--bodyPadding) * 2.5);
+    }
 }

@@ -141,10 +141,6 @@ const cantinaLettersSettings = [
 
 const tickerItems = [
     {
-        head: "Jul & Nyår!",
-        text: "Vi kör till sent med Dj's många dagar, kolla in öppettiderna nedan"
-    },
-    {
         head: "Kom och käka lunch!",
         text: "Ramen, Pokénoodles, Dagens Tacos eller kanske Burgare? Kaffe ingår. Öppet från klockan 11 på vardagar"
     },
@@ -905,7 +901,7 @@ const allFallingTexts = document.querySelectorAll(".falling-text");
 
 console.log(popUpTransTime);
 const popActiveName = "popup-xmas";
-popUpWrapper.classList.add(popActiveName);
+// popUpWrapper.classList.add(popActiveName);
 
 const popUpBtn = document.querySelector(".popup__btn")
 const popUpSvgContainer = document.querySelector(".popup__svg-container")
