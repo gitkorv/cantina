@@ -409,6 +409,33 @@ function cycleHighlight() {
 // Start the loop
 cycleHighlight();
 
+ 
+function hideOpeningDaysBeforeCutoff() {
+    const now = new Date();
+    const cutoffDate = new Date(2026, 0, 6, 21, 0, 0); // Jan 6, 21:00 local time
+
+    const hoursHeadSub = document.querySelector(".hours-head__sub");
+
+    // BEFORE cutoff → hide opening days
+    if (now < cutoffDate) {
+        if (!openingHoursDaysAll || openingHoursDaysAll.length === 0) return;
+
+        for (let i = 0; i < 2 && i < openingHoursDaysAll.length; i++) {
+            openingHoursDaysAll[i].classList.add("strike");
+
+        }
+    }
+
+    // AFTER cutoff → hide sub heading
+    if (now >= cutoffDate && hoursHeadSub) {
+        hoursHeadSub.style.display = "none";
+    }
+}
+
+
+
+document.addEventListener('DOMContentLoaded', hideOpeningDaysBeforeCutoff);
+
 
 // Btn and menus
 
