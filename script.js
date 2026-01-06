@@ -142,7 +142,7 @@ const cantinaLettersSettings = [
 const tickerItems = [
     {
         head: "Kom och käka lunch!",
-        text: "Ramen, Pokénoodles, Dagens Tacos eller kanske Burgare? Kaffe ingår. Öppet från klockan 11 på vardagar"
+        text: "Vi kör nu full meny och kaffe ingår. Öppnar 12 på vardagar"
     },
     {
         head: "DJ's!",
