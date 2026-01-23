@@ -1,0 +1,115 @@
+body {
+    padding: var(--bodyPadding);
+    background-color: var(--cantinaCream);
+    /* line-height: unset; */
+
+}
+
+body.html-menu main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--bodyPadding);
+    /* space between columns and rows */
+    /* padding: 1rem; */
+    pointer-events: auto;
+    overflow-y: scroll;
+}
+
+section.menu-section {
+    position: relative;
+}
+
+.menu-section {
+    --priceSize: calc(var(--textFontSize) * 3);
+    margin-bottom: 4rem;
+}
+
+.menu-section__header {
+    position: relative;
+}
+
+.menu-section__title {
+    font-size: var(--priceSize);
+    font-variation-settings: "slnt" 0, "wdth" 100, "wght" 900;
+    word-break: break-word;
+    hyphens: auto;
+    margin-bottom: 1.5rem;
+}
+
+.menu-section h3 {
+    /* font-size: var(--priceSize); */
+    font-variation-settings: "slnt" 0, "wdth" 75, "wght" 600;
+    /* margin-bottom: 1.5rem; */
+}
+
+.menu-section .dish:first-of-type {
+    border-top: 4px solid black;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.menu-section .dish {
+    margin-bottom: 1rem;
+}
+
+.menu-section .dish__fields,
+.menu-section__intro-fields {
+    display: flex;
+    justify-content: space-between;
+}
+
+section.section--sec-price .dish__fields {
+    flex-direction: column;
+}
+
+
+/* spice and veg symbols */
+
+.dish--veg h3::after, 
+section.section--poke .dish__intro::after,
+.dish--spicy h3::after {
+    display: inline-block;
+    font-size: 1rem;
+    margin-left: .5rem;
+    /* transform: scale(.75); */
+}
+
+.dish--veg h3::after, 
+section.section--poke .dish__intro::after {
+    content: " 🥦";
+}
+
+.dish--spicy h3::after {
+    content: " 🌶";
+}
+
+.dish--featured h3::after {
+    content: " ★";
+}
+
+
+
+.dish {
+    position: relative;
+    border-bottom: 1px solid black;
+    /* padding-bottom: var(--priceSize); */
+}
+
+.dish__extras {
+    grid-area: bl;
+    color: var(--cantinaGreen);
+    /* background-color: antiquewhite; */
+}
+
+.dish__sectionprice, 
+.dish__prices {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--priceSize);
+}
+
+.dish__price,
+.dish__sectionprice {
+    /* width: max-content; */
+    white-space: nowrap;
+}
