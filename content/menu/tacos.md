@@ -1,10 +1,14 @@
-## Tacos [tacos][sec-price]
+---
+title: Tacos
+basePrice: 
+intro:
+  - Alla tacos serveras i mjuka majstortilla med koriander & lime
+---
 
 ### Quesadilla
 
 **Description** Mozzarella, pico de Gallo, ranchdressing.
 **Extras:** Välj på: Chorizo, Korean chicken
-**Price** 
 
 ---
 
@@ -46,9 +50,7 @@ chipotle crema
 
 **Description** Köttfärs, salsa, gurka, isbergssallad, ost, majs
 **Extras**
-**Price**
+**Price** 2st 179
+**Price** Extra Taco 79
 
 ---
-
-**Intro** Alla tacos serveras i mjuka majstortilla med koriander & lime
-**SectionPrice** 2 st 179:-

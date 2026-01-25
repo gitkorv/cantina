@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,16 +17,48 @@
     <meta name="apple-mobile-web-app-title" content="cantinaSFC">
     <title>Document</title>
 </head>
-<body class="html-menu">
-    <main>
-        <div id="snacksMD-wrapper" class="snacksMD-wrapper"></div>
-        <div id="tacosMD-wrapper" class="tacosMD-wrapper"></div>
-        <div id="ramenMD-wrapper" class="ramenMD-wrapper"></div>
-        <div id="pokeMD-wrapper" class="pokeMD-wrapper"></div>
+
+<body class="md-menu">
+    <div class="hours-bar">
+        <div id="hours-wrapper" class="hours"></div>
+        <div id="lunch-hours-wrapper" class="lunch-hours"></div>
+    </div>
+    
+    <main class="md-menu-wrapper">
+        
+        <div class="menu__section head">
+            
+            <h1>Cantina Street Food Club—Menu</h1>
+            
+        </div>
+        <div class="menu__section left-group">
+            <div id="snacks-wrapper" class="snacks"></div>
+
+            <div id="tacos-wrapper" class="tacos"></div>
+        </div>
+        <div class="menu__section center-group">
+            <div id="sandwiches-wrapper" class="sandwiches"></div>
+            <div id="kids-wrapper" class="menu__section kids"></div>
+
+        </div>
+        <div class="menu__section right-group">
+            <div id="ramen-wrapper" class="ramen"></div>
+            <div id="poke-wrapper" class="poke"></div>
+            <div id="bao-wrapper" class="bao"></div>
+
+        </div>
+        <div class="menu__section side-group">
+            <div id="dips-wrapper" class="dips"></div>
+            <div id="sides-wrapper" class="sides"></div>
+            <div id="sweets-wrapper" class="sweets"></div>
+        </div>
     </main>
     
+    
+
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="/js/menu.js"></script>
 </body>
+
 </html>

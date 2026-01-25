@@ -1,43 +1,15 @@
-## Poké&shy;noodles [poke]
-
-### Chili Sesam
-
-**Description** Sesamtare, vitlöksolja, buljong, chili, salladslök, ägg, pak choy, menma, nori
-**Extras**
-**Price**
-
+---
+title: Poké&shy;noodles
+basePrice: 
+intro:
+ - Kimchisallad, mango-salsa, picklad rödkål, isbergssallad
 ---
 
-### Classic Shoyu
+### Välj på [choice]
 
-**Description** Tare, vitlöksolja, buljong, salladslök, ägg, menma, pak choy, nori
-**Extras**
-**Price** 
-
----
-
-### Spicy Miso [spicy]
-
-**Description** Chiliolja, tare, buljong, chili miso, salladslök, silverlök, ägg, pak choy, nori
-**Extras**
-**Price** 
+**Description** 
+**Extras** 
+**Choice** Pork Belly, Korean Chicken, Roasted Duck, Fried Scampi, Fried Halloumi [veg]
+**Price** 189
 
 ---
-
-### Mapo Tofu [veg]
-
-**Description** Tare, chiliolja, grönsaks-buljong, salladslök, pak 
-choy, menma, nori tofu-blandning (tofu, Anammafärs & majs)
-**Extras**
-**Price** 
-
----
-
-**Intro** 
-Välj på: <br> 
-☞ Pork belly <br> 
-☞ Korean chicken <br> 
-☞ Roasted duck <br> 
-☞ Fried scampi <br> 
-☞ Fried halloumi
-**SectionPrice** 189:-

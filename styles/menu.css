@@ -1,26 +1,164 @@
+:root{
+    --mdMenuPadding: 1rem;
+}
+
 body {
-    padding: var(--bodyPadding);
-    background-color: var(--cantinaCream);
-    /* line-height: unset; */
-
-}
-
-body.html-menu main {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--bodyPadding);
-    /* space between columns and rows */
-    /* padding: 1rem; */
-    pointer-events: auto;
-    overflow-y: scroll;
-}
-
-section.menu-section {
     position: relative;
+    /* padding: var(--bodyPadding); */
+    background-color: var(--cantinaCream);
+    height: 100vh;
+    width: 100vw;
+    /* overflow-y: scroll; */
+    /* pointer-events: none; */
+}
+
+body h1 {
+    font-size: calc(var(--textFontSize) * 4 );
+}
+
+body.md-menu .hours-bar {
+    position: sticky;
+    top: 0;
+    flex-direction: column;
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+    background: transparent;
+    border-bottom: 1px solid black;
+    padding: var(--mdMenuPadding) calc(var(--mdMenuPadding) * 0.8) var(--mdMenuPadding) calc(var(--mdMenuPadding) * 0.8) ;
+    font-size: calc(var(--textFontSize) * 1.2);
+    height: fit-content;
+    z-index: 100;
+    transition: background .5s ease-out;
+}
+
+body.md-menu .hours-bar:hover {
+    background: var(--cantinaCream);
+}
+
+body.md-menu .hours-bar div {
+    display: flex;
+    justify-content: space-between;
+    pointer-events: all;
+}
+
+body.md-menu .hours-bar div .menu-section {
+    margin: 0;
+    overflow: visible;
+}
+
+body.md-menu .hours-bar div .menu-section ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem 1rem;
+    list-style: none;
+    text-align: center;
+}
+
+@media (min-width: 1024px) {
+    body.md-menu .hours-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    }
+    body.md-menu .hours-bar div {
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: antiquewhite; */
+    }
+}
+
+
+main {
+    padding: 0;
+}
+
+body.md-menu main.md-menu-wrapper {
+    /* position: absolute;
+    top: 0; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px auto;
+    column-gap: 2rem;
+    row-gap: 0;
+    pointer-events: auto;
+    /* height: 100%; */
+    width: 100%;
+    padding: var(--mdMenuPadding);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    grid-template-areas:
+    "h"
+    "l"
+    "c"
+    "r"
+    "s"
+    ;
+    /* background-color: aqua; */
+
+}
+
+@media (min-width: 768px) {
+    :root {
+        --mdMenuPadding: 2rem;
+    }
+    body.md-menu main.md-menu-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+        "h h"
+        "l r"
+        "l s"
+        "c s"
+        ;
+    }
+}
+
+@media (min-width: 1400px) { 
+    body.md-menu main.md-menu-wrapper {
+        grid-template-columns: repeat(3, 1fr) 200px;
+        grid-template-areas:
+        "h h h h"
+        "l c r s"
+        "l c r s"
+        ;
+    }
+}
+
+body.md-menu main.md-menu-wrapper .menu__section {
+    /* background-color: gray; */
+    /* align-self: start; */
+    /* height: 200px; */
+    /* height: fit-content; */
+}
+
+body.md-menu main.md-menu-wrapper .menu__section.head {
+    grid-area: h;
+    justify-items: center;
+    align-content: center;
+}
+
+body.md-menu main.md-menu-wrapper .menu__section.left-group {
+    grid-area: l;
+}
+
+body.md-menu main.md-menu-wrapper .menu__section.side-group {
+    grid-area: s;
+}
+
+body.md-menu main.md-menu-wrapper .menu__section.center-group {
+    grid-area: c;
+}
+
+
+div section.menu-section {
+    --sectionborderThick: 4px solid black;
+    --sectionPadding: 1rem;
+    position: relative;
+    /* background-color: red; */
+    /* padding-bottom: var(--sectionPadding); */
 }
 
 .menu-section {
-    --priceSize: calc(var(--textFontSize) * 3);
+    --priceSize: calc(var(--textFontSize) * 2);
     margin-bottom: 4rem;
 }
 
@@ -28,12 +166,12 @@ section.menu-section {
     position: relative;
 }
 
-.menu-section__title {
+.menu-section__title:NOT(.hours-bar .menu-section__title) {
     font-size: var(--priceSize);
     font-variation-settings: "slnt" 0, "wdth" 100, "wght" 900;
     word-break: break-word;
     hyphens: auto;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .menu-section h3 {
@@ -42,49 +180,70 @@ section.menu-section {
     /* margin-bottom: 1.5rem; */
 }
 
+.menu-section .dish {
+    border-color: var(--cantinaGreen);
+    margin-bottom: 1rem;
+}
+
 .menu-section .dish:first-of-type {
-    border-top: 4px solid black;
+    border-top: var(--sectionborderThick);
     margin-top: 1rem;
     padding-top: 1rem;
 }
 
-.menu-section .dish {
-    margin-bottom: 1rem;
+.menu-section .dish:last-of-type {
+    border-bottom: var(--sectionborderThick);
 }
 
-.menu-section .dish__fields,
-.menu-section__intro-fields {
-    display: flex;
+.menu-section__sub,
+.dish__wrapper {
+    /* display: flex; */
     justify-content: space-between;
 }
 
-section.section--sec-price .dish__fields {
-    flex-direction: column;
+.menu-section__sub .menu-section__intro {
+    flex: 1;
 }
 
 
 /* spice and veg symbols */
 
-.dish--veg h3::after, 
+.dish--veg h3::after,
 section.section--poke .dish__intro::after,
-.dish--spicy h3::after {
+.dish--spicy h3::after,
+li.dish__choice--veg::after,
+.dish--spicy>h3::after,
+li.dish__choice--spicy::after,
+.dish--spicy>h3::after,
+li.dish__choice--spicyveg::after {
     display: inline-block;
     font-size: 1rem;
-    margin-left: .5rem;
-    /* transform: scale(.75); */
+    margin-left: .25rem;
+    position: relative;
+    bottom: .15rem;
+    /* border: 3px solid var(--cantinaRosa); */
+    /* background-color: var(--cantinaGreen); */
+    padding: .35rem;
+    /* border-radius: 50%; */
 }
 
-.dish--veg h3::after, 
-section.section--poke .dish__intro::after {
-    content: " 🥦";
+.dish--veg h3::after,
+section.section--poke .dish__intro::after,
+li.dish__choice--veg::after {
+    content: "🥦";
 }
 
-.dish--spicy h3::after {
-    content: " 🌶";
+.dish--spicy>h3::after,
+li.dish__choice--spicy::after {
+    content: "🌶";
+}
+
+li.dish__choice--spicyveg::after {
+    content: "🌶 🥦";
 }
 
 .dish--featured h3::after {
-    content: " ★";
+    content: "★";
 }
 
 
@@ -92,24 +251,78 @@ section.section--poke .dish__intro::after {
 .dish {
     position: relative;
     border-bottom: 1px solid black;
-    /* padding-bottom: var(--priceSize); */
+    padding-bottom: .5rem;
+}
+
+.dish__fields {
+    width: 100%;
+    /* background-color: aqua; */
 }
 
 .dish__extras {
-    grid-area: bl;
     color: var(--cantinaGreen);
-    /* background-color: antiquewhite; */
 }
 
-.dish__sectionprice, 
-.dish__prices {
+.dish--choice {
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+    /* align-items: center; */
+    gap: .5rem;
+    /* text-align: center; */
+    /* text-decoration: underline; */
+}
+
+.dish--choice>h3 {
+    width: fit-content;
+    font-size: smaller;
+}
+
+
+article.dish--choice h3 ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 32px;
+    list-style: none;
+}
+
+article.dish--choice h3 ul li::before {
+    content: "☞ ";
+    position: absolute;
+    transform: translate(-32px, 4px);
+    font-size: smaller;
+    /* left: 0px; */
+}
+
+
+.dish ul li ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+ul.price {
     display: flex;
     flex-direction: column;
     font-size: var(--priceSize);
+    align-items: end;
+    justify-content: end;
+    white-space: nowrap;
+    list-style: none;
+    margin-left: 1rem;
+    color: var(--cantinaRosa);
+    /* background-color: blue; */
 }
 
-.dish__price,
-.dish__sectionprice {
-    /* width: max-content; */
-    white-space: nowrap;
+ul.price li:first-child {}
+
+ul.price>li:first-child>span.price-number {
+    /* background-color: blue; */
+    font-size: 1.5em;
+    /* font-size: smaller; */
+}
+
+ul.price span.kronor {
+    margin-left: .15rem;
 }

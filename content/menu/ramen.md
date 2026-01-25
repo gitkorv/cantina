@@ -1,11 +1,18 @@
-## Ramen [ramen]
+---
+title: Ramen
+basePrice: 
+choice: 
+intro:
 
-**Intro** 
-Välj på: <br>
-☞ Pork belly <br>
-☞ Korean chicken <br> 
-☞ Roasted duck
-**SectionPrice** 189:-
+---
+
+### Välj på [choice]
+
+**Description** 
+**Extras** 
+**Choice** Pork belly, Korean Chicken, Roasted Duck
+
+---
 
 ### Chili Sesam
 
@@ -27,7 +34,8 @@ Välj på: <br>
 
 **Description** Chiliolja, tare, buljong, chili miso, salladslök, silverlök, ägg, pak choy, nori
 **Extras**
-**Price** 
+**Choice** 
+**Price**
 
 ---
 
@@ -36,7 +44,7 @@ Välj på: <br>
 **Description** Tare, chiliolja, grönsaks-buljong, salladslök, pak 
 choy, menma, nori tofu-blandning (tofu, Anammafärs & majs)
 **Extras**
-**Price** 
+**Price** 189
 
 ---
 
