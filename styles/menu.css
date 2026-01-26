@@ -7,7 +7,7 @@ body {
     position: relative;
     /* padding: var(--bodyPadding); */
     background-color: var(--cantinaCream);
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     /* overflow-y: scroll; */
     /* pointer-events: none; */
@@ -489,5 +489,5 @@ ul.price span.kronor {
     /* position: absolute; */
     /* bottom: -50px; */
     /* right: 50px; */
-    width: 400px;
+    width: 300px;
 }
