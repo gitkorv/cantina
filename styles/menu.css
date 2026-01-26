@@ -206,9 +206,9 @@ section.lunch-special .dish__price--sub:before {
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translate(50%, -100%) rotate(-15deg);
-    width: 42px;
-    height: 42px;
+    transform: translate(15%, -100%) rotate(-15deg);
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: var(--cantinaGreen);
     z-index: 2;
@@ -220,10 +220,10 @@ section.lunch-special .dish__price--sub:before {
 
 @keyframes special {
     33% {
-        transform: translate(0%, -80%) rotate(15deg);
+        transform: translate(-10%, -110%) rotate(15deg);
     }
     66% {
-        transform: translate(100%, -120%) rotate(0deg);
+        transform: translate(25%, -120%) rotate(0deg);
     }
 }
 
