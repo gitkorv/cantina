@@ -48,7 +48,7 @@ intro:
 choy, menma, nori tofu-blandning (tofu, Anammafärs & majs)
 **Extras**
 **Price** 189
-**PriceSub** Lunch Erbjudande: 149kr
+**PriceSub** Lunch Special 149kr
 
 ---
 

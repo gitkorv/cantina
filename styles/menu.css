@@ -112,6 +112,7 @@ body.md-menu main.md-menu-wrapper {
         "r"
         "c"
         "s"
+        "b"
     ;
     /* background-color: aqua; */
 
@@ -130,6 +131,7 @@ body.md-menu main.md-menu-wrapper {
             "l r"
             "l s"
             "c s"
+            "b b"
         ;
         grid-template-rows: 250px auto;
     }
@@ -146,7 +148,8 @@ body.md-menu main.md-menu-wrapper {
         grid-template-areas:
             "h h h h"
             "l c r s"
-            "l c r s"
+            "l c b s"
+            
         ;
     }
 
@@ -203,36 +206,96 @@ section.lunch-special .dish__price--sub:before {
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translate(20%, -100%) rotate(-15deg);
+    transform: translate(50%, -100%) rotate(-15deg);
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: var(--cantinaLila);
+    background: var(--cantinaGreen);
     z-index: 2;
-    box-shadow: 5px 5px 0px var(--cantinaRosa);
+    box-shadow: 3px 3px 0px var(--cantinaRosa);
     color: var(--cantinaCream);
-    /* animation: special 10s linear infinite alternate-reverse; */
+    animation: special 10s linear infinite alternate-reverse;
     font-size: 24px;
 }
 
 @keyframes special {
-    0% {
-        top: 50%;
-        /* right: 10%; */
-        
+    33% {
+        transform: translate(0%, -80%) rotate(15deg);
     }
-    50% {
-        top: 60%;
-        /* right: 30%; */
-    }
-    100% {
-        top: 50%;
-        /* right: 40%; */
+    66% {
+        transform: translate(100%, -120%) rotate(0deg);
     }
 }
 
 section.lunch-special .dish__price--sub {
     color: var(--cantinaGreen);
+    animation: blink 6s linear infinite alternate;
+}
+
+@keyframes blink {
+    8% {
+        color: var(--cantinaGreen);
+    }
+    10%{
+        color: var(--cantinaCream);
+    }
+    12%{
+        color: var(--cantinaGreen);
+    }
+    23%{
+        color: var(--cantinaGreen);
+    }
+    25%{
+        color: var(--cantinaCream);
+    }
+    27%{
+        color: var(--cantinaGreen);
+    }
+    28%{
+        color: var(--cantinaGreen);
+    }
+    33%{
+        color: var(--cantinaGreen);
+    }
+    35%{
+        color: var(--cantinaCream);
+    }
+    38%{
+        color: var(--cantinaGreen);
+    }
+    39%{
+        color: var(--cantinaGreen);
+    }
+    48%{
+        color: var(--cantinaGreen);
+    }
+    50%{
+        color: var(--cantinaCream);
+    }
+    52%{
+        color: var(--cantinaGreen);
+    }
+    54%{
+        color: var(--cantinaGreen);
+    }
+    56%{
+        color: var(--cantinaCream);
+    }
+    58%{
+        color: var(--cantinaGreen);
+    }
+    92%{
+        color: var(--cantinaGreen);
+    }
+    93%{
+        color: var(--cantinaCream);
+    }
+    94%{
+        color: var(--cantinaCream);
+    }
+    98%{
+        color: var(--cantinaGreen);
+    }
 }
 
 div section.section {
@@ -413,4 +476,18 @@ ul.price>li:first-child>span.price-number {
 
 ul.price span.kronor {
     margin-left: .15rem;
+}
+
+.md-skull {
+    grid-area: b;
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    /* background-color: aqua; */
+}
+.md-skull img {
+    /* position: absolute; */
+    /* bottom: -50px; */
+    /* right: 50px; */
+    width: 400px;
 }

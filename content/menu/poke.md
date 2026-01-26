@@ -14,5 +14,6 @@ intro:
 **Extras** 
 **Choice** Pork Belly, Korean Chicken, Roasted Duck, Fried Scampi, Fried Halloumi [veg]
 **Price** 189
+**PriceSub** Lunch Special 149kr
 
 ---
