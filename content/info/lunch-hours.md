@@ -1,7 +1,9 @@
 ---
-title:
+title: Lunch
+sectionClass:
+ - hours
+ - lunch-hours
 basePrice: 
 intro:
- - Lunch:
  - Tisdag – Fredag: 11–15
 ---

@@ -1,6 +1,8 @@
 ---
 title: Tacos
-basePrice: 
+sectionClass:
+  - tacos
+basePrice:
 intro:
   - Alla tacos serveras i mjuka majstortilla med koriander & lime
 ---

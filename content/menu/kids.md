@@ -1,5 +1,7 @@
 ---
 title: Kids
+sectionClass:
+ - kids
 basePrice:
 intro:
  - (Eller vuxna barn) Festis ingår.

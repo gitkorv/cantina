@@ -1,5 +1,7 @@
 ---
 title: Bao Buns
+sectionClass:
+ - bao
 basePrice: 
 intro: 
  - Ångade baobröd med asiatisk kålsallad & srirachamajonnäs 

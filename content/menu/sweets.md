@@ -1,5 +1,7 @@
 ---
 title: Sweets
+sectionClass:
+ - sweets
 basePrice:
 intro:
 

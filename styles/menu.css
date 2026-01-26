@@ -1,5 +1,6 @@
 :root{
     --mdMenuPadding: 1rem;
+    --text-lineHeight: 1;
 }
 
 body {
@@ -19,52 +20,98 @@ body h1 {
 body.md-menu .hours-bar {
     position: sticky;
     top: 0;
-    flex-direction: column;
-    display: flex;
-    gap: .5rem;
-    justify-content: center;
-    background: transparent;
-    border-bottom: 1px solid black;
-    padding: var(--mdMenuPadding) calc(var(--mdMenuPadding) * 0.8) var(--mdMenuPadding) calc(var(--mdMenuPadding) * 0.8) ;
+    display: grid;
+    grid-template-rows: min-content min-content;
+    justify-items: start;
+    gap: 1rem;
+    /* justify-content: space-between; */
+    /* align-items: stretch; */
+    background: var(--cantinaCream);
+    /* border-bottom: 1px solid black; */
+    padding: var(--mdMenuPadding) ;
     font-size: calc(var(--textFontSize) * 1.2);
-    height: fit-content;
     z-index: 100;
     transition: background .5s ease-out;
+    font-size: var(--textFontSize);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.15);
+    /* background-color: lightcoral; */
 }
 
-body.md-menu .hours-bar:hover {
-    background: var(--cantinaCream);
-}
-
-body.md-menu .hours-bar div {
+body.md-menu .section.hours .section__header{
     display: flex;
-    justify-content: space-between;
-    pointer-events: all;
+    /* gap: .5rem; */
+    flex-direction: column;
+    /* align-items: center; */
 }
 
-body.md-menu .hours-bar div .menu-section {
-    margin: 0;
+body.md-menu .section.hours.lunch-hours .section__header{
+    gap: .25rem;
+    flex-direction: row;
+}
+
+body.md-menu .section.hours .section__header .section__title::after {
+    content: ":"
+}
+
+body.md-menu .section.hours .section__header h2{
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 600;
+    margin-bottom: 0.25rem;
+    font-size: var(--textFontSize);
+}
+
+body.md-menu .section.hours.lunch-hours .section__header{
+    /* align-items: end; */
+}
+
+
+
+body.md-menu .md-logo-wrapper {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    padding: var(--mdMenuPadding);
+    z-index: 500;
+}
+
+body.md-menu .md-logo-wrapper a {
+    position: relative;
+    display: flex;
+    height: 24px;
+    width: 100%;
+    /* background-color: aqua; */
+}
+
+body.md-menu .hours-logo {
+    position: relative;
+    display: block;
+    /* grid-area: t; */
+    /* top: -2rem; */
+    height: 100%;
+    width: 100%;
+    background-image: url(/img/cantina-logo-cropped.png);
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: orange; */
+    /* padding: var(--mdMenuPadding); */
+    /* margin-top: .5rem; */
+    /* margin: 1rem; */
+}
+
+/* section.hours div, */
+section.hours ul {
+    display: flex;
+    flex-direction: row;
+    /* align-items: end; */
+    list-style: none;
+    gap: 1rem;
     overflow: visible;
 }
 
-body.md-menu .hours-bar div .menu-section ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .25rem 1rem;
-    list-style: none;
-    text-align: center;
-}
-
-@media (min-width: 1024px) {
-    body.md-menu .hours-bar {
-    flex-direction: row;
-    justify-content: space-between;
-    }
-    body.md-menu .hours-bar div {
-    flex-direction: column;
-    justify-content: space-between;
-    /* background-color: antiquewhite; */
-    }
+body.md-menu .hours-bar div .section {
+    margin: 0;
+    overflow: visible;
 }
 
 
@@ -77,7 +124,7 @@ body.md-menu main.md-menu-wrapper {
     top: 0; */
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 200px auto;
+    grid-template-rows: 150px auto;
     column-gap: 2rem;
     row-gap: 0;
     pointer-events: auto;
@@ -89,13 +136,14 @@ body.md-menu main.md-menu-wrapper {
     grid-template-areas:
     "h"
     "l"
-    "c"
     "r"
     "s"
+    "c"
     ;
     /* background-color: aqua; */
 
 }
+
 
 @media (min-width: 768px) {
     :root {
@@ -109,6 +157,10 @@ body.md-menu main.md-menu-wrapper {
         "l s"
         "c s"
         ;
+        grid-template-rows: 250px auto;
+    }
+    body.md-menu .md-logo-wrapper a {
+    height: 36px;
     }
 }
 
@@ -123,16 +175,11 @@ body.md-menu main.md-menu-wrapper {
     }
 }
 
-body.md-menu main.md-menu-wrapper .menu__section {
-    /* background-color: gray; */
-    /* align-self: start; */
-    /* height: 200px; */
-    /* height: fit-content; */
-}
 
 body.md-menu main.md-menu-wrapper .menu__section.head {
     grid-area: h;
     justify-items: center;
+    padding-top: var(--mdMenuPadding);
     align-content: center;
 }
 
@@ -149,7 +196,7 @@ body.md-menu main.md-menu-wrapper .menu__section.center-group {
 }
 
 
-div section.menu-section {
+div section.section {
     --sectionborderThick: 4px solid black;
     --sectionPadding: 1rem;
     position: relative;
@@ -157,16 +204,16 @@ div section.menu-section {
     /* padding-bottom: var(--sectionPadding); */
 }
 
-.menu-section {
+.section:not(.hours) {
     --priceSize: calc(var(--textFontSize) * 2);
     margin-bottom: 4rem;
 }
 
-.menu-section__header {
+.section__header {
     position: relative;
 }
 
-.menu-section__title:NOT(.hours-bar .menu-section__title) {
+.section__title:NOT(.hours-bar .section__title) {
     font-size: var(--priceSize);
     font-variation-settings: "slnt" 0, "wdth" 100, "wght" 900;
     word-break: break-word;
@@ -174,34 +221,34 @@ div section.menu-section {
     margin-bottom: 1rem;
 }
 
-.menu-section h3 {
+.section h3 {
     /* font-size: var(--priceSize); */
     font-variation-settings: "slnt" 0, "wdth" 75, "wght" 600;
     /* margin-bottom: 1.5rem; */
 }
 
-.menu-section .dish {
+.section .dish {
     border-color: var(--cantinaGreen);
     margin-bottom: 1rem;
 }
 
-.menu-section .dish:first-of-type {
+.section .dish:first-of-type {
     border-top: var(--sectionborderThick);
     margin-top: 1rem;
     padding-top: 1rem;
 }
 
-.menu-section .dish:last-of-type {
+.section .dish:last-of-type {
     border-bottom: var(--sectionborderThick);
 }
 
-.menu-section__sub,
+.section__sub,
 .dish__wrapper {
     /* display: flex; */
     justify-content: space-between;
 }
 
-.menu-section__sub .menu-section__intro {
+.section__sub .section__intro {
     flex: 1;
 }
 
@@ -260,6 +307,7 @@ li.dish__choice--spicyveg::after {
 }
 
 .dish__extras {
+    padding-top: .25rem;
     color: var(--cantinaGreen);
 }
 

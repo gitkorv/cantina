@@ -1,5 +1,7 @@
 ---
 title: Dips
+sectionClass:
+ - dips
 basePrice: 
 intro:
 ---

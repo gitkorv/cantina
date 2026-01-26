@@ -54,46 +54,46 @@ async function loadMenu(mdFile, target) {
                 if (!v) return '';
 
                 if (cls === 'choice') {
-                const cleanValue = value.trim();
+                    const cleanValue = value.trim();
 
-                // Split into comma-separated items
-                const items = cleanValue
-                    .split(',')
-                    .map(v => v.trim())
-                    .filter(Boolean)
-                    .map(item => {
-                        // Match item text + any number of [classes] at the end
-                        const match = item.match(/^(.*?)\s*((\[[^\]]+\]\s*)+)$/);
-                        if (match) {
-                            const text = match[1].trim(); // The actual item text
-                            const classes = match[2]
-                                .match(/\[([^\]]+)\]/g) // extract all [tags]
-                                .map(c => `dish__choice--${c.replace(/\[|\]/g, '').trim().toLowerCase()}`)
-                                .join(' ');
-                            return `<li class="${classes}">${text}</li>`;
-                        }
-                        return `<li>${item}</li>`;
-                    });
+                    // Split into comma-separated items
+                    const items = cleanValue
+                        .split(',')
+                        .map(v => v.trim())
+                        .filter(Boolean)
+                        .map(item => {
+                            // Match item text + any number of [classes] at the end
+                            const match = item.match(/^(.*?)\s*((\[[^\]]+\]\s*)+)$/);
+                            if (match) {
+                                const text = match[1].trim(); // The actual item text
+                                const classes = match[2]
+                                    .match(/\[([^\]]+)\]/g) // extract all [tags]
+                                    .map(c => `dish__choice--${c.replace(/\[|\]/g, '').trim().toLowerCase()}`)
+                                    .join(' ');
+                                return `<li class="${classes}">${text}</li>`;
+                            }
+                            return `<li>${item}</li>`;
+                        });
 
-                if (!items.length) return '';
+                    if (!items.length) return '';
 
-                return `<h3 class="dish__choice"><ul>${items.join('')}</ul></h3>`;
-}
+                    return `<h3 class="dish__choice"><ul>${items.join('')}</ul></h3>`;
+                }
 
 
                 if (cls === 'price') {
-    // Split the value into words and wrap each in a span
-    const words = v.split(' ').map(w => {
-        // Check if the word is a number
-        if (!isNaN(w)) {
-            return `<span class="price-number">${w}</span>`;
-        }
-        return `<span>${w}</span>`;
-    }).join(' ');
+                    // Split the value into words and wrap each in a span
+                    const words = v.split(' ').map(w => {
+                        // Check if the word is a number
+                        if (!isNaN(w)) {
+                            return `<span class="price-number">${w}</span>`;
+                        }
+                        return `<span>${w}</span>`;
+                    }).join(' ');
 
-    priceDivs.push(`<li class="dish__price">${words}<span class="kronor">kr</span></li>`);
-    return '';
-}
+                    priceDivs.push(`<li class="dish__price">${words}<span class="kronor">kr</span></li>`);
+                    return '';
+                }
 
                 if (cls === 'pricesub') {
                     priceDivs.push(`<li class="dish__price dish__price--sub">${v}</li>`);
@@ -113,56 +113,65 @@ async function loadMenu(mdFile, target) {
         }
     );
 
-        // --- before building sectionHeader ---
-        const basePrices = Array.isArray(data.basePrice)
+    // --- before building sectionHeader ---
+    const basePrices = Array.isArray(data.basePrice)
         ? data.basePrice.filter(p => String(p).trim() !== '')
         : data.basePrice
             ? [data.basePrice]
             : [];
 
-        // --- now build the section header ---
-        const sectionHeader = `
-        <section class="menu-section">
-        <div class="menu-section__header">
-            <h2 class="menu-section__title">${data.title ?? ''}</h2>
-            <div class="menu-section__sub">
-            ${data.intro?.length
-                ? `<ul class="menu-section__intro">${data.intro.map(i => `<li>${i}</li>`).join('')}</ul>`
-                : ''
-            }
-            ${data.choice?.length
-                ? `<ul class="menu-section__choice">${data.choice.map(i => `<li>${i}</li>`).join('')}</ul>`
-                : ''
-            }
-            </div>
+    // --- now build the section header ---
+    const sectionClasses = Array.isArray(data.sectionClass)
+        ? data.sectionClass
+        : data.sectionClass
+            ? [data.sectionClass]
+            : [];
+
+    const sectionClassString = sectionClasses
+        .map(c => c.trim())
+        .filter(Boolean)
+        .join(' ');
+
+    // Use directly
+    const sectionHeader = `
+    <section class="section ${sectionClassString}">
+
+    <div class="section__header">
+        <h2 class="section__title">${data.title ?? ''}</h2>
+        <div class="section__sub">
+        ${data.intro?.length
+            ? `<ul class="section__intro">${data.intro.map(i => `<li>${i}</li>`).join('')}</ul>`
+            : ''
+        }
         </div>
+    </div>
 
         ${html}
 
         ${basePrices.length
-    ? `
-    <div>
-    <ul class="price menu-section__sectionprices">
-        ${basePrices.map(p => {
-            // Split the value into words
-            const words = String(p)
-                .split(' ')
-                .map(w => {
-                    // If the word is a number, add class price-number
-                    if (!isNaN(w)) return `<span class="price-number">${w}</span>`;
-                    return `<span>${w}</span>`;
-                })
-                .join(' ');
+            ? `
+        <div>
+        <ul class="price section__sectionprices">
+            ${basePrices.map(p => {
+                // Split the value into words
+                const words = String(p)
+                    .split(' ')
+                    .map(w => {
+                        // If the word is a number, add class price-number
+                        if (!isNaN(w)) return `<span class="price-number">${w}</span>`;
+                        return `<span>${w}</span>`;
+                    })
+                    .join(' ');
 
                 // Add kr only if the item contains a number
                 const hasNumber = /\d/.test(p);
-                return `<li class="menu-section__sectionprice">${words}${hasNumber ? '<span class="kronor">kr</span>' : ''}</li>`;
+                return `<li class="section__sectionprice">${words}${hasNumber ? '<span class="kronor">kr</span>' : ''}</li>`;
             }).join('')}
-        </ul>
-    </div>
-    `
-    : ''
-}
+            </ul>
+        </div>
+        `
+            : ''
+        }
         </section>
         `;
 
@@ -220,20 +229,29 @@ function parseTitleAndClasses(rawTitle, prefix = '') {
 function parseFrontMatter(md) {
     const match = md.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
     if (!match) return { data: {}, content: md };
+
     const [, yaml, content] = match;
     const data = {};
+
     yaml.split('\n').forEach(line => {
         if (!line.trim()) return;
+
         if (line.trim().startsWith('-')) {
             const lastKey = Object.keys(data).slice(-1)[0];
+            if (!Array.isArray(data[lastKey])) {
+                data[lastKey] = data[lastKey] ? [data[lastKey]] : [];
+            }
             data[lastKey].push(line.replace('-', '').trim());
             return;
         }
+
         const [key, value] = line.split(':').map(s => s.trim());
         data[key] = value === '' ? [] : value;
     });
+
     return { data, content };
 }
+
 
 window.addEventListener('resize', () => {
     topBarMargin()

@@ -1,5 +1,7 @@
 ---
 title: Sand&shy;wiches
+sectionClass:
+ - sand
 basePrice:
 intro:
  - Alla mackor serveras med ranchdressing

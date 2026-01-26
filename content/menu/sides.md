@@ -1,5 +1,7 @@
 ---
 title: Fries n Sides
+sectionClass:
+ - sides
 basePrice:
 intro:
 ---

@@ -1,5 +1,7 @@
 ---
 title: Ramen
+sectionClass:
+ - ramen
 basePrice: 
 choice: 
 intro:

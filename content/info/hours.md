@@ -1,9 +1,10 @@
 ---
-title:
+title: Öppettider
+sectionClass:
+ - hours
 basePrice: 
 intro:
- - Öppettider:
- - Monday: 11–15
+ - Måndag: 11–15
  - Tisdag: 11–10
  - Onsdag: 11–10
  - Torsdag: 11–11

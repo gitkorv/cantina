@@ -1,5 +1,7 @@
 ---
 title: Snacks n Nibbles
+sectionClass:
+ - snacks
 basePrice:
 intro:
 

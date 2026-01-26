@@ -1,5 +1,7 @@
 ---
 title: Poké&shy;noodles
+sectionClass:
+ - poke
 basePrice: 
 intro:
  - Kimchisallad, mango-salsa, picklad rödkål, isbergssallad
