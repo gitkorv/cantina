@@ -2,6 +2,7 @@
 title: Bao Buns
 sectionClass:
  - bao
+ - lunch-special
 basePrice: 
 intro: 
  - Ångade baobröd med asiatisk kålsallad & srirachamajonnäs 
@@ -13,7 +14,8 @@ intro:
 **Extras**
 **choice** Fried Halloumi [spicyveg], Fried Chicken Hot Sauce [spicy], Hoisin Duck [spicy], Porkbelly [spicy]
 **Price** 189
-**PriceSub** /st
+**Price** /st
+**PriceSub** Lunch Erbjudande 149kr/st
 
 ---
 

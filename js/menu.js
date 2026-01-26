@@ -9,8 +9,6 @@ const menuFiles = [
     '/content/menu/kids.md',
     '/content/menu/sweets.md',
     '/content/menu/dips.md',
-    '/content/info/hours.md',
-    '/content/info/lunch-hours.md',
 ];
 
 let allPrices = [];
@@ -256,3 +254,39 @@ function parseFrontMatter(md) {
 window.addEventListener('resize', () => {
     topBarMargin()
 })
+
+
+// ==========================
+    // Opening Hours
+// ==========================
+
+async function loadHours(mdFile, target) {
+    const container = document.querySelector(target);
+    if (!container) return;
+
+    const res = await fetch(mdFile);
+    const raw = await res.text();
+
+    const html = raw
+        .split('\n')
+        .map(line => line.trim())
+        .filter(Boolean)
+        .map(line => {
+            const [day, time] = line.split(':').map(s => s.trim());
+            if (!day || !time) return '';
+
+            return `
+                <div class="day-item">
+                    <span class="day-item__day">${day}</span>
+                    <span class="day-item__time">${time}</span>
+                </div>
+            `;
+        })
+        .join('');
+
+    container.innerHTML = html;
+}
+
+loadHours('/content/info/hours.md', '#hours-wrapper');
+loadHours('/content/info/lunch-hours.md', '#lunch-hours-wrapper');
+

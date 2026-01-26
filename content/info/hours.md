@@ -1,14 +1,7 @@
----
-title: Öppettider
-sectionClass:
- - hours
-basePrice: 
-intro:
- - Måndag: 11–15
- - Tisdag: 11–10
- - Onsdag: 11–10
- - Torsdag: 11–11
- - Fredag: 11–03
- - Lördag: 11–03
- - Söndag: Stängt
----
+Måndag: Stängt
+Tisdag: 11–22
+Onsdag: 11–22
+Torsdag: 11–22
+Fredag: 11–03
+Lördag: 12–03
+Söndag: Stängt

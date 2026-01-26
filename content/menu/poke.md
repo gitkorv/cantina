@@ -2,6 +2,7 @@
 title: Poké&shy;noodles
 sectionClass:
  - poke
+  - lunch-special
 basePrice: 
 intro:
  - Kimchisallad, mango-salsa, picklad rödkål, isbergssallad

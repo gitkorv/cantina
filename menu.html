@@ -21,16 +21,23 @@
 <body class="md-menu">
 
     <div class="hours-bar">
-        <div id="hours-wrapper" class="hours-item hours"></div>
+        <div class="hours-bar__start">
+            Lunch:
+            <div id="lunch-hours-wrapper" class="hours-item lunch-hours">
 
-        <div id="lunch-hours-wrapper" class="hours-item lunch-hours"></div>
-        <div class="md-logo-wrapper">
+            </div>
+
+        </div>
+        <div class="hours-bar__logo-wrapper">
             <a href="http://cantinastreet.com">
-                <div class="hours-item hours-logo"></div>
+                <img class="hours-bar__logo" src="/img/cantina-logo-cropped.png" alt="" srcset="">
             </a>
-            
         </div>
 
+        <div class="hours-bar__end">
+            Öppettider:
+            <div id="hours-wrapper" class="hours-item hours"></div>
+        </div>
     </div>
 
 
@@ -58,8 +65,9 @@
 
         </div>
         <div class="menu__section side-group">
-            <div id="dips-wrapper" class="dips"></div>
             <div id="sides-wrapper" class="sides"></div>
+            <div id="dips-wrapper" class="dips"></div>
+
             <div id="sweets-wrapper" class="sweets"></div>
         </div>
     </main>

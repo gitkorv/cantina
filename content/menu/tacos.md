@@ -2,6 +2,7 @@
 title: Tacos
 sectionClass:
   - tacos
+  - lunch-special
 basePrice:
 intro:
   - Alla tacos serveras i mjuka majstortilla med koriander & lime
@@ -54,5 +55,6 @@ chipotle crema
 **Extras**
 **Price** 2st 179
 **Price** Extra Taco 79
+**PriceSub** Lunch Special 2st 149kr
 
 ---
