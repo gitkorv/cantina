@@ -1,5 +1,5 @@
 Måndag: Stängt
-Tisdag: 11–22
+Tisdag: 11–21
 Onsdag: 11–22
 Torsdag: 11–22
 Fredag: 11–03
