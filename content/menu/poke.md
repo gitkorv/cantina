@@ -5,7 +5,7 @@ sectionClass:
   - lunch-special
 basePrice: 
 intro:
- - Kimchisallad, mango-salsa, picklad rödkål, isbergssallad
+ - Risnudlar, gröna bönor, Kimchisallad, mango-salsa, picklad rödkål, isbergssallad
 ---
 
 ### Välj på [choice]

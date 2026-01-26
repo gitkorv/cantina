@@ -26,7 +26,7 @@ intro:
 
 ### Hot Tuna Melt  [spicy]
 
-**Description** Tonfisk, majs, majonnäs, sriracha, mozzarella & cheddarost
+**Description** Levainbröd, tonfisk, majs, majonnäs, sriracha, mozzarella & cheddarost
 **Extras** 
 **Price** 159
 
@@ -49,19 +49,4 @@ intro:
 
 ---
 
-### Loaded Doritos  [veg]
-
-**Description** Doritos, ostsås, pico de gallo, jalapeños
-**Extras** Add tacofärs or birria 30kr
-**Price** 119 
-
----
-
-### Spicy Chicken Taquitos [spicy]
-
-**Description** Tortillabröd, het kyckling, ost
-**Extras** 
-**Price** 79 
-
----
 
