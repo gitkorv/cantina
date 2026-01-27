@@ -452,8 +452,6 @@ ul.price {
     color: var(--cantinaRosa);
 }
 
-ul.price li:first-child {}
-
 ul.price>li:first-child>span.price-number {
     font-size: 1.5em;
 }
