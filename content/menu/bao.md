@@ -12,7 +12,7 @@ intro:
 **Description**
 **Extras**
 **choice** Fried Halloumi [spicyveg], Fried Chicken Hot Sauce [spicy], Hoisin Duck [spicy], Porkbelly [spicy]
-**Price** 189
+**Price** 89
 **Price** /st
 
 ---
