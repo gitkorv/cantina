@@ -807,6 +807,8 @@ section.home {
     --menuAddExtraColor: var(--cantinaGreen);
     --menuPriceColor: var(--cantinaGreen);
     --menuListColor: black;
+    --menuTextMargin: 0.5rem;
+    --menuItemBG: var(--cantinaCream);
     position: absolute;
     top: 0;
     left: 0;
@@ -875,8 +877,9 @@ section.home {
     gap: calc(var(--bodyPadding) / 2);
     margin-top: 48px;
     font-size: 1.3rem;
-    line-height: 1.3rem;
+    /* line-height: 1.3rem; */
     /* width:; */
+    overflow: visible;
 }
 
 
@@ -884,10 +887,10 @@ section.home {
     list-style: none;
 }
 
-.menu-section article {
-    position: relative;
-    background-color: var(--cantinaCream);
-    padding: var(--bodyPaddingQuarter);
+.menu-section .menu-section__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--menuTextMargin);
 }
 
 .menu-section .section__title {
@@ -903,19 +906,37 @@ section.home {
     word-break: normal;
 }
 
+.menu-section .section__intro {
+    color: var(--menuItemBG);
+    color: black;
+}
+
+.menu-section article {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--menuTextMargin);
+    background-color: var(--menuItemBG);
+    padding: var(--bodyPaddingQuarter);
+}
+
+
 .menu-section article h3 {
-    font-size: calc(var(--textFontSize) * 1.8);
-    line-height: 1.5rem;
+    font-size: calc(var(--textFontSize) * 1.3);
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 600;
     overflow: visible;
     color: var(--menuDishHeadColor);
     hyphens: auto;
     overflow-wrap: break-word;
     word-break: normal;
-    padding-right: 40px;
+    /* padding-right: 40px; */
+    /* margin-bottom: var(--menuTextMargin); */
 }
 .menu-section article .dish__fields {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--menuTextMargin);
     /* font-size: 1.3rem;
     line-height: 1.3rem; */
 }
@@ -923,6 +944,7 @@ section.home {
 .menu-section article .dish__fields .dish__description,
 .menu-section .section__intro {
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 500;
+    max-width: 50%;
 }
 
 .menu-section article .dish__fields .dish__extras {
@@ -930,9 +952,39 @@ section.home {
     color: var(--menuAddExtraColor);
 }
 
-.menu-section article .price {
+article.dish--choice {
+    gap: 0;
+}
+
+article.dish--choice>h3 {
+    color: black;
+    font-size: var(--textFontSize)
+    line-height: 1;
+}
+
+.menu-section article .dish__fields .dish__choice ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--menuTextMargin);
+}
+
+.menu-section article .dish__fields .dish__choice ul li::before {
+    content: " ☞ ";
+    position: relative;
+    margin: 0 0.25rem;
+    line-height: 0;
+    font-size: var(--textFontSize);
+    color: var(--cantinaLila);
+    width: 1rem;
+}
+.menu-section article .dish__fields .dish__choice ul li:first-child:before {
+    margin: 0 0.25rem 0 0;
+}
+
+.menu-section .price {
     position: absolute;
     display: flex;
+    gap: var(--menuTextMargin);
     flex-direction: column;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
@@ -947,6 +999,51 @@ section.home {
     pointer-events: none;
     /* background-color: aqua; */
 }
+
+.menu-section .price.section__sectionprices {
+    position: absolute;
+    /* top: -8px; */
+    /* transform: translateY(10%); */
+    /* right: var(--bodyPadding); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 10rem;
+    /* justify-content: end; */
+    /* background-color: #33a58e; */
+}
+
+.menu-section .price.section__sectionprices li {
+    text-align: center;
+}
+
+article.dish h3::after,
+article.dish--choice .dish__choice li::after {
+    position: relative;
+    bottom: 2px;
+    font-size: var(--textFontSize);
+    margin-left: .25rem;
+    line-height: 0;
+    font-size: var(--symbolSize);
+}
+
+article.dish--veg h3::after,
+article.dish--choice .dish__choice li.dish__choice--veg::after {
+    content: "🥦";
+}
+article.dish--spicy h3::after,
+article.dish--choice .dish__choice li.dish__choice--spicy::after {
+    content: "🌶";
+}
+article.dish--choice .dish__choice li.dish__choice--spicyveg::after {
+    content: "🌶 🥦";
+}
+
+.menu____dish-head.long-head {
+    padding-right: calc(var(--bodyPadding) * 3.5);
+}
+
+
 
 /* MENU CATHEGORIES */
 

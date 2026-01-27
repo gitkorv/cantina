@@ -11,7 +11,7 @@ intro:
 
 ---
 
-### Välj på [choice]
+### Välj på: [choice]
 
 **Description** 
 **Extras** 

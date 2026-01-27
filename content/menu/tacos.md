@@ -23,7 +23,7 @@ intro:
 **Description** Friterade Vannameiräkor, mangosalsa, kålsallad, 
 sriracha­majonnäs
 **Extras** 
-**Price**
+**Price** 
 
 ---
 
