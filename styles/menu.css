@@ -484,6 +484,6 @@ ul.price span.kronor {
 .md-skull img {
     align-self: flex-end;
     justify-self: end;
-    max-width: 300px;
+    max-width: 200px;
     /* background-color: aqua; */
 }
