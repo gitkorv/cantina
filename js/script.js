@@ -153,7 +153,7 @@ const tickerItems = [
         text: "Valfri Ramen, dagens Taco eller valfri Pokénoodles. 11-15 Tisdag till Fredag"
     },
     {
-        head: "Full meny från kl 12",
+        head: "Full meny från kl 11",
         text: "Välj och vraka, kaffe ingår under lunchen."
     },
     {

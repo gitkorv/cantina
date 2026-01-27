@@ -799,81 +799,6 @@ section.home {
 }
 
 
-
-/* --> mdMENU <---------- */
-.menu-section {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--bodyPadding) / 2);
-    /* width:; */
-}
-
-
-.menu-section li {
-    list-style: none;
-}
-
-.menu-section article {
-    position: relative;
-    background-color: var(--cantinaCream);
-    padding: var(--bodyPaddingQuarter);
-}
-
-.menu-section .section__title {
-    width: 100%;
-    position: relative;
-    font-size: var(--menuCatHead);
-    line-height: 2.5rem;
-    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 900;
-    transition: font-variation-settings 1s ease-in-out;
-    color: var(--cantinaLila);
-    hyphens: auto;
-    overflow-wrap: break-word;
-    word-break: normal;
-}
-
-.menu-section article h3 {
-    font-size: calc(var(--textFontSize) * 1.8);
-    line-height: 1.5rem;
-    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 600;
-    overflow: visible;
-    color: var(--menuDishHeadColor);
-    hyphens: auto;
-    overflow-wrap: break-word;
-    word-break: normal;
-    padding-right: 40px;
-}
-
-.menu-section article .dish__fields .dish__description {
-    position: relative;
-    font-size: 1.3rem;
-    line-height: 1.3rem;
-    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 500;
-}
-
-.menu-section article .price {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    font-family: "ltr-ncnd-variable", sans-serif;
-    font-variation-settings: "wght" 600;
-    right: var(--textFontSizeSmall);
-    top: var(--textFontSizeSmall);
-    /* color: var(--menuPriceColor); */
-    /* text-shadow: var(--cantinaLila) 2px 2px 2px; */
-    /* background-color: #72808a; */
-    text-align: right;
-    width: fit-content;
-    z-index: 100;
-    pointer-events: none;
-    /* background-color: aqua; */
-}
-
-
-
-
-
 /* --> MENU <---------- */
 
 .menu-wrapper {
@@ -935,6 +860,92 @@ section.home {
     height: var(--food-menu-full-height, 50px);
     background-color: var(--cantinaRosa);
     z-index: -100;
+}
+
+
+/*  =================== */
+    /* --> mdMENU <---------- */
+/*  =================== */
+
+
+.menu-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--bodyPadding) / 2);
+    margin-top: 48px;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    /* width:; */
+}
+
+
+.menu-section li {
+    list-style: none;
+}
+
+.menu-section article {
+    position: relative;
+    background-color: var(--cantinaCream);
+    padding: var(--bodyPaddingQuarter);
+}
+
+.menu-section .section__title {
+    width: 100%;
+    position: relative;
+    font-size: var(--menuCatHead);
+    line-height: 2.5rem;
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 900;
+    transition: font-variation-settings 1s ease-in-out;
+    color: var(--cantinaLila);
+    hyphens: auto;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+.menu-section article h3 {
+    font-size: calc(var(--textFontSize) * 1.8);
+    line-height: 1.5rem;
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 600;
+    overflow: visible;
+    color: var(--menuDishHeadColor);
+    hyphens: auto;
+    overflow-wrap: break-word;
+    word-break: normal;
+    padding-right: 40px;
+}
+.menu-section article .dish__fields {
+    position: relative;
+    /* font-size: 1.3rem;
+    line-height: 1.3rem; */
+}
+
+.menu-section article .dish__fields .dish__description,
+.menu-section .section__intro {
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 500;
+}
+
+.menu-section article .dish__fields .dish__extras {
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 400;
+    color: var(--menuAddExtraColor);
+}
+
+.menu-section article .price {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-family: "ltr-ncnd-variable", sans-serif;
+    font-variation-settings: "wght" 600;
+    right: var(--textFontSizeSmall);
+    top: var(--textFontSizeSmall);
+    /* color: var(--menuPriceColor); */
+    /* text-shadow: var(--cantinaLila) 2px 2px 2px; */
+    /* background-color: #72808a; */
+    text-align: right;
+    width: fit-content;
+    z-index: 100;
+    pointer-events: none;
+    /* background-color: aqua; */
 }
 
 /* MENU CATHEGORIES */

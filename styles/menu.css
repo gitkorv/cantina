@@ -338,7 +338,7 @@ section.section {
     padding-top: 1rem;
 }
 
-.section .dish:last-of-type {
+.section>*:last-of-type {
     border-bottom: var(--sectionborderThick);
 }
 
