@@ -26,6 +26,7 @@
     --text-lineHeight: 0.9;
     --textFontSizeSmall: calc(var(--textFontSize) * 0.5);
     --extraPagesHeadline: 3rem;
+    --symbolSize: calc(var(--textFontSize) * 0.75);
 
     --logoWrapperFlexVal: 0.65;
 
@@ -802,6 +803,11 @@ section.home {
 /* --> MENU <---------- */
 
 .menu-wrapper {
+    --menuTextColor: black;
+    --menuDishHeadColor: var(--cantinaLila);
+    --menuAddExtraColor: var(--cantinaGreen);
+    --menuPriceColor: var(--cantinaGreen);
+    --menuListColor: black;
     position: absolute;
     top: 0;
     left: 0;
@@ -814,6 +820,7 @@ section.home {
     /* pointer-events: unset; */
     /* pointer-events: none; */
     /* z-index: -10; */
+    color: var(--menuTextColor);
 }
 
 .menu-content-scroller {
@@ -915,7 +922,7 @@ section.home {
     position: relative;
     display: block;
     width: 80%;
-    background-color: var(--cantinaGreen);
+    background-color: var(--logoColor);
     /* margin-right: 8px; */
     padding: 16px 8px 8px 8px;
     overflow-x: visible;
@@ -931,20 +938,53 @@ section.home {
     overflow: visible;
     padding-bottom: 8px;
 
-    color: var(--bgColor);
+    color: var(--menuDishHeadColor);
     hyphens: auto;
     overflow-wrap: break-word;
     /* or word-wrap */
     word-break: normal;
 }
 
-.menu____dish-head.long-head {
-    padding-right: calc(var(--bodyPadding) * 3.5);
+.menu____dish-head.choice {
+    display: flex;
+    /* gap: 5rem; */
+    font-size: 1.3rem;
 }
 
-.menu-cat--tacos .menu____dish-head {
+.menu____dish-head.choice .choice::after {
+    content: " ☞ ";
+    position: relative;
+    margin-right: 0.25rem;
+    line-height: 0;
+    transform: translateY(8px);
+    /* left: 0; */
+    /* top: 0.25em; */
     color: var(--cantinaLila);
-    color: black;
+    width: 1rem;
+}
+.menu____dish-head::after,
+.menu____dish__text--dish-head::after {
+    font-size: var(--textFontSize);
+    margin-left: .5rem;
+    line-height: 0;
+    font-size: var(--symbolSize);
+}
+
+.menu____dish-head.veg::after,
+.menu____dish__text--dish-head.veg::after {
+    content: "🥦";
+}
+.menu____dish-head.spicy::after,
+.menu____dish__text--dish-head.spicy::after {
+    content: "🌶";
+}
+.menu____dish-head.spicy.veg::after,
+.menu____dish__text--dish-head.spicy.veg::after {
+    content: "🌶 🥦";
+}
+
+.menu____dish-head.long-head {
+    padding-right: calc(var(--bodyPadding) * 3.5);
 }
 
 /* --> Menu Prices <-- */
@@ -956,7 +996,7 @@ section.home {
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
     right: var(--textFontSizeSmall);
-    color: var(--logoColor);
+    color: var(--menuPriceColor);
     text-shadow: var(--cantinaLila) 2px 2px 2px;
     /* background-color: #72808a; */
     text-align: right;
@@ -968,6 +1008,13 @@ section.home {
 .menu____dish-price--big {
     font-size: calc(var(--bodyPadding) * 1.75);
     /* line-height: 1.5rem; */
+}
+
+.menu__cat-wrapper[data-item-price="grouped"] .menu__cat__dishes-wrapper>div:first-child>div:first-child h3:first-child,
+.menu__cat-wrapper[data-item-price="grouped"] .menu__cat__dishes-wrapper>div:first-child>div:first-child li:first-child,
+.menu__cat-wrapper[data-item-price="grouped"] .menu__cat__dishes-wrapper>div:first-child>div:first-child div:first-child {
+   padding-right: 80px;
+   /* border: 1px solid red; */
 }
 
 .menu____dish-price--prewrap {
@@ -1042,13 +1089,15 @@ div.menu__cat-wrapper[data-menu-cat="tacos"] .dish-price--flex-item:nth-child(1)
     padding-top: 4px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
-    color: var(--logoColor);
+    color: var(--menuAddExtraColor);
 }
 
 .menu____dish__text--intro {
     padding-right: 24px;
     color: var(--bgColor);
     width: fit-content;
+    width: 100%;
+    padding-right: 64px;
 }
 
 [data-menu-cat="bao"] .menu____dish__text--intro {
@@ -1068,22 +1117,16 @@ div.menu__cat-wrapper[data-menu-cat="tacos"] .dish-price--flex-item:nth-child(1)
 /* Dotted Menu Items */
 
 .menu____dish__text--indent {
-    color: var(--bgColor);
+    color: var(--menuListColor);
     padding-left: 8px;
 }
 
-/* .menu____dish__text--indent:nth-child(odd) {
-    color: var(--cantinaGrey);
-} */
-
-[data-menu-cat="bao"] ul li {
-    color: var(--cantinaCream);
-}
 
 .menu____dish__text--indent::before {
-    content: "•";
-    position: absolute;
-    left: 0;
+    content: "☞ ";
+    position: relative;
+    margin-right: 0.25rem;
+    /* left: 0; */
     /* top: 0.25em; */
     color: var(--cantinaLila);
     width: 1rem;
@@ -1147,7 +1190,7 @@ div.menu__cat-wrapper[data-menu-cat="tacos"] .dish-price--flex-item:nth-child(1)
     /* letter-spacing: -1px; */
     font-family: var(--fontCantina);
     font-variation-settings: "wght" 600;
-    font-variation-settings: "slnt" 0, "wdth" 100, "wght" 400;
+    font-variation-settings: "slnt" 0, "wdth" 75, "wght" 400;
     transition: all .15s ease-in-out;
     /* z-index: 1000; */
     /* pointer-events: all; */

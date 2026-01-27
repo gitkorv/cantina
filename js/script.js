@@ -447,7 +447,7 @@ function setheightAndWidthForFoodMenuContents(menuContent) {
     menuContent.style.height = 'auto';
 
     // --- FIX 1: measure first ---
-    const foodMenuContentHeight = menuContent.scrollHeight;
+    const foodMenuContentHeight = menuContent.scrollHeight + 100;
 
     // restore
     menuContent.style.height = prevHeight;
@@ -779,7 +779,7 @@ window.addEventListener('resize', e => {
 })
 
 
-// openMenu()
+openMenu()
 
 function resizeElements() {
     windowWidth = window.innerWidth;
