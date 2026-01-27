@@ -779,7 +779,7 @@ window.addEventListener('resize', e => {
 })
 
 
-openMenu()
+// openMenu()
 
 function resizeElements() {
     windowWidth = window.innerWidth;
