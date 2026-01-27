@@ -465,11 +465,10 @@ ul.price span.kronor {
     grid-area: b;
     display: flex;
     align-items: start;
-    justify-content: end;
-    width: 100%;
-    /* max-width: 300px; */
-    justify-self: end;
-    /* background-color: aqua; */
+    justify-content: start;
+    width: fit-content;
+    justify-self: center;
+    background-color: aqua;
 
 }
 
@@ -482,8 +481,8 @@ ul.price span.kronor {
     font-variation-settings: "slnt" 0, "wdth" 10, "wght" 600;
 }
 .md-skull img {
-    align-self: flex-end;
-    justify-self: end;
-    max-width: 300px;
+    /* align-self: flex-end; */
+    /* justify-self: end; */
+    max-width: 100%;
     /* background-color: aqua; */
 }
