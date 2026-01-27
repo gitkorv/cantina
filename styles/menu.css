@@ -467,7 +467,7 @@ ul.price span.kronor {
     align-items: start;
     justify-content: end;
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
     justify-self: end;
     /* background-color: aqua; */
 
@@ -484,6 +484,6 @@ ul.price span.kronor {
 .md-skull img {
     align-self: flex-end;
     justify-self: end;
-    max-width: 200px;
+    max-width: 300px;
     /* background-color: aqua; */
 }
