@@ -468,7 +468,7 @@ ul.price span.kronor {
     justify-content: start;
     width: fit-content;
     justify-self: center;
-    background-color: aqua;
+    /* background-color: aqua; */
 
 }
 
