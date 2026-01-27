@@ -1,0 +1,1 @@
+Tisdag – Fredag: 11–15
