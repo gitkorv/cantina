@@ -4,6 +4,8 @@ sectionClass:
  - ramen
  - lunch-special
 basePrice: 
+ - 189
+ - Lunch Special 149
 choice: 
 intro:
 
@@ -47,8 +49,7 @@ intro:
 **Description** Tare, chiliolja, grönsaks-buljong, salladslök, pak 
 choy, menma, nori tofu-blandning (tofu, Anammafärs & majs)
 **Extras**
-**Price** 189
-**PriceSub** Lunch Special 149kr
+
 
 ---
 

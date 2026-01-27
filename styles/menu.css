@@ -201,7 +201,7 @@ body.md-menu main.md-menu-wrapper .menu__section.center-group {
 
 
 
-section.lunch-special .dish__price--sub:before {
+section.lunch-special .price li:last-child:before {
     content: "Wow!";
     position: absolute;
     display: flex;
@@ -228,7 +228,7 @@ section.lunch-special .dish__price--sub:before {
     }
 }
 
-section.lunch-special .dish__price--sub {
+section.lunch-special .price li:last-child {
     color: var(--cantinaGreen);
     animation: blink 6s linear infinite alternate;
 }
@@ -338,7 +338,7 @@ section.section {
     padding-top: 1rem;
 }
 
-.section>*:last-of-type {
+.section:last-child {
     border-bottom: var(--sectionborderThick);
 }
 
@@ -450,6 +450,7 @@ ul.price {
     list-style: none;
     margin-left: 1rem;
     color: var(--cantinaRosa);
+    padding-bottom: .5rem;
 }
 
 ul.price>li:first-child>span.price-number {
@@ -467,7 +468,7 @@ ul.price span.kronor {
     align-items: start;
     justify-content: end;
     width: 100%;
-    max-width: 400px;
+    /* max-width: 300px; */
     justify-self: end;
     /* background-color: aqua; */
 
