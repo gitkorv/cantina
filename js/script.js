@@ -455,58 +455,7 @@ document.addEventListener('DOMContentLoaded', hideOpeningDaysBeforeCutoff);
 let btnPressTransTime = parseFloat(getComputedStyle(menuOpBtn).transitionDuration) * 100;
 
 
-const menuCatMap = {};
 
-// Build the mapping
-document.querySelectorAll(".menu__cat-wrapper").forEach(head => {
-    const dataMenuCat = head.dataset.menuCat;
-    const wrapper = head.closest(".menu__cat-wrapper");
-
-    if (wrapper && dataMenuCat) {
-        menuCatMap[dataMenuCat] = wrapper;
-    }
-});
-
-// Get transition time
-const menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
-
-menuSecBtnsAll.forEach(btn => {
-    btn.addEventListener("click", e => {
-        const clickedBtn = e.currentTarget;
-
-        // Remove pressed/active from all
-        menuSecBtnsAll.forEach(b => b.classList.remove("pressed", "active", "hover"));
-        clickedBtn.classList.add("pressed");
-
-        // Get the data-menu-cat of this button
-        const targetCat = clickedBtn.dataset.menuCat;
-
-        setTimeout(() => {
-            const targetSection = menuCatMap[targetCat];
-
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                    inline: "nearest"
-                });
-            } else {
-                console.warn("No matching section for data-menu-cat:", targetCat);
-            }
-        }, menuTransTime * 0.75);
-
-        setTimeout(() => {
-            clickedBtn.classList.remove("pressed");
-            clickedBtn.classList.add("active");
-        }, 200);
-
-        setTimeout(() => {
-            menuSectionTitles.forEach(catHead => {
-                makeFunkyMenuCategoryHeads(catHead);
-            });
-        }, menuTransTime - 100);
-    });
-});
 
 // Menu Btns
 
@@ -528,23 +477,11 @@ menuOpBtn.addEventListener("click", e => {
         closeMenu();
         console.log("here");
     }
-
     // You were trying to remove "active, pressed" here with a typo
     // If you want to reset pressed/active, do it consistently:
     menuOpBtn.classList.add("pressed");
-    // setTimeout(() => {
-    //     clickedBtn.classList.remove("pressed");
-    //     clickedBtn.classList.add("active");
-    // }, 200);
 });
 
-// menuWrapper.addEventListener('click', e => {
-//     console.log("meny wrapper is clicked", e.target);
-//     if (!e.target.matches(".menu-wrapper")) {
-//         return; // Ignore this click
-//     }
-//     // closeMenu()
-// })
 
 
 const MENU_TRANSITION_DELAY = 150;
@@ -682,146 +619,10 @@ function formDrips() {
 window.addEventListener('resize', e => {
     closeMenu()
     windowWidth = window.innerWidth;
-    setheightAndWidthForFoodMenuContents(menuContent)
     setWidthForHours()
 
 })
-
-
 openMenu()
-
-function resizeElements() {
-    windowWidth = window.innerWidth;
-    menuBtnWrapperWidth = menuBtnWrapper.getBoundingClientRect().left;
-    // Set width for menu
-    // console.log(menuWrapper.style.left);
-    menuBgWidth = menuBtnWrapperWidth - menuContent.getBoundingClientRect().left;
-
-    // setWidthToMatchMenuBg(menuBgWidth)
-    // if (windowWidth > 767) {
-    //     openingHoursWrapper.style.top = rootDocPadding + "px";
-    // } else {
-    //     openingHoursWrapper.style.top = bottomOFClubBtn + rootDocPadding + "px";
-    // }
-
-}
-
-// function setWidthToMatchMenuBg(menuBgWidth) {
-//     menuContent.style.width = menuBgWidth + "px";
-//     menuContentBg.style.width = menuBgWidth - menuBgGap + "px";
-//     menuContentBorder.style.width = menuBgWidth - menuBgGap + "px";
-
-//     menuWidthElements.forEach(content => {
-//         content.style.width = menuBgWidth - menuBgGap - cssVarfoodMenuPaddingInner * 2 + "px";
-//     })
-
-// }
-
-
-// Create observer for menu categories
-
-const menuCatObserverOptions = {
-    root: menuContentScroller,
-    rootMargin: "-25% 0px -75% 0px",
-    threshold: 0
-};
-
-const menuCatObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const target = entry.target;
-
-        if (entry.isIntersecting) {
-            // The section is in view
-            // console.log("Section visible:", target);
-
-            const id = target.dataset.menuCat;
-            if (id) {
-                // Remove previous actives
-                menuSecBtnsAll.forEach(btn => btn.classList.remove("active"));
-
-                // Find the button matching this section
-                const matchingBtn = Array.from(menuSecBtnsAll).find(btn =>
-                    btn.dataset.menuCat === id
-                );
-                if (matchingBtn) {
-                    matchingBtn.classList.add("active");
-                }
-            }
-
-        } else {
-            // Section leaving view if you want to handle that
-            // console.log("Section leaving:", target);
-        }
-    });
-}, menuCatObserverOptions);
-
-menuSections.forEach(section => {
-    menuCatObserver.observe(section);
-});
-
-
-// Create observer for menu heads
-
-const menuCatHeadObserverOptions = {
-    root: menuContentScroller,
-    rootMargin: "-25% 0px -25% 0px",
-    threshold: 0
-};
-
-const menuCatHeadObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const target = entry.target;
-
-        if (entry.isIntersecting) {
-            // The section is in view
-            // console.log("Section visible:", target);
-            makeFunkyMenuCategoryHeads(target)
-
-        } else {
-            // Section leaving view if you want to handle that
-            // console.log("Section leaving:", target);
-        }
-    });
-}, menuCatHeadObserverOptions);
-
-
-
-
-
-
-// Make funky cathegoy heads
-
-
-
-// Then change on demand
-function makeFunkyMenuCategoryHeads(headlineEl) {
-    // If we haven’t replaced textContent before, build spans
-    if (!headlineEl.dataset.hasSpans) {
-        const letters = [...headlineEl.textContent];
-        headlineEl.textContent = "";
-        letters.forEach(letter => {
-            const span = document.createElement("span");
-            span.textContent = letter;
-            span.style.transition = `font-variation-settings 1s ease-in-out`;
-            headlineEl.appendChild(span);
-        });
-        // Mark that we initialized spans
-        headlineEl.dataset.hasSpans = "true";
-    }
-
-    // Now animate: for each span, assign random settings
-    const spans = headlineEl.querySelectorAll("span");
-    spans.forEach(span => {
-        const weight = Math.floor(Math.random() * (901 - 100) + 100);
-        const width = Math.floor(Math.random() * (116 - 50) + 50);
-        const slant = Math.random() > 0.5 ? Math.floor(Math.random() * 13) - 12 : 0;
-
-        // Animate (with optional timeout)
-        setTimeout(() => {
-            span.style.fontVariationSettings = `"slnt" ${slant}, "wdth" ${width}, "wght" ${weight}`;
-        }, 0);
-    });
-}
 
 const popUpWrapper = document.querySelector(".popup-wrapper");
 const popUpTransTime = 3000;
@@ -871,43 +672,34 @@ window.onload = function () {
     }, timeToStartPopUpFadeIn);
 };
 
-popUpBtn.addEventListener("click", e => {
-    popUpWrapper.classList.remove("popup-wrapper--open")
-})
+// popUpBtn.addEventListener("click", e => {
+//     popUpWrapper.classList.remove("popup-wrapper--open")
+// })
 
-let index = 0;
+// let index = 0;
 
-function cycleColors() {
-    // reset all
-    popUpSwipeTextSpans.forEach(span => span.classList.remove('active'));
+// function cycleColors() {
+//     // reset all
+//     popUpSwipeTextSpans.forEach(span => span.classList.remove('active'));
 
-    // highlight current one
-    popUpSwipeTextSpans[index].classList.add('active');
+//     // highlight current one
+//     popUpSwipeTextSpans[index].classList.add('active');
 
-    // move to next
-    index++;
+//     // move to next
+//     index++;
 
-    // if we’ve gone past the last span, reset after a pause
-    if (index >= popUpSwipeTextSpans.length) {
-        index = 0;
-        setTimeout(cycleColors, 1500); // pause before restarting
-    } else {
-        setTimeout(cycleColors, 500); // quick switch between spans
-    }
-}
+//     // if we’ve gone past the last span, reset after a pause
+//     if (index >= popUpSwipeTextSpans.length) {
+//         index = 0;
+//         setTimeout(cycleColors, 1500); // pause before restarting
+//     } else {
+//         setTimeout(cycleColors, 500); // quick switch between spans
+//     }
+// }
 
-// start the loop
-cycleColors();
+// // start the loop
+// cycleColors();
 
-// CHECK IF MENU HEADS ARE LONG AND ADD CLASS IF SO
-
-const allMenuHeads = document.querySelectorAll('[data-item-price="individual"] .menu____dish-head');
-
-allMenuHeads.forEach(headline => {
-    if (headline.innerHTML.length > 9) {
-        headline.classList.add("long-head")
-    }
-})
 
 // SNOW EFFECT
 
@@ -1229,14 +1021,10 @@ function doAfterMenuContentLoaded() {
     })
 
     menuSectionTitles.forEach(section => {
-        menuCatHeadObserver.observe(section);
+        menuTitlesObserver.observe(section);
     });
-    console.log(menuContent);
-    requestAnimationFrame(() => {
-
-        requestAnimationFrame(() => {
-            // setheightAndWidthForFoodMenuContents(menuContent);
-        });
+    mdMenuSectionWrappers.forEach(section => {
+        menuSectionObserver.observe(section);
     });
 
     // Scroll close menu
@@ -1288,44 +1076,144 @@ function doAfterMenuContentLoaded() {
             }
         }
     }, { passive: true });
-}
 
 
+    const menuCatMap = {};
 
-function setheightAndWidthForFoodMenuContents(menuContent) {
+    mdMenuSectionWrappers.forEach(el => {
+        const dataMenuCat = el.dataset.menuCat;
 
-    // --- FIX 2: neutralize height ---
-    const prevHeight = menuContent.style.height;
-    menuContent.style.height = 'auto';
+        if (dataMenuCat) {
+            menuCatMap[dataMenuCat] = el;
+        }
+    });
 
-    // --- FIX 1: measure first ---
-    const foodMenuContentHeight = menuContent.scrollHeight + 100;
+    // Get transition time
+    const menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
 
-    // restore
-    menuContent.style.height = prevHeight;
+    menuSecBtnsAll.forEach(btn => {
+        btn.addEventListener("click", e => {
+            const clickedBtn = e.currentTarget;
 
-    windowHeight = window.innerHeight;
-    const quarterWindowHeight = windowHeight * 0.1;
+            // Remove pressed/active from all
+            menuSecBtnsAll.forEach(b => b.classList.remove("pressed", "active", "hover"));
+            clickedBtn.classList.add("pressed");
 
-    // set CSS variable AFTER measuring
-    menuContent.style.setProperty(
-        '--food-menu-full-height',
-        foodMenuContentHeight + 'px'
-    );
+            // Get the data-menu-cat of this button
+            const targetCat = clickedBtn.dataset.menuCat;
 
-    // --- read styles ---
-    const afterStyles = getComputedStyle(menuContent, '::after');
-    const width = parseFloat(afterStyles.getPropertyValue('width'));
+            setTimeout(() => {
+                const targetSection = menuCatMap[targetCat];
 
-    const styles = getComputedStyle(menuContent);
-    const paddingLeft = parseFloat(styles.getPropertyValue('padding-left'));
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                        inline: "nearest"
+                    });
+                } else {
+                    console.warn("No matching section for data-menu-cat:", targetCat);
+                }
+            }, menuTransTime * 0.75);
 
+            setTimeout(() => {
+                clickedBtn.classList.remove("pressed");
+                clickedBtn.classList.add("active");
+            }, 200);
 
-
-    // --- FIX 3: layout changes AFTER measurement ---
-    requestAnimationFrame(() => {
-        menuWidthElements.forEach(el => {
-            el.style.width = (width - paddingLeft * 2) + 'px';
+            setTimeout(() => {
+                menuSectionTitles.forEach(catHead => {
+                    makeFunkyMenuCategoryHeads(catHead);
+                });
+            }, menuTransTime - 100);
         });
     });
+
+
+
 }
+
+
+// Make funky cathegoy heads
+
+// Then change on demand
+function makeFunkyMenuCategoryHeads(headlineEl) {
+    // If we haven’t replaced textContent before, build spans
+    if (!headlineEl.dataset.hasSpans) {
+        const letters = [...headlineEl.textContent];
+        headlineEl.textContent = "";
+        letters.forEach(letter => {
+            const span = document.createElement("span");
+            span.textContent = letter;
+            span.style.transition = `font-variation-settings 1s ease-in-out`;
+            headlineEl.appendChild(span);
+        });
+        // Mark that we initialized spans
+        headlineEl.dataset.hasSpans = "true";
+    }
+
+    // Now animate: for each span, assign random settings
+    const spans = headlineEl.querySelectorAll("span");
+    spans.forEach(span => {
+        const weight = Math.floor(Math.random() * (901 - 100) + 100);
+        const width = Math.floor(Math.random() * (116 - 50) + 50);
+        const slant = Math.random() > 0.5 ? Math.floor(Math.random() * 13) - 12 : 0;
+
+        // Animate (with optional timeout)
+        setTimeout(() => {
+            span.style.fontVariationSettings = `"slnt" ${slant}, "wdth" ${width}, "wght" ${weight}`;
+        }, 0);
+    });
+}
+
+
+// Create observer for menu categories
+
+const menuSectionObserverOptions = {
+    root: menuContentScroller,
+    rootMargin: "-25% 0px -75% 0px",
+    threshold: 0
+};
+
+const menuSectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const target = entry.target;
+
+        if (entry.isIntersecting) {
+            const id = target.dataset.menuCat;
+            console.log(target);
+            if (id) {
+                // Remove previous actives
+                menuSecBtnsAll.forEach(btn => btn.classList.remove("active"));
+
+                // Find the button matching this section
+                const matchingBtn = Array.from(menuSecBtnsAll).find(btn =>
+                    btn.dataset.menuCat === id
+                );
+                if (matchingBtn) {
+                    matchingBtn.classList.add("active");
+                }
+            }
+        }
+    });
+}, menuSectionObserverOptions);
+
+
+
+
+// Create observer for menu heads
+
+const menuTitlesObserverOptions = {
+    root: menuContentScroller,
+    rootMargin: "-25% 0px -25% 0px",
+    threshold: 0
+};
+
+const menuTitlesObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const target = entry.target;
+
+        if (entry.isIntersecting) { makeFunkyMenuCategoryHeads(target) }
+    });
+}, menuTitlesObserverOptions);
+

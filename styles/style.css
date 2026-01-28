@@ -931,7 +931,7 @@ section.home {
 .menu-section article .dish__fields .dish__description,
 .menu-section .section__intro {
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 500;
-    max-width: 50%;
+    /* max-width: 50%; */
 }
 
 .menu-section article .dish__fields .dish__extras {
