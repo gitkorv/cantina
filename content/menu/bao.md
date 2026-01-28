@@ -2,6 +2,7 @@
 title: Bao Buns
 sectionClass:
  - bao
+ - styckpris
 basePrice: 
  - 89
  - /st

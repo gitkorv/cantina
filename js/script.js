@@ -464,7 +464,7 @@ let currentOpBtn = null;
 let orgOpMenuText = menuOpBtn.textContent;
 
 menuOpBtn.addEventListener("click", e => {
-    e.stopPropagation;
+    e.stopPropagation();
     const clickedBtn = e.target;
     console.log("op clicked");
 
@@ -622,7 +622,7 @@ window.addEventListener('resize', e => {
     setWidthForHours()
 
 })
-openMenu()
+// openMenu()
 
 const popUpWrapper = document.querySelector(".popup-wrapper");
 const popUpTransTime = 3000;
@@ -811,6 +811,8 @@ async function loadMenu(mdFile, target) {
                 /<strong>(.*?)<\/strong>\s*([\s\S]*?)(?=<strong>|$)/g
             )];
 
+            
+
             const priceDivs = [];
             const fieldDivs = parts.map(([_, label, value]) => {
                 const cls = label.toLowerCase().trim().replace(/\s+/g, '-');
@@ -887,6 +889,8 @@ async function loadMenu(mdFile, target) {
             ? [data.basePrice]
             : [];
 
+            
+
     // --- now build the section header ---
     const sectionClasses = Array.isArray(data.sectionClass)
         ? data.sectionClass
@@ -903,44 +907,49 @@ async function loadMenu(mdFile, target) {
     const sectionHeader = `
     <section class="menu-section ${sectionClassString}">
 
-    <div class="menu-section__header">
-        <h2 class="section__title">${data.title ?? ''}</h2>
-        <div class="section__sub">
-        ${data.intro?.length
-            ? `<ul class="section__intro">${data.intro.map(i => `<li>${i}</li>`).join('')}</ul>`
-            : ''
-        }
+        <div class="menu-section__header">
+            <h2 class="section__title">${data.title ?? ''}</h2>
+            ${data.intro?.length
+                ? `
+                <div class="section__sub">
+                    <ul class="section__intro">
+                        ${data.intro.map(i => `<li>${i}</li>`).join('')}
+                    </ul>
+                </div>
+            `
+                : ''
+            }
+            ${basePrices.length
+                ? `
+            <div class="sectionprice-wrapper">
+                <ul class="price section__sectionprices">
+                    ${basePrices.map(p => {
+                        // Split the value into words
+                        const words = String(p)
+                            .split(' ')
+                            .map(w => {
+                                // If the word is a number, add class price-number
+                                if (!isNaN(w)) return `<span class="price-number">${w}</span>`;
+                                return `<span>${w}</span>`;
+                            })
+                            .join(' ');
+
+                        // Add kr only if the item contains a number
+                        const hasNumber = /\d/.test(p);
+                        return `<li class="section__sectionprice">${words}${hasNumber ? '<span class="kronor">kr</span>' : ''}</li>`;
+                    }).join('')}
+                </ul>
+            </div>
+            `
+                : ''
+            }
         </div>
-    </div>
 
         ${html}
 
-        ${basePrices.length
-            ? `
-        <div>
-        <ul class="price section__sectionprices">
-            ${basePrices.map(p => {
-                // Split the value into words
-                const words = String(p)
-                    .split(' ')
-                    .map(w => {
-                        // If the word is a number, add class price-number
-                        if (!isNaN(w)) return `<span class="price-number">${w}</span>`;
-                        return `<span>${w}</span>`;
-                    })
-                    .join(' ');
-
-                // Add kr only if the item contains a number
-                const hasNumber = /\d/.test(p);
-                return `<li class="section__sectionprice">${words}${hasNumber ? '<span class="kronor">kr</span>' : ''}</li>`;
-            }).join('')}
-            </ul>
-        </div>
-        `
-            : ''
-        }
-        </section>
-        `;
+        
+    </section>
+    `;
 
 
     container.innerHTML = sectionHeader;

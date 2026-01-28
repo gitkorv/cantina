@@ -119,16 +119,17 @@ body {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 9999;
+    /* z-index: 9999; */
     /* ⬅ foreground snow */
     overflow: hidden;
+    cursor: none;
 }
 
 .snowflake {
     position: absolute;
     top: -50px;
     color: white;
-    user-select: none;
+    /* user-select: none; */
     animation-name: fall;
     animation-timing-function: linear;
     text-shadow: 0 0 6px currentColor;
@@ -153,6 +154,7 @@ body {
     width: 100%;
     text-align: center;
     flex: var(--logoWrapperFlexVal);
+    z-index: -100;
 }
 
 .logo__tagline {
@@ -931,7 +933,7 @@ section.home {
 .menu-section article .dish__fields .dish__description,
 .menu-section .section__intro {
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 500;
-    /* max-width: 50%; */
+    max-width: 75%;
 }
 
 .menu-section article .dish__fields .dish__extras {
@@ -940,7 +942,7 @@ section.home {
 }
 
 article.dish--choice {
-    gap: 0;
+    /* gap: 0; */
 }
 
 article.dish--choice>h3 {
@@ -969,35 +971,35 @@ article.dish--choice>h3 {
 }
 
 .menu-section .price {
-    position: absolute;
     display: flex;
     gap: var(--menuTextMargin);
     flex-direction: column;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
-    right: var(--textFontSizeSmall);
-    top: var(--textFontSizeSmall);
-    /* color: var(--menuPriceColor); */
-    /* text-shadow: var(--cantinaLila) 2px 2px 2px; */
-    /* background-color: #72808a; */
+
     text-align: right;
-    width: fit-content;
     z-index: 100;
     pointer-events: none;
     /* background-color: aqua; */
 }
 
+.sectionprice-wrapper {
+    padding: var(--menuTextMargin);
+    border: var(--menuTextMargin) dotted var(--menuItemBG);
+}
+
 .menu-section .price.section__sectionprices {
-    position: absolute;
-    /* top: -8px; */
-    /* transform: translateY(10%); */
-    /* right: var(--bodyPadding); */
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 10rem;
-    /* justify-content: end; */
-    /* background-color: #33a58e; */
+    justify-content: center;
+    /* border: var(--menuTextMargin) solid var(--menuItemBG);
+    padding: var(--menuTextMargin); */
+}
+
+.menu-section.styckpris .price.section__sectionprices {
+    flex-direction: row;
+    
 }
 
 .menu-section .price.section__sectionprices li {
@@ -1096,6 +1098,7 @@ article.dish--choice .dish__choice li.dish__choice--spicyveg::after {
     .menu__btn.active:hover {
         background-color: var(--cantinaGrey);
         color: var(--bgColor);
+        cursor: pointer;
     }
 }
 
@@ -1124,6 +1127,7 @@ button.menu__btn.pressed {
     color: var(--bgColor);
     /* box-shadow: var(--logoColor) 2px 2px 0px; */
     pointer-events: auto;
+    /* cursor: pointer; */
 
     /* box-shadow: var(--logoColor) 0px 0px 0px; */
 

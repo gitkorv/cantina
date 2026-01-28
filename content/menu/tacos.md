@@ -6,7 +6,7 @@ sectionClass:
 basePrice: 
  - 2st 179
  - Extra Taco 79
- - Lunch Special 2st 149kr
+ - Lunch Special 2st 149
 intro:
   - Alla tacos serveras i mjuka majstortilla med koriander & lime
 ---
