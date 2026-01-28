@@ -52,22 +52,18 @@ const menuBgGap = 24;
 let menuBgWidth = undefined;
 const menuWrapper = document.querySelector(".menu-wrapper")
 const menuContentBorder = document.querySelector(".menu-content-border")
-const menuContent = document.querySelector(".menu-content")
+let menuContent = "";
 const menuContentScroller = document.querySelector(".menu-content-scroller")
 const menuContentBg = document.querySelector(".menu-content-bg")
 // let menuUnOpened = true;
 const menuCategoryHeadWrappers = [...document.querySelectorAll(".menu__cat__head-wrapper")];
-const menuCategoryHeads = [...document.querySelectorAll(".menu__cat__head")];
-const menuCategorySections = document.querySelectorAll(".menu__cat-wrapper");
-const menuDishContentAll = document.querySelectorAll(".menu____dish-content");
-const menuExtraInfoAll = document.querySelectorAll(".menu-content__extra-info-container")
+let menuSectionTitles = [];
+let menuSections = [];
 
 const menuWidthElements = [
-        ...menuDishContentAll,
-        ...menuCategoryHeadWrappers,
-        ...menuCategoryHeads,
-        ...menuExtraInfoAll
-    ];
+    ...menuCategoryHeadWrappers,
+    ...menuSectionTitles
+];
 
 
 // Menu buttons
@@ -421,7 +417,7 @@ function cycleHighlight() {
 // Start the loop
 cycleHighlight();
 
- 
+
 function hideOpeningDaysBeforeCutoff() {
     const now = new Date();
     const cutoffDate = new Date(2026, 0, 6, 21, 0, 0); // Jan 6, 21:00 local time
@@ -452,47 +448,6 @@ document.addEventListener('DOMContentLoaded', hideOpeningDaysBeforeCutoff);
 // Btn and menus
 
 
-function setheightAndWidthForFoodMenuContents(menuContent) {
-
-    // --- FIX 2: neutralize height ---
-    const prevHeight = menuContent.style.height;
-    menuContent.style.height = 'auto';
-
-    // --- FIX 1: measure first ---
-    const foodMenuContentHeight = menuContent.scrollHeight + 100;
-
-    // restore
-    menuContent.style.height = prevHeight;
-
-    windowHeight = window.innerHeight;
-    const quarterWindowHeight = windowHeight * 0.1;
-
-    // set CSS variable AFTER measuring
-    menuContent.style.setProperty(
-        '--food-menu-full-height',
-        foodMenuContentHeight + 'px'
-    );
-
-    // --- read styles ---
-    const afterStyles = getComputedStyle(menuContent, '::after');
-    const width = parseFloat(afterStyles.getPropertyValue('width'));
-
-    const styles = getComputedStyle(menuContent);
-    const paddingLeft = parseFloat(styles.getPropertyValue('padding-left'));
-
-    
-
-    // --- FIX 3: layout changes AFTER measurement ---
-    requestAnimationFrame(() => {
-        menuWidthElements.forEach(el => {
-            el.style.width = (width - paddingLeft * 2) + 'px';
-        });
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    // setheightAndWidthForFoodMenuContents(menuContent);
-});
 
 
 
@@ -546,7 +501,7 @@ menuSecBtnsAll.forEach(btn => {
         }, 200);
 
         setTimeout(() => {
-            menuCategoryHeads.forEach(catHead => {
+            menuSectionTitles.forEach(catHead => {
                 makeFunkyMenuCategoryHeads(catHead);
             });
         }, menuTransTime - 100);
@@ -625,59 +580,6 @@ function openMenu() {
 
     menuOpen = true;
 }
-
-
-// Scroll close menu
-
-const scrollableElement = document.getElementById("scrollableElement");
-
-let lastScrollTop = 0; // To track the previous scroll position
-let velocity = 0; // To track the scrolling speed
-let lastTimestamp = null; // To calculate time difference
-
-menuContent.addEventListener("scroll", (e) => {
-    const scrollTop = menuContent.scrollTop;
-    const timestamp = performance.now();
-
-    // Calculate velocity (change in scroll position over time)
-    if (lastTimestamp !== null) {
-        const timeDelta = timestamp - lastTimestamp;
-        velocity = (lastScrollTop - scrollTop) / timeDelta; // Negative = upward
-    }
-    // If at the top of the scrollable area and a hard upward scroll happens
-    if (scrollTop === 0 && velocity > 6) {
-        closeMenu()
-        console.log("Closing element due to hard upward scroll");
-    }
-
-    lastScrollTop = scrollTop;
-    lastTimestamp = timestamp;
-});
-
-const menuContentHeight = menuContent.offsetHeight;
-
-let scrollAtTopTouch; // Global variable to track touch start position
-
-menuContent.addEventListener("touchstart", (e) => {
-    // Check if the menuContent is scrolled to the top
-    if (menuContent.scrollTop === 0) {
-        scrollAtTopTouch = e.targetTouches[0].clientY; // Store the initial touch Y position
-        console.log("scrollStart was", scrollAtTopTouch);
-    }
-}, { passive: true });
-
-menuContent.addEventListener("touchmove", (e) => {
-    const touch = e.touches[0];
-    const touchY = touch.clientY;
-
-    if (menuContent.scrollTop === 0) {
-        let pullDownAmount = touchY - scrollAtTopTouch;
-        if (pullDownAmount * 2.5 > menuContentHeight) {
-            console.log("we should close menu"); // Calculate the difference
-            closeMenu()
-        }
-    }
-}, { passive: true });
 
 window.addEventListener("load", e => {
     // menuWrapper.style.transition = "none";
@@ -853,7 +755,7 @@ const menuCatObserver = new IntersectionObserver((entries) => {
     });
 }, menuCatObserverOptions);
 
-menuCategorySections.forEach(section => {
+menuSections.forEach(section => {
     menuCatObserver.observe(section);
 });
 
@@ -882,19 +784,14 @@ const menuCatHeadObserver = new IntersectionObserver((entries) => {
     });
 }, menuCatHeadObserverOptions);
 
-menuCategoryHeads.forEach(section => {
-    menuCatHeadObserver.observe(section);
-});
+
 
 
 
 
 // Make funky cathegoy heads
 
-// Start one directly
-menuCategoryHeads.forEach(head => {
-    makeFunkyMenuCategoryHeads(head)
-})
+
 
 // Then change on demand
 function makeFunkyMenuCategoryHeads(headlineEl) {
@@ -950,7 +847,7 @@ window.onload = function () {
         setTimeout(() => {
             popUpWrapper.style.transitionDuration = ".5s"
             // yranSvgContainer.style.display = "none"
-            
+
 
         }, popUpTransTime);
 
@@ -969,7 +866,7 @@ window.onload = function () {
                 element.style.transitionDelay = `${delay}s`;
                 element.classList.remove("falling-text");
             }
-        }, popUpTransTime / 2);   
+        }, popUpTransTime / 2);
 
     }, timeToStartPopUpFadeIn);
 };
@@ -1072,7 +969,7 @@ for (let i = 0; i < SNOWFLAKE_COUNT; i++) {
 
 
 // =========================
-    // MD MAIN Menu Test
+// MD MAIN Menu Test
 // =========================
 
 const menuFiles = [
@@ -1100,7 +997,7 @@ async function loadMenu(mdFile, target) {
     let html = marked.parse(content);
 
 
-    console.log(html);
+    // console.log(html);
 
     // Wrap <h3> titles as dishes
     html = html.replace(
@@ -1261,7 +1158,6 @@ async function loadMenu(mdFile, target) {
         .forEach(el => allPrices.push(el));
 }
 
-let topBarHeight = 0;
 
 // --- Load all menus ---
 async function loadAllMenus() {
@@ -1276,31 +1172,10 @@ let mdMenuSectionWrappers = [];
 
 async function init() {
     await loadAllMenus();
-    mdMenuSectionWrappers = document.querySelectorAll(".menu-section-wrapper");
-    mdMenuArticle = document.querySelectorAll(".menu-section article");
-    menuWidthElements.push(...mdMenuSectionWrappers)
-console.log(mdMenuArticle);
-
-    requestAnimationFrame(() => {
-        setheightAndWidthForFoodMenuContents(menuContent);
-        requestAnimationFrame(() => {
-            topBarMargin();
-        });
-    });
+    doAfterMenuContentLoaded()
 }
-
 init();
 
-function topBarMargin() {
-    const el = document.querySelector('.hours-bar');
-    if (!el) return;
-    topBarHeight = el.offsetHeight;
-
-    const mdMenuWrapper = document.querySelector(".md-menu-wrapper");
-    if (!mdMenuWrapper) return;
-
-    mdMenuWrapper.style.paddingTop = `${topBarHeight}px`;
-}
 
 
 // --- Helpers ---
@@ -1337,9 +1212,120 @@ function parseFrontMatter(md) {
     return { data, content };
 }
 
+function doAfterMenuContentLoaded() {
 
-window.addEventListener('resize', () => {
-    topBarMargin()
-})
+    mdMenuSectionWrappers = document.querySelectorAll(".menu-section-wrapper");
+    mdMenuArticle = document.querySelectorAll(".menu-section article");
+    menuWidthElements.push(...mdMenuSectionWrappers)
+    console.log(mdMenuArticle);
+    menuContent = document.querySelector(".menu-content");
+    menuSections = document.querySelectorAll(".menu-section");
+    menuSectionTitles = [...document.querySelectorAll(".menu-section .section__title")];
+    console.log(menuSectionTitles);
+
+    // Start one directly Funky Head
+    menuSectionTitles.forEach(head => {
+        makeFunkyMenuCategoryHeads(head)
+    })
+
+    menuSectionTitles.forEach(section => {
+        menuCatHeadObserver.observe(section);
+    });
+    console.log(menuContent);
+    requestAnimationFrame(() => {
+
+        requestAnimationFrame(() => {
+            // setheightAndWidthForFoodMenuContents(menuContent);
+        });
+    });
+
+    // Scroll close menu
+
+    let lastScrollTop = 0; // To track the previous scroll position
+    let velocity = 0; // To track the scrolling speed
+    let lastTimestamp = null; // To calculate time difference
+
+    menuContent.addEventListener("scroll", (e) => {
+        const scrollTop = menuContent.scrollTop;
+        const timestamp = performance.now();
+
+        // Calculate velocity (change in scroll position over time)
+        if (lastTimestamp !== null) {
+            const timeDelta = timestamp - lastTimestamp;
+            velocity = (lastScrollTop - scrollTop) / timeDelta; // Negative = upward
+        }
+        // If at the top of the scrollable area and a hard upward scroll happens
+        if (scrollTop === 0 && velocity > 6) {
+            closeMenu()
+            console.log("Closing element due to hard upward scroll");
+        }
+
+        lastScrollTop = scrollTop;
+        lastTimestamp = timestamp;
+    });
+
+    const menuContentHeight = menuContent.offsetHeight;
+
+    let scrollAtTopTouch; // Global variable to track touch start position
+
+    menuContent.addEventListener("touchstart", (e) => {
+        // Check if the menuContent is scrolled to the top
+        if (menuContent.scrollTop === 0) {
+            scrollAtTopTouch = e.targetTouches[0].clientY; // Store the initial touch Y position
+            console.log("scrollStart was", scrollAtTopTouch);
+        }
+    }, { passive: true });
+
+    menuContent.addEventListener("touchmove", (e) => {
+        const touch = e.touches[0];
+        const touchY = touch.clientY;
+
+        if (menuContent.scrollTop === 0) {
+            let pullDownAmount = touchY - scrollAtTopTouch;
+            if (pullDownAmount * 2.5 > menuContentHeight) {
+                console.log("we should close menu"); // Calculate the difference
+                closeMenu()
+            }
+        }
+    }, { passive: true });
+}
 
 
+
+function setheightAndWidthForFoodMenuContents(menuContent) {
+
+    // --- FIX 2: neutralize height ---
+    const prevHeight = menuContent.style.height;
+    menuContent.style.height = 'auto';
+
+    // --- FIX 1: measure first ---
+    const foodMenuContentHeight = menuContent.scrollHeight + 100;
+
+    // restore
+    menuContent.style.height = prevHeight;
+
+    windowHeight = window.innerHeight;
+    const quarterWindowHeight = windowHeight * 0.1;
+
+    // set CSS variable AFTER measuring
+    menuContent.style.setProperty(
+        '--food-menu-full-height',
+        foodMenuContentHeight + 'px'
+    );
+
+    // --- read styles ---
+    const afterStyles = getComputedStyle(menuContent, '::after');
+    const width = parseFloat(afterStyles.getPropertyValue('width'));
+
+    const styles = getComputedStyle(menuContent);
+    const paddingLeft = parseFloat(styles.getPropertyValue('padding-left'));
+
+
+
+    // --- FIX 3: layout changes AFTER measurement ---
+    requestAnimationFrame(() => {
+        menuWidthElements.forEach(el => {
+            el.style.width = (width - paddingLeft * 2) + 'px';
+        });
+    });
+}
