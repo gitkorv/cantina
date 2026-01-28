@@ -89,12 +89,31 @@
     navigation: auto;
 }
 
+/* * {
+  outline: 1px solid rgba(255,0,0,.05);
+}
+
+* {
+  background-color: rgba(255, 0, 0, 0.03) !important;
+} */
+
+/* *,
+*::before,
+*::after {
+  outline: 1px solid rgba(255, 0, 0, 0.15) !important;
+} */
+
 button {
     all: unset;
 }
 
 a {
     text-decoration: none;
+}
+
+button,
+a {
+    cursor: pointer;
 }
 
 body {
@@ -941,10 +960,6 @@ section.home {
     color: var(--menuAddExtraColor);
 }
 
-article.dish--choice {
-    /* gap: 0; */
-}
-
 article.dish--choice>h3 {
     color: black;
     font-size: var(--textFontSize);
@@ -1075,7 +1090,7 @@ article.dish--choice .dish__choice li.dish__choice--spicyveg::after {
 }
 
 .menu__btn {
-    all: none;
+    /* all: none; */
     flex: 1 0 auto;
     background-color: var(--cantinaRosa);
     padding: 12px 8px;
@@ -1144,8 +1159,6 @@ button.menu__btn.pressed {
     }
 }
 
-/* .menu__btn__opBtn.active {
-} */
 
 .menu__btn__opBtn.pressed.active {
     scale: 100%;

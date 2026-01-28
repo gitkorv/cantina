@@ -496,7 +496,7 @@ function closeMenu() {
         menuOpBtn.classList.remove("pressed");
         menuOpBtn.textContent = orgOpMenuText;
     }, MENU_TRANSITION_DELAY);
-    menuWrapper.style.pointerEvents = "none";
+    // menuWrapper.style.pointerEvents = "none";
 
     menuOpen = false;
 }
@@ -512,7 +512,7 @@ function openMenu() {
         menuOpBtn.classList.add("active");
         menuOpBtn.textContent = "X";
     }, MENU_TRANSITION_DELAY);
-    menuWrapper.style.pointerEvents = "";
+    // menuWrapper.style.pointerEvents = "";
 
 
     menuOpen = true;
