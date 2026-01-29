@@ -982,7 +982,7 @@ function doAfterMenuContentLoaded() {
                 if (targetSection) {
                     targetSection.scrollIntoView({
                         behavior: "smooth",
-                        block: "center",
+                        block: "start",
                         inline: "nearest"
                     });
                 } else {
@@ -1046,7 +1046,7 @@ function makeFunkyMenuCategoryHeads(headlineEl) {
 const menuSectionObserverOptions = {
     root: menuContentScroller,
     rootMargin: "-25% 0px -75% 0px",
-    threshold: 0
+    threshold: 1
 };
 
 const menuSectionObserver = new IntersectionObserver((entries) => {

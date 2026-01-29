@@ -416,8 +416,8 @@ main {
     height: 100dvh;
     overflow: hidden;
     padding: var(--bodyPadding);
-    /* pointer-events: none; */
-    z-index: -300;
+    pointer-events: none;
+    /* z-index: -300; */
 }
 
 section {
@@ -486,7 +486,7 @@ section.home {
     top: var(--bodyPadding);
     color: var(--bgColor);
     cursor: pointer;
-    z-index: 300;
+    z-index: 25;
     border-radius: 50%;
     width: calc(var(--bodyPadding) * 3);
     aspect-ratio: 1/1;
@@ -590,6 +590,7 @@ section.home {
     right: var(--bodyPadding);
     z-index: 100;
     height: 100%;
+    pointer-events: none;
 }
 
 
@@ -688,9 +689,13 @@ section.home {
     color: var(--cantinaRosa);
     font-variation-settings: "slnt" 0, "wdth" 100, "wght" 800;
     line-height: 1.2;
-    pointer-events: auto;
+    pointer-events: none;
     font-size: calc(var(--textFontSize) * .9);
     /* background-color: orange; */
+}
+
+.opening-hours-wrapper div {
+    pointer-events: all;
 }
 
 .opening-hours-list-container {
@@ -844,6 +849,7 @@ section.home {
     grid-template-columns: repeat(4, 1fr) auto;
     pointer-events: none;
     color: var(--menuTextColor);
+    z-index: 50;
 
 }
 
@@ -869,9 +875,10 @@ section.home {
     position: relative;
     display: flex;
     flex-direction: column;
-    pointer-events: auto;
+    pointer-events: all;
     z-index: 200;
     gap: 48px;
+    z-index: 500;
 }
 
 
@@ -901,6 +908,7 @@ section.home {
     display: flex;
     flex-direction: column;
     gap: var(--menuTextMargin);
+    padding-top: var(--bodyPadding);
 }
 
 .menu-section .section__title {
@@ -1063,7 +1071,10 @@ article.dish--choice .dish__choice li.dish__choice--spicyveg::after {
     font-variation-settings: "wght" 600;
     color: var(--bgColor);
 }
-
+.menu-content .menu-content__extra-info-container:last-child .menu____extra-info {
+    height: 400px;
+    /* background-color: orange; */
+}
 
 /* -> MENU BUTTONS <---------- */
 
@@ -1490,7 +1501,7 @@ button.menu__btn.pressed {
     left: var(--textFontSize);
     width: var(--circlePointerSize);
     aspect-ratio: 1 / 1;
-    z-index: 100;
+    z-index: 25;
     pointer-events: none;
     /* background-color: orange; */
 }
