@@ -420,24 +420,6 @@ main {
     /* z-index: -300; */
 }
 
-section {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-}
-
-section.home {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    padding: var(--bodyPadding);
-    min-height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-
 /* --> TICKER <---------- */
 
 .ticker-wrapper {
