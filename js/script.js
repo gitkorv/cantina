@@ -52,15 +52,19 @@ const menuBgGap = 24;
 let menuBgWidth = undefined;
 const menuWrapper = document.querySelector(".menu-wrapper")
 const menuContentBorder = document.querySelector(".menu-content-border")
-const menuContent = document.querySelector(".menu-content")
+let menuContent = "";
 const menuContentScroller = document.querySelector(".menu-content-scroller")
 const menuContentBg = document.querySelector(".menu-content-bg")
 // let menuUnOpened = true;
 const menuCategoryHeadWrappers = [...document.querySelectorAll(".menu__cat__head-wrapper")];
-const menuCategoryHeads = [...document.querySelectorAll(".menu__cat__head")];
-const menuCategorySections = document.querySelectorAll(".menu__cat-wrapper");
-const menuDishContentAll = document.querySelectorAll(".menu____dish-content");
-const menuExtraInfoAll = document.querySelectorAll(".menu-content__extra-info-container")
+let menuSectionTitles = [];
+let menuSections = [];
+
+const menuWidthElements = [
+    ...menuCategoryHeadWrappers,
+    ...menuSectionTitles
+];
+
 
 // Menu buttons
 const menuBtnWrapper = document.querySelector(".menu__btns-wrapper")
@@ -413,7 +417,7 @@ function cycleHighlight() {
 // Start the loop
 cycleHighlight();
 
- 
+
 function hideOpeningDaysBeforeCutoff() {
     const now = new Date();
     const cutoffDate = new Date(2026, 0, 6, 21, 0, 0); // Jan 6, 21:00 local time
@@ -444,52 +448,6 @@ document.addEventListener('DOMContentLoaded', hideOpeningDaysBeforeCutoff);
 // Btn and menus
 
 
-function setheightAndWidthForFoodMenuContents(menuContent) {
-
-    // --- FIX 2: neutralize height ---
-    const prevHeight = menuContent.style.height;
-    menuContent.style.height = 'auto';
-
-    // --- FIX 1: measure first ---
-    const foodMenuContentHeight = menuContent.scrollHeight + 100;
-
-    // restore
-    menuContent.style.height = prevHeight;
-
-    windowHeight = window.innerHeight;
-    const quarterWindowHeight = windowHeight * 0.1;
-
-    // set CSS variable AFTER measuring
-    menuContent.style.setProperty(
-        '--food-menu-full-height',
-        foodMenuContentHeight + 'px'
-    );
-
-    // --- read styles ---
-    const afterStyles = getComputedStyle(menuContent, '::after');
-    const width = parseFloat(afterStyles.getPropertyValue('width'));
-
-    const styles = getComputedStyle(menuContent);
-    const paddingLeft = parseFloat(styles.getPropertyValue('padding-left'));
-
-    const menuWidthElements = [
-        ...menuDishContentAll,
-        ...menuCategoryHeadWrappers,
-        ...menuCategoryHeads,
-        ...menuExtraInfoAll
-    ];
-
-    // --- FIX 3: layout changes AFTER measurement ---
-    requestAnimationFrame(() => {
-        menuWidthElements.forEach(el => {
-            el.style.width = (width - paddingLeft * 2) + 'px';
-        });
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    setheightAndWidthForFoodMenuContents(menuContent);
-});
 
 
 
@@ -497,58 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
 let btnPressTransTime = parseFloat(getComputedStyle(menuOpBtn).transitionDuration) * 100;
 
 
-const menuCatMap = {};
 
-// Build the mapping
-document.querySelectorAll(".menu__cat-wrapper").forEach(head => {
-    const dataMenuCat = head.dataset.menuCat;
-    const wrapper = head.closest(".menu__cat-wrapper");
-
-    if (wrapper && dataMenuCat) {
-        menuCatMap[dataMenuCat] = wrapper;
-    }
-});
-
-// Get transition time
-const menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
-
-menuSecBtnsAll.forEach(btn => {
-    btn.addEventListener("click", e => {
-        const clickedBtn = e.currentTarget;
-
-        // Remove pressed/active from all
-        menuSecBtnsAll.forEach(b => b.classList.remove("pressed", "active", "hover"));
-        clickedBtn.classList.add("pressed");
-
-        // Get the data-menu-cat of this button
-        const targetCat = clickedBtn.dataset.menuCat;
-
-        setTimeout(() => {
-            const targetSection = menuCatMap[targetCat];
-
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                    inline: "nearest"
-                });
-            } else {
-                console.warn("No matching section for data-menu-cat:", targetCat);
-            }
-        }, menuTransTime * 0.75);
-
-        setTimeout(() => {
-            clickedBtn.classList.remove("pressed");
-            clickedBtn.classList.add("active");
-        }, 200);
-
-        setTimeout(() => {
-            menuCategoryHeads.forEach(catHead => {
-                makeFunkyMenuCategoryHeads(catHead);
-            });
-        }, menuTransTime - 100);
-    });
-});
 
 // Menu Btns
 
@@ -557,7 +464,7 @@ let currentOpBtn = null;
 let orgOpMenuText = menuOpBtn.textContent;
 
 menuOpBtn.addEventListener("click", e => {
-    e.stopPropagation;
+    e.stopPropagation();
     const clickedBtn = e.target;
     console.log("op clicked");
 
@@ -570,23 +477,11 @@ menuOpBtn.addEventListener("click", e => {
         closeMenu();
         console.log("here");
     }
-
     // You were trying to remove "active, pressed" here with a typo
     // If you want to reset pressed/active, do it consistently:
     menuOpBtn.classList.add("pressed");
-    // setTimeout(() => {
-    //     clickedBtn.classList.remove("pressed");
-    //     clickedBtn.classList.add("active");
-    // }, 200);
 });
 
-// menuWrapper.addEventListener('click', e => {
-//     console.log("meny wrapper is clicked", e.target);
-//     if (!e.target.matches(".menu-wrapper")) {
-//         return; // Ignore this click
-//     }
-//     // closeMenu()
-// })
 
 
 const MENU_TRANSITION_DELAY = 150;
@@ -601,7 +496,7 @@ function closeMenu() {
         menuOpBtn.classList.remove("pressed");
         menuOpBtn.textContent = orgOpMenuText;
     }, MENU_TRANSITION_DELAY);
-    menuWrapper.style.pointerEvents = "none";
+    // menuWrapper.style.pointerEvents = "none";
 
     menuOpen = false;
 }
@@ -617,64 +512,11 @@ function openMenu() {
         menuOpBtn.classList.add("active");
         menuOpBtn.textContent = "X";
     }, MENU_TRANSITION_DELAY);
-    menuWrapper.style.pointerEvents = "";
+    // menuWrapper.style.pointerEvents = "";
 
 
     menuOpen = true;
 }
-
-
-// Scroll close menu
-
-const scrollableElement = document.getElementById("scrollableElement");
-
-let lastScrollTop = 0; // To track the previous scroll position
-let velocity = 0; // To track the scrolling speed
-let lastTimestamp = null; // To calculate time difference
-
-menuContent.addEventListener("scroll", (e) => {
-    const scrollTop = menuContent.scrollTop;
-    const timestamp = performance.now();
-
-    // Calculate velocity (change in scroll position over time)
-    if (lastTimestamp !== null) {
-        const timeDelta = timestamp - lastTimestamp;
-        velocity = (lastScrollTop - scrollTop) / timeDelta; // Negative = upward
-    }
-    // If at the top of the scrollable area and a hard upward scroll happens
-    if (scrollTop === 0 && velocity > 6) {
-        closeMenu()
-        console.log("Closing element due to hard upward scroll");
-    }
-
-    lastScrollTop = scrollTop;
-    lastTimestamp = timestamp;
-});
-
-const menuContentHeight = menuContent.offsetHeight;
-
-let scrollAtTopTouch; // Global variable to track touch start position
-
-menuContent.addEventListener("touchstart", (e) => {
-    // Check if the menuContent is scrolled to the top
-    if (menuContent.scrollTop === 0) {
-        scrollAtTopTouch = e.targetTouches[0].clientY; // Store the initial touch Y position
-        console.log("scrollStart was", scrollAtTopTouch);
-    }
-}, { passive: true });
-
-menuContent.addEventListener("touchmove", (e) => {
-    const touch = e.touches[0];
-    const touchY = touch.clientY;
-
-    if (menuContent.scrollTop === 0) {
-        let pullDownAmount = touchY - scrollAtTopTouch;
-        if (pullDownAmount * 2.5 > menuContentHeight) {
-            console.log("we should close menu"); // Calculate the difference
-            closeMenu()
-        }
-    }
-}, { passive: true });
 
 window.addEventListener("load", e => {
     // menuWrapper.style.transition = "none";
@@ -777,121 +619,396 @@ function formDrips() {
 window.addEventListener('resize', e => {
     closeMenu()
     windowWidth = window.innerWidth;
-    setheightAndWidthForFoodMenuContents(menuContent)
     setWidthForHours()
 
 })
-
-
 // openMenu()
 
-function resizeElements() {
-    windowWidth = window.innerWidth;
-    menuBtnWrapperWidth = menuBtnWrapper.getBoundingClientRect().left;
-    // Set width for menu
-    // console.log(menuWrapper.style.left);
-    menuBgWidth = menuBtnWrapperWidth - menuContent.getBoundingClientRect().left;
 
-    // setWidthToMatchMenuBg(menuBgWidth)
-    // if (windowWidth > 767) {
-    //     openingHoursWrapper.style.top = rootDocPadding + "px";
-    // } else {
-    //     openingHoursWrapper.style.top = bottomOFClubBtn + rootDocPadding + "px";
-    // }
+// =========================
+// MD MAIN Menu Test
+// =========================
+
+const menuFiles = [
+    '/content/menu/snacks.md',
+    '/content/menu/tacos.md',
+    '/content/menu/ramen.md',
+    '/content/menu/poke.md',
+    '/content/menu/sides.md',
+    '/content/menu/bao.md',
+    '/content/menu/sandwiches.md',
+    '/content/menu/kids.md',
+    '/content/menu/sweets.md',
+    '/content/menu/dips.md',
+];
+
+let allPrices = [];
+
+async function loadMenu(mdFile, target) {
+    const container = document.querySelector(target);
+    if (!container) return console.warn('Missing wrapper:', target);
+
+    const res = await fetch(mdFile);
+    const raw = await res.text();
+    const { data, content } = parseFrontMatter(raw);
+    let html = marked.parse(content);
+
+
+    // console.log(html);
+
+    // Wrap <h3> titles as dishes
+    html = html.replace(
+        /<h3>(.*?)<\/h3>/g,
+        (match, rawTitle) => {
+            const { title, classes } = parseTitleAndClasses(rawTitle, 'dish--');
+            return `<article class="dish ${classes}"><h3>${title}</h3>`;
+        }
+    ).replace(/<hr\s*\/?>/g, '</article>');
+
+
+    // Split strong-labelled fields into divs, collect prices separately
+    html = html.replace(
+        /<p>([\s\S]*?)<\/p>/g,
+        (match, inner) => {
+            if (!inner.includes('<strong>')) return match;
+
+            const parts = [...inner.matchAll(
+                /<strong>(.*?)<\/strong>\s*([\s\S]*?)(?=<strong>|$)/g
+            )];
+
+            
+
+            const priceDivs = [];
+            const fieldDivs = parts.map(([_, label, value]) => {
+                const cls = label.toLowerCase().trim().replace(/\s+/g, '-');
+                const v = value?.trim();
+                // console.log(v);
+
+                // ⛔ Skip fields that have no value at all
+                if (!v) return '';
+
+                if (cls === 'choice') {
+                    const cleanValue = value.trim();
+
+                    // Split into comma-separated items
+                    const items = cleanValue
+                        .split(',')
+                        .map(v => v.trim())
+                        .filter(Boolean)
+                        .map(item => {
+                            // Match item text + any number of [classes] at the end
+                            const match = item.match(/^(.*?)\s*((\[[^\]]+\]\s*)+)$/);
+                            if (match) {
+                                const text = match[1].trim(); // The actual item text
+                                const classes = match[2]
+                                    .match(/\[([^\]]+)\]/g) // extract all [tags]
+                                    .map(c => `dish__choice--${c.replace(/\[|\]/g, '').trim().toLowerCase()}`)
+                                    .join(' ');
+                                return `<li class="${classes}">${text}</li>`;
+                            }
+                            return `<li>${item}</li>`;
+                        });
+
+                    if (!items.length) return '';
+
+                    return `<h3 class="dish__choice"><ul>${items.join('')}</ul></h3>`;
+                }
+
+
+                if (cls === 'price') {
+                    // Split the value into words and wrap each in a span
+                    const words = v.split(' ').map(w => {
+                        // Check if the word is a number
+                        if (!isNaN(w)) {
+                            return `<span class="price-number">${w}</span>`;
+                        }
+                        return `<span>${w}</span>`;
+                    }).join(' ');
+
+                    priceDivs.push(`<li class="dish__price">${words}<span class="kronor">kr</span></li>`);
+                    return '';
+                }
+
+                if (cls === 'pricesub') {
+                    priceDivs.push(`<li class="dish__price dish__price--sub">${v}</li>`);
+                    return '';
+                }
+
+
+                return `<div class="dish__${cls}">${value.trim()}</div>`;
+            }).join('');
+
+            // Wrap fields and prices in dish__wrapper
+            const pricesWrapper = priceDivs.length
+                ? `<ul class="price dish__prices">${priceDivs.join('')}</ul>`
+                : '';
+
+            return `<div class="dish__wrapper"><div class="dish__fields">${fieldDivs}</div>${pricesWrapper}</div>`;
+        }
+    );
+
+    // --- before building sectionHeader ---
+    const basePrices = Array.isArray(data.basePrice)
+        ? data.basePrice.filter(p => String(p).trim() !== '')
+        : data.basePrice
+            ? [data.basePrice]
+            : [];
+
+            
+
+    // --- now build the section header ---
+    const sectionClasses = Array.isArray(data.sectionClass)
+        ? data.sectionClass
+        : data.sectionClass
+            ? [data.sectionClass]
+            : [];
+
+    const sectionClassString = sectionClasses
+        .map(c => c.trim())
+        .filter(Boolean)
+        .join(' ');
+
+    // Use directly
+    const sectionHeader = `
+    <section class="menu-section ${sectionClassString}">
+
+        <div class="menu-section__header">
+            <h2 class="section__title">${data.title ?? ''}</h2>
+            ${data.intro?.length
+                ? `
+                <div class="section__sub">
+                    <ul class="section__intro">
+                        ${data.intro.map(i => `<li>${i}</li>`).join('')}
+                    </ul>
+                </div>
+            `
+                : ''
+            }
+            ${basePrices.length
+                ? `
+            <div class="sectionprice-wrapper">
+                <ul class="price section__sectionprices">
+                    ${basePrices.map(p => {
+                        // Split the value into words
+                        const words = String(p)
+                            .split(' ')
+                            .map(w => {
+                                // If the word is a number, add class price-number
+                                if (!isNaN(w)) return `<span class="price-number">${w}</span>`;
+                                return `<span>${w}</span>`;
+                            })
+                            .join(' ');
+
+                        // Add kr only if the item contains a number
+                        const hasNumber = /\d/.test(p);
+                        return `<li class="section__sectionprice">${words}${hasNumber ? '<span class="kronor">kr</span>' : ''}</li>`;
+                    }).join('')}
+                </ul>
+            </div>
+            `
+                : ''
+            }
+        </div>
+
+        ${html}
+
+        
+    </section>
+    `;
+
+
+    container.innerHTML = sectionHeader;
+
+    // Collect prices
+    document.querySelectorAll(`${target} .dish__price, ${target} .dish__sectionprice`)
+        .forEach(el => allPrices.push(el));
+}
+
+
+// --- Load all menus ---
+async function loadAllMenus() {
+    for (const mdFile of menuFiles) {
+        const wrapper =
+            '#' + mdFile.split('/').pop().replace('.md', '') + '-wrapper';
+        await loadMenu(mdFile, wrapper);
+    }
+}
+let mdMenuArticle = [];
+let mdMenuSectionWrappers = [];
+
+async function init() {
+    await loadAllMenus();
+    doAfterMenuContentLoaded()
+}
+init();
+
+
+
+// --- Helpers ---
+function parseTitleAndClasses(rawTitle, prefix = '') {
+    const tags = rawTitle.match(/\[(.*?)\]/g) || [];
+    const classes = tags.map(tag => prefix + tag.replace(/\[|\]/g, '').trim());
+    const cleanTitle = rawTitle.replace(/\s*\[.*?\]/g, '').trim();
+    return { title: cleanTitle, classes: classes.join(' ') };
+}
+
+function parseFrontMatter(md) {
+    const match = md.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
+    if (!match) return { data: {}, content: md };
+
+    const [, yaml, content] = match;
+    const data = {};
+
+    yaml.split('\n').forEach(line => {
+        if (!line.trim()) return;
+
+        if (line.trim().startsWith('-')) {
+            const lastKey = Object.keys(data).slice(-1)[0];
+            if (!Array.isArray(data[lastKey])) {
+                data[lastKey] = data[lastKey] ? [data[lastKey]] : [];
+            }
+            data[lastKey].push(line.replace('-', '').trim());
+            return;
+        }
+
+        const [key, value] = line.split(':').map(s => s.trim());
+        data[key] = value === '' ? [] : value;
+    });
+
+    return { data, content };
+}
+
+function doAfterMenuContentLoaded() {
+
+    mdMenuSectionWrappers = document.querySelectorAll(".menu-section-wrapper");
+    mdMenuArticle = document.querySelectorAll(".menu-section article");
+    menuWidthElements.push(...mdMenuSectionWrappers)
+    console.log(mdMenuArticle);
+    menuContent = document.querySelector(".menu-content");
+    menuSections = document.querySelectorAll(".menu-section");
+    menuSectionTitles = [...document.querySelectorAll(".menu-section .section__title")];
+    console.log(menuSectionTitles);
+
+    // Start one directly Funky Head
+    menuSectionTitles.forEach(head => {
+        makeFunkyMenuCategoryHeads(head)
+    })
+
+    menuSectionTitles.forEach(section => {
+        menuTitlesObserver.observe(section);
+    });
+    mdMenuSectionWrappers.forEach(section => {
+        menuSectionObserver.observe(section);
+    });
+
+    // Scroll close menu
+
+    let lastScrollTop = 0; // To track the previous scroll position
+    let velocity = 0; // To track the scrolling speed
+    let lastTimestamp = null; // To calculate time difference
+
+    menuContent.addEventListener("scroll", (e) => {
+        const scrollTop = menuContent.scrollTop;
+        const timestamp = performance.now();
+
+        // Calculate velocity (change in scroll position over time)
+        if (lastTimestamp !== null) {
+            const timeDelta = timestamp - lastTimestamp;
+            velocity = (lastScrollTop - scrollTop) / timeDelta; // Negative = upward
+        }
+        // If at the top of the scrollable area and a hard upward scroll happens
+        if (scrollTop === 0 && velocity > 6) {
+            closeMenu()
+            console.log("Closing element due to hard upward scroll");
+        }
+
+        lastScrollTop = scrollTop;
+        lastTimestamp = timestamp;
+    });
+
+    const menuContentHeight = menuContent.offsetHeight;
+
+    let scrollAtTopTouch; // Global variable to track touch start position
+
+    menuContent.addEventListener("touchstart", (e) => {
+        // Check if the menuContent is scrolled to the top
+        if (menuContent.scrollTop === 0) {
+            scrollAtTopTouch = e.targetTouches[0].clientY; // Store the initial touch Y position
+            console.log("scrollStart was", scrollAtTopTouch);
+        }
+    }, { passive: true });
+
+    menuContent.addEventListener("touchmove", (e) => {
+        const touch = e.touches[0];
+        const touchY = touch.clientY;
+
+        if (menuContent.scrollTop === 0) {
+            let pullDownAmount = touchY - scrollAtTopTouch;
+            if (pullDownAmount * 2.5 > menuContentHeight) {
+                console.log("we should close menu"); // Calculate the difference
+                closeMenu()
+            }
+        }
+    }, { passive: true });
+
+
+    const menuCatMap = {};
+
+    mdMenuSectionWrappers.forEach(el => {
+        const dataMenuCat = el.dataset.menuCat;
+
+        if (dataMenuCat) {
+            menuCatMap[dataMenuCat] = el;
+        }
+    });
+
+    // Get transition time
+    const menuTransTime = parseFloat(getComputedStyle(menuWrapper).transitionDuration) * 1000;
+
+    menuSecBtnsAll.forEach(btn => {
+        btn.addEventListener("click", e => {
+            const clickedBtn = e.currentTarget;
+
+            // Remove pressed/active from all
+            menuSecBtnsAll.forEach(b => b.classList.remove("pressed", "active", "hover"));
+            clickedBtn.classList.add("pressed");
+
+            // Get the data-menu-cat of this button
+            const targetCat = clickedBtn.dataset.menuCat;
+
+            setTimeout(() => {
+                const targetSection = menuCatMap[targetCat];
+
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                        inline: "nearest"
+                    });
+                } else {
+                    console.warn("No matching section for data-menu-cat:", targetCat);
+                }
+            }, menuTransTime * 0.75);
+
+            setTimeout(() => {
+                clickedBtn.classList.remove("pressed");
+                clickedBtn.classList.add("active");
+            }, 200);
+
+            setTimeout(() => {
+                menuSectionTitles.forEach(catHead => {
+                    makeFunkyMenuCategoryHeads(catHead);
+                });
+            }, menuTransTime - 100);
+        });
+    });
+
+
 
 }
 
-// function setWidthToMatchMenuBg(menuBgWidth) {
-//     menuContent.style.width = menuBgWidth + "px";
-//     menuContentBg.style.width = menuBgWidth - menuBgGap + "px";
-//     menuContentBorder.style.width = menuBgWidth - menuBgGap + "px";
-
-//     menuWidthElements.forEach(content => {
-//         content.style.width = menuBgWidth - menuBgGap - cssVarfoodMenuPaddingInner * 2 + "px";
-//     })
-
-// }
-
-
-// Create observer for menu categories
-
-const menuCatObserverOptions = {
-    root: menuContentScroller,
-    rootMargin: "-25% 0px -75% 0px",
-    threshold: 0
-};
-
-const menuCatObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const target = entry.target;
-
-        if (entry.isIntersecting) {
-            // The section is in view
-            // console.log("Section visible:", target);
-
-            const id = target.dataset.menuCat;
-            if (id) {
-                // Remove previous actives
-                menuSecBtnsAll.forEach(btn => btn.classList.remove("active"));
-
-                // Find the button matching this section
-                const matchingBtn = Array.from(menuSecBtnsAll).find(btn =>
-                    btn.dataset.menuCat === id
-                );
-                if (matchingBtn) {
-                    matchingBtn.classList.add("active");
-                }
-            }
-
-        } else {
-            // Section leaving view if you want to handle that
-            // console.log("Section leaving:", target);
-        }
-    });
-}, menuCatObserverOptions);
-
-menuCategorySections.forEach(section => {
-    menuCatObserver.observe(section);
-});
-
-
-// Create observer for menu heads
-
-const menuCatHeadObserverOptions = {
-    root: menuContentScroller,
-    rootMargin: "-25% 0px -25% 0px",
-    threshold: 0
-};
-
-const menuCatHeadObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const target = entry.target;
-
-        if (entry.isIntersecting) {
-            // The section is in view
-            // console.log("Section visible:", target);
-            makeFunkyMenuCategoryHeads(target)
-
-        } else {
-            // Section leaving view if you want to handle that
-            // console.log("Section leaving:", target);
-        }
-    });
-}, menuCatHeadObserverOptions);
-
-menuCategoryHeads.forEach(section => {
-    menuCatHeadObserver.observe(section);
-});
-
-
-
 
 // Make funky cathegoy heads
-
-// Start one directly
-menuCategoryHeads.forEach(head => {
-    makeFunkyMenuCategoryHeads(head)
-})
 
 // Then change on demand
 function makeFunkyMenuCategoryHeads(headlineEl) {
@@ -923,148 +1040,54 @@ function makeFunkyMenuCategoryHeads(headlineEl) {
     });
 }
 
-const popUpWrapper = document.querySelector(".popup-wrapper");
-const popUpTransTime = 3000;
-const timeToStartPopUpFadeIn = 500;
 
+// Create observer for menu categories
 
-const allFallingTexts = document.querySelectorAll(".falling-text");
-
-console.log(popUpTransTime);
-const popActiveName = "popup-xmas";
-// popUpWrapper.classList.add(popActiveName);
-
-const popUpBtn = document.querySelector(".popup__btn")
-const popUpSvgContainer = document.querySelector(".popup__svg-container")
-const popUpDrip = document.getElementById("popup-drip")
-const popUpSwipeText = document.querySelector(".popup__subhead--swipe")
-const popUpSwipeTextSpans = [...popUpSwipeText.children];
-
-window.onload = function () {
-    popUpWrapper.style.transitionDuration = popUpTransTime + "ms";
-    setTimeout(() => {
-        popUpWrapper.classList.add("popup-wrapper--open")
-        setTimeout(() => {
-            popUpWrapper.style.transitionDuration = ".5s"
-            // yranSvgContainer.style.display = "none"
-            
-
-        }, popUpTransTime);
-
-        setTimeout(() => {
-            const baseDelay = 0.75;
-            const step = 0.2;
-            const lastIndex = allFallingTexts.length - 1;
-
-            for (let i = 0; i < allFallingTexts.length; i++) {
-                const element = allFallingTexts[i];
-
-                const delay = i === lastIndex
-                    ? 0
-                    : baseDelay + i * step;
-
-                element.style.transitionDelay = `${delay}s`;
-                element.classList.remove("falling-text");
-            }
-        }, popUpTransTime / 2);   
-
-    }, timeToStartPopUpFadeIn);
+const menuSectionObserverOptions = {
+    root: menuContentScroller,
+    rootMargin: "-25% 0px -75% 0px",
+    threshold: 1
 };
 
-popUpBtn.addEventListener("click", e => {
-    popUpWrapper.classList.remove("popup-wrapper--open")
-})
+const menuSectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const target = entry.target;
 
-let index = 0;
+        if (entry.isIntersecting) {
+            const id = target.dataset.menuCat;
+            console.log(target);
+            if (id) {
+                // Remove previous actives
+                menuSecBtnsAll.forEach(btn => btn.classList.remove("active"));
 
-function cycleColors() {
-    // reset all
-    popUpSwipeTextSpans.forEach(span => span.classList.remove('active'));
-
-    // highlight current one
-    popUpSwipeTextSpans[index].classList.add('active');
-
-    // move to next
-    index++;
-
-    // if we’ve gone past the last span, reset after a pause
-    if (index >= popUpSwipeTextSpans.length) {
-        index = 0;
-        setTimeout(cycleColors, 1500); // pause before restarting
-    } else {
-        setTimeout(cycleColors, 500); // quick switch between spans
-    }
-}
-
-// start the loop
-cycleColors();
-
-// CHECK IF MENU HEADS ARE LONG AND ADD CLASS IF SO
-
-const allMenuHeads = document.querySelectorAll('[data-item-price="individual"] .menu____dish-head');
-
-allMenuHeads.forEach(headline => {
-    if (headline.innerHTML.length > 9) {
-        headline.classList.add("long-head")
-    }
-})
-
-// SNOW EFFECT
+                // Find the button matching this section
+                const matchingBtn = Array.from(menuSecBtnsAll).find(btn =>
+                    btn.dataset.menuCat === id
+                );
+                if (matchingBtn) {
+                    matchingBtn.classList.add("active");
+                }
+            }
+        }
+    });
+}, menuSectionObserverOptions);
 
 
 
-const SNOWFLAKE_COUNT = 80;
-const MIN_DURATION = 5;
-const MAX_DURATION = 70;
-const MIN_SIZE = 2;
-const MAX_SIZE = 20;
 
-const snowContainer = document.getElementById("snow");
+// Create observer for menu heads
 
-const SNOW_COLORS = [
-    "var(--cantinaGreen)",
-    "var(--cantinaRosa)",
-    "var(--cantinaGrey)",
-    "var(--cantinaCream)",
-    "var(--cantinaCream)"
-];
+const menuTitlesObserverOptions = {
+    root: menuContentScroller,
+    rootMargin: "-25% 0px -25% 0px",
+    threshold: 0
+};
 
-function random(min, max) {
-    return Math.random() * (max - min) + min;
-}
+const menuTitlesObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const target = entry.target;
 
-function randomFromArray(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
-}
-
-function createSnowflake() {
-    const snowflake = document.createElement("div");
-    snowflake.className = "snowflake";
-    snowflake.textContent = "❄";
-
-    const size = random(MIN_SIZE, MAX_SIZE);
-    const duration = random(MIN_DURATION, MAX_DURATION);
-    const drift = random(-50, 50);
-
-    snowflake.style.left = random(0, 100) + "vw";
-    snowflake.style.fontSize = size + "px";
-    snowflake.style.opacity = random(0.2, 1);
-    snowflake.style.color = randomFromArray(SNOW_COLORS);
-    snowflake.style.animationDuration = duration + "s";
-    snowflake.style.setProperty("--drift", drift + "px");
-
-    snowContainer.appendChild(snowflake);
-
-    setTimeout(() => {
-        snowflake.remove();
-        createSnowflake(); // keep snowfall continuous
-    }, duration * 1000);
-}
-
-// Initial population
-for (let i = 0; i < SNOWFLAKE_COUNT; i++) {
-    setTimeout(createSnowflake, random(0, 5000)); // stagger start
-}
-
-
+        if (entry.isIntersecting) { makeFunkyMenuCategoryHeads(target) }
+    });
+}, menuTitlesObserverOptions);
 

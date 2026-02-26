@@ -118,6 +118,8 @@ async function loadMenu(mdFile, target) {
             ? [data.basePrice]
             : [];
 
+    // const hasBasePrice = "base-price" ? basePrices !== [] ? basePrices : "";
+
     // --- now build the section header ---
     const sectionClasses = Array.isArray(data.sectionClass)
         ? data.sectionClass

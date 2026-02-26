@@ -89,12 +89,31 @@
     navigation: auto;
 }
 
+/* * {
+  outline: 1px solid rgba(255,0,0,.05);
+}
+
+* {
+  background-color: rgba(255, 0, 0, 0.03) !important;
+} */
+
+/* *,
+*::before,
+*::after {
+  outline: 1px solid rgba(255, 0, 0, 0.15) !important;
+} */
+
 button {
     all: unset;
 }
 
 a {
     text-decoration: none;
+}
+
+button,
+a {
+    cursor: pointer;
 }
 
 body {
@@ -119,16 +138,17 @@ body {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 9999;
+    /* z-index: 9999; */
     /* ⬅ foreground snow */
     overflow: hidden;
+    cursor: none;
 }
 
 .snowflake {
     position: absolute;
     top: -50px;
     color: white;
-    user-select: none;
+    /* user-select: none; */
     animation-name: fall;
     animation-timing-function: linear;
     text-shadow: 0 0 6px currentColor;
@@ -153,6 +173,7 @@ body {
     width: 100%;
     text-align: center;
     flex: var(--logoWrapperFlexVal);
+    z-index: -100;
 }
 
 .logo__tagline {
@@ -396,23 +417,7 @@ main {
     overflow: hidden;
     padding: var(--bodyPadding);
     pointer-events: none;
-}
-
-section {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-}
-
-section.home {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    padding: var(--bodyPadding);
-    min-height: 100%;
-    pointer-events: none;
+    /* z-index: -300; */
 }
 
 /* --> TICKER <---------- */
@@ -463,7 +468,7 @@ section.home {
     top: var(--bodyPadding);
     color: var(--bgColor);
     cursor: pointer;
-    z-index: 300;
+    z-index: 25;
     border-radius: 50%;
     width: calc(var(--bodyPadding) * 3);
     aspect-ratio: 1/1;
@@ -567,6 +572,7 @@ section.home {
     right: var(--bodyPadding);
     z-index: 100;
     height: 100%;
+    pointer-events: none;
 }
 
 
@@ -665,9 +671,13 @@ section.home {
     color: var(--cantinaRosa);
     font-variation-settings: "slnt" 0, "wdth" 100, "wght" 800;
     line-height: 1.2;
-    pointer-events: auto;
+    pointer-events: none;
     font-size: calc(var(--textFontSize) * .9);
     /* background-color: orange; */
+}
+
+.opening-hours-wrapper div {
+    pointer-events: all;
 }
 
 .opening-hours-list-container {
@@ -799,7 +809,6 @@ section.home {
 }
 
 
-
 /* --> MENU <---------- */
 
 .menu-wrapper {
@@ -808,6 +817,9 @@ section.home {
     --menuAddExtraColor: var(--cantinaGreen);
     --menuPriceColor: var(--cantinaGreen);
     --menuListColor: black;
+    --menuTextMargin: 0.5rem;
+    --menuItemBG: var(--cantinaCream);
+    --menuBG: var(--cantinaRosa);
     position: absolute;
     top: 0;
     left: 0;
@@ -817,23 +829,24 @@ section.home {
     padding: var(--bodyPadding);
     padding-bottom: 0;
     grid-template-columns: repeat(4, 1fr) auto;
-    /* pointer-events: unset; */
-    /* pointer-events: none; */
-    /* z-index: -10; */
+    pointer-events: none;
     color: var(--menuTextColor);
+    z-index: 50;
+
 }
 
 .menu-content-scroller {
     grid-column: 1 / 5;
     position: relative;
     display: flex;
-    /* justify-content: end; */
     overflow: scroll;
     transition: transform .5s ease-in-out;
     z-index: 110;
     justify-content: end;
     pointer-events: auto;
-    /* background-color: #33a58e; */
+    background-color: var(--menuBG);
+    margin-right: var(--bodyPaddingHalf);
+    padding: var(--bodyPaddingHalf);
 }
 
 .menu-content-scroller--closed {
@@ -844,47 +857,43 @@ section.home {
     position: relative;
     display: flex;
     flex-direction: column;
-    pointer-events: auto;
-    padding-left: var(--textFontSizeSmall);
-    width: 100%;
-    max-width: 600px;
+    pointer-events: all;
     z-index: 200;
-    /* pointer-events: auto; */
+    gap: 48px;
+    z-index: 500;
 }
 
-.menu-content::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: "";
-    width: calc(100% - var(--bodyPadding));
-    height: var(--food-menu-full-height, 50px);
-    background-color: var(--cantinaRosa);
-    z-index: -100;
-}
 
-/* MENU CATHEGORIES */
 
-.menu__cat-wrapper {
+/*  =================== */
+    /* --> mdMENU <---------- */
+/*  =================== */
+
+
+.menu-section {
     position: relative;
-    height: 100%;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 8px 0 8px;
-    height: auto;
+    gap: calc(var(--bodyPadding) / 2);
+    font-size: 1.3rem;
+    /* line-height: 1.3rem; */
+    /* width:; */
+    overflow: visible;
 }
 
-.menu__cat__head-wrapper {
-    position: relative;
+
+.menu-section li {
+    list-style: none;
+}
+
+.menu-section .menu-section__header {
     display: flex;
-    align-items: end;
-    width: auto;
-    height: calc(var(--bodyPadding) * 5);
-    z-index: 5000;
+    flex-direction: column;
+    gap: var(--menuTextMargin);
+    padding-top: var(--bodyPadding);
 }
 
-.menu__cat__head {
+.menu-section .section__title {
     width: 100%;
     position: relative;
     font-size: var(--menuCatHead);
@@ -897,89 +906,198 @@ section.home {
     word-break: normal;
 }
 
-.menu__cat__head .blob {
-    color: var(--cantinaLila);
+.menu-section .section__intro {
+    color: var(--menuItemBG);
+    color: black;
 }
 
-/* MENU DISHES */
-
-.menu__cat__dishes-wrapper {
+.menu-section article {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: .5rem;
-    padding-top: 8px;
-    /* overflow-x: visible; */
+    gap: var(--menuTextMargin);
+    background-color: var(--menuItemBG);
+    padding: var(--bodyPaddingQuarter);
 }
 
-.menu____dish-wrapper {
-    position: relative;
-    display: flex;
-    overflow: visible;
-}
 
-.menu____dish-content {
-    position: relative;
-    display: block;
-    width: 80%;
-    background-color: var(--logoColor);
-    /* margin-right: 8px; */
-    padding: 16px 8px 8px 8px;
-    overflow-x: visible;
-}
-
-/* Dish headlines */
-
-.menu____dish-head {
-    position: relative;
-    font-size: calc(var(--textFontSize) * 1.8);
-    line-height: 1.5rem;
+.menu-section article h3 {
+    font-size: calc(var(--textFontSize) * 1.3);
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 600;
     overflow: visible;
-    padding-bottom: 8px;
-
     color: var(--menuDishHeadColor);
     hyphens: auto;
     overflow-wrap: break-word;
-    /* or word-wrap */
     word-break: normal;
+    /* padding-right: 40px; */
+    /* margin-bottom: var(--menuTextMargin); */
 }
-
-.menu____dish-head.choice {
+.menu-section article .dish__fields {
+    position: relative;
     display: flex;
-    /* gap: 5rem; */
-    font-size: 1.3rem;
+    flex-direction: column;
+    gap: var(--menuTextMargin);
+    /* font-size: 1.3rem;
+    line-height: 1.3rem; */
 }
 
-.menu____dish-head.choice .choice::after {
+.menu-section article .dish__fields .dish__description,
+.menu-section .section__intro {
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 500;
+    max-width: 75%;
+}
+
+.menu-section article .dish__fields .dish__extras {
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 400;
+    color: var(--menuAddExtraColor);
+}
+
+article.dish--choice>h3 {
+    color: black;
+    font-size: var(--textFontSize);
+    line-height: 1;
+}
+
+.menu-section article .dish__fields .dish__choice ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--menuTextMargin);
+}
+
+.menu-section article .dish__fields .dish__choice ul li::before {
     content: " ☞ ";
     position: relative;
-    margin-right: 0.25rem;
+    margin: 0 0.25rem;
     line-height: 0;
-    transform: translateY(8px);
-    /* left: 0; */
-    /* top: 0.25em; */
+    font-size: var(--textFontSize);
     color: var(--cantinaLila);
     width: 1rem;
 }
-.menu____dish-head::after,
-.menu____dish__text--dish-head::after {
+.menu-section article .dish__fields .dish__choice ul li:first-child:before {
+    margin: 0 0.25rem 0 0;
+}
+
+.menu-section .price {
+    display: flex;
+    gap: var(--menuTextMargin);
+    flex-direction: column;
+    font-family: "ltr-ncnd-variable", sans-serif;
+    font-variation-settings: "wght" 600;
+
+    text-align: right;
+    z-index: 100;
+    pointer-events: none;
+    /* background-color: aqua; */
+}
+
+.sectionprice-wrapper {
+    border: none;
+    background: radial-gradient(circle, var(--cantinaCream) 2px, transparent 2px) repeat;
+    background-size: 10px 10px;
+    padding: 1.2rem;
+}
+
+.menu-section .price.section__sectionprices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--menuBG);
+    padding: var(--bodyPaddingHalf);
+}
+
+.menu-section.styckpris .price.section__sectionprices {
+    flex-direction: row;
+    
+}
+
+.menu-section .price.section__sectionprices li {
+    text-align: center;
+    perspective: 600px;
+}
+
+.menu-section.lunch-special .price.section__sectionprices li:last-child span:nth-child(-n+2) {
+    display: inline-block;
+    transform: rotate(0deg);
+    animation: shake-it 3s infinite alternate-reverse;
+}
+
+.menu-section.lunch-special .price.section__sectionprices li:last-child span:nth-child(1) {
+    animation-delay: 1s;
+    animation-duration: 4s;
+}
+
+@keyframes shake-it {
+    0% {
+        transform: rotate(0deg);
+    }
+    40% {
+        transform: rotate(0deg);
+    }
+    45% {
+        transform: rotate(-9deg);
+    }
+    50% {
+        transform: rotate(8deg);
+    }
+    55% {
+        transform: rotate(12deg);
+    }
+    60% {
+        transform: rotate(0deg);
+    }
+    80% {
+        transform: rotate(-5deg);
+    }
+    82% {
+        transform: rotate(0deg);
+    }
+    87% {
+        transform: rotate(2deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.menu-section.lunch-special .price.section__sectionprices li:last-child span:nth-last-of-type(-n+2) {
+    animation: blink-it 3s infinite alternate-reverse;
+}
+
+@keyframes blink-it {
+    42% {
+        color: var(--cantinaGreen);
+    }
+    45% {
+        color: var(--menuTextColor);
+    }
+    50% {
+        color: var(--cantinaGreen);
+    }
+    60% {
+        color: var(--menuTextColor);
+    }
+}
+
+article.dish h3::after,
+article.dish--choice .dish__choice li::after {
+    position: relative;
+    bottom: 2px;
     font-size: var(--textFontSize);
-    margin-left: .5rem;
+    margin-left: .25rem;
     line-height: 0;
     font-size: var(--symbolSize);
 }
 
-.menu____dish-head.veg::after,
-.menu____dish__text--dish-head.veg::after {
+article.dish--veg h3::after,
+article.dish--choice .dish__choice li.dish__choice--veg::after {
     content: "🥦";
 }
-.menu____dish-head.spicy::after,
-.menu____dish__text--dish-head.spicy::after {
+article.dish--spicy h3::after,
+article.dish--choice .dish__choice li.dish__choice--spicy::after {
     content: "🌶";
 }
-.menu____dish-head.spicy.veg::after,
-.menu____dish__text--dish-head.spicy.veg::after {
+article.dish--choice .dish__choice li.dish__choice--spicyveg::after {
     content: "🌶 🥦";
 }
 
@@ -987,154 +1105,7 @@ section.home {
     padding-right: calc(var(--bodyPadding) * 3.5);
 }
 
-/* --> Menu Prices <-- */
-
-.menu____dish-price {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    font-family: "ltr-ncnd-variable", sans-serif;
-    font-variation-settings: "wght" 600;
-    right: var(--textFontSizeSmall);
-    color: var(--menuPriceColor);
-    text-shadow: var(--cantinaLila) 2px 2px 2px;
-    /* background-color: #72808a; */
-    text-align: right;
-    width: 100%;
-    z-index: 100;
-    pointer-events: none;
-}
-
-.menu____dish-price--big {
-    font-size: calc(var(--bodyPadding) * 1.75);
-    /* line-height: 1.5rem; */
-}
-
-.menu__cat-wrapper[data-item-price="grouped"] .menu__cat__dishes-wrapper>div:first-child>div:first-child h3:first-child,
-.menu__cat-wrapper[data-item-price="grouped"] .menu__cat__dishes-wrapper>div:first-child>div:first-child li:first-child,
-.menu__cat-wrapper[data-item-price="grouped"] .menu__cat__dishes-wrapper>div:first-child>div:first-child div:first-child {
-   padding-right: 80px;
-   /* border: 1px solid red; */
-}
-
-.menu____dish-price--prewrap {
-    white-space: pre-wrap;
-
-}
-
-.menu____dish-price.move-up {
-    transform: translateY(-5%);
-}
-
-.menu____dish-price.move-down {
-    transform: translateY(24px);
-}
-
-
-.dish-price--flex-item {
-    display: flex;
-    flex-direction: column;
-}
-
-div.menu__cat-wrapper[data-menu-cat="tacos"] .dish-price--flex-item:nth-child(1) span:first-child {
-    height: calc(1em * 0.75);
-}
-
-.menu____dish-price__left-aligned {
-    text-align: right;
-}
-
-.menu____dish-price__left-aligned.small {
-    margin-top: 1rem;
-    z-index: 10;
-    font-size: var(--bodyPadding);
-    line-height: var(--bodyPadding);
-    /* background-color: green; */
-}
-
-.menu____dish__text-container {
-    list-style: none;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    width: 100%;
-    margin-right: 25px;
-}
-
-.menu____dish__text {
-    width: 100%;
-    padding-top: 4px;
-    /* padding-right: 50px; */
-    position: relative;
-    font-size: 1.3rem;
-    line-height: 1.3rem;
-    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 500;
-}
-
-.menu____dish__text--dish-head {
-    padding-bottom: 4px;
-    padding-right: 8px;
-}
-
-.menu____dish__text--top-border {
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px solid var(--cantinaLila);
-}
-
-.menu____dish__text--add-extra,
-.menu____dish__text--intro {
-    position: relative;
-    padding-top: 4px;
-    font-family: "ltr-ncnd-variable", sans-serif;
-    font-variation-settings: "wght" 600;
-    color: var(--menuAddExtraColor);
-}
-
-.menu____dish__text--intro {
-    padding-right: 24px;
-    color: var(--bgColor);
-    width: fit-content;
-    width: 100%;
-    padding-right: 64px;
-}
-
-[data-menu-cat="bao"] .menu____dish__text--intro {
-    text-decoration-thickness: 20px;
-}
-
-
-
-.menu-cat--broth-n-buns .menu__cat____dish-content:first-child .menu____dish__text--add-extra {
-    color: black;
-}
-
-.menu____dish__text--add-extra .bold {
-    font-variation-settings: "wght" 900;
-}
-
-/* Dotted Menu Items */
-
-.menu____dish__text--indent {
-    color: var(--menuListColor);
-    padding-left: 8px;
-}
-
-
-.menu____dish__text--indent::before {
-    content: "☞ ";
-    position: relative;
-    margin-right: 0.25rem;
-    /* left: 0; */
-    /* top: 0.25em; */
-    color: var(--cantinaLila);
-    width: 1rem;
-}
-
 .menu-content__extra-info-container {
-    position: relative;
-    margin-top: 24px;
     position: relative;
     display: flex;
 }
@@ -1142,16 +1113,16 @@ div.menu__cat-wrapper[data-menu-cat="tacos"] .dish-price--flex-item:nth-child(1)
 .menu____extra-info {
     position: relative;
     display: block;
-    width: auto;
-    /* height: fit-content; */
-    /* padding-bottom: 48px; */
+    width: 100%;
+    height: 100px;
     font-family: "ltr-ncnd-variable", sans-serif;
     font-variation-settings: "wght" 600;
     color: var(--bgColor);
-    /* white-space: pre-wrap; */
-    /* border: 1px solid red; */
 }
-
+.menu-content .menu-content__extra-info-container:last-child .menu____extra-info {
+    height: 400px;
+    /* background-color: orange; */
+}
 
 /* -> MENU BUTTONS <---------- */
 
@@ -1180,7 +1151,7 @@ div.menu__cat-wrapper[data-menu-cat="tacos"] .dish-price--flex-item:nth-child(1)
 }
 
 .menu__btn {
-    all: none;
+    /* all: none; */
     flex: 1 0 auto;
     background-color: var(--cantinaRosa);
     padding: 12px 8px;
@@ -1203,6 +1174,7 @@ div.menu__cat-wrapper[data-menu-cat="tacos"] .dish-price--flex-item:nth-child(1)
     .menu__btn.active:hover {
         background-color: var(--cantinaGrey);
         color: var(--bgColor);
+        cursor: pointer;
     }
 }
 
@@ -1231,6 +1203,7 @@ button.menu__btn.pressed {
     color: var(--bgColor);
     /* box-shadow: var(--logoColor) 2px 2px 0px; */
     pointer-events: auto;
+    /* cursor: pointer; */
 
     /* box-shadow: var(--logoColor) 0px 0px 0px; */
 
@@ -1247,8 +1220,6 @@ button.menu__btn.pressed {
     }
 }
 
-/* .menu__btn__opBtn.active {
-} */
 
 .menu__btn__opBtn.pressed.active {
     scale: 100%;
@@ -1578,7 +1549,7 @@ button.menu__btn.pressed {
     left: var(--textFontSize);
     width: var(--circlePointerSize);
     aspect-ratio: 1 / 1;
-    z-index: 100;
+    z-index: 25;
     pointer-events: none;
     /* background-color: orange; */
 }
@@ -1899,6 +1870,9 @@ button.menu__btn.pressed {
         bottom: calc(var(--bodyPadding) * 8);
         /* background-color: #72808a; */
     }
+    .menu-content-scroller {
+    grid-column: 3 / 5;
+    }
 
 }
 
@@ -1960,5 +1934,8 @@ button.menu__btn.pressed {
 
     .social-section-container {
         bottom: calc(var(--bodyPadding) * 2.5);
+    }
+    .menu-content-scroller {
+    grid-column: 4 / 5;
     }
 }

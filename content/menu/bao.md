@@ -2,7 +2,10 @@
 title: Bao Buns
 sectionClass:
  - bao
+ - styckpris
 basePrice: 
+ - 89
+ - /st
 intro: 
  - Ångade baobröd med asiatisk kålsallad & srirachamajonnäs 
 ---
@@ -12,8 +15,5 @@ intro:
 **Description**
 **Extras**
 **choice** Fried Halloumi [spicyveg], Fried Chicken Hot Sauce [spicy], Hoisin Duck [spicy], Porkbelly [spicy]
-**Price** 89
-**Price** /st
 
 ---
-
