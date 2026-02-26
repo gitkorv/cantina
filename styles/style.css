@@ -991,8 +991,10 @@ article.dish--choice>h3 {
 }
 
 .sectionprice-wrapper {
-    padding: var(--menuTextMargin);
-    border: var(--menuTextMargin) dotted var(--menuItemBG);
+    border: none;
+    background: radial-gradient(circle, var(--cantinaCream) 2px, transparent 2px) repeat;
+    background-size: 10px 10px;
+    padding: 1.2rem;
 }
 
 .menu-section .price.section__sectionprices {
@@ -1000,8 +1002,8 @@ article.dish--choice>h3 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* border: var(--menuTextMargin) solid var(--menuItemBG);
-    padding: var(--menuTextMargin); */
+    background-color: var(--menuBG);
+    padding: var(--bodyPaddingHalf);
 }
 
 .menu-section.styckpris .price.section__sectionprices {
@@ -1011,6 +1013,70 @@ article.dish--choice>h3 {
 
 .menu-section .price.section__sectionprices li {
     text-align: center;
+    perspective: 600px;
+}
+
+.menu-section.lunch-special .price.section__sectionprices li:last-child span:nth-child(-n+2) {
+    display: inline-block;
+    transform: rotate(0deg);
+    animation: shake-it 3s infinite alternate-reverse;
+}
+
+.menu-section.lunch-special .price.section__sectionprices li:last-child span:nth-child(1) {
+    animation-delay: 1s;
+    animation-duration: 4s;
+}
+
+@keyframes shake-it {
+    0% {
+        transform: rotate(0deg);
+    }
+    40% {
+        transform: rotate(0deg);
+    }
+    45% {
+        transform: rotate(-9deg);
+    }
+    50% {
+        transform: rotate(8deg);
+    }
+    55% {
+        transform: rotate(12deg);
+    }
+    60% {
+        transform: rotate(0deg);
+    }
+    80% {
+        transform: rotate(-5deg);
+    }
+    82% {
+        transform: rotate(0deg);
+    }
+    87% {
+        transform: rotate(2deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.menu-section.lunch-special .price.section__sectionprices li:last-child span:nth-last-of-type(-n+2) {
+    animation: blink-it 3s infinite alternate-reverse;
+}
+
+@keyframes blink-it {
+    42% {
+        color: var(--cantinaGreen);
+    }
+    45% {
+        color: var(--menuTextColor);
+    }
+    50% {
+        color: var(--cantinaGreen);
+    }
+    60% {
+        color: var(--menuTextColor);
+    }
 }
 
 article.dish h3::after,
