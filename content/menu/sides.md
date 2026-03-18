@@ -24,7 +24,7 @@ intro:
 
 ### French Fries [veg]
 
-**Description** Chiliolja, tare, buljong, chili miso, salladslök, silverlök, ägg, pak choy, nori
+**Description** 
 **Extras** Add manchego +15kr
 **Price** 45
 
@@ -32,8 +32,7 @@ intro:
 
 ### Sweet Potato Fries [veg]
 
-**Description** Tare, chiliolja, grönsaks-buljong, salladslök, pak 
-choy, menma, nori tofu-blandning (tofu, Anammafärs & majs)
+**Description** 
 **Extras** Add manchego +15kr
 **Price** 55
 
