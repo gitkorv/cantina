@@ -360,39 +360,7 @@ function fadeInFromOpacityZero(element) {
 
 // Opening Hours Settings
 
-function setWidthForHours() {
-    requestAnimationFrame(() => {
-        // Apply font variation settings
-        openingHoursHoursAll.forEach(hour => {
-            hour.style.transition = "none";
-            hour.style.fontVariationSettings = `"slnt" 0, "wdth" 150, "wght" 900`;
-        });
 
-        // Let styles apply
-        requestAnimationFrame(() => {
-            const getMaxWidth = (elements) =>
-                [...elements].reduce((max, el) => Math.max(max, el.getBoundingClientRect().width), 0);
-
-            const maxWidth = getMaxWidth(openingHoursDaysAll);
-
-            openingHoursDaysAll.forEach(dayLine => {
-                dayLine.style.width = maxWidth + "px";
-
-            });
-
-            // Wait one more frame *after* measurement to clear styles
-            requestAnimationFrame(() => {
-                openingHoursHoursAll.forEach(hour => {
-                    hour.style.transition = "";
-
-                    hour.style.fontVariationSettings = "";
-                });
-            });
-        });
-    });
-}
-
-setWidthForHours()
 
 // Flick opening times
 
@@ -443,49 +411,185 @@ function hideOpeningDaysBeforeCutoff() {
 document.addEventListener('DOMContentLoaded', hideOpeningDaysBeforeCutoff);
 
 
-const specialHoursValborgStart = new Date(2026, 3, 29, 17, 45, 0);
-const specialHoursValborgEnd = new Date(2026, 4, 3, 6, 0, 0);
+// Special hours
 
-const changeOpenHoursSettings = {
-    thursday: {
-        "dayName" : "Torsdag (Valborg)",
-        "newHours" : "11-03",
-        "start" : specialHoursValborgStart,
-        "end" : specialHoursValborgEnd
-    },
-    friday: {
-        "dayName" : "Fredag",
-        "newHours" : "16-03",
-        "start" : specialHoursValborgStart,
-        "end" : specialHoursValborgEnd
-    },
-    saturday: {
-        "dayName" : "Lördag",
-        "newHours" : "16-03",
-        "start" : specialHoursValborgStart,
-        "end" : specialHoursValborgEnd
+const specialHours = [
+    {
+        name: "Öppettider Valborg:",
+        start: new Date(2026, 3, 29, 17, 45, 0),
+        end: new Date(2026, 4, 3, 5, 0, 0),
+        changeName: true,
+        changes: {
+            thursday: { newDayName: "Torsdag (Valborg)", newHours: "11-03" },
+            friday: { newHours: "16-03" },
+            saturday: { newHours: "16-03" }
+        }
+    }
+];
+
+const openingHoursByDay = {};
+
+const hoursMarkdownPath = "/content/info/hours.md";
+const hoursDayKeyMap = {
+    "Måndag": "monday",
+    "Tisdag": "tuesday",
+    "Onsdag": "wednesday",
+    "Torsdag": "thursday",
+    "Fredag": "friday",
+    "Lördag": "saturday",
+    "Söndag": "sunday"
+};
+
+function buildOpeningHoursCache() {
+    Object.keys(openingHoursByDay).forEach(key => {
+        delete openingHoursByDay[key];
+    });
+
+    openingHoursDaysAll.forEach(dayRow => {
+        const dayKey = dayRow.dataset.day;
+
+        if (!dayKey) return;
+
+        openingHoursByDay[dayKey] = {
+            row: dayRow,
+            dayNameSpan: dayRow.querySelector(".day-label"),
+            dayTimeSpan: dayRow.querySelector(".opening-hours__hours"),
+            originalDayName: dayRow.dataset.originalDayname || "",
+            originalHours: dayRow.dataset.originalHours || ""
+        };
+    });
+}
+
+async function loadOriginalHoursFromMarkdown() {
+    try {
+        const response = await fetch(hoursMarkdownPath);
+
+        if (!response.ok) {
+            throw new Error(`Failed to load ${hoursMarkdownPath}: ${response.status}`);
+        }
+
+        const markdown = await response.text();
+        const lines = markdown.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+
+        lines.forEach(line => {
+            const match = line.match(/^([^:]+):\s*(.+)$/);
+            if (!match) return;
+
+            const dayName = match[1].trim();
+            const originalHours = match[2].trim();
+            const dayKey = hoursDayKeyMap[dayName];
+
+            if (!dayKey) return;
+
+            const dayEntry = openingHoursByDay[dayKey];
+            if (!dayEntry) return;
+
+            dayEntry.originalDayName = dayName;
+            dayEntry.originalHours = originalHours;
+
+            const { row: dayRow, dayNameSpan, dayTimeSpan } = dayEntry;
+            if (!dayRow) return;
+
+            dayRow.dataset.originalDayname = dayName;
+            dayRow.dataset.originalHours = originalHours;
+
+            if (dayNameSpan) dayNameSpan.textContent = dayName;
+            if (dayTimeSpan) dayTimeSpan.textContent = originalHours;
+        });
+    } catch (error) {
+        console.warn("Opening-hours markdown load failed, falling back to HTML data attributes.", error);
     }
 }
 
-openingHoursDaysAll.forEach(day => {
-    const dag = day.dataset.day;
-    const change = changeOpenHoursSettings[dag];
+function resetOpeningHours() {
+    Object.values(openingHoursByDay).forEach(({ dayNameSpan, dayTimeSpan, originalDayName, originalHours }) => {
+        if (dayNameSpan && originalDayName) dayNameSpan.textContent = originalDayName;
+        if (dayTimeSpan && originalHours) dayTimeSpan.textContent = originalHours;
+    });
+}
 
-    if (change) {
-        const now = new Date();
 
-        if (now > change.start && now < change.end) {
-            const dayNameSpan = day.querySelector(".day-label")
-            const dayTimeSpan = day.querySelector(".opening-hours__hours")
+const openHoursHead = document.querySelector(".hours-head--span");
+const openHoursHeadBaseText = openHoursHead ? openHoursHead.textContent : "";
 
-            if (dayNameSpan) dayNameSpan.textContent = change.dayName;
-            if (dayTimeSpan) dayTimeSpan.textContent = change.newHours;
-        }
+
+function applySpecialHours() {
+    const now = new Date();
+
+    if (openHoursHead) {
+        openHoursHead.textContent = openHoursHeadBaseText;
     }
-});
+
+    resetOpeningHours();
+
+    specialHours.forEach(event => {
+        if (now < event.start || now > event.end) return;
+
+        if (openHoursHead && event.changeName) {
+            openHoursHead.textContent = event.name;
+        }
+
+        Object.entries(event.changes).forEach(([dayKey, change]) => {
+            const dayEntry = openingHoursByDay[dayKey];
+            if (!dayEntry) return;
+
+            if (dayEntry.dayNameSpan && change.newDayName) {
+                dayEntry.dayNameSpan.textContent = change.newDayName;
+            }
+
+            if (dayEntry.dayTimeSpan && change.newHours) {
+                dayEntry.dayTimeSpan.textContent = change.newHours;
+            }
+        });
+    });
+}
+
+async function initOpeningHours() {
+    buildOpeningHoursCache();
+    await loadOriginalHoursFromMarkdown();
+    applySpecialHours();
+    setWidthForHours();
+    setInterval(() => {
+        applySpecialHours();
+        setWidthForHours();
+    }, 30000);
+}
+
+initOpeningHours();
 
 
 
+function setWidthForHours() {
+    requestAnimationFrame(() => {
+        // Apply font variation settings
+        openingHoursHoursAll.forEach(hour => {
+            hour.style.transition = "none";
+            hour.style.fontVariationSettings = `"slnt" 0, "wdth" 150, "wght" 900`;
+        });
+
+        // Let styles apply
+        requestAnimationFrame(() => {
+            const getMaxWidth = (elements) =>
+                [...elements].reduce((max, el) => Math.max(max, el.getBoundingClientRect().width), 0);
+
+            const maxWidth = getMaxWidth(openingHoursDaysAll);
+
+            openingHoursDaysAll.forEach(dayLine => {
+                dayLine.style.width = maxWidth + "px";
+
+            });
+
+            // Wait one more frame *after* measurement to clear styles
+            requestAnimationFrame(() => {
+                openingHoursHoursAll.forEach(hour => {
+                    hour.style.transition = "";
+
+                    hour.style.fontVariationSettings = "";
+                });
+            });
+        });
+    });
+}
 
 
 
@@ -663,7 +767,10 @@ function formDrips() {
 window.addEventListener('resize', e => {
     closeMenu()
     windowWidth = window.innerWidth;
-    setWidthForHours()
+    requestAnimationFrame(() => {
+        setWidthForHours()
+    })
+    
 
 })
 // openMenu()
