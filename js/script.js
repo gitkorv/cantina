@@ -420,7 +420,7 @@ cycleHighlight();
 
 function hideOpeningDaysBeforeCutoff() {
     const now = new Date();
-    const cutoffDate = new Date(2026, 0, 6, 21, 0, 0); // Jan 6, 21:00 local time
+    const cutoffDate = new Date(2026, 3, 29, 15, 0, 0); // Jan 6, 21:00 local time
 
     const hoursHeadSub = document.querySelector(".hours-head__sub");
 
@@ -440,9 +440,53 @@ function hideOpeningDaysBeforeCutoff() {
     }
 }
 
-
-
 document.addEventListener('DOMContentLoaded', hideOpeningDaysBeforeCutoff);
+
+
+const specialHoursValborgStart = new Date(2026, 3, 29, 17, 45, 0);
+const specialHoursValborgEnd = new Date(2026, 4, 3, 6, 0, 0);
+
+const changeOpenHoursSettings = {
+    thursday: {
+        "dayName" : "Torsdag (Valborg)",
+        "newHours" : "11-03",
+        "start" : specialHoursValborgStart,
+        "end" : specialHoursValborgEnd
+    },
+    friday: {
+        "dayName" : "Fredag",
+        "newHours" : "16-03",
+        "start" : specialHoursValborgStart,
+        "end" : specialHoursValborgEnd
+    },
+    saturday: {
+        "dayName" : "Lördag",
+        "newHours" : "16-03",
+        "start" : specialHoursValborgStart,
+        "end" : specialHoursValborgEnd
+    }
+}
+
+openingHoursDaysAll.forEach(day => {
+    const dag = day.dataset.day;
+    const change = changeOpenHoursSettings[dag];
+
+    if (change) {
+        const now = new Date();
+
+        if (now > change.start && now < change.end) {
+            const dayNameSpan = day.querySelector(".day-label")
+            const dayTimeSpan = day.querySelector(".opening-hours__hours")
+
+            if (dayNameSpan) dayNameSpan.textContent = change.dayName;
+            if (dayTimeSpan) dayTimeSpan.textContent = change.newHours;
+        }
+    }
+});
+
+
+
+
 
 
 // Btn and menus
@@ -676,7 +720,7 @@ async function loadMenu(mdFile, target) {
                 /<strong>(.*?)<\/strong>\s*([\s\S]*?)(?=<strong>|$)/g
             )];
 
-            
+
 
             const priceDivs = [];
             const fieldDivs = parts.map(([_, label, value]) => {
@@ -754,7 +798,7 @@ async function loadMenu(mdFile, target) {
             ? [data.basePrice]
             : [];
 
-            
+
 
     // --- now build the section header ---
     const sectionClasses = Array.isArray(data.sectionClass)
@@ -775,39 +819,39 @@ async function loadMenu(mdFile, target) {
         <div class="menu-section__header">
             <h2 class="section__title">${data.title ?? ''}</h2>
             ${data.intro?.length
-                ? `
+            ? `
                 <div class="section__sub">
                     <ul class="section__intro">
                         ${data.intro.map(i => `<li>${i}</li>`).join('')}
                     </ul>
                 </div>
             `
-                : ''
-            }
+            : ''
+        }
             ${basePrices.length
-                ? `
+            ? `
             <div class="sectionprice-wrapper">
                 <ul class="price section__sectionprices">
                     ${basePrices.map(p => {
-                        // Split the value into words
-                        const words = String(p)
-                            .split(' ')
-                            .map(w => {
-                                // If the word is a number, add class price-number
-                                if (!isNaN(w)) return `<span class="price-number">${w}</span>`;
-                                return `<span>${w}</span>`;
-                            })
-                            .join(' ');
+                // Split the value into words
+                const words = String(p)
+                    .split(' ')
+                    .map(w => {
+                        // If the word is a number, add class price-number
+                        if (!isNaN(w)) return `<span class="price-number">${w}</span>`;
+                        return `<span>${w}</span>`;
+                    })
+                    .join(' ');
 
-                        // Add kr only if the item contains a number
-                        const hasNumber = /\d/.test(p);
-                        return `<li class="section__sectionprice">${words}${hasNumber ? '<span class="kronor">kr</span>' : ''}</li>`;
-                    }).join('')}
+                // Add kr only if the item contains a number
+                const hasNumber = /\d/.test(p);
+                return `<li class="section__sectionprice">${words}${hasNumber ? '<span class="kronor">kr</span>' : ''}</li>`;
+            }).join('')}
                 </ul>
             </div>
             `
-                : ''
-            }
+            : ''
+        }
         </div>
 
         ${html}
@@ -1090,4 +1134,3 @@ const menuTitlesObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) { makeFunkyMenuCategoryHeads(target) }
     });
 }, menuTitlesObserverOptions);
-
