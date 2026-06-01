@@ -145,12 +145,12 @@ const cantinaLettersSettings = [
 
 const tickerItems = [
     {
-        head: "Lunch Specials 149:-",
-        text: "Valfri Ramen, dagens Taco eller valfri Pokénoodles. 11-15 Tisdag till Fredag"
+        head: "Slå dig ner i vår nya uteservering!",
+        text: "Öppet när vädret tillåter. Vi tar inte reserveringar så först till kvarn gäller i solen, välkomna!"
     },
     {
-        head: "Full meny från kl 11",
-        text: "Välj och vraka, kaffe ingår under lunchen."
+        head: "Från Bánh Mì till Ceviche och Caesarsallad",
+        text: "Ny och fräsh meny för sommaren så glöm inte att ta en titt i den."
     },
     {
         head: "DJ's!",
@@ -773,7 +773,7 @@ window.addEventListener('resize', e => {
     
 
 })
-openMenu()
+// openMenu()
 
 
 // =========================

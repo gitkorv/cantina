@@ -3,9 +3,7 @@ title: Ramen
 sectionClass:
  - ramen
  - one-block
- - lunch-special
 basePrice: 
- - Lunch Special 149
 choice: 
 intro:
 

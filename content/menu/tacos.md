@@ -3,9 +3,7 @@ title: Tacos
 sectionClass:
   - tacos
   - one-block
-  - lunch-special
 basePrice: 
- - Lunch Special 2st 149
 intro:
   - Alla tacos serveras i mjuka majstortilla med koriander & lime
 ---

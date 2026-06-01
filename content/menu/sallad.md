@@ -15,7 +15,7 @@ intro:
 **Description** Romansallad, caesardressing, manchego, krutonger
 **Extras** 
 **Choice** Chicken and Bacon, Halloumi [veg]
-**Price** 89
+**Price** 189
 
 ---
 

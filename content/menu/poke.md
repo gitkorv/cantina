@@ -2,10 +2,7 @@
 title: Poké&shy;noodles
 sectionClass:
  - poke
-  - lunch-special
 basePrice: 
- - 
- - Lunch Special 149
 intro:
 ---
 

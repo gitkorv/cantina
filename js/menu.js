@@ -3,9 +3,8 @@ const menuFiles = [
     '/content/menu/tacos.md',
     '/content/menu/ramen.md',
     '/content/menu/poke.md',
-    '/content/menu/sides.md',
-    '/content/menu/bao.md',
-    '/content/menu/sandwiches.md',
+    '/content/menu/sallad.md',
+    '/content/menu/subs.md',
     '/content/menu/kids.md',
     '/content/menu/sweets.md',
     '/content/menu/dips.md',
@@ -27,7 +26,8 @@ async function loadMenu(mdFile, target) {
         /<h3>(.*?)<\/h3>/g,
         (match, rawTitle) => {
             const { title, classes } = parseTitleAndClasses(rawTitle, 'dish--');
-            return `<article class="dish ${classes}"><h3>${title}</h3>`;
+            const heading = title ? `<h3>${title}</h3>` : '';
+            return `<article class="dish ${classes}">${heading}`;
         }
     ).replace(/<hr\s*\/?>/g, '</article>');
 
@@ -75,7 +75,7 @@ async function loadMenu(mdFile, target) {
 
                     if (!items.length) return '';
 
-                    return `<h3 class="dish__choice"><ul>${items.join('')}</ul></h3>`;
+                    return `<h4 class="dish__choice"><ul>${items.join('')}</ul></h4>`;
                 }
 
 

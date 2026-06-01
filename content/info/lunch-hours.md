@@ -1,1 +1,1 @@
-Tisdag – Fredag: 11–15
+<!-- Tisdag – Fredag: 11–15 -->
