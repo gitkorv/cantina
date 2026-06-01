@@ -9,32 +9,32 @@ intro:
 
 ### Churros
 
-**Description** churros, kanel, socker, noisette 
+**Description** Med noisette
 **Extras**
 **Price** 85
 
 ---
 
-### Sorbet
-
-**Description** Mango
-**Extras** 
-**Price** 55
-
----
-
 ### Ice Cream
 
-**Description** Vanilj
+**Description** Fråga efter smak
 **Extras** 
 **Price** 55
 
+---
+
+### Sorbet
+
+**Description** Fråga efter smak
+**Extras** 
+**Price** 55
 
 ---
 
-### American Pancakes
-**Description** Amerikanska pannkakor, lönnsirap, vaniljglass
+
+### Mud Cake
+**Description** Kladdkaka med vispad grädde
 **Extras**
-**Price** 105
+**Price** 75
 
 ---

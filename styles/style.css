@@ -43,6 +43,8 @@
 
     --clubBGColor: var(--cantinaGreen);
     --clubShadowColor: var(--cantinaRosa);
+
+    --buggBorder: 1px solid red;
 }
 
 .bg-green {
@@ -705,12 +707,12 @@ main {
     align-self: flex-start;
     font-size: calc(var(--textFontSize) * 1.2);
     padding-bottom: var(--bodyPaddingQuarter);
-    
+
     display: block;
     max-width: 200px;
 }
 
-.hours-head > span:first-child {
+.hours-head>span:first-child {
     animation: hour-times .5s infinite alternate;
 }
 
@@ -740,7 +742,8 @@ main {
     text-decoration: line-through;
     text-decoration-color: var(--cantinaGrey);
     text-decoration-thickness: 3px;
-    opacity: 0.6; /* optional */
+    opacity: 0.6;
+    /* optional */
 }
 
 .opening-hours__hours {
@@ -866,7 +869,7 @@ main {
 
 
 /*  =================== */
-    /* --> mdMENU <---------- */
+/* --> mdMENU <---------- */
 /*  =================== */
 
 
@@ -880,6 +883,20 @@ main {
     /* width:; */
     overflow: visible;
 }
+
+.menu-section.one-block {
+    gap: 1px;
+}
+
+.menu-section.one-block .menu-section__header {
+    margin-bottom: calc(var(--bodyPadding) / 2);
+
+}
+
+/* .menu-section.ramen .dish--veg h3 {
+    border-top: 1px solid black;
+    padding-top: calc(var(--bodyPadding) / 2);
+} */
 
 
 .menu-section li {
@@ -932,19 +949,18 @@ main {
     /* padding-right: 40px; */
     /* margin-bottom: var(--menuTextMargin); */
 }
+
 .menu-section article .dish__fields {
     position: relative;
     display: flex;
     flex-direction: column;
     gap: var(--menuTextMargin);
-    /* font-size: 1.3rem;
-    line-height: 1.3rem; */
 }
 
 .menu-section article .dish__fields .dish__description,
 .menu-section .section__intro {
     font-variation-settings: "slnt" 0, "wdth" 50, "wght" 500;
-    max-width: 75%;
+    /* max-width: 75%; */
 }
 
 .menu-section article .dish__fields .dish__extras {
@@ -952,11 +968,35 @@ main {
     color: var(--menuAddExtraColor);
 }
 
-article.dish--choice>h3 {
+article.dish--choice ul {
+    display: flex;
+    flex-direction: column;
+    margin-top: .5rem;
+
+}
+
+article.dish--choice h4.dish__choice {
+    color: black;
+    line-height: .75;
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 600;
+}
+
+article.dish--choice h4.dish__choice::before {
+    content: 'Välj på:';
+    color: var(--cantinaCream);
+    line-height: 1.5;
+    font-variation-settings: "slnt" 0, "wdth" 115, "wght" 700;
+    font-size: .65rem;
+    background-color: var(--cantinaRosa);
+    padding: 0.25rem .5rem;
+    letter-spacing: 1px;
+}
+
+/* article.dish--choice:not(.dish--dish-head)>h4 {
     color: black;
     font-size: var(--textFontSize);
     line-height: 1;
-}
+} */
 
 .menu-section article .dish__fields .dish__choice ul {
     display: flex;
@@ -967,15 +1007,16 @@ article.dish--choice>h3 {
 .menu-section article .dish__fields .dish__choice ul li::before {
     content: " ☞ ";
     position: relative;
-    margin: 0 0.25rem;
+    margin: 0 0.25rem 0 0;
     line-height: 0;
     font-size: var(--textFontSize);
     color: var(--cantinaLila);
     width: 1rem;
 }
-.menu-section article .dish__fields .dish__choice ul li:first-child:before {
+
+/* .menu-section article .dish__fields .dish__choice ul li:first-child:before {
     margin: 0 0.25rem 0 0;
-}
+} */
 
 .menu-section .price {
     display: flex;
@@ -987,6 +1028,7 @@ article.dish--choice>h3 {
     text-align: right;
     z-index: 100;
     pointer-events: none;
+    margin-top: 1rem;
     /* background-color: aqua; */
 }
 
@@ -1008,7 +1050,7 @@ article.dish--choice>h3 {
 
 .menu-section.styckpris .price.section__sectionprices {
     flex-direction: row;
-    
+
 }
 
 .menu-section .price.section__sectionprices li {
@@ -1031,30 +1073,39 @@ article.dish--choice>h3 {
     0% {
         transform: rotate(0deg);
     }
+
     40% {
         transform: rotate(0deg);
     }
+
     45% {
         transform: rotate(-9deg);
     }
+
     50% {
         transform: rotate(8deg);
     }
+
     55% {
         transform: rotate(12deg);
     }
+
     60% {
         transform: rotate(0deg);
     }
+
     80% {
         transform: rotate(-5deg);
     }
+
     82% {
         transform: rotate(0deg);
     }
+
     87% {
         transform: rotate(2deg);
     }
+
     100% {
         transform: rotate(0deg);
     }
@@ -1068,12 +1119,15 @@ article.dish--choice>h3 {
     42% {
         color: var(--cantinaGreen);
     }
+
     45% {
         color: var(--menuTextColor);
     }
+
     50% {
         color: var(--cantinaGreen);
     }
+
     60% {
         color: var(--menuTextColor);
     }
@@ -1093,10 +1147,12 @@ article.dish--veg h3::after,
 article.dish--choice .dish__choice li.dish__choice--veg::after {
     content: "🥦";
 }
+
 article.dish--spicy h3::after,
 article.dish--choice .dish__choice li.dish__choice--spicy::after {
     content: "🌶";
 }
+
 article.dish--choice .dish__choice li.dish__choice--spicyveg::after {
     content: "🌶 🥦";
 }
@@ -1119,6 +1175,7 @@ article.dish--choice .dish__choice li.dish__choice--spicyveg::after {
     font-variation-settings: "wght" 600;
     color: var(--bgColor);
 }
+
 .menu-content .menu-content__extra-info-container:last-child .menu____extra-info {
     height: 400px;
     /* background-color: orange; */
@@ -1870,8 +1927,14 @@ button.menu__btn.pressed {
         bottom: calc(var(--bodyPadding) * 8);
         /* background-color: #72808a; */
     }
+
     .menu-content-scroller {
-    grid-column: 3 / 5;
+        grid-column: 3 / 5;
+    }
+
+    .menu-section article .dish__fields .dish__description,
+    .menu-section .section__intro {
+        max-width: 80%;
     }
 
 }
@@ -1935,7 +1998,8 @@ button.menu__btn.pressed {
     .social-section-container {
         bottom: calc(var(--bodyPadding) * 2.5);
     }
+
     .menu-content-scroller {
-    grid-column: 4 / 5;
+        grid-column: 4 / 5;
     }
 }

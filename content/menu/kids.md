@@ -18,25 +18,9 @@ intro:
 
 ### Kidsburger
 
-**Description** 90g hamburgare, dressing, isbergssallad, pommes
+**Description** 90g hamburgare, dressing, romansallad, pommes
 **Extras** 
 **Price** 130
-
----
-
-### Kids Tacos
-
-**Description** Tortilla, köttfärs, salsa, gurka, isbergssallad, majs 
-**Extras** 
-**Price** 130
-
-
----
-
-### Nuggets
-**Description** 5st kycklingnuggets med pommes
-**Extras**
-**Price** 89
 
 ---
 
@@ -48,6 +32,13 @@ intro:
 
 ---
 
+### Nuggets
+**Description** 5st kycklingnuggets med pommes
+**Extras**
+**Price** 89
+
+---
+
 ### Pannkakor  [veg]
 
 **Description** Amerikanska pannkakor med sylt & glass
@@ -55,4 +46,14 @@ intro:
 **Price** 89
 
 ---
+
+### Kids Tacos
+
+**Description** Tortilla, köttfärs, gurka, sallad, majs, salsa
+**Extras** 
+**Price** 130
+
+
+---
+
 

@@ -2,20 +2,12 @@
 title: Ramen
 sectionClass:
  - ramen
+ - one-block
  - lunch-special
 basePrice: 
- - 189
  - Lunch Special 149
 choice: 
 intro:
-
----
-
-### Välj på: [choice]
-
-**Description** 
-**Extras** 
-**Choice** Pork belly, Korean Chicken, Roasted Duck
 
 ---
 
@@ -23,7 +15,6 @@ intro:
 
 **Description** Sesamtare, vitlöksolja, buljong, chili, salladslök, ägg, pak choy, menma, nori
 **Extras**
-**Price**
 
 ---
 
@@ -31,7 +22,6 @@ intro:
 
 **Description** Tare, vitlöksolja, buljong, salladslök, ägg, menma, pak choy, nori
 **Extras**
-**Price** 
 
 ---
 
@@ -39,8 +29,15 @@ intro:
 
 **Description** Chiliolja, tare, buljong, chili miso, salladslök, silverlök, ägg, pak choy, nori
 **Extras**
-**Choice** 
-**Price**
+
+---
+
+### [choice]
+
+**Description** 
+**Extras** 
+**Choice** Pork belly, Korean Chicken, Roasted Duck
+**Price** 189
 
 ---
 
@@ -48,8 +45,7 @@ intro:
 
 **Description** Tare, chiliolja, grönsaks-buljong, salladslök, pak 
 choy, menma, nori tofu-blandning (tofu, Anammafärs & majs)
-**Extras**
-
+**Price** 189
 
 ---
 

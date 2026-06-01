@@ -15,52 +15,85 @@ intro:
 
 ---
 
-### Buttermilk Chicken Popcorn  [spicy]
+### Spicy Taquitos [spicy] [choice]
 
-**Description** Friterad buttermilk-panerad kyckling, hot sauce, sesamfrön, gräslök
-**Extras** 
-**Price** 79
-
----
-
-### Cantinas Elotes  [spicy]
-
-**Description** Majskolv, manchego, gräslök, hot sauce, chipotle crema
-**Extras** 
-**Price** 89
-
-
----
-
-### Cantina Hot Wings  [spicy]
-**Description** Majskolv, manchego, gräslök, hot sauce, chipotle crema
-**Extras**
-**Price** 5st 89
-**PriceSub** 8st 139 kr
-
+**Description** Friterad tacorulle fylld med cheddarost, het kyckling eller kryddig biff
+**Choice** Spicy chicken, Spicy beef
+**Price** 89 
 
 ---
 
 ### Nachos n Corn Salad  [veg]
 
-**Description** Majsröra med nachochips, manchego, lime, salladslök, koriander
+**Description** Majsröra med nachochips, salladslök, manchego, lime, koriander
 **Extras** 
 **Price** 89 
 
 ---
 
-### Loaded Doritos  [veg]
+### Buttermilk Chicken Popcorn  [spicy]
 
-**Description** Doritos, ostsås, pico de gallo, jalapeños
-**Extras** Add tacofärs or birria 30kr
-**Price** 119 
-
----
-
-### Spicy Chicken Taquitos [spicy]
-
-**Description** Tortillabröd, het kyckling, ost
+**Description** Friterad buttermilkpanerad kyckling, hot sauce, sesamfrön, gräslök
 **Extras** 
-**Price** 79 
+**Price** 79
 
 ---
+
+### Cantina Hot Wings  [spicy]
+**Description** Friterade kycklingvingar, cantina hot sauce, ranchdressing
+**Extras**
+**Price** 5st 89
+**PriceSub** 8st 139 kr
+
+---
+
+### Jalapeño Poppers  [spicy]
+**Description** 4st friterade panerade jalapeños, cheddarost
+**Extras**
+**Price** 69
+
+---
+
+### Edamamebönor  [veg]
+**Description** Chiliolja, salt, sesamfrön, gräslök
+**Extras**
+**Price** 69
+
+---
+
+### Shrimp Ceviche
+**Description** Vannameiräkor, Leche de tigre, mangosalsa, gurka, koriander, friterad majstortilla, lime
+**Extras**
+**Price** 129
+
+---
+
+### Smashed Cucumber Salad [spicy]
+**Description** Gurka, vitlök, chiliolja, sesam, soja
+**Extras**
+**Price** 65
+
+---
+
+### Animal Style Fries
+**Description** Pommes, ostsås, pico de gallo, bacon, jalapeños
+**Extras**
+**Price** 89
+
+---
+
+### Fries [veg]
+**Description** 
+**Extras** Add manchego +15kr
+**Price** 45
+
+---
+
+### Sweet Potato Fries [veg]
+**Description** 
+**Extras** Add manchego +15kr
+**Price** 55
+
+---
+
+

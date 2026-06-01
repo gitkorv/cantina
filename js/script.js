@@ -773,7 +773,7 @@ window.addEventListener('resize', e => {
     
 
 })
-// openMenu()
+openMenu()
 
 
 // =========================
@@ -785,9 +785,8 @@ const menuFiles = [
     '/content/menu/tacos.md',
     '/content/menu/ramen.md',
     '/content/menu/poke.md',
-    '/content/menu/sides.md',
-    '/content/menu/bao.md',
-    '/content/menu/sandwiches.md',
+    '/content/menu/sallad.md',
+    '/content/menu/subs.md',
     '/content/menu/kids.md',
     '/content/menu/sweets.md',
     '/content/menu/dips.md',
@@ -812,7 +811,8 @@ async function loadMenu(mdFile, target) {
         /<h3>(.*?)<\/h3>/g,
         (match, rawTitle) => {
             const { title, classes } = parseTitleAndClasses(rawTitle, 'dish--');
-            return `<article class="dish ${classes}"><h3>${title}</h3>`;
+            const heading = title ? `<h3>${title}</h3>` : '';
+            return `<article class="dish ${classes}">${heading}`;
         }
     ).replace(/<hr\s*\/?>/g, '</article>');
 
@@ -862,7 +862,7 @@ async function loadMenu(mdFile, target) {
 
                     if (!items.length) return '';
 
-                    return `<h3 class="dish__choice"><ul>${items.join('')}</ul></h3>`;
+                    return `<h4 class="dish__choice"><ul>${items.join('')}</ul></h4>`;
                 }
 
 
@@ -1048,9 +1048,6 @@ function doAfterMenuContentLoaded() {
     menuSectionTitles.forEach(section => {
         menuTitlesObserver.observe(section);
     });
-    mdMenuSectionWrappers.forEach(section => {
-        menuSectionObserver.observe(section);
-    });
 
     // Scroll close menu
 
@@ -1151,8 +1148,15 @@ function doAfterMenuContentLoaded() {
                     makeFunkyMenuCategoryHeads(catHead);
                 });
             }, menuTransTime - 100);
+
+            // Keep the active state in sync while the smooth scroll runs.
+            setActiveMenuSection(targetCat, true);
         });
     });
+
+    menuContentScroller.addEventListener("scroll", scheduleMenuSectionHighlight, { passive: true });
+    window.addEventListener("resize", scheduleMenuSectionHighlight);
+    scheduleMenuSectionHighlight();
 
 
 
@@ -1192,36 +1196,50 @@ function makeFunkyMenuCategoryHeads(headlineEl) {
 }
 
 
-// Create observer for menu categories
+// Highlight the section nearest the top of the menu scroller.
+let menuSectionHighlightRaf = 0;
+let activeMenuSectionId = "";
 
-const menuSectionObserverOptions = {
-    root: menuContentScroller,
-    rootMargin: "-25% 0px -75% 0px",
-    threshold: 1
-};
+function setActiveMenuSection(id, force = false) {
+    if (!id) return;
+    if (!force && id === activeMenuSectionId) return;
 
-const menuSectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const target = entry.target;
+    activeMenuSectionId = id;
 
-        if (entry.isIntersecting) {
-            const id = target.dataset.menuCat;
-            console.log(target);
-            if (id) {
-                // Remove previous actives
-                menuSecBtnsAll.forEach(btn => btn.classList.remove("active"));
-
-                // Find the button matching this section
-                const matchingBtn = Array.from(menuSecBtnsAll).find(btn =>
-                    btn.dataset.menuCat === id
-                );
-                if (matchingBtn) {
-                    matchingBtn.classList.add("active");
-                }
-            }
-        }
+    menuSecBtnsAll.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.menuCat === id);
     });
-}, menuSectionObserverOptions);
+}
+
+function scheduleMenuSectionHighlight() {
+    if (menuSectionHighlightRaf) return;
+
+    menuSectionHighlightRaf = requestAnimationFrame(() => {
+        menuSectionHighlightRaf = 0;
+
+        if (!menuContentScroller || !mdMenuSectionWrappers?.length) return;
+
+        const scrollerRect = menuContentScroller.getBoundingClientRect();
+        const triggerY = scrollerRect.top + (scrollerRect.height * 0.25);
+        const sections = [...mdMenuSectionWrappers].filter(section => section.dataset.menuCat);
+
+        if (!sections.length) return;
+
+        let activeSection = sections[0];
+        let bestTop = -Infinity;
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+
+            if (rect.top <= triggerY && rect.top > bestTop) {
+                bestTop = rect.top;
+                activeSection = section;
+            }
+        });
+
+        setActiveMenuSection(activeSection.dataset.menuCat);
+    });
+}
 
 
 
@@ -1230,7 +1248,7 @@ const menuSectionObserver = new IntersectionObserver((entries) => {
 
 const menuTitlesObserverOptions = {
     root: menuContentScroller,
-    rootMargin: "-25% 0px -25% 0px",
+    rootMargin: "-25% 0px -50% 0px",
     threshold: 0
 };
 

@@ -4,16 +4,16 @@ sectionClass:
  - poke
   - lunch-special
 basePrice: 
- - 189
+ - 
  - Lunch Special 149
 intro:
- - Risnudlar, gröna bönor, Kimchisallad, mango-salsa, picklad rödkål, isbergssallad
 ---
 
-### Välj på: [choice]
+### [choice]
 
-**Description** 
+**Description** Risnudlar, gröna bönor, Kimchisallad, mango-salsa, picklad rödkål, isbergssallad
 **Extras** 
-**Choice** Pork Belly, Korean Chicken, Roasted Duck, Fried Scampi, Fried Halloumi [veg]
+**Choice** Pork Belly, Chicken, Halloumi [veg], Scampi
+**Price** 189
 
 ---

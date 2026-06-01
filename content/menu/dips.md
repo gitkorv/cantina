@@ -4,16 +4,14 @@ sectionClass:
  - dips
  - styckpris
 basePrice: 
- - 35
- - /st
 intro:
 ---
 
-### Välj på: [choice]
+### [choice]
 
 **Description** 
 **Extras** 
-**Choice** Guacamole, Salsa Rojo, Sriracha­majonnäs, Cantinas Hot Sauce, Chipotle Crema, Ranchdressing, Consommé, Ostsås
-**Price** 
+**Choice** Guacamole, Salsa Rojo, Sriracha ­mayo, Hamburgerdressing, Cantinas Hot Sauce, Ranch, Chipotle
+**Price** 35
 
 ---
