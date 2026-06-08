@@ -149,7 +149,7 @@ const tickerItems = [
         text: "Öppet när vädret tillåter. Vi tar inte reserveringar i solen så först till kvarn gäller."
     },
     {
-        head: "Bánh Mì, Ceviche eller Caesarsallad?",
+        head: "Bánh Mì eller Ceviche?",
         text: "Vår nya meny är smetad med massa gott så glöm inte att kika i den."
     },
     {
