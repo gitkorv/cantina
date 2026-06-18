@@ -415,14 +415,13 @@ document.addEventListener('DOMContentLoaded', hideOpeningDaysBeforeCutoff);
 
 const specialHours = [
     {
-        name: "Öppettider Valborg:",
-        start: new Date(2026, 3, 29, 17, 45, 0),
-        end: new Date(2026, 4, 3, 5, 0, 0),
+        name: "Öppettider Midsommar:",
+        start: new Date(2026, 5, 18, 12, 0, 0),
+        end: new Date(2026, 5, 21, 6, 0, 0),
         changeName: true,
         changes: {
-            thursday: { newDayName: "Torsdag (Valborg)", newHours: "11-03" },
-            friday: { newHours: "16-03" },
-            saturday: { newHours: "16-03" }
+            friday: { newDayName: "Midsommarafton", newHours: "Stängt" },
+            saturday: { newDayName: "Midsommardagen", newHours: "16-03" }
         }
     }
 ];
