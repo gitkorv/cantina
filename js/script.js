@@ -145,6 +145,10 @@ const cantinaLettersSettings = [
 
 const tickerItems = [
     {
+        head: "Semesterstängt",
+        text: "Vi har åkt till solen en sväng, åter onsdag 12 Augusti, välkommen då!"
+    },
+    {
         head: "Nu med uteservering!",
         text: "Öppet när vädret tillåter. Vi tar inte reserveringar i solen så först till kvarn gäller."
     },
@@ -415,13 +419,18 @@ document.addEventListener('DOMContentLoaded', hideOpeningDaysBeforeCutoff);
 
 const specialHours = [
     {
-        name: "Öppettider Midsommar:",
-        start: new Date(2026, 5, 18, 12, 0, 0),
-        end: new Date(2026, 5, 21, 6, 0, 0),
+        name: "Semesterstängt!",
+        start: new Date(2026, 7, 3, 0, 0, 0),
+        end: new Date(2026, 7, 11, 6, 0, 0),
         changeName: true,
         changes: {
-            friday: { newDayName: "Midsommarafton", newHours: "Stängt" },
-            saturday: { newDayName: "Midsommardagen", newHours: "16-03" }
+            monday: { newDayName: "Åter", newHours: "Onsdag 12/8" },
+            tuesday: { newDayName: " ", newHours: " " },
+            wednesday: { newDayName: " ", newHours: " " },
+            thursday: { newDayName: " ", newHours: " " },
+            friday: { newDayName: " ", newHours: " " },
+            saturday: { newDayName: " ", newHours: " " },
+            sunday: { newDayName: " ", newHours: " " }
         }
     }
 ];
