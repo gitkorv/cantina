@@ -421,7 +421,7 @@ const specialHours = [
     {
         name: "Semesterstängt!",
         start: new Date(2026, 7, 3, 0, 0, 0),
-        end: new Date(2026, 7, 11, 6, 0, 0),
+        end: new Date(2026, 7, 12, 0, 0, 0),
         changeName: true,
         changes: {
             monday: { newDayName: "Åter", newHours: "Onsdag 12/8" },
