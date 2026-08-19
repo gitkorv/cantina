@@ -145,16 +145,12 @@ const cantinaLettersSettings = [
 
 const tickerItems = [
     {
-        head: "Semesterstängt",
-        text: "Vi har åkt till solen en sväng, åter onsdag 12 Augusti, välkommen då!"
-    },
-    {
-        head: "Nu med uteservering!",
-        text: "Öppet när vädret tillåter. Vi tar inte reserveringar i solen så först till kvarn gäller."
-    },
-    {
         head: "Bánh Mì eller Ceviche?",
-        text: "Vår nya meny är smetad med massa gott så glöm inte att kika i den."
+        text: "Vår meny är smetad med massa gott så glöm inte att kika i den."
+    },
+    {
+        head: "Uteservering",
+        text: "Öppet när vädret tillåter. Vi tar inte reserveringar i solen så först till kvarn gäller."
     },
     {
         head: "DJ's!",
