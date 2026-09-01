@@ -208,13 +208,13 @@ runNewsTicker();
 
 function showHomeElements() {
 
-    logoWordCantina.classList.add("show")
-
     // Cantina
     let logoTransTime = parseFloat(getComputedStyle(logoWordCantina).transitionDuration) * 1000
-    setInterval(() => {
+    setTimeout(() => {
         logoWordCantinaWrapper.classList.remove("zero-opacity")
-    }, logoTransTime / 4);
+    }, logoTransTime);
+
+    const cantinaLetterSpans = [];
 
     for (let i = 0; i < logoCantinaTextArr.length; i++) {
         const span = document.createElement("span");
@@ -222,16 +222,26 @@ function showHomeElements() {
         span.classList.add("cantina-letter")
         span.textContent = logoCantinaTextArr[i];
         logoWordCantina.append(span)
-        let revealTime = Math.floor(Math.random() * (logoCantinaTextArr.length - 2) + 2);
-        let logoHeadTransTime = parseFloat(getComputedStyle(span).transitionDuration);
-
-        span.style.transitionDelay = logoHeadTransTime * revealTime + "s";
-        span.style.fontVariationSettings = `
-            "slnt" ${cantinaLettersSettings[i].slnt}, 
-            "wdth" ${cantinaLettersSettings[i].wdth}, 
-            "wght" ${cantinaLettersSettings[i].wght}
-            `
+        cantinaLetterSpans.push(span);
     }
+
+    requestAnimationFrame(() => {
+        logoWordCantina.classList.add("show")
+
+        setTimeout(() => {
+            cantinaLetterSpans.forEach((span, i) => {
+                let revealTime = Math.floor(Math.random() * (logoCantinaTextArr.length - 2) + 2);
+                let logoHeadTransTime = parseFloat(getComputedStyle(span).transitionDuration);
+
+                span.style.transitionDelay = logoHeadTransTime * revealTime + "s";
+                span.style.fontVariationSettings = `
+                    "slnt" ${cantinaLettersSettings[i].slnt}, 
+                    "wdth" ${cantinaLettersSettings[i].wdth}, 
+                    "wght" ${cantinaLettersSettings[i].wght}
+                    `
+            });
+        }, logoTransTime);
+    });
 
     // Subhead
     let streetFoodCounter = 0;

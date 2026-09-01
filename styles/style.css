@@ -217,7 +217,7 @@ body {
     letter-spacing: -2px;
     font-size: var(--logo-font-size);
     color: var(--logoColor);
-    transition: opacity 1s ease-in .5s;
+    transition: opacity .5s ease-out 1s;
     opacity: 0;
 }
 
@@ -226,7 +226,7 @@ body {
 }
 
 .cantina-letter {
-    transition: font-variation-settings .5s ease-out 2s;
+    transition: font-variation-settings .5s ease-out;
 }
 
 .logo__line--sfc-wrapper {
