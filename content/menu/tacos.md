@@ -5,41 +5,41 @@ sectionClass:
   - one-block
 basePrice: 
 intro:
-  - Alla tacos serveras i mjuka majstortilla med koriander & lime
----
-
-### Scampi Al Ajillo [spicy]
-
-**Description** Vannameiräkor, Leche de tigre, kålsallad, srirachamajonnäs
-**Extras** 
-
+  - Alla tacos serveras på mjuka majstortilla
 ---
 
 ### Birria 
 
-**Description** Långkokt högrev, ost, pico de gallo, consommé
+**Description** Långkokt högrev, pico de gallo, consommé, lök, koriander
 **Extras** 
 
 ---
 
-### Carne Asada
+### Steak n cheese taco
 
-**Description** Ryggbiff, ost, pico de gallo, guacamole, chipotle-dressing
+**Description** Stekt entrecote, lök, paprika, mozzarella, het cheddar, chipotlemajo, jalapeno, gräslök
+**Extras** 
+
+---
+
+### Fish taco
+
+**Description** Maizena panerad torsk, mangosalsa, pico de gallo, ranchdressing, koriander
 **Extras** 
 
 ---
 
 ### Halloumi  [veg]
 
-**Description** Friterad halloumi, kålsallad, mangosalsa, chipotlemajonnäs
+**Description** Friterad halloumi, sallad, lök, paprika, pico de gallo, chipotlemajo
 **Extras** 
 
 ---
 
-### Svenne Style
+### Scampi Al Ajillo [spicy]
 
-**Description** Tacofärs, ost, sallad, gurka, majs, salsa, gräslök
-**Extras**
+**Description** Vannameiräkor, mangosalsa, pico de gallo, ranchdressing, koriander
+**Extras** 
 **Price** 1st 95
 **Price** 2st 179
 

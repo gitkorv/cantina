@@ -11,21 +11,21 @@ intro:
 
 ### Chili Sesam
 
-**Description** Sesamtare, vitlöksolja, buljong, chili, salladslök, ägg, pak choy, menma, nori
+**Description** Sesamtare, chiliolja, rostad vitlök, menma, pakchoy, salladslök, ägg, sesamfrön, nori
 **Extras**
 
 ---
 
 ### Classic Shoyu
 
-**Description** Tare, vitlöksolja, buljong, salladslök, ägg, menma, pak choy, nori
+**Description** Misotare, chiliolja,rostad vitlök, menma, pakchoy, salladslök, ägg, sesamfrön, nori
 **Extras**
 
 ---
 
 ### Spicy Miso [spicy]
 
-**Description** Chiliolja, tare, buljong, chili miso, salladslök, silverlök, ägg, pak choy, nori
+**Description** Tare, rostad vitlök, olja, menma, pakchoy, salladslök, ägg, sesamfrön, nori
 **Extras**
 
 ---
@@ -34,16 +34,6 @@ intro:
 
 **Description** 
 **Extras** 
-**Choice** Pork belly, Korean Chicken, Roasted Duck
+**Choice** Pork belly, Roasted duck, Tofumix [veg]
 **Price** 189
-
----
-
-### Mapo Tofu [veg]
-
-**Description** Tare, chiliolja, grönsaks-buljong, salladslök, pak 
-choy, menma, nori tofu-blandning (tofu, Anammafärs & majs)
-**Price** 189
-
----
 

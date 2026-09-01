@@ -1,5 +1,5 @@
 ---
-title: Subs n Burgers
+title: Buns, burgers, n sandwiches
 sectionClass:
  - subs
 basePrice:
@@ -7,12 +7,20 @@ intro:
 
 ---
 
-### Bánh Mì Baguettes [choice] [dish-head]
+### Bao buns [choice] [dish-head]
 
-**Description** Romansallad, inlagd morot & rättika, koriander, srirachamajonnäs. 
+**Description** Krispig sallad, srirachamajo, spicy thaisalad
 **Extras** 
-**Choice** Chicken, Pork Belly, Roasted Duck, Halloumi [veg]
-**Price** 189
+**Choice** Pork Belly, Roasted Duck
+**Price** 89
+
+---
+
+### Hot tuna melt [spicy]
+
+**Description** Tonfisk, majs, majonnäs, sriracha, mozzarella & cheddarost
+**Extras** 
+**Price** 169
 
 ---
 
@@ -24,6 +32,23 @@ intro:
 
 ---
 
+### Spicy thai chicken sandwich [spicy]
+
+**Description** Baguette, friterad het kycklingfilé, morot, rättika, vitkål, sallad, koriander, salladslök, Srirachamajo
+**Extras** 
+**Price** 189
+
+---
+
+### Cheeseburger
+
+**Description** 90g smashburgare, cheddarost, hamburgerdressing, romansallad
+**Extras** Add Bacon 20:-
+**Price** Enkel 99 
+**Price** Dubbel 149 
+
+---
+
 ### Fried Chicken Burger [spicy]
 
 **Description** Friterad kyckling, cantina hot sauce, ranch, saltgurka, kålsallad
@@ -31,14 +56,4 @@ intro:
 **Price** 179
 
 ---
-
-### Cheeseburger
-
-**Description** 90g smashburgare, cheddarost, hamburgerdressing, romansallad
-**Extras** 
-**Price** Enkel 99 
-**Price** Dubbel 149 
-
----
-
 

@@ -18,7 +18,7 @@ intro:
 
 ### Kidsburger
 
-**Description** 90g hamburgare, dressing, romansallad, pommes
+**Description** 990g hamburgare, dressing, sallad, pommes
 **Extras** 
 **Price** 130
 
@@ -26,7 +26,7 @@ intro:
 
 ### Korv med Pommes
 
-**Description** Grillkorv med pommes
+**Description** 1 grillkorv med pommes
 **Extras** 
 **Price** 89
 

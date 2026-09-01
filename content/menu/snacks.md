@@ -15,17 +15,17 @@ intro:
 
 ---
 
-### Spicy Taquitos [spicy] [choice]
+### Spicy chicken taquitos [spicy]
 
-**Description** Friterad tacorulle fylld med cheddarost, het kyckling eller kryddig biff
-**Choice** Spicy chicken, Spicy beef
+**Description** Friterad tacorulle fylld med cheddarost och het kyckling
+**Choice** 
 **Price** 89 
 
 ---
 
 ### Nachos n Corn Salad  [veg]
 
-**Description** Majsröra med nachochips, salladslök, manchego, lime, koriander
+**Description** Majsröra med nachochips, salladslök, manchego, lime
 **Extras** 
 **Price** 89 
 
@@ -35,12 +35,12 @@ intro:
 
 **Description** Friterad buttermilkpanerad kyckling, hot sauce, sesamfrön, gräslök
 **Extras** 
-**Price** 79
+**Price** 89
 
 ---
 
 ### Cantina Hot Wings  [spicy]
-**Description** Friterade kycklingvingar, cantina hot sauce, ranchdressing
+**Description** Friterad kycklingvingar, cantina hot sauce, ranchdressing
 **Extras**
 **Price** 5st 89
 **PriceSub** 8st 139 kr
@@ -55,23 +55,16 @@ intro:
 ---
 
 ### Edamamebönor  [veg]
-**Description** Chiliolja, salt, sesamfrön, gräslök
+**Description** Chiliolja, salt, tare, gräslök
 **Extras**
 **Price** 69
-
----
-
-### Shrimp Ceviche
-**Description** Vannameiräkor, Leche de tigre, mangosalsa, gurka, koriander, friterad majstortilla, lime
-**Extras**
-**Price** 129
 
 ---
 
 ### Smashed Cucumber Salad [spicy]
 **Description** Gurka, vitlök, chiliolja, sesam, soja
 **Extras**
-**Price** 65
+**Price** 79
 
 ---
 

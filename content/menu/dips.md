@@ -11,7 +11,7 @@ intro:
 
 **Description** 
 **Extras** 
-**Choice** Guacamole, Salsa Rojo, Sriracha ­mayo, Hamburgerdressing, Cantinas Hot Sauce, Ranch, Chipotle
+**Choice** Guacamole, Salsa, Sriracha ­mayo, Cantina Hot Sauce, Ranch, Chipotle, Hamburgerdressing
 **Price** 35
 
 ---

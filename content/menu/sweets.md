@@ -15,22 +15,13 @@ intro:
 
 ---
 
-### Ice Cream
+### Ice cream or sorbet
 
-**Description** Fråga efter smak
+**Description** Fråga efter smaker
 **Extras** 
 **Price** 55
 
 ---
-
-### Sorbet
-
-**Description** Fråga efter smak
-**Extras** 
-**Price** 55
-
----
-
 
 ### Mud Cake
 **Description** Kladdkaka med vispad grädde
