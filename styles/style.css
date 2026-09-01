@@ -837,6 +837,7 @@ main {
     padding: var(--bodyPadding);
     padding-bottom: 0;
     grid-template-columns: repeat(4, 1fr) auto;
+    overflow: hidden;
     pointer-events: none;
     color: var(--menuTextColor);
     z-index: 50;
@@ -847,6 +848,8 @@ main {
     grid-column: 1 / 5;
     position: relative;
     display: flex;
+    height: 100%;
+    min-height: 0;
     overflow: scroll;
     transition: transform .5s ease-in-out;
     z-index: 110;
