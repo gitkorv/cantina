@@ -34,6 +34,6 @@ intro:
 
 **Description** 
 **Extras** 
-**Choice** Pork belly, Roasted duck, Tofumix [veg]
+**Choice** Pork belly, Roasted duck, Bang Bang chicken, Tofumix [veg]
 **Price** 189
 

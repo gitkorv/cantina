@@ -40,7 +40,7 @@ intro:
 ---
 
 ### Cantina Hot Wings  [spicy]
-**Description** Friterad kycklingvingar, cantina hot sauce, ranchdressing
+**Description** Friterad kycklingvingar, cantina hot sauce, ranchdressing, sesamfrön, gräslök
 **Extras**
 **Price** 5st 89
 **PriceSub** 8st 139 kr
@@ -55,7 +55,7 @@ intro:
 ---
 
 ### Edamamebönor  [veg]
-**Description** Chiliolja, salt, tare, gräslök
+**Description** Chiliolja, salt, tare, gräslök, sesamfrön
 **Extras**
 **Price** 69
 

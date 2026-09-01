@@ -11,7 +11,7 @@ intro:
 
 **Description** 
 **Extras** 
-**Choice** Guacamole, Salsa, Sriracha ­mayo, Cantina Hot Sauce, Ranch, Chipotle, Hamburgerdressing
+**Choice** Guacamole, Salsa, Sriracha ­mayo, Cantina Hot Sauce, Bang bang dressing, Ranch, Chipotle, Hamburgerdressing, Ostsås
 **Price** 35
 
 ---

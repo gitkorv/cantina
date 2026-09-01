@@ -666,7 +666,7 @@ main {
     right: var(--bodyPadding); */
     /* right: 0; */
     left: 0;
-    top: 100px;
+    top: 110px;
     width: 100%;
     padding: 0 var(--bodyPadding);
     text-align: left;
@@ -755,6 +755,11 @@ main {
 .opening-hours__hours--blob {
     color: var(--cantinaGreen);
     font-variation-settings: "slnt" 0, "wdth" 150, "wght" 900;
+}
+
+.opening-hours__days.hide-day {
+    display: none;
+    border: 1px solid red;
 }
 
 /* --> SOCIALs <---------- */
@@ -1835,7 +1840,7 @@ button.menu__btn.pressed {
 
 
 
-@media (min-width: 390px) {
+@media (min-width: 420px) {
 
     :root {
         --textFontSize: 1rem;

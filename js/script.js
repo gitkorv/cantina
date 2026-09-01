@@ -41,9 +41,11 @@ const ticker = document.querySelector(".ticker-wrapper");
 // Opening hours
 const openingHoursWrapper = document.querySelector(".opening-hours-wrapper");
 const bottomOFClubBtn = clubBtn.getBoundingClientRect().height;
-const openingHoursDaysAll = document.querySelectorAll(".opening-hours__days");
-const openingHoursHoursAll = document.querySelectorAll(".opening-hours__hours");
-
+const openingHoursDaysAll = document.querySelectorAll(".opening-hours__days:not(.hide-day)");
+console.log(openingHoursDaysAll);
+const openingHoursHoursAll = document.querySelectorAll(
+  ".opening-hours__days:not(.hide-day) .opening-hours__hours"
+);
 // Below logo
 const belowLogoWrapper = document.querySelector(".below-logo-wrapper")
 

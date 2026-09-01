@@ -11,14 +11,14 @@ intro:
 
 **Description** Krispig sallad, srirachamajo, spicy thaisalad
 **Extras** 
-**Choice** Pork Belly, Roasted Duck
+**Choice** Pork Belly, Roasted Duck, Bang Bang chicken 
 **Price** 89
 
 ---
 
 ### Hot tuna melt [spicy]
 
-**Description** Tonfisk, majs, majonnäs, sriracha, mozzarella & cheddarost
+**Description** Levainbröd, tonfisk, majs, majonnäs, sriracha, ranchdressing, mozzarella & cheddarost
 **Extras** 
 **Price** 169
 
@@ -34,7 +34,7 @@ intro:
 
 ### Spicy thai chicken sandwich [spicy]
 
-**Description** Baguette, friterad het kycklingfilé, morot, rättika, vitkål, sallad, koriander, salladslök, Srirachamajo
+**Description** Baguette, friterad het kycklingfilé, morot, rättika, fisksås, chiliolja, sallad, koriander, salladslök, srirachamajo
 **Extras** 
 **Price** 189
 
@@ -51,7 +51,7 @@ intro:
 
 ### Fried Chicken Burger [spicy]
 
-**Description** Friterad kyckling, cantina hot sauce, ranch, saltgurka, kålsallad
+**Description** Friterad kyckling, cantina hot sauce, ranch, saltgurka, sallad
 **Extras** 
 **Price** 179
 

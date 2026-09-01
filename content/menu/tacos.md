@@ -8,6 +8,13 @@ intro:
   - Alla tacos serveras på mjuka majstortilla
 ---
 
+### Bang Bang chicken 
+
+**Description** Strimlad kyckling, gurka, sallad, Bang Bangmajonnäs, sesam, chiliolja
+**Extras** 
+
+---
+
 ### Birria 
 
 **Description** Långkokt högrev, pico de gallo, consommé, lök, koriander
@@ -24,7 +31,7 @@ intro:
 
 ### Fish taco
 
-**Description** Maizena panerad torsk, mangosalsa, pico de gallo, ranchdressing, koriander
+**Description** Maizena panerad torsk, mangosalsa, pico de gallo, sallad, ranchdressing, koriander
 **Extras** 
 
 ---
@@ -38,7 +45,7 @@ intro:
 
 ### Scampi Al Ajillo [spicy]
 
-**Description** Vannameiräkor, mangosalsa, pico de gallo, ranchdressing, koriander
+**Description** Vannameiräkor, mangosalsa, pico de gallo, sallad, srirachamajonnäs, koriander
 **Extras** 
 **Price** 1st 95
 **Price** 2st 179
