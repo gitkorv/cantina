@@ -733,9 +733,10 @@ document.addEventListener("click", (e) => {
     }
     if (
         menuOpen &&
-        !clickedEl.classList.contains("menu__btn")
+        !menuContentScroller.contains(clickedEl) &&
+        !menuBtnWrapper.contains(clickedEl)
     ) {
-        // closeMenu()
+        closeMenu()
     }
 });
 
@@ -771,7 +772,9 @@ function formDrips() {
 
 
 window.addEventListener('resize', e => {
-    closeMenu()
+    if (menuOpen) {
+        closeMenu();
+    }
     windowWidth = window.innerWidth;
     requestAnimationFrame(() => {
         setWidthForHours()
