@@ -1,5 +1,5 @@
 ---
-title: Buns, burgers, n sandwiches
+title: burgers, bao, buns
 sectionClass:
  - subs
 basePrice:
@@ -42,7 +42,7 @@ intro:
 
 ### Cheeseburger
 
-**Description** 90g smashburgare, cheddarost, hamburgerdressing, romansallad
+**Description** 90g smashburgare, cheddarost, hamburgerdressing, krispig sallad
 **Extras** Add Bacon 20:-
 **Price** Enkel 99 
 **Price** Dubbel 149 

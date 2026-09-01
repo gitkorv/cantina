@@ -1,5 +1,5 @@
 ---
-title: Dips
+title: dips
 sectionClass:
  - dips
  - styckpris

@@ -1,5 +1,5 @@
 ---
-title: Sweets
+title: sweets
 sectionClass:
  - sweets
 basePrice:

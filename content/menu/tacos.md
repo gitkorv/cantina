@@ -1,5 +1,5 @@
 ---
-title: Tacos
+title: tacos
 sectionClass:
   - tacos
   - one-block

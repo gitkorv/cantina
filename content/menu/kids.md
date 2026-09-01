@@ -1,5 +1,5 @@
 ---
-title: Kids
+title: kids
 sectionClass:
  - kids
 basePrice:

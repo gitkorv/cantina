@@ -1,5 +1,5 @@
 ---
-title: Ramen
+title: ramen
 sectionClass:
  - ramen
  - one-block
@@ -18,14 +18,14 @@ intro:
 
 ### Classic Shoyu
 
-**Description** Misotare, chiliolja,rostad vitlök, menma, pakchoy, salladslök, ägg, sesamfrön, nori
+**Description** Tare, chiliolja,rostad vitlök, menma, pakchoy, salladslök, ägg, sesamfrön, nori
 **Extras**
 
 ---
 
 ### Spicy Miso [spicy]
 
-**Description** Tare, rostad vitlök, olja, menma, pakchoy, salladslök, ägg, sesamfrön, nori
+**Description** Misotare, rostad vitlök, olja, menma, pakchoy, salladslök, ägg, sesamfrön, nori
 **Extras**
 
 ---

@@ -1,5 +1,5 @@
 ---
-title: Snacks n Nibbles
+title: snacks n nibbles
 sectionClass:
  - snacks
 basePrice:
