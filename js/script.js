@@ -997,10 +997,22 @@ let mdMenuArticle = [];
 let mdMenuSectionWrappers = [];
 
 async function init() {
-    await loadAllMenus();
-    doAfterMenuContentLoaded()
+    try {
+        await loadAllMenus();
+        doAfterMenuContentLoaded()
+    } finally {
+        revealMenuAfterStartup();
+    }
 }
 init();
+
+function revealMenuAfterStartup() {
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            document.body.classList.remove("menu-starting");
+        });
+    });
+}
 
 
 

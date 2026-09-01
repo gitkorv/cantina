@@ -860,6 +860,12 @@ main {
     padding: var(--bodyPaddingHalf);
 }
 
+body.menu-starting .menu-content-scroller,
+body.menu-starting .menu__btns__secBtns-wrapper {
+    opacity: 0;
+    transition: none;
+}
+
 .menu-content-scroller--closed {
     transform: translateY(100%);
 }
