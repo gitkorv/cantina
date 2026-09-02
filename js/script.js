@@ -332,10 +332,9 @@ function showHomeElements() {
                     sprayDripDiv.style.width = dripWidth > 1 ? "2px" : "1px";
 
                     // add class to some drips
-                    if (i === 1 || i === 3) {
+                    if (i === 1 || i === 2 || i === 3) {
                         sprayDripDiv.classList.add("spray-drip-second-color");
                     }
-
 
                     spraySplashContainers[i].appendChild(sprayDripDiv)
                     setTimeout(() => {
