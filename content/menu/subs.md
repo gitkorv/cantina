@@ -1,5 +1,5 @@
 ---
-title: burgers, bao, buns
+title: burgers, bao n buns
 sectionClass:
  - subs
 basePrice:

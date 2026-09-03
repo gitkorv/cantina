@@ -1220,6 +1220,8 @@ article.dish--choice .dish__choice li.dish__choice--spicyveg::after {
     transform: translateY(150%);
 }
 
+
+
 .menu__btn {
     /* all: none; */
     flex: 1 0 auto;
@@ -1236,6 +1238,11 @@ article.dish--choice .dish__choice li.dish__choice--spicyveg::after {
     /* z-index: 1000; */
     /* pointer-events: all; */
     cursor: pointer;
+}
+
+.menu__btns__secBtn span.italic-N {
+    /* border: 1px solid red; */
+    font-variation-settings: "slnt" -12, "wdth" 75, "wght" 400;
 }
 
 @media (hover: hover) {

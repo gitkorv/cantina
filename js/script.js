@@ -44,7 +44,7 @@ const bottomOFClubBtn = clubBtn.getBoundingClientRect().height;
 const openingHoursDaysAll = document.querySelectorAll(".opening-hours__days:not(.hide-day)");
 console.log(openingHoursDaysAll);
 const openingHoursHoursAll = document.querySelectorAll(
-  ".opening-hours__days:not(.hide-day) .opening-hours__hours"
+    ".opening-hours__days:not(.hide-day) .opening-hours__hours"
 );
 // Below logo
 const belowLogoWrapper = document.querySelector(".below-logo-wrapper")
@@ -788,7 +788,7 @@ window.addEventListener('resize', e => {
     requestAnimationFrame(() => {
         setWidthForHours()
     })
-    
+
 
 })
 // openMenu()
@@ -1201,10 +1201,13 @@ function makeFunkyMenuCategoryHeads(headlineEl) {
     if (!headlineEl.dataset.hasSpans) {
         const letters = [...headlineEl.textContent];
         headlineEl.textContent = "";
-        letters.forEach(letter => {
+        letters.forEach((letter, i) => {
             const span = document.createElement("span");
             span.textContent = letter;
             span.style.transition = `font-variation-settings 1s ease-in-out`;
+            if (letter.toLowerCase() === "n" && letters[i - 1] === " " && letters[i + 1] === " ") {
+                span.classList.add("menu-cat-letter--spaced-n");
+            }
             headlineEl.appendChild(span);
         });
         // Mark that we initialized spans
@@ -1220,7 +1223,12 @@ function makeFunkyMenuCategoryHeads(headlineEl) {
 
         // Animate (with optional timeout)
         setTimeout(() => {
-            span.style.fontVariationSettings = `"slnt" ${slant}, "wdth" ${width}, "wght" ${weight}`;
+            if (span.classList.contains("menu-cat-letter--spaced-n")) {
+                span.style.fontVariationSettings = `"slnt" -12, "wdth" ${width}, "wght" ${weight}`;
+            } else {
+                span.style.fontVariationSettings = `"slnt" ${slant}, "wdth" ${width}, "wght" ${weight}`;
+            }
+
         }, 0);
     });
 }
