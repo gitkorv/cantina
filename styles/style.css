@@ -1241,7 +1241,6 @@ article.dish--choice .dish__choice li.dish__choice--spicyveg::after {
 }
 
 .menu__btns__secBtn span.italic-N {
-    /* border: 1px solid red; */
     font-variation-settings: "slnt" -12, "wdth" 75, "wght" 400;
 }
 

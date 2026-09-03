@@ -18,7 +18,7 @@ intro:
 
 ### Kidsburger
 
-**Description** 990g hamburgare, dressing, sallad, pommes
+**Description** 90g hamburgare, dressing, sallad, pommes
 **Extras** 
 **Price** 130
 
