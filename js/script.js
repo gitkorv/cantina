@@ -147,8 +147,8 @@ const cantinaLettersSettings = [
 
 const tickerItems = [
     {
-        head: "Bánh Mì eller Ceviche?",
-        text: "Vår meny är smetad med massa gott så glöm inte att kika i den."
+        head: "Bao buns are back!",
+        text: "Kolla i nya menyn for både nyheter och kära återseenden."
     },
     {
         head: "Uteservering",
