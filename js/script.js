@@ -149,6 +149,10 @@ const cantinaLettersSettings = [
 
 const tickerItems = [
     {
+        head: "NYHET! Beställ krubb!",
+        text: 'Tryck bara på knappen "Order here" och följ instruktionerna.'
+    },
+    {
         head: "Bao buns are back!",
         text: "Kolla i nya menyn for både nyheter och kära återseenden."
     },
