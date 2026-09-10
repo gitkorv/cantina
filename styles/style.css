@@ -456,6 +456,88 @@ main {
     color: var(--logoColor);
 }
 
+
+
+/* --> Order Button <---------- */
+.order-btn {
+    --orderBtnTrans: top .25s ease-out, right .25s ease-in-out, transform .25s ease-out;
+    position: absolute;
+    right: -4px;
+    color: black;
+    font-size: 24px;
+    color: var(--cantinaLila);
+    /* inset: 0; */
+    background-color: var(--cantinaRosa);
+    font-variation-settings: "slnt" 0, "wdth" 115, "wght" 900;
+    opacity: 0;
+    padding: 8px;
+    text-wrap: wrap-all;
+    z-index: 1000;
+    pointer-events: auto;
+    display: inline-block;
+    transition: var(--orderBtnTrans);
+}
+
+.order-btn:hover,
+.order-btn.order-btn-flash.order-btn-menu-open:hover {
+    background-color: var(--cantinaGrey);
+}
+
+.order-btn.order-btn-flash {
+    animation: order-flash 1.5s ease-out forwards;
+    opacity: 1;
+    transform-origin: top left;
+    box-shadow: 5px 5px 0 var(--cantinaCream);
+}
+.order-btn.order-btn-flash.order-btn-menu-open {
+    background-color: var(--cantinaGreen);
+    animation: order-flash-menu 1s ease-out forwards;
+    opacity: 1;
+    transform: rotate(10deg);
+    transition: var(--orderBtnTrans);
+    right: var(--bodyPadding);
+    top: calc(var(--bodyPadding) + var(--bodyPaddingHalf) + 100px) !important;
+}
+
+@keyframes order-flash {
+    0% {opacity: 0;}
+    9% {opacity: 0;}
+    10% {opacity: 1;}
+    14% {opacity: 1;}
+    16% {opacity: 0;}
+    22% {opacity: 1;}
+    25% {opacity: 0;}
+    45% {opacity: 0;}
+    46% {opacity: 1;}
+    49% {opacity: 0;}
+    65% {opacity: 0;}
+    67% {opacity: 1;}
+    91% {opacity: 1; transform: rotate(0deg);}
+    93% {opacity: 0;}
+    96% {opacity: 1; transform: rotate(15deg);}
+    98% {opacity: 0; transform: rotate(5deg);}
+    100% {opacity: 1; transform: rotate(10deg);}
+}
+
+@keyframes order-flash-menu {
+    10% {opacity: 1;}
+    14% {opacity: 1;}
+    16% {opacity: 0;}
+    22% {opacity: 1;}
+    25% {opacity: 0;}
+    45% {opacity: 0;}
+    46% {opacity: 1;}
+    49% {opacity: 0;}
+    65% {opacity: 0;}
+    67% {opacity: 1;}
+    91% {opacity: 1; }
+    93% {opacity: 0;}
+    96% {opacity: 1;}
+    98% {opacity: 0; }
+    100% {opacity: 1;}
+}
+
+
 /* --> CLUB <---------- */
 
 /* --> Club Button <---------- */

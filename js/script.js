@@ -22,6 +22,8 @@ const clubFormDripContainer = document.querySelector(".club-form__bottom-drip-co
 
 // logo Cantina
 const logoWrapper = document.querySelector(".logo")
+const logoLineCantinaWrapper = document.querySelector(".logo__line--cantina-wrapper");
+console.log(logoLineCantinaWrapper);
 const logoWordCantinaWrapper = document.querySelector(".logo__word--cantina-wrapper")
 const logoWordCantina = document.querySelector(".logo__word--cantina")
 const logoCantinaTextArr = [...logoWordCantina.textContent]
@@ -658,6 +660,8 @@ function closeMenu() {
     setTimeout(() => {
         menuOpBtn.classList.remove("pressed");
         menuOpBtn.textContent = orgOpMenuText;
+        orderBtn.classList.remove("order-btn-menu-open");
+        // orderBtn.classList.add("order-btn-flash");
     }, MENU_TRANSITION_DELAY);
     // menuWrapper.style.pointerEvents = "none";
 
@@ -674,6 +678,8 @@ function openMenu() {
     setTimeout(() => {
         menuOpBtn.classList.add("active");
         menuOpBtn.textContent = "X";
+        orderBtn.classList.add("order-btn-menu-open");
+        // orderBtn.classList.remove("order-btn-flash");
     }, MENU_TRANSITION_DELAY);
     // menuWrapper.style.pointerEvents = "";
 
@@ -1297,3 +1303,27 @@ const menuTitlesObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) { makeFunkyMenuCategoryHeads(target) }
     });
 }, menuTitlesObserverOptions);
+
+
+// Adjust position for order food button
+
+const orderBtn = document.querySelector(".order-btn");
+
+let logoLineCantinaWrapperBottom
+let logoLineCantinaWrapperHeight
+let orderBtnHeight = orderBtn.getBoundingClientRect().height;
+let orderBtnTop
+let orderCantinaSpace = 10;
+
+window.addEventListener('load', () => {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      logoLineCantinaWrapperBottom = logoLineCantinaWrapper.getBoundingClientRect().bottom;
+      logoLineCantinaWrapperHeight = logoLineCantinaWrapper.getBoundingClientRect().height;
+      console.log(logoLineCantinaWrapperBottom);
+      console.log(orderBtnHeight);
+      orderBtn.classList.add("order-btn-flash")
+      orderBtn.style.top = logoLineCantinaWrapperBottom - logoLineCantinaWrapperHeight - orderBtnHeight - orderCantinaSpace + "px  ";
+    });
+  });
+});
