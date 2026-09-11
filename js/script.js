@@ -150,7 +150,7 @@ const cantinaLettersSettings = [
 const tickerItems = [
     {
         head: "NYHET! Beställ krubb!",
-        text: 'Tryck bara på knappen "Order here" och följ instruktionerna.'
+        text: 'Tryck på knappen "Take away" och följ instruktionerna.'
     },
     {
         head: "Bao buns are back!",
@@ -664,7 +664,7 @@ function closeMenu() {
     setTimeout(() => {
         menuOpBtn.classList.remove("pressed");
         menuOpBtn.textContent = orgOpMenuText;
-        orderBtn.classList.remove("order-btn-menu-open");
+        orderWrapper.classList.remove("order-wrapper-menu-open");
         // orderBtn.classList.add("order-btn-flash");
     }, MENU_TRANSITION_DELAY);
     // menuWrapper.style.pointerEvents = "none";
@@ -682,7 +682,7 @@ function openMenu() {
     setTimeout(() => {
         menuOpBtn.classList.add("active");
         menuOpBtn.textContent = "X";
-        orderBtn.classList.add("order-btn-menu-open");
+        orderWrapper.classList.add("order-wrapper-menu-open");
         // orderBtn.classList.remove("order-btn-flash");
     }, MENU_TRANSITION_DELAY);
     // menuWrapper.style.pointerEvents = "";
@@ -1311,11 +1311,12 @@ const menuTitlesObserver = new IntersectionObserver((entries) => {
 
 // Adjust position for order food button
 
+const orderWrapper = document.querySelector(".order-wrapper");
 const orderBtn = document.querySelector(".order-btn");
 
 let logoLineCantinaWrapperBottom
 let logoLineCantinaWrapperHeight
-let orderBtnHeight = orderBtn.getBoundingClientRect().height;
+let orderWrapperHeight = orderWrapper.getBoundingClientRect().height;
 let orderBtnTop
 let orderCantinaSpace = 10;
 
@@ -1325,9 +1326,9 @@ window.addEventListener('load', () => {
       logoLineCantinaWrapperBottom = logoLineCantinaWrapper.getBoundingClientRect().bottom;
       logoLineCantinaWrapperHeight = logoLineCantinaWrapper.getBoundingClientRect().height;
       console.log(logoLineCantinaWrapperBottom);
-      console.log(orderBtnHeight);
-      orderBtn.classList.add("order-btn-flash")
-      orderBtn.style.top = logoLineCantinaWrapperBottom - logoLineCantinaWrapperHeight - orderBtnHeight - orderCantinaSpace + "px  ";
+      console.log(orderWrapperHeight);
+      orderWrapper.classList.add("order-wrapper-show")
+      orderWrapper.style.top = logoLineCantinaWrapperBottom - logoLineCantinaWrapperHeight - orderWrapperHeight - orderCantinaSpace + "px  ";
     });
   });
 });

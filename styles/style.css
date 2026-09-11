@@ -459,23 +459,47 @@ main {
 
 
 /* --> Order Button <---------- */
-.order-btn {
-    --orderBtnTrans: top .25s ease-out, right .25s ease-in-out, transform .25s ease-out;
+
+.order-wrapper {
+    --orderWrapperTrans: top .25s ease-out, right .25s ease-in-out, transform .25s ease-out;
     position: absolute;
     right: -4px;
+    top: 50%;
+    transition: var(--orderWrapperTrans);
+    z-index: 1000;
+    opacity: 0;
+    transform-origin: top left;
+
+}
+
+.order-wrapper.order-wrapper-show {
+    opacity: 1;
+    animation: order-wrapper-tilt 1.5s ease-out forwards;
+}
+
+@keyframes order-wrapper-tilt {
+    0% {opacity: 0;}
+    9% {opacity: 0;}
+    10% {opacity: 1;}
+    91% {opacity: 1; transform: rotate(0deg);}
+    96% {opacity: 1; transform: rotate(15deg);}
+    98% {opacity: 1; transform: rotate(5deg);}
+    100% {opacity: 1; transform: rotate(10deg);}
+}
+
+.order-btn {
+    position: relative;
     color: black;
     font-size: 24px;
     color: var(--cantinaLila);
-    /* inset: 0; */
     background-color: var(--cantinaRosa);
     font-variation-settings: "slnt" 0, "wdth" 115, "wght" 900;
-    opacity: 0;
+    opacity: 1;
     padding: 8px;
-    text-wrap: wrap-all;
-    z-index: 1000;
     pointer-events: auto;
     display: inline-block;
-    transition: var(--orderBtnTrans);
+    box-shadow: 5px 5px 0 var(--cantinaCream);
+
 }
 
 .order-btn:hover,
@@ -483,43 +507,65 @@ main {
     background-color: var(--cantinaGrey);
 }
 
-.order-btn.order-btn-flash {
-    animation: order-flash 1.5s ease-out forwards;
+.order-prefix {
+    font-variation-settings: "slnt" 0, "wdth" 50, "wght" 600;
+    color: var(--cantinaCream);
     opacity: 1;
-    transform-origin: top left;
-    box-shadow: 5px 5px 0 var(--cantinaCream);
+    width: fit-content;
+    background-color: var(--cantinaLila);
+    padding-left: 2px;
 }
-.order-btn.order-btn-flash.order-btn-menu-open {
+.order-prefix span:first-child {
+    animation: order-prefix-flash 2.5s ease-out infinite;
+
+}
+
+.order-prefix span:last-child {
+    animation: none;
+    position: relative;
+    top: 6px;
+    z-index: 100;
+}
+
+.order-wrapper.order-wrapper-menu-open .order-btn{
     background-color: var(--cantinaGreen);
-    animation: order-flash-menu 1s ease-out forwards;
-    opacity: 1;
-    transform: rotate(10deg);
-    transition: var(--orderBtnTrans);
+
+}
+
+.order-wrapper.order-wrapper-menu-open {
+    transform: rotate(0deg);
+    transition: var(--orderWrapperTrans);
     right: var(--bodyPadding);
     top: calc(var(--bodyPadding) + var(--bodyPaddingHalf) + 100px) !important;
+
 }
 
-@keyframes order-flash {
-    0% {opacity: 0;}
-    9% {opacity: 0;}
-    10% {opacity: 1;}
-    14% {opacity: 1;}
-    16% {opacity: 0;}
-    22% {opacity: 1;}
-    25% {opacity: 0;}
-    45% {opacity: 0;}
-    46% {opacity: 1;}
-    49% {opacity: 0;}
-    65% {opacity: 0;}
-    67% {opacity: 1;}
-    91% {opacity: 1; transform: rotate(0deg);}
-    93% {opacity: 0;}
-    96% {opacity: 1; transform: rotate(15deg);}
-    98% {opacity: 0; transform: rotate(5deg);}
-    100% {opacity: 1; transform: rotate(10deg);}
+.order-wrapper.order-wrapper-menu-open .order-prefix {
+    /* animation: order-prefix-flash-menu 2.5s ease-out infinite; */
+    opacity: 1;
 }
 
-@keyframes order-flash-menu {
+@keyframes order-prefix-flash {
+    0% {color: var(--cantinaLila);}
+    9% {color: var(--cantinaLila);}
+    10% {color: var(--cantinaCream);}
+    14% {color: var(--cantinaCream);}
+    16% {color: var(--cantinaLila);}
+    22% {color: var(--cantinaCream);}
+    25% {color: var(--cantinaLila);}
+    45% {color: var(--cantinaLila);}
+    46% {color: var(--cantinaCream);}
+    49% {color: var(--cantinaLila);}
+    65% {color: var(--cantinaLila);}
+    67% {color: var(--cantinaCream);}
+    91% {color: var(--cantinaCream);}
+    93% {color: var(--cantinaLila);}
+    96% {color: var(--cantinaCream);}
+    98% {color: var(--cantinaLila);}
+    100% {color: var(--cantinaCream);}
+}
+
+@keyframes order-prefix-flash-menu {
     10% {opacity: 1;}
     14% {opacity: 1;}
     16% {opacity: 0;}
@@ -2047,6 +2093,9 @@ button.menu__btn.pressed {
         left: 30%;
         /* padding-left: 15%; */
     }
+    .order-wrapper {
+        right: 15%;
+    }
 }
 
 /* @media (min-width: 1024px) {
@@ -2102,5 +2151,8 @@ button.menu__btn.pressed {
 
     .menu-content-scroller {
         grid-column: 4 / 5;
+    }
+    .order-wrapper {
+        right: 25%;
     }
 }
