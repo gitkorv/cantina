@@ -1448,22 +1448,25 @@ button.menu__btn.pressed {
 
 
 .cantina-skull-svg-wrapper {
-    --skullHeight: 80px;
+    --skullHeight: 120px;
     position: absolute;
     --skull-color: var(--logoColor);
-    bottom: calc(var(--bodyPadding) * 1.6);
+    bottom: var(--bodyPadding);
     padding: 0 var(--bodyPadding);
     right: 0;
     display: flex;
     justify-content: end;
-    height: var(--skullHeight);
     aspect-ratio: 1/1;
     z-index: -1000;
     pointer-events: none;
+    width: var(--skullHeight);
+    height: var(--skullHeight);
 }
 
 .cantina-skull-svg-wrapper svg {
     fill: var(--skull-color);
+    width: 100%;
+    height: 100%;
     transform: translate(0) rotate(0deg);
     animation: skull-move 10s ease-in-out infinite;
 }
@@ -1996,7 +1999,7 @@ button.menu__btn.pressed {
     }
 
     .cantina-skull-svg-wrapper {
-        --skullHeight: 100px;
+        --skullHeight: 180px;
     }
 
     .boka-bord-wrapper {
