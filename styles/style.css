@@ -466,7 +466,7 @@ main {
     right: -4px;
     top: 60%;
     transition: var(--orderWrapperTrans);
-    z-index: 1000;
+    z-index: 190;
     opacity: 0;
     transform-origin: top left;
 
