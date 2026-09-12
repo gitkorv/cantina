@@ -464,7 +464,7 @@ main {
     --orderWrapperTrans: top .25s ease-out, right .25s ease-in-out, transform .25s ease-out;
     position: absolute;
     right: -4px;
-    top: 50%;
+    top: 60%;
     transition: var(--orderWrapperTrans);
     z-index: 1000;
     opacity: 0;
@@ -503,7 +503,7 @@ main {
 }
 
 .order-btn:hover,
-.order-btn.order-btn-flash.order-btn-menu-open:hover {
+.order-wrapper.order-wrapper-menu-open .order-btn:hover {
     background-color: var(--cantinaGrey);
 }
 
@@ -527,7 +527,7 @@ main {
     z-index: 100;
 }
 
-.order-wrapper.order-wrapper-menu-open .order-btn{
+.order-wrapper.order-wrapper-menu-open .order-btn {
     background-color: var(--cantinaGreen);
 
 }
@@ -2153,6 +2153,6 @@ button.menu__btn.pressed {
         grid-column: 4 / 5;
     }
     .order-wrapper {
-        right: 25%;
+        right: 20%;
     }
 }

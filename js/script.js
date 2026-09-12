@@ -798,7 +798,7 @@ window.addEventListener('resize', e => {
     requestAnimationFrame(() => {
         setWidthForHours()
     })
-
+    placementOfOrderBtn(window.innerWidth)
 
 })
 // openMenu()
@@ -1320,15 +1320,24 @@ let orderWrapperHeight = orderWrapper.getBoundingClientRect().height;
 let orderBtnTop
 let orderCantinaSpace = 10;
 
+function placementOfOrderBtn(windowWidth) {
+    orderWrapper.classList.add("order-wrapper-show")
+    console.log(windowWidth);
+    if (windowWidth < 1400) {
+        logoLineCantinaWrapperBottom = logoLineCantinaWrapper.getBoundingClientRect().bottom;
+        logoLineCantinaWrapperHeight = logoLineCantinaWrapper.getBoundingClientRect().height;
+
+        orderWrapper.style.top = logoLineCantinaWrapperBottom - logoLineCantinaWrapperHeight - orderWrapperHeight - orderCantinaSpace + "px  ";
+    } else {
+        orderWrapper.style.top = "";
+    }
+}
+
+
 window.addEventListener('load', () => {
-  requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      logoLineCantinaWrapperBottom = logoLineCantinaWrapper.getBoundingClientRect().bottom;
-      logoLineCantinaWrapperHeight = logoLineCantinaWrapper.getBoundingClientRect().height;
-      console.log(logoLineCantinaWrapperBottom);
-      console.log(orderWrapperHeight);
-      orderWrapper.classList.add("order-wrapper-show")
-      orderWrapper.style.top = logoLineCantinaWrapperBottom - logoLineCantinaWrapperHeight - orderWrapperHeight - orderCantinaSpace + "px  ";
+        requestAnimationFrame(() => {
+            placementOfOrderBtn(window.innerWidth);
+        });
     });
-  });
 });
